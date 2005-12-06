@@ -1,0 +1,124 @@
+<!--[pngetstatusmsg]-->
+
+		<h1>
+      <!--[pnml name="_AVATAR_ADM_TITLE"]-->
+    </h1>
+		
+    <form action="<!--[pnmodurl modname="Avatar" type="admin" func="save"]-->" method="post">
+    	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Avatar"]-->" />
+
+		<fieldset>
+		<legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
+      <table>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_AVATARDIR"]-->:
+          </th>
+          <td>
+            <input type="text" size="25" maxlength="50" name="avatardir" value="<!--[$avatardir]-->" /><br />
+            <!--[pnml name="_AVATAR_ADM_AVATARDIR_HINT"]-->
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_FORUMDIR"]-->:
+          </th>
+          <td>
+            <input type="text" size="25" maxlength="50" name="forumdir" value="<!--[$forumdir]-->" /><br />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_ALLOWRESIZE"]-->:
+          </th>
+          <td>
+            <input type="checkbox" name="allow_resize" value="allow_resize" <!--[if $allow_resize]-->checked="checked"<!--[/if]--> />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_MAXSIZE"]-->:
+          </th>
+          <td>
+            <input type="text" size="10" maxlength="10" name="maxsize" value="<!--[$maxsize]-->" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_MAXHEIGHT"]-->:
+          </th>
+          <td>
+            <input type="text" size="10" maxlength="10" name="maxheight" value="<!--[$maxheight]-->" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_MAXWIDTH"]-->:
+          </th>
+          <td>
+            <input type="text" size="10" maxlength="10" name="maxwidth" value="<!--[$maxwidth]-->" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_EXTENSIONS"]-->:
+          </th>
+          <td>
+            <input type="text" size="25" maxlength="25" name="allowed_extensions" value="<!--[$allowed_extensions]-->" /><br />
+             default: gif;jpg<br />
+             <!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]-->:
+          </td>
+        </tr>
+      </table>
+		</fieldset>
+		<br />
+		<fieldset>
+		<legend><!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT"]--></legend>
+		  <!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT_HINT"]-->
+      <table>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_GROUPID"]-->
+          </th>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_PREFIX"]-->
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_group_1" value="<!--[$prefix_group_1]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_1" value="<!--[$prefix_prefix_1]-->" />
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <input type="text" size="10" maxlength="10" name="prefix_group_2" value="<!--[$prefix_group_2]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_2" value="<!--[$prefix_prefix_2]-->" />
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <input type="text" size="10" maxlength="10" name="prefix_group_3" value="<!--[$prefix_group_3]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_3" value="<!--[$prefix_prefix_3]-->" />
+          </td>
+        </tr>
+      </table>
+			<p>
+        <!--[pnml name="_AVATAR_ADM_GROUPS"]-->:<br />
+        <!--[foreach from=$groups item=gname key=gid ]-->
+		      <!--[$gid]-->: <!--[$gname]--><br />
+        <!--[/foreach]-->
+				<br /><br />
+        <!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT_HINT2"]-->
+			</p>
+		</fieldset>
+			<p>
+			<input type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+			</p>
+    </form>

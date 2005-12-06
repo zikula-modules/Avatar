@@ -1,0 +1,9 @@
+<form name="Register" action="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar"]-->" method="post">
+  <!--[pnml name="_AVATAR_SELECTAVATAR"]-->
+  <select name="user_avatar" onchange="showimage()">
+    <!--[html_options output=$avatars|pnVarPrepForDisplay values=$avatars|pnVarPrepForDisplay selected=$user_avatar|pnVarPrepForDisplay]-->
+  </select>   
+  <img src="images/avatar/<!--[$user_avatar|pnVarPrepForDisplay]-->" name="avatar" width="32" height="32" alt="" align="top">
+  <br />
+  <button type="submit"><!--[pnml name="_SAVECHANGES"]--></button>
+</form>			

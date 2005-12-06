@@ -1,0 +1,14 @@
+<h2>
+  <!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->
+</h2>
+
+  <!--[foreach from=$avatars item="avatar"]-->
+	  <div style="float: left; margin:10pt;">
+		<a href="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar" user_avatar=$avatar|pnVarPrepForDisplay]-->"><img src="images/avatar/<!--[$avatar|pnVarPrepForDisplay]-->" name="avatar" width="32" height="32" alt="avatar" align="top"></a>
+		<br />
+		<a href="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar" user_avatar=$avatar|pnVarPrepForDisplay]-->"><!--[$avatar|pnVarPrepForDisplay]--></a>
+	  </div>
+	<!--[/foreach]-->
+
+	<br style="clear: both;" />
+  <br style="clear: both;" />

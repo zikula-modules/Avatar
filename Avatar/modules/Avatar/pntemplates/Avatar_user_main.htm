@@ -1,0 +1,29 @@
+<!--[pngetstatusmsg|pnvarprephtmldisplay]-->
+		
+	<h1>
+		<!--[pnml name="_AVATAR_TITLE"]-->
+	</h1>
+  <!--[pnml name="_AVATAR_CURRENTAVATAR"]-->
+  <img src="images/avatar/<!--[$user_avatar|pnVarPrepForDisplay]-->" width="32" height="32" alt="<!--[pnml name="_AVATAR_CURRENTAVATAR"]-->" >
+
+		<!--[* Display the avatars. *]-->
+		<!--[**** include file="Avatar_user_select_dropdown.htm" ****]-->
+		<!--[ include file="Avatar_user_select_display.htm" ]-->
+		
+		<!--[if $allow_uploads]-->
+  		<!--[* Display the upload form only if the user has rights to upload.  *]-->
+      <!--[pnml name="_AVATAR_USER_CHOOSE"]--><br /><br />
+      <form action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="" /> 
+			  <!--[pnml name="_AVATAR_UPLOADFILE"]-->: 
+  			<input type="file" size="40" name="filelocale" /> 
+	  		<button type="submit"><!--[pnml name="_AVATAR_UPLOAD_BUTTON"]--></button>
+		  	<button type="reset"><!--[pnml name="_AVATAR_CLEAR_BUTTON"]--></button>
+      </form>
+      <br />
+       <strong><!--[pnml name="_AVATAR_ALLOWEDEXTENSIONS"]-->:</strong> <!--[pnmodgetvar module="Avatar" name="allowed_extensions"]-->  <br />
+       <strong><!--[pnml name="_AVATAR_MAXDIMENSIONS"]-->:</strong> 
+			   <!--[pnmodgetvar module="Avatar" name="maxheight"]-->x<!--[pnmodgetvar module="Avatar" name="maxwidth"]--> 
+         <!--[pnml name="_AVATAR_PIXEL"]--> <br />
+         <!--[pnml name="_AVATAR_RESIZE"]-->
+		<!--[/if]-->
