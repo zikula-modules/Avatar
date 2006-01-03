@@ -58,6 +58,7 @@ function Avatar_user_main()
  */
 function Avatar_user_upload ($args)
 { 
+
     // permission check
     if (!pnSecAuthAction(0, 'Avatar::', '::', ACCESS_COMMENT)) {
         return pnVarPrepHTMLDisplay(_MODULENOAUTH);
@@ -68,34 +69,39 @@ function Avatar_user_upload ($args)
     
     // get the file
     $uploadfile = $_FILES['filelocale'];
-    $tmp_file = $uploadfile['tmp_name'];
-    $allow_resize = pnModGetVar('Avatar', 'allow_resize');
     
-    if (!is_uploaded_file($tmp_file)) {
+    if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILEUPLOAD);
         return pnRedirect(pnModURL('Avatar'));
     } 
+
+    $tmp_file = tempnam(pnConfigGetVar('temp'), 'Avatar');
+    move_uploaded_file($_FILES['filelocale']['tmp_name'], $tmp_file);
+    
+    $allow_resize = pnModGetVar('Avatar', 'allow_resize');
     
     // check for file size limit
     if (!$allow_resize && filesize($tmp_file) > pnModGetVar('Avatar', 'maxsize')) {
+        unlink($tmp_file);
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILESIZE);
         return pnRedirect(pnModURL('Avatar'));
     } 
     
     // Get image information
     $imageinfo = getimagesize($tmp_file); 
-    
+
     // file is not an image
     if (!$imageinfo) {
+        unlink($tmp_file);
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
         return pnRedirect(pnModURL('Avatar'));
     } 
 
     $extension = image_type_to_extension($imageinfo[2], false); 
-    
     // check for image type
     $allowed_extensions = explode (';', pnModGetVar('Avatar', 'allowed_extensions'));
     if (!in_array($extension, $allowed_extensions)) {
+        unlink($tmp_file);
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
         return pnRedirect(pnModURL('Avatar'));
     } 
@@ -106,6 +112,7 @@ function Avatar_user_upload ($args)
     $maxheight = pnModGetVar('Avatar', 'maxheight');
     if ($imageinfo[0] > $maxwidth || $imageinfo[1] > $maxheight) {
         if (!$allow_resize) {
+            unlink($tmp_file);
             pnSessionSetVar('errormsg', _AVATAR_ERR_FILEDIMENSIONS);
             return pnRedirect(pnModURL('Avatar'));
         } else {
@@ -165,7 +172,8 @@ function Avatar_user_upload ($args)
     $user_avatar = "pers_$uid.$extension";
 
     unlink("$pathavatar/$user_avatar");
-    if (!@move_uploaded_file($tmp_file, "$pathavatar/$user_avatar")) {
+    if (!@copy($tmp_file, "$pathavatar/$user_avatar")) {
+        unlink($tmp_file);
         pnSessionSetVar('errormsg', _AVATAR_ERR_COPYAVATAR);
         return pnRedirect(pnModURL('Avatar'));
     } else {
@@ -173,15 +181,16 @@ function Avatar_user_upload ($args)
     }
     if (pnModAvailable('pnPHPbb') && $pathphpbb != '') {
         unlink("$pathphpbb/$user_avatar");
-        if (!@move_uploaded_file($tmp_file, "$pathphpbb/$user_avatar")) {
+        if (!@copy($tmp_file, "$pathphpbb/$user_avatar")) {
+            unlink($tmp_file);
             pnSessionSetVar('errormsg', _AVATAR_ERR_COPYFORUM);
             return pnRedirect(pnModURL('Avatar'));
         } else {
             chmod ("$pathavatar/$user_avatar", 0644);
         }
     } 
+    unlink($tmp_file);
 
-    pnModAPILoad('Avatar','user');
     if (!pnModAPIFunc('Avatar',
                       'user',
                       'SetAvatar',
