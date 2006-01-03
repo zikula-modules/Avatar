@@ -257,22 +257,23 @@ if (!function_exists('image_type_to_extension')) {
         if (empty($imagetype)) return false;
         $dot = $include_dot ? $dot . '' : '';
         switch ($imagetype) {
-            case IMAGETYPE_GIF :     return $dot . 'gif';
-            case IMAGETYPE_JPEG :    return $dot . 'jpg';
-            case IMAGETYPE_PNG :     return $dot . 'png';
-            case IMAGETYPE_SWF :     return $dot . 'swf';
-            case IMAGETYPE_PSD :     return $dot . 'psd';
-            case IMAGETYPE_WBMP :    return $dot . 'wbmp';
-            case IMAGETYPE_XBM :     return $dot . 'xbm';
+            case IMAGETYPE_GIF     : return $dot . 'gif';
+            case IMAGETYPE_JPEG    : return $dot . 'jpg';
+            case IMAGETYPE_PNG     : return $dot . 'png';
+            case IMAGETYPE_SWF     : return $dot . 'swf';
+            case IMAGETYPE_PSD     : return $dot . 'psd';
+            case IMAGETYPE_BMP     : return $dot . 'bmp';
             case IMAGETYPE_TIFF_II : return $dot . 'tiff';
             case IMAGETYPE_TIFF_MM : return $dot . 'tiff';
-            case IMAGETYPE_IFF :     return $dot . 'aiff';
-            case IMAGETYPE_JB2 :     return $dot . 'jb2';
-            case IMAGETYPE_JPC :     return $dot . 'jpc';
-            case IMAGETYPE_JP2 :     return $dot . 'jp2';
-            case IMAGETYPE_JPX :     return $dot . 'jpf';
-            case IMAGETYPE_SWC :     return $dot . 'swc';
-            default :                return false;
+            case IMAGETYPE_JPC     : return $dot . 'jpc';
+            case IMAGETYPE_JP2     : return $dot . 'jp2';
+            case IMAGETYPE_JPX     : return $dot . 'jpf';
+            case IMAGETYPE_JB2     : return $dot . 'jb2';
+            case IMAGETYPE_SWC     : return $dot . 'swc';
+            case IMAGETYPE_IFF     : return $dot . 'aiff';
+            case IMAGETYPE_WBMP    : return $dot . 'wbmp';
+            case IMAGETYPE_XBM     : return $dot . 'xbm';
+            default                : return false;
         } 
     } 
 } 
