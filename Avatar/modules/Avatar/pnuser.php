@@ -73,15 +73,13 @@ function Avatar_user_upload ($args)
     
     if (!is_uploaded_file($tmp_file)) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILEUPLOAD);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
     
     // check for file size limit
     if (!$allow_resize && filesize($tmp_file) > pnModGetVar('Avatar', 'maxsize')) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILESIZE);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
     
     // Get image information
@@ -90,8 +88,7 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
 
     $extension = image_type_to_extension($imageinfo[2], false); 
@@ -100,8 +97,7 @@ function Avatar_user_upload ($args)
     $allowed_extensions = explode (';', pnModGetVar('Avatar', 'allowed_extensions'));
     if (!in_array($extension, $allowed_extensions)) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
     
     
@@ -111,8 +107,7 @@ function Avatar_user_upload ($args)
     if ($imageinfo[0] > $maxwidth || $imageinfo[1] > $maxheight) {
         if (!$allow_resize) {
             pnSessionSetVar('errormsg', _AVATAR_ERR_FILEDIMENSIONS);
-            pnRedirect(pnModURL('Avatar'));
-            return false;
+            return pnRedirect(pnModURL('Avatar'));
         } else {
             // resize the image
             
@@ -172,8 +167,7 @@ function Avatar_user_upload ($args)
     unlink("$pathavatar/$user_avatar");
     if (!@move_uploaded_file($tmp_file, "$pathavatar/$user_avatar")) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_COPYAVATAR);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } else {
         chmod ("$pathavatar/$user_avatar", 0644);
     }
@@ -181,8 +175,7 @@ function Avatar_user_upload ($args)
         unlink("$pathphpbb/$user_avatar");
         if (!@move_uploaded_file($tmp_file, "$pathphpbb/$user_avatar")) {
             pnSessionSetVar('errormsg', _AVATAR_ERR_COPYFORUM);
-            pnRedirect(pnModURL('Avatar'));
-            return false;
+            return pnRedirect(pnModURL('Avatar'));
         } else {
             chmod ("$pathavatar/$user_avatar", 0644);
         }
@@ -195,8 +188,7 @@ function Avatar_user_upload ($args)
                       array('uid'    => $uid,
                             'avatar' => $user_avatar))) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_SELECT);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
     pnRedirect(pnModURL('Avatar'));
 } 
@@ -234,8 +226,7 @@ function Avatar_user_SetAvatar($args)
                        array('uid'    => $uid,
                              'avatar' => $user_avatar))) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_AUTHORIZED);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
 
     
@@ -245,11 +236,9 @@ function Avatar_user_SetAvatar($args)
                       array('uid'    => $uid,
                             'avatar' => $user_avatar))) {
         pnSessionSetVar('errormsg', _AVATAR_ERR_SELECT);
-        pnRedirect(pnModURL('Avatar'));
-        return false;
+        return pnRedirect(pnModURL('Avatar'));
     } 
-    pnRedirect(pnModURL('Avatar'));
-    return true;
+    return pnRedirect(pnModURL('Avatar'));
 } 
 
 
