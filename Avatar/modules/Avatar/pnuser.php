@@ -264,7 +264,7 @@ if (!function_exists('image_type_to_extension')) {
     function image_type_to_extension($imagetype, $include_dot = true)
     {
         if (empty($imagetype)) return false;
-        $dot = $include_dot ? $dot . '' : '';
+        $dot = $include_dot ? '.' : '';
         switch ($imagetype) {
             case IMAGETYPE_GIF     : return $dot . 'gif';
             case IMAGETYPE_JPEG    : return $dot . 'jpg';
