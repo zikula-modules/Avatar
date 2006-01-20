@@ -32,9 +32,9 @@ function Avatar_userapi_GetAvatars($args)
     }
     pnModAPILoad('Avatar','user');
     
-    $handle = opendir(pnModGetVar('Avatar', 'avatardir'));
     $avatars = array();
-    while ($file = readdir($handle)) {
+    foreach (glob(pnModGetVar('Avatar', 'avatardir') . '/*') as $file) {
+        $file = basename($file);
         if (pnModAPIFunc('Avatar', 
                          'user', 
                          'CheckAvatar', 
@@ -42,8 +42,10 @@ function Avatar_userapi_GetAvatars($args)
                                'uid'    => $uid))) {
             $avatars[] = $file;
         }
-    } 
+    }
+
     asort($avatars);
+    
     return $avatars;
 }
 
