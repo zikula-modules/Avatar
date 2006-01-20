@@ -30,7 +30,6 @@ function Avatar_userapi_GetAvatars($args)
         // no user ID is passed, so assume the current user
         $uid = pnUserGetVar('uid');
     }
-    pnModAPILoad('Avatar','user');
     
     $avatars = array();
     foreach (glob(pnModGetVar('Avatar', 'avatardir') . '/*') as $file) {
@@ -102,8 +101,6 @@ function Avatar_userapi_CheckAvatar($args)
     if ($prefix == 'pers') {
         return ((int)substr_replace(substr($avatar, 5), '', -4) == $uid);
     } 
-
-    pnModAPILoad('Avatar','user');
 
     $user_groups = pnModAPIFunc('Avatar', 
                                 'user', 

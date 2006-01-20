@@ -36,7 +36,6 @@ function Avatar_user_main()
     $allow_uploads = pnSecAuthAction(0, 'Avatar::', '::', ACCESS_COMMENT); 
     
     // get all possible avatars
-    pnModAPILoad('Avatar','user');
     $avatars = pnModAPIFunc('Avatar', 'user', 'GetAvatars'); 
 
     // display
@@ -228,7 +227,6 @@ function Avatar_user_SetAvatar($args)
 
     // check if the avatar is allowed for the user
     $uid = pnUserGetVar('uid');
-    pnModAPILoad('Avatar','user');
     if (! pnModAPIFunc('Avatar',
                        'user',
                        'CheckAvatar',
