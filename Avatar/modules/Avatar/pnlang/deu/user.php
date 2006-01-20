@@ -29,7 +29,7 @@ define('_AVATAR_MAXSIZE',            'Maximal Dateigröße des Avatars');
 define('_AVATAR_ALLOWEDEXTENSIONS',  'Erlaubte Dateiendungen');
 define('_AVATAR_MAXHEIGHT',          'Maximale Höhe in Pixel');
 define('_AVATAR_MAXWIDTH',           'Maximale Breite in Pixel');
-define('_AVATAR_MAXDIMENSIONS',      'Maximale Avatargröße:');
+define('_AVATAR_MAXDIMENSIONS',      'Maximale Avatargröße');
 define('_AVATAR_PIXEL',              'Pixel');
 define('_AVATAR_RESIZE',             'Größere Bilder werden automatisch verkleinert.');
 

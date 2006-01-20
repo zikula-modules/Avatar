@@ -29,7 +29,7 @@ define('_AVATAR_MAXSIZE',            'Avatar max dimensions');
 define('_AVATAR_ALLOWEDEXTENSIONS',  'Authorised extensions');
 define('_AVATAR_MAXHEIGHT',          'Maximal height');
 define('_AVATAR_MAXWIDTH',           'Maximal Width');
-define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size:');
+define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size');
 define('_AVATAR_PIXEL',              'pixels');
 define('_AVATAR_RESIZE',             'Bigger images will be resized automatically.');
 
