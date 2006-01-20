@@ -170,7 +170,11 @@ function Avatar_user_upload ($args)
     $uid = pnUserGetVar('uid');
     $user_avatar = "pers_$uid.$extension";
 
-    unlink("$pathavatar/$user_avatar");
+    // delete old user avatars
+    foreach (glob("$pathavatar/pers_$uid.*") as $file) {
+        unlink($file);
+    }
+
     if (!@copy($tmp_file, "$pathavatar/$user_avatar")) {
         unlink($tmp_file);
         pnSessionSetVar('errormsg', _AVATAR_ERR_COPYAVATAR);
