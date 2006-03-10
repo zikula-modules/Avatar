@@ -4,6 +4,11 @@
       <!--[pnml name="_AVATAR_ADM_TITLE"]-->
     </h1>
 		
+		<!--[if $warn_pntemp]-->
+		<p>
+		  <span style="font-weight: bold; color: Red;"><!--[pnml name="_WARN_PNTEMP"]--></span>
+		</p>
+		<!--[/if]-->
     <form action="<!--[pnmodurl modname="Avatar" type="admin" func="save"]-->" method="post">
     	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Avatar"]-->" />
 
@@ -17,6 +22,11 @@
           <td>
             <input type="text" size="25" maxlength="50" name="avatardir" value="<!--[$avatardir]-->" /><br />
             <!--[pnml name="_AVATAR_ADM_AVATARDIR_HINT"]-->
+		        <!--[if $warn_avatardir]-->
+						<!--[pndebug]-->
+        		<br />
+		         <span style="font-weight: bold; color: Red;"><!--[pnml name="_WARN_AVARTARDIR"]--></span>
+        		<!--[/if]-->
           </td>
         </tr>
         <tr>
@@ -24,7 +34,11 @@
             <!--[pnml name="_AVATAR_ADM_FORUMDIR"]-->:
           </th>
           <td>
-            <input type="text" size="25" maxlength="50" name="forumdir" value="<!--[$forumdir]-->" /><br />
+            <input type="text" size="25" maxlength="50" name="forumdir" value="<!--[$forumdir]-->" />
+		        <!--[if $warn_forumdir]-->
+        		<br />
+		         <span style="font-weight: bold; color: Red;"><!--[pnml name="_WARN_FORUMDIR"]--></span>
+        		<!--[/if]-->
           </td>
         </tr>
         <tr>

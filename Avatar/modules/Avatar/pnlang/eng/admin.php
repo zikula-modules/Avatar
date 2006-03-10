@@ -1,7 +1,7 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
  *
@@ -36,4 +36,8 @@ define('_AVATAR_ADM_PREFIX',                  'Prefix');
 define('_AVATAR_ADM_GROUPS',                  'Available groups');
 define('_AVATAR_ADM_GROUPS_ALL',              'All');
 
+// warnings
+define('_WARN_PNTEMP',                        'Warning: the pnTemp direcory isn\'t writable');
+define('_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
+define('_WARN_FORUMDIR',                      'Warning: the Forum direcory isn\'t writable (This is fine when PNphpBB2 isn\'t installed)');
 ?>
