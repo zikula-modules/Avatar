@@ -40,6 +40,7 @@ function Avatar_user_main()
 
     // display
     $pnRender = new pnRender('Avatar');
+    $pnRender->add_core_data();
     $pnRender->caching=false;
     $pnRender->assign('avatars', $avatars);
     $pnRender->assign('allow_uploads', $allow_uploads);

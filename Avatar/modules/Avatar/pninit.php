@@ -25,9 +25,9 @@ function Avatar_init()
     pnModSetVar('Avatar', 'avatardir',          'images/avatar');
     pnModSetVar('Avatar', 'forumdir',           '');
     pnModSetVar('Avatar', 'allow_resize',       false);
-    pnModSetVar('Avatar', 'maxsize',            '5000');
-    pnModSetVar('Avatar', 'maxheight',          '50');
-    pnModSetVar('Avatar', 'maxwidth',           '50');
+    pnModSetVar('Avatar', 'maxsize',            '10000');
+    pnModSetVar('Avatar', 'maxheight',          '80');
+    pnModSetVar('Avatar', 'maxwidth',           '80');
     pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;png');
     pnModSetVar('Avatar', 'prefix_group_1',     '');
     pnModSetVar('Avatar', 'prefix_group_2',     '');
