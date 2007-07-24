@@ -14,14 +14,14 @@
  */
 
 $modversion['name']           = 'Avatar';
-$modversion['version']        = '1.1';
-$modversion['description']    = 'Upload of individual Avatars';
-//$modversion['credits']        = 'docs/credits.txt';
-//$modversion['help']           = 'docs/installa.txt';
-//$modversion['changelog']      = 'docs/changelog.txt';
-//$modversion['license']        = 'docs/license.txt';
+$modversion['version']        = '2.0';
+$modversion['description']    = _AVATAR_DESCRIPTION;
+$modversion['credits']        = 'pndocs/changelog.txt';
+$modversion['help']           = 'pndocs/changelog.txt';
+$modversion['changelog']      = 'pndocs/changelog.txt';
+$modversion['license']        = 'pndocs/license.txt';
 $modversion['official']       = 0;
-$modversion['author']         = 'Joerg Napp';
+$modversion['author']         = 'Joerg Napp, Frank Schummertz, Carsten Volmer';
 $modversion['contact']        = 'http://noc.postnuke.com/projects/avatar/';
 $modversion['admin']          = 1;
 $modversion['securityschema'] = array('Avatar::' => '::');

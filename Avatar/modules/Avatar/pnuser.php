@@ -24,22 +24,22 @@ function Avatar_user_main()
 { 
     // only logged-ins might see the overview.
     if (!pnUserLoggedIn()) {
-        return pnVarPrepHTMLDisplay(_AVATAR_ERR_NOTLOGGEDIN);
+        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnModURL('Avatar'));
     } 
     
     // plus, the user should have overview right to see the avatars.
-    if (!pnSecAuthAction(0, 'Avatar::', '::', ACCESS_OVERVIEW)) {
-        return pnVarPrepHTMLDisplay(_MODULENOAUTH);
-    } 
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
+        return LogUtil::registerPermissionError('index.php');
+    }
     
     // is the user allowed to upload an Avatar?
-    $allow_uploads = pnSecAuthAction(0, 'Avatar::', '::', ACCESS_COMMENT); 
+    $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT); 
     
     // get all possible avatars
     $avatars = pnModAPIFunc('Avatar', 'user', 'GetAvatars'); 
 
     // display
-    $pnRender = &new pnRender('Avatar');
+    $pnRender = new pnRender('Avatar');
     $pnRender->caching=false;
     $pnRender->assign('avatars', $avatars);
     $pnRender->assign('allow_uploads', $allow_uploads);
@@ -59,19 +59,19 @@ function Avatar_user_upload ($args)
 { 
 
     // permission check
-    if (!pnSecAuthAction(0, 'Avatar::', '::', ACCESS_COMMENT)) {
-        return pnVarPrepHTMLDisplay(_MODULENOAUTH);
-    } 
-    if (!pnSecConfirmAuthKey()) {
-        // return  pnVarPrepHTMLDisplay(_BADAUTHKEY);
-    } 
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
+        return LogUtil::registerPermissionError('index.php');
+    }
+
+    if (!SecurityUtil::confirmAuthKey()) {
+        return LogUtil::registerAuthidError('index.php');
+    }
     
     // get the file
     $uploadfile = $_FILES['filelocale'];
     
     if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
-        pnSessionSetVar('errormsg', _AVATAR_ERR_FILEUPLOAD);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_FILEUPLOAD, null, pnModURL('Avatar'));
     } 
 
     $tmp_file = tempnam(pnConfigGetVar('temp'), 'Avatar');
@@ -82,8 +82,7 @@ function Avatar_user_upload ($args)
     // check for file size limit
     if (!$allow_resize && filesize($tmp_file) > pnModGetVar('Avatar', 'maxsize')) {
         unlink($tmp_file);
-        pnSessionSetVar('errormsg', _AVATAR_ERR_FILESIZE);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_FILESIZE, null, pnModURL('Avatar'));
     } 
     
     // Get image information
@@ -92,8 +91,7 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_FILETYPE, null, pnModURL('Avatar'));
     } 
 
     $extension = image_type_to_extension($imageinfo[2], false); 
@@ -101,8 +99,7 @@ function Avatar_user_upload ($args)
     $allowed_extensions = explode (';', pnModGetVar('Avatar', 'allowed_extensions'));
     if (!in_array($extension, $allowed_extensions)) {
         unlink($tmp_file);
-        pnSessionSetVar('errormsg', _AVATAR_ERR_FILETYPE);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_FILETYPE, null, pnModURL('Avatar'));
     } 
     
     
@@ -112,8 +109,7 @@ function Avatar_user_upload ($args)
     if ($imageinfo[0] > $maxwidth || $imageinfo[1] > $maxheight) {
         if (!$allow_resize) {
             unlink($tmp_file);
-            pnSessionSetVar('errormsg', _AVATAR_ERR_FILEDIMENSIONS);
-            return pnRedirect(pnModURL('Avatar'));
+            return LogUtil::registerError(_AVATAR_ERR_FILEDIMENSIONS, null, pnModURL('Avatar'));
         } else {
             // resize the image
             
@@ -177,8 +173,7 @@ function Avatar_user_upload ($args)
 
     if (!@copy($tmp_file, "$pathavatar/$user_avatar")) {
         unlink($tmp_file);
-        pnSessionSetVar('errormsg', _AVATAR_ERR_COPYAVATAR);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_COPYAVATAR, null, pnModURL('Avatar'));
     } else {
         chmod ("$pathavatar/$user_avatar", 0644);
     }
@@ -186,8 +181,7 @@ function Avatar_user_upload ($args)
         unlink("$pathphpbb/$user_avatar");
         if (!@copy($tmp_file, "$pathphpbb/$user_avatar")) {
             unlink($tmp_file);
-            pnSessionSetVar('errormsg', _AVATAR_ERR_COPYFORUM);
-            return pnRedirect(pnModURL('Avatar'));
+            return LogUtil::registerError(_AVATAR_ERR_COPYFORUM, null, pnModURL('Avatar'));
         } else {
             chmod ("$pathavatar/$user_avatar", 0644);
         }
@@ -199,10 +193,9 @@ function Avatar_user_upload ($args)
                       'SetAvatar',
                       array('uid'    => $uid,
                             'avatar' => $user_avatar))) {
-        pnSessionSetVar('errormsg', _AVATAR_ERR_SELECT);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
     } 
-    pnRedirect(pnModURL('Avatar'));
+    return pnRedirect(pnModURL('Avatar', 'user', 'main'));
 } 
 
 
@@ -219,13 +212,13 @@ function Avatar_user_SetAvatar($args)
 {
     // only logged-ins might see the overview.
     if (!pnUserLoggedIn()) {
-        return pnVarPrepHTMLDisplay(_AVATAR_ERR_NOTLOGGEDIN);
+        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnModURL('Avatar'));
     } 
     
     // plus, the user should have overview right to see the avatars.
-    if (!pnSecAuthAction(0, 'Avatar::', '::', ACCESS_OVERVIEW)) {
-        return pnVarPrepHTMLDisplay(_MODULENOAUTH);
-    } 
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
+        return LogUtil::registerPermissionError('index.php');
+    }
     
     $user_avatar = pnVarCleanFromInput('user_avatar'); 
 
@@ -236,8 +229,7 @@ function Avatar_user_SetAvatar($args)
                        'CheckAvatar',
                        array('uid'    => $uid,
                              'avatar' => $user_avatar))) {
-        pnSessionSetVar('errormsg', _AVATAR_ERR_AUTHORIZED);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_AUTHORIZED, null, pnModURL('Avatar'));
     } 
 
     
@@ -246,8 +238,7 @@ function Avatar_user_SetAvatar($args)
                       'SetAvatar',
                       array('uid'    => $uid,
                             'avatar' => $user_avatar))) {
-        pnSessionSetVar('errormsg', _AVATAR_ERR_SELECT);
-        return pnRedirect(pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
     } 
     return pnRedirect(pnModURL('Avatar'));
 } 

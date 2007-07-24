@@ -60,8 +60,7 @@ function Avatar_userapi_CheckAvatar($args)
 {
     // the avatar file
     if (!isset($args['avatar'])) {
-        pnSessionSetVar('errormsg', _MODSARGSERR);
-        return false;
+        return LogUtil::registerError(_MODSARGSERROR . '(in Avatar_userapi_CheckAvatar())', null, pnModURL('Avatar'));
     }
     $avatar = $args['avatar'];
 
@@ -133,7 +132,7 @@ function Avatar_userapi_CheckAvatar($args)
         } 
     } 
     
-    
+    // what the heck does this mean? italians please....
     $visualizza = false;
     $regola = false;
 
@@ -213,23 +212,8 @@ function Avatar_userapi_SetAvatar($args)
         pnSessionSetVar('errormsg', _MODSARGSERR);
         return false;
     }
-    
-    $dbconn =& pnDBGetConn(true);
-    $pntable =& pnDBGetTables();
-    $userscolumn = &$pntable['users_column'];
 
-    $uid = pnVarPrepForStore($args['uid']);
-    $avatar = pnVarPrepForStore($args['avatar']);
-    
-    $sql = "UPDATE $pntable[users] 
-               SET $userscolumn[user_avatar] ='$avatar' 
-             WHERE $userscolumn[uid]='$uid'";
-
-    $result =& $dbconn->Execute($sql);
-    if ($dbconn->ErrorNo() != 0) {
-        pnSessionSetVar('errormsg', _ERRORUPDATING);
-        return false;
-    } 
+    pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);   
     return true;
 }
 ?>

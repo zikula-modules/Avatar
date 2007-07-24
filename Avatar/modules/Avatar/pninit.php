@@ -28,7 +28,7 @@ function Avatar_init()
     pnModSetVar('Avatar', 'maxsize',            '5000');
     pnModSetVar('Avatar', 'maxheight',          '50');
     pnModSetVar('Avatar', 'maxwidth',           '50');
-    pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg');
+    pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;png');
     pnModSetVar('Avatar', 'prefix_group_1',     '');
     pnModSetVar('Avatar', 'prefix_group_2',     '');
     pnModSetVar('Avatar', 'prefix_group_3',     '');
@@ -48,6 +48,10 @@ function Avatar_init()
  **/
 function Avatar_upgrade($oldversion)
 {
+    // Upgrade dependent on old version number
+    switch($oldversion) {
+        case '1.1': 
+    }
     return true;
 } 
 
@@ -60,19 +64,7 @@ function Avatar_upgrade($oldversion)
  */
 function Avatar_delete()
 {
-    pnModDelVar('Avatar', 'avatardir');
-    pnModDelVar('Avatar', 'forumdir');
-    pnModDelVar('Avatar', 'allow_resize');
-    pnModDelVar('Avatar', 'maxsize');
-    pnModDelVar('Avatar', 'maxheight');
-    pnModDelVar('Avatar', 'maxwidth');
-    pnModDelVar('Avatar', 'allowed_extensions');
-    pnModDelVar('Avatar', 'prefix_group_1');
-    pnModDelVar('Avatar', 'prefix_group_2');
-    pnModDelVar('Avatar', 'prefix_group_3');
-    pnModDelVar('Avatar', 'prefix_prefix_1');
-    pnModDelVar('Avatar', 'prefix_prefix_2');
-    pnModDelVar('Avatar', 'prefix_prefix_3');
+    pnModDelVar('Avatar');
     return true;
 } 
 

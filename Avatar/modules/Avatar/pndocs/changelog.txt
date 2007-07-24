@@ -1,0 +1,14 @@
+The Avatar module allows uploading of individual Avatars.
+It is based on EnvoAvatar from A.T.Web, http://www.atw.it
+
+Authors:
+Jörg Napp [jn], http://www.lottasophie.de
+Frank Schummertz [landseer], http://www.pn-cms.de
+Carsten Volmer [herr.vorragend], http://www.carsten-volmer.de
+
+2.0: 
+* .8-only version
+
+1.1:
+* last .764 version, does not work with .8
+
