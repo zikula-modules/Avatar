@@ -25,16 +25,10 @@ function Avatar_init()
     pnModSetVar('Avatar', 'avatardir',          'images/avatar');
     pnModSetVar('Avatar', 'forumdir',           '');
     pnModSetVar('Avatar', 'allow_resize',       false);
-    pnModSetVar('Avatar', 'maxsize',            '10000');
+    pnModSetVar('Avatar', 'maxsize',            '12000');
     pnModSetVar('Avatar', 'maxheight',          '80');
     pnModSetVar('Avatar', 'maxwidth',           '80');
     pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;png');
-    pnModSetVar('Avatar', 'prefix_group_1',     '');
-    pnModSetVar('Avatar', 'prefix_group_2',     '');
-    pnModSetVar('Avatar', 'prefix_group_3',     '');
-    pnModSetVar('Avatar', 'prefix_prefix_1',    '');
-    pnModSetVar('Avatar', 'prefix_prefix_2',    '');
-    pnModSetVar('Avatar', 'prefix_prefix_3',    '');
     return true;
 } 
 
@@ -51,6 +45,13 @@ function Avatar_upgrade($oldversion)
     // Upgrade dependent on old version number
     switch($oldversion) {
         case '1.1': 
+            pnModDelVar('Avatar', 'prefix_group_1');
+            pnModDelVar('Avatar', 'prefix_group_2');
+            pnModDelVar('Avatar', 'prefix_group_3');
+            pnModDelVar('Avatar', 'prefix_prefix_1');
+            pnModDelVar('Avatar', 'prefix_prefix_2');
+            pnModDelVar('Avatar', 'prefix_prefix_3');
+
     }
     return true;
 } 
