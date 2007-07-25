@@ -13,6 +13,9 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_MODIFYCONFIG',                'Modify configuration');
+define('_AVATAR_MAINTAINAVATARS',             'Maintain Avatars');
+define('_AVATAR_VISITHOMEPAGE',               'Visit Avatar project on NOC');
 define('_AVATAR_ADM_TITLE',                   'Avatar Administration');
 
 // upload settings form
@@ -37,7 +40,6 @@ define('_AVATAR_ADM_GROUPS',                  'Available groups');
 define('_AVATAR_ADM_GROUPS_ALL',              'All');
 
 // warnings
-define('_WARN_PNTEMP',                        'Warning: the pnTemp direcory isn\'t writable');
-define('_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
-define('_WARN_FORUMDIR',                      'Warning: the Forum direcory isn\'t writable (This is fine when PNphpBB2 isn\'t installed)');
+define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
+define('_AVATAR_WARN_FORUMDIR',                      'Warning: the Forum direcory isn\'t writable (This is fine when PNphpBB2 isn\'t installed)');
 ?>

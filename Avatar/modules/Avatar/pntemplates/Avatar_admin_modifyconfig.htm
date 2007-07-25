@@ -1,0 +1,102 @@
+<!--[ include file="Avatar_admin_header.htm" ]-->
+
+<h2><!--[pnml name="_AVATAR_MODIFYCONFIG"]--></h2>
+
+<!--[ pnform ]-->
+<div class="avatarfloatbox">
+    <!--[ pnformvalidationsummary ]-->
+    <fieldset>
+        <legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
+        <dl class="avatarclearfix">
+            <dt><!--[ pnformlabel for="avatardir" text='_AVATAR_ADM_AVATARDIR' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="25" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]--> <!--[pnml name="_AVATAR_ADM_AVATARDIR_HINT"]--></dd>
+            
+            <!--[ if $pnphpbb_installed eq true ]-->
+            <dt><!--[ pnformlabel for="forumdir" text='_AVATAR_ADM_FORUMDIR' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="25" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]--> <!--[pnml name="_AVATAR_ADM_AVATARDIR_HINT"]--></dd>
+            <!--[ /if ]-->
+            
+            <dt><!--[ pnformlabel for="allow_resize" text='_AVATAR_ADM_ALLOWRESIZE' ]--></dt>
+            <dd><!--[ pnformcheckbox id="allow_resize" checked=$pncore.Avatar.allow_resize ]--></dd>
+            
+            <dt><!--[ pnformlabel for="maxsize" text='_AVATAR_ADM_MAXSIZE' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="10" maxLength="10" id="maxsize" text=$pncore.Avatar.maxsize ]--></dd>
+            
+            <dt><!--[ pnformlabel for="maxheight" text='_AVATAR_ADM_MAXHEIGHT' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="10" maxLength="10" id="maxheight" text=$pncore.Avatar.maxheight ]--></dd>
+            
+            <dt><!--[ pnformlabel for="maxwidth" text='_AVATAR_ADM_MAXWIDTH' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="10" maxLength="10" id="maxwidth" text=$pncore.Avatar.maxwidth ]--></dd>
+            
+            <dt><!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="25" maxLength="25" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]--> <!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></dd>
+        </dl>
+    </fieldset>
+    <p>
+      <!--[pnformbutton id="submit" commandName="submit" text="_SUBMIT"]-->
+    </p>
+</div>
+<!--[ /pnform ]-->
+
+<!--[ include file="Avatar_admin_footer.htm" ]-->
+
+
+<!--[*
+        
+    <form action="<!--[pnmodurl modname="Avatar" type="admin" func="save"]-->" method="post">
+    <div>
+        <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Avatar"]-->" />
+        <br />
+        <fieldset>
+        <legend><!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT"]--></legend>
+          <!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT_HINT"]-->
+      <table>
+        <tr>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_GROUPID"]-->
+          </th>
+          <th>
+            <!--[pnml name="_AVATAR_ADM_PREFIX"]-->
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_group_1" value="<!--[$pncore.Avatar.prefix_group_1]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_1" value="<!--[$pncore.Avatar.prefix_prefix_1]-->" />
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <input type="text" size="10" maxlength="10" name="prefix_group_2" value="<!--[$pncore.Avatar.prefix_group_2]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_2" value="<!--[$pncore.Avatar.prefix_prefix_2]-->" />
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <input type="text" size="10" maxlength="10" name="prefix_group_3" value="<!--[$pncore.Avatar.prefix_group_3]-->" />
+          </td>
+          <td>
+            <input type="text" size="10" maxlength="10" name="prefix_prefix_3" value="<!--[$pncore.Avatar.prefix_prefix_3]-->" />
+          </td>
+        </tr>
+      </table>
+            <p>
+        <!--[pnml name="_AVATAR_ADM_GROUPS"]-->:<br />
+        <!--[foreach from=$groups item=gname key=gid ]-->
+              <!--[$gid]-->: <!--[$gname]--><br />
+        <!--[/foreach]-->
+                <br /><br />
+        <!--[pnml name="_AVATAR_ADM_DISPLAYMANAGEMENT_HINT2"]-->
+            </p>
+        </fieldset>
+            <p>
+            <input type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+            </p>
+    </div>
+    </form>
+
+*]-->

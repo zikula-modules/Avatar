@@ -1,0 +1,75 @@
+/*  $Id: style.css 81 2007-03-24 20:24:51Z landseer $ */
+
+#avatar-admin {
+    padding-top: 2em;
+}
+
+#avatar-admin .footer {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#avatar-admin .headerlink {
+    width: 33%;
+    float: left;
+    text-align: center;
+}
+
+#avatar-admin .error {
+    color: red;
+}
+
+#avatar-admin .delete {
+    text-align: center;
+}
+
+#avatar-admin fieldset {
+    margin: 1em 0;
+}
+
+#avatar-admin fieldset legend {
+    font-weight: bold;
+}
+
+#avatar-admin dl {
+    float: left;
+}
+    
+#avatar-admin dl dt {
+    clear: both;
+    margin: 3px;
+    float: left; 
+    font-weight: normal;
+    width: 300px;
+}
+
+#avatar-admin dl dd {
+    margin: 3px 0;
+    float: left;
+}
+
+/*
+ * clearfix solution
+ *
+ */
+
+.avatarclearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.avatarclearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .avatarclearfix {height: 1%;}
+.avatarclearfix {display: block;}
+/* End hide from IE-mac */
+
+/* Overflow-Methode zum Clearen der Float-Umgebungen */
+.avatarfloatbox { 
+    overflow:hidden; 
+}

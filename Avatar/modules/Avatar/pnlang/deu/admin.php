@@ -13,7 +13,10 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-define('_AVATAR_ADM_TITLE',                   'Avatar - Administrationsmenü');
+define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
+define('_AVATAR_MAINTAINAVATARS',             'Avatars verwalten');
+define('_AVATAR_VISITHOMEPAGE',               'Avatar-Modul im NOC besuchen');
+define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
 
 // upload settings form
 define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
@@ -37,7 +40,6 @@ define('_AVATAR_ADM_GROUPS',                  'zur Verfügung stehende Gruppen');
 define('_AVATAR_ADM_GROUPS_ALL',              'Alle');
 
 // warnings
-define('_WARN_PNTEMP',                        'Achtung: das pnTemp-Verzeichnis ist nicht beschreibbar');
-define('_WARN_AVARTARDIR',                    'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');
-define('_WARN_FORUMDIR',                      'Achtung: das Forum-Verzeichnis ist nicht beschreibbar (Das ist OK, wenn kein PNphpBB2 installiert ist)');
+define('_AVATAR_WARN_AVARTARDIR',                    'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');
+define('_AVATAR_WARN_FORUMDIR',                      'Achtung: das Forum-Verzeichnis ist nicht beschreibbar (Das ist OK, wenn kein PNphpBB2 installiert ist)');
 ?>
