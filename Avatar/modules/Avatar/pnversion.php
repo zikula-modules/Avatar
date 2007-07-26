@@ -24,6 +24,8 @@ $modversion['official']       = 0;
 $modversion['author']         = 'Joerg Napp, Frank Schummertz, Carsten Volmer';
 $modversion['contact']        = 'http://noc.postnuke.com/projects/avatar/';
 $modversion['admin']          = 1;
-$modversion['securityschema'] = array('Avatar::' => '::');
+$modversion['user']           = 1;
+$modversion['securityschema'] = array('Avatar::' => '::',
+                                      'Avatar::' => 'prefix:userid:');
 
 ?>
