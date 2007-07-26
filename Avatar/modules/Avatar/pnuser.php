@@ -39,9 +39,9 @@ function Avatar_user_main()
     $avatars = pnModAPIFunc('Avatar', 'user', 'GetAvatars'); 
 
     // display
-    $pnRender = new pnRender('Avatar');
+    $pnRender = new pnRender('Avatar', false);
     $pnRender->add_core_data();
-    $pnRender->caching=false;
+
     $pnRender->assign('avatars', $avatars);
     $pnRender->assign('allow_uploads', $allow_uploads);
     $pnRender->assign('user_avatar', pnUserGetVar('user_avatar'));
@@ -189,9 +189,7 @@ function Avatar_user_upload ($args)
     } 
     unlink($tmp_file);
 
-    if (!pnModAPIFunc('Avatar',
-                      'user',
-                      'SetAvatar',
+    if (!pnModAPIFunc('Avatar', 'user', 'SetAvatar',
                       array('uid'    => $uid,
                             'avatar' => $user_avatar))) {
         return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
@@ -203,7 +201,7 @@ function Avatar_user_upload ($args)
 /**
  * Avatar_user_SetAvatar()
  * 
- * Taked the new avatar from the input space and selects it as 
+ * Takes the new avatar from the input space and selects it as 
  * the new avatar. 
  * 
  * @param $args
@@ -221,24 +219,20 @@ function Avatar_user_SetAvatar($args)
         return LogUtil::registerPermissionError('index.php');
     }
     
-    $user_avatar = pnVarCleanFromInput('user_avatar'); 
+    $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST'); 
 
     // check if the avatar is allowed for the user
     $uid = pnUserGetVar('uid');
-    if (! pnModAPIFunc('Avatar',
-                       'user',
-                       'CheckAvatar',
+    if (! pnModAPIFunc('Avatar', 'user', 'CheckAvatar',
                        array('uid'    => $uid,
                              'avatar' => $user_avatar))) {
         return LogUtil::registerError(_AVATAR_ERR_AUTHORIZED, null, pnModURL('Avatar'));
     } 
 
     
-    if (!pnModAPIFunc('Avatar',
-                      'user',
-                      'SetAvatar',
-                      array('uid'    => $uid,
-                            'avatar' => $user_avatar))) {
+    if (!pnModAPIFunc('Avatar', 'user', 'SetAvatar',
+                       array('uid'    => $uid,
+                             'avatar' => $user_avatar))) {
         return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
     } 
     return pnRedirect(pnModURL('Avatar'));
