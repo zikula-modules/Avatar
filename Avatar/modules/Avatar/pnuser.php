@@ -36,7 +36,7 @@ function Avatar_user_main()
     $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT); 
     
     // get all possible avatars
-    $avatars = pnModAPIFunc('Avatar', 'user', 'GetAvatars'); 
+    $avatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
     // display
     $pnRender = new pnRender('Avatar', false);
