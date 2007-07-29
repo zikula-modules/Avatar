@@ -18,7 +18,9 @@
 <div style="float: left; margin:10pt;">
     <button style="cursor: pointer;" type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->"><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="Avatar" />
     <br /><!--[$avatar|pnvarprepfordisplay]--></button>
-    <br /><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]--></a>
+    <br />
+    <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"  title="<!--[ pnml name="_AVATAR_LISTUSERS" ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a>
+    <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" avatar=$avatar|pnvarprepfordisplay ]-->" title="<!--[ pnml name="_AVATAR_DELETEAVATAR" ]-->"><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]--></a>
 </div>
 <!--[/foreach]-->
 <br style="clear: both;" />

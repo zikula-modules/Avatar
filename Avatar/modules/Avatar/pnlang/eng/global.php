@@ -13,6 +13,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_LISTUSERS',                   'list the users that use this avatar');
+define('_AVATAR_DELETEAVATAR',                'delete avatar');
 define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
 define('_AVATAR_CONFIRMDELETE',               'Confirm deletion');
 define('_AVATAR_ERRORDELETINGAVATAR',         'Error: Unable to delete avatar %s');
@@ -37,20 +39,11 @@ define('_AVATAR_ADM_AVATARDIR',               'Avatar Directory (PostNuke)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Default: images/avatar');
 define('_AVATAR_ADM_FORUMDIR',                'Avatar Directory (PHPBB2');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Resize the avatar automatically');
-define('_AVATAR_ADM_MAXSIZE',                 'MAX avatar Filesize in bytes');
-define('_AVATAR_ADM_MAXHEIGHT',               'Max Height in pixels');
-define('_AVATAR_ADM_MAXWIDTH',                'Max Width in pixels');
+define('_AVATAR_ADM_MAXSIZE',                 'Max avatar filesize in bytes');
+define('_AVATAR_ADM_MAXHEIGHT',               'Max height in pixels');
+define('_AVATAR_ADM_MAXWIDTH',                'Max width in pixels');
 define('_AVATAR_ADM_EXTENSIONS',              'Authorized extensions');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'gif;jpg The user can upload a file for each one');
-
-// display management form
-define('_AVATAR_ADM_DISPLAYMANAGEMENT',       'Display management');
-define('_AVATAR_ADM_DISPLAYMANAGEMENT_HINT',  'In this section you can fix particular prefix for groups. As an example if you assign "writer" as prefix to the editor\'s group, only users who are member of this group will see avatars with name like "writer_xxxxx.ext". If you want that a group can see all avatars, enter the character * as prefix.');
-define('_AVATAR_ADM_DISPLAYMANAGEMENT_HINT2', 'P.S. Remember that avatars uploaded by users have name like "pers_userID.ext" and by default are only available to the owner. To allow others to see personal avatars you have to set their prefix to "pers".');
-define('_AVATAR_ADM_GROUPID',                 'Group ID');
-define('_AVATAR_ADM_PREFIX',                  'Prefix');
-define('_AVATAR_ADM_GROUPS',                  'Available groups');
-define('_AVATAR_ADM_GROUPS_ALL',              'All');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'gif;jpg;png The user can upload a file for each one');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
