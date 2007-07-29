@@ -75,7 +75,47 @@ function Avatar_userapi_setAvatar($args)
         return LogUtil::registerError(_MODSARGSERR . 'in Avatar_user_setavatar');
     }
 
-    pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);   
-    return true;
+    $avatar_ok = pnModAPIFunc('Avatar', 'user', 'checkAvatar', $args);
+
+    if($avatar_ok == true) {
+        pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);  
+         
+        // trick: show new avatar in status message if img-tag is free
+        $allowedhtml = pnConfigGetVar('AllowableHTML');
+        $uname = pnUserGetVar('uname', $args['uid']);
+        if($allowedhtml['img'] == 2) {
+            $status = sprintf(_AVATAR_CHANGEDTO, $uname, '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar"/>');
+        } else {
+            $status = sprintf(_AVATAR_CHANGEDTO, $uname, $args['avatar']);
+        }
+        LogUtil::registerStatus($status); 
+        return true;
+    }
+    
+    return LogUtil::registerError(sprintf(_AVATAR_ERR_USERNOTAUTHORIZED, DataUtil::formatForDisplay($args['avatar'])));
 }
+
+/**
+ * check if a user is allowed to use a avatar
+ *
+ */
+function Avatar_userapi_checkAvatar($args)
+{
+    // check if the avatar is allowed for the user
+    $avatar_ok = false;
+    $parts = explode($args['avatar'], '_');
+    if(is_array($parts)) {
+        if(!isset($parts[1])) {
+            // normal avatar, so it's OK
+            $avatar_ok = true;
+        } else {
+            // check for permission
+            if(SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $parts[1] . ':', ACCESS_READ, $args['uid']) || $parts[1] == $args['uid']) {
+                $avatar_ok = true;
+            }
+        }
+    }
+    return $avatar_ok;
+}
+
 ?>

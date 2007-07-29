@@ -30,4 +30,32 @@ function Avatar_adminapi_getlinks()
     return $links;
 }
 
+/**
+ * get all users that use the given avatar
+ *
+ *@params $args['avatar']    string   the avatar name 
+ */
+function Avatar_adminapi_getusersbyavatar($args)
+{
+    $users = array();
+    
+    if(!isset($args['avatar']) || empty($args['avatar'])) {
+        return $users;
+    }
+    
+    //First we need to get the property _YOURAVATAR
+    $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
+    $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);    
+
+    $pntables = pnDBGetTables();
+    $userdatacolumn = $pntables['user_data_column'];   
+    $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
+    $avatarusers = DBUtil::selectObjectArray('user_data', $where);
+
+    foreach($avatarusers as $avataruser) {
+        $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
+    }
+    return $users;
+}
+
 ?>

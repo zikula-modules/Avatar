@@ -1,0 +1,29 @@
+<!--[ include file="Avatar_admin_header.htm" ]-->
+
+<h1><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></h1>
+<h2><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]-->:</h2>
+
+<form action="<!--[ pnmodurl modname="Avatar" type="admin" func="updateusers" ]-->" method="post">
+<div>
+<ul style="list-style-type:none;">
+<!--[ foreach item=user from=$users key=uid ]-->
+    <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="maintain" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
+<!--[ foreachelse ]-->
+    <li><!--[ pnml name="_AVATAR_NOUSERFORTHISAVATAR" ]--></li>
+<!--[ /foreach ]-->
+</ul>
+
+<h2><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h2>
+<!--[foreach from=$avatars item="avatar"]-->
+<div style="float: left; margin:10pt;">
+    <button style="cursor: pointer;" type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->"><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="Avatar" />
+    <br /><!--[$avatar|pnvarprepfordisplay]--></button>
+    <br /><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]-->
+</div>
+<!--[/foreach]-->
+<br style="clear: both;" />
+</div>
+</form>
+
+<!--[ include file="Avatar_admin_footer.htm" ]-->
+

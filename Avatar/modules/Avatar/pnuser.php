@@ -220,21 +220,11 @@ function Avatar_user_SetAvatar($args)
     }
     
     $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST'); 
-
-    // check if the avatar is allowed for the user
-    $uid = pnUserGetVar('uid');
-    if (! pnModAPIFunc('Avatar', 'user', 'CheckAvatar',
-                       array('uid'    => $uid,
-                             'avatar' => $user_avatar))) {
-        return LogUtil::registerError(_AVATAR_ERR_AUTHORIZED, null, pnModURL('Avatar'));
-    } 
-
     
-    if (!pnModAPIFunc('Avatar', 'user', 'SetAvatar',
-                       array('uid'    => $uid,
-                             'avatar' => $user_avatar))) {
-        return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
-    } 
+    pnModAPIFunc('Avatar', 'user', 'setAvatar',
+                       array('uid'    => pnUserGetVar('uid'),
+                             'avatar' => $user_avatar));
+
     return pnRedirect(pnModURL('Avatar'));
 } 
 
