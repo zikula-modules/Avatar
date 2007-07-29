@@ -13,6 +13,10 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
+define('_AVATAR_CONFIRMDELETE',               'Löschung bestätigen');
+define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %s konnte nicht gelöscht werden');
+define('_AVATAR_DELETED',                     'Der Avatar %s wurde gelöscht');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgenden Avatar versehen');
 define('_AVATAR_NOUSERFORTHISAVATAR',         'Kein Benutzer verwendet diesen Avatar');
 define('_AVATAR_USERLISTPERAVATAR',           'Benutzer die diesen Avatar verwenden');

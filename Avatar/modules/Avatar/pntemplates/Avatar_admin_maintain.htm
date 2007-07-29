@@ -18,7 +18,7 @@
     <!--[ if $username ne "" ]--><a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><!--[ /if ]--><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" /><!--[ if $username ne "" ]--></a><!--[ /if ]-->
     <br />
     <!--[ if $username ne "" ]--><a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><!--[ /if ]--><!--[$avatar|pnvarprepfordisplay]--><!--[ if $username ne "" ]--></a><!--[ /if ]-->
-    <br /><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]-->
+    <br /><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a><a href="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" avatar=$avatar|pnvarprepfordisplay ]-->"><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]--></a>
 </div>
 <!--[/foreach]-->
 <br style="clear: both;" />

@@ -166,4 +166,46 @@ function Avatar_admin_updateusers($args)
     return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
 }
 
+/**
+ * delete an avatar or, if users use it, forward to listusers
+ *
+ */
+function Avatar_admin_delete()
+{
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError('index.php');
+    }
+
+    $avatar   = FormUtil::getPassedValue('avatar', '', 'GETPOST');
+    if(empty($avatar)) {
+        return pnRedirect(pnModURL('Avatar', 'Admin', 'main'));
+    }
+    
+    // get all users that use this avatar
+    $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
+                          array('avatar' => $avatar));
+    if(count($users) <> 0) {
+        // there are users, at least one, using this avatar, redirect to listusers
+        return LogUtil::registerError(_AVATAR_AVATARINUSE, null, pnModURL('Avatar', 'admin', 'listusers', array('avatar' => $avatar)));
+    }
+    
+    // ok to delete
+    $submit = FormUtil::getPassedValue('submit', null, 'POST');
+    if($submit) {
+        // delete avatar
+        pnModAPIFunc('Avatar', 'admin', 'deleteavatar', 
+                     array('avatar' => $avatar));
+        return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
+    } else {
+        $pnRender = new pnRender('Avatar', false);
+        $pnRender->add_core_data();
+        
+        $pnRender->assign('avatar', $avatar);
+        return $pnRender->fetch('Avatar_admin_delete.htm');
+    }
+    // we should never get here
+    return pnRedirect('index.php');
+    
+}
+
 ?>

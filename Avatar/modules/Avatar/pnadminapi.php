@@ -13,6 +13,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+Loader::loadClass('StringUtil');
+Loader::loadClass('FileUtil');
 
 /**
  * get available admin panel links
@@ -39,23 +41,46 @@ function Avatar_adminapi_getusersbyavatar($args)
 {
     $users = array();
     
-    if(!isset($args['avatar']) || empty($args['avatar'])) {
-        return $users;
-    }
-    
-    //First we need to get the property _YOURAVATAR
-    $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
-    $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);    
-
-    $pntables = pnDBGetTables();
-    $userdatacolumn = $pntables['user_data_column'];   
-    $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
-    $avatarusers = DBUtil::selectObjectArray('user_data', $where);
-
-    foreach($avatarusers as $avataruser) {
-        $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
+    if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
+        if(!isset($args['avatar']) || empty($args['avatar'])) {
+            return $users;
+        }
+        
+        //First we need to get the property _YOURAVATAR
+        $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
+        $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);    
+        
+        $pntables = pnDBGetTables();
+        $userdatacolumn = $pntables['user_data_column'];   
+        $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
+        $avatarusers = DBUtil::selectObjectArray('user_data', $where);
+        
+        foreach($avatarusers as $avataruser) {
+            $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
+        }
     }
     return $users;
+}
+
+/**
+ * delete an avatar
+ *
+ */
+function Avatar_adminapi_deleteavatar($args)
+{
+    if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
+        $osdir = DataUtil::formatForOS(pnModGetVar('Avatar', 'avatardir')); 
+        if(StringUtil::right($osdir, 1) <> '/') {
+            $osdir .= '/';
+        }
+        $avatarfile = $osdir . DataUtil::formatForOS($args['avatar']);
+        if(unlink($avatarfile) == false) {
+            return LogUtil::registerError(sprintf(_AVATAR_ERRORDELETINGAVATAR, $avatar), null, pnModURL('Avatar', 'admin', 'main'));
+        }
+        LogUtil::registerStatus(sprintf(_AVATAR_DELETED, $avatar));
+        return true;
+    }
+    return LogUtil::registerPermissionError();
 }
 
 ?>

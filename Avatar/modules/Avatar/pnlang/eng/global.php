@@ -13,6 +13,10 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
+define('_AVATAR_CONFIRMDELETE',               'Confirm deletion');
+define('_AVATAR_ERRORDELETINGAVATAR',         'Error: Unable to delete avatar %s');
+define('_AVATAR_DELETED',                     'Avatar %s has been deleted');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Choose the avatar to update all selected users');
 define('_AVATAR_NOUSERFORTHISAVATAR',         'No user is using this avatar');
 define('_AVATAR_USERLISTPERAVATAR',           'Users who use this avatar');
