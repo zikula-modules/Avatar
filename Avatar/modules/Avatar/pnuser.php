@@ -39,7 +39,7 @@ function Avatar_user_main()
     $avatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
     // display
-    $pnRender = new pnRender('Avatar', false);
+    $pnRender = pnRender::getInstance('Avatar', false);
     $pnRender->add_core_data();
 
     $pnRender->assign('avatars', $avatars);

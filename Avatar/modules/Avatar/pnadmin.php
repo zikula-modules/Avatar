@@ -32,7 +32,7 @@ function Avatar_admin_main()
         return LogUtil::registerPermissionError('index.php');
     }
     
-    $pnRender = new pnRender('Avatar');
+    $pnRender = pnRender::getInstance('Avatar');
     return $pnRender->fetch('Avatar_admin_main.htm');
 } 
 
@@ -59,7 +59,7 @@ function Avatar_admin_maintain()
     }
     $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
-    $pnRender = new pnRender('Avatar', false);
+    $pnRender = pnRender::getInstance('Avatar', false);
     $pnRender->add_core_data();
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
@@ -135,7 +135,7 @@ function Avatar_admin_listusers($args)
     
     $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
-    $pnRender = new pnRender('Avatar', false);
+    $pnRender = pnRender::getInstance('Avatar', false);
     $pnRender->add_core_data();
     $pnRender->assign('users', $users);
     $pnRender->assign('uavatar', $uavatar);
@@ -197,7 +197,7 @@ function Avatar_admin_delete()
                      array('avatar' => $avatar));
         return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     } else {
-        $pnRender = new pnRender('Avatar', false);
+        $pnRender = pnRender::getInstance('Avatar', false);
         $pnRender->add_core_data();
         
         $pnRender->assign('avatar', $avatar);
