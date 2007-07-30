@@ -7,12 +7,10 @@
  *
  * @package      Avatar
  * @version      $Id: admin.php 13 2006-03-10 12:42:04Z jna $
- * @author       Joerg Napp
- * @link         http://lottasophie.sf.net
- * @copyright    Copyright (C) 2004
+ * @author       Joerg Napp, Frank Schummertz
+ * @link         http://lottasophie.sf.net, http://www.pn-cms.de
+ * @copyright    Copyright (C) 2004-2007
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
 define('_AVATAR_DESCRIPTION', 'Individuelle Avatars pro User');
-
-?>

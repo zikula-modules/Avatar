@@ -7,9 +7,9 @@
  *
  * @package      Avatar
  * @version      $Id: user.php 12 2006-01-20 09:31:08Z jna $
- * @author       Joerg Napp
- * @link         http://lottasophie.sf.net
- * @copyright    Copyright (C) 2004
+ * @author       Joerg Napp, Frank Schummertz
+ * @link         http://lottasophie.sf.net, http://www.pn-cms.de
+ * @copyright    Copyright (C) 2004-2007
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
@@ -83,5 +83,3 @@ define('_AVATAR_ERR_NOTLOGGEDIN',    'Nicht registrierter User !');
 
 // defines for the user page plugin
 define('_AVATAR_SELECTAVATAR_LINK',  'Individuellen Avatar auswählen');
-
-?>
