@@ -80,7 +80,7 @@ function Avatar_userapi_setAvatar($args)
         $allowedhtml = pnConfigGetVar('AllowableHTML');
         $uname = pnUserGetVar('uname', $args['uid']);
         if($allowedhtml['img'] == 2) {
-            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar"/>', true));
+            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '')) . '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar" />';
         } else {
             $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => $args['avatar']));
         }
