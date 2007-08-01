@@ -13,7 +13,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::loadClass('StringUtil');
 Loader::loadClass('FileUtil');
 
 /**
@@ -70,9 +69,6 @@ function Avatar_adminapi_deleteavatar($args)
 {
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         $osdir = DataUtil::formatForOS(pnModGetVar('Avatar', 'avatardir')); 
-        if(StringUtil::right($osdir, 1) <> '/') {
-            $osdir .= '/';
-        }
         $avatarfile = $osdir . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
             return LogUtil::registerError(sprintf(_AVATAR_ERRORDELETINGAVATAR, $avatar), null, pnModURL('Avatar', 'admin', 'main'));

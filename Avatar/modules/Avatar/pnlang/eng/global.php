@@ -43,7 +43,7 @@ define('_AVATAR_ADM_MAXSIZE',                 'Max avatar filesize in bytes');
 define('_AVATAR_ADM_MAXHEIGHT',               'Max height in pixels');
 define('_AVATAR_ADM_MAXWIDTH',                'Max width in pixels');
 define('_AVATAR_ADM_EXTENSIONS',              'Authorized extensions');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'gif;jpg;png The user can upload a file for each one');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'The user can upload a file for each one');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
@@ -63,7 +63,7 @@ define('_AVATAR_UPLOADFILE',         'Upload file');
 define('_AVATAR_UPLOAD_BUTTON',      'Upload');
 define('_AVATAR_CLEAR_BUTTON',       'Eingabe löschen');
 define('_AVATAR_MAXSIZE',            'Avatar max dimensions');
-define('_AVATAR_ALLOWEDEXTENSIONS',  'Authorised extensions');
+define('_AVATAR_ALLOWEDEXTENSIONS',  'Possible extensions');
 define('_AVATAR_MAXHEIGHT',          'Maximal height');
 define('_AVATAR_MAXWIDTH',           'Maximal Width');
 define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size');

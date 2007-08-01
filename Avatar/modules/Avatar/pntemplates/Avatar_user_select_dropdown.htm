@@ -1,8 +1,10 @@
+<!--[ pnpageaddvar name="javascript" value="modules/Avatar/pnjavascript/showavatar.js" ]-->
+
 <form name="Register" action="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar"]-->" method="post">
-  <select name="user_avatar" onchange="showimage()">
-    <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$user_avatar|pnvarprepfordisplay]-->
+  <select  id="avatarselect" name="user_avatar" onchange="showavatar('<!--[ $pncore.Avatar.avatardir ]-->')">
+    <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->
   </select>   
-  <img src="images/avatar/<!--[$user_avatar|pnvarprepfordisplay]-->" name="avatar" width="32" height="32" alt="" align="top">
+  <img id="avatar" src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]--><!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="avatar" width="32" height="32" alt="" align="top" />
   <br />
-  <button type="submit"><!--[pnml name="_SAVECHANGES"]--></button>
+  <button type="submit"><!--[pnml name="_SUBMIT"]--></button>
 </form>			

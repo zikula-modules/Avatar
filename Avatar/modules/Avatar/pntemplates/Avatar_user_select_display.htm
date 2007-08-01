@@ -1,7 +1,7 @@
 
 <!--[foreach from=$avatars item="avatar"]-->
     <div style="float: left; margin:10pt;">
-        <a href="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar" user_avatar=$avatar|pnvarprepfordisplay]-->"><img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" /></a>
+        <a href="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar" user_avatar=$avatar|pnvarprepfordisplay]-->"><img src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]--><!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" /></a>
         <br />
         <a href="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar" user_avatar=$avatar|pnvarprepfordisplay]-->"><!--[$avatar|pnvarprepfordisplay]--></a>
     </div>

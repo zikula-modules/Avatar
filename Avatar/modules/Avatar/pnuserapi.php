@@ -13,7 +13,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::loadClass('StringUtil');
 Loader::loadClass('FileUtil');
 
 /**
@@ -34,9 +33,6 @@ function Avatar_userapi_getAvatars($args)
     }
  
     $avatardir = pnModGetVar('Avatar', 'avatardir');
-    if(StringUtil::right($avatardir, 1) <> '/') {
-        $avatardir .= '/';
-    }
    
     $allavatars = FileUtil::getFiles($avatardir, true, true, null, false);
     $avatars = array();

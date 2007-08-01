@@ -12,6 +12,8 @@
  * @copyright    Copyright (C) 2004-2007
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
+
+Loader::loadClass('StringUtil');
  
 /**
  * Avatar_init()
@@ -22,7 +24,7 @@
  */
 function Avatar_init()
 {
-    pnModSetVar('Avatar', 'avatardir',          'images/avatar');
+    pnModSetVar('Avatar', 'avatardir',          'images/avatar/');
     pnModSetVar('Avatar', 'forumdir',           '');
     pnModSetVar('Avatar', 'allow_resize',       false);
     pnModSetVar('Avatar', 'maxsize',            '12000');
@@ -51,6 +53,17 @@ function Avatar_upgrade($oldversion)
             pnModDelVar('Avatar', 'prefix_prefix_1');
             pnModDelVar('Avatar', 'prefix_prefix_2');
             pnModDelVar('Avatar', 'prefix_prefix_3');
+
+            $avatardir = pnModGetVar('Avatar', 'avatardir');
+            if(StringUtil::right($avatardir, 1) <> '/') {
+                pnModSetVar('Avatar', 'avatardir', $avatardir .'/');
+            }
+
+            $forumdir = pnModGetVar('Avatar', 'forumdir');
+            if(StringUtil::right($forumdir, 1) <> '/') {
+                pnModSetVar('Avatar', 'forumdir', $forumdir .'/');
+            }
+            
 
     }
     return true;
