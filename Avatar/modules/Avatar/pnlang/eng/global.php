@@ -53,22 +53,22 @@ define('_AVATAR_WARN_FORUMDIR',                      'Warning: the Forum direcor
 define('_AVATAR_TITLE',              'Avatar Management');
 
 // defines for the avatar select form
-define('_AVATAR_SELECTYOURAVATAR',   'Choose your prefered avatar among those available.');
-define('_AVATAR_SELECTAVATAR',       'Avatar auswählen:');
+define('_AVATAR_SELECTYOURAVATAR',   'Choose your prefered avatar among those available');
+define('_AVATAR_SELECTAVATAR',       'Select avatar');
 define('_AVATAR_CURRENTAVATAR',      'Your current avatar is ');
 
 // defines for the upload form
 define('_AVATAR_USER_CHOOSE',        'If no available avatar represents you, you can upload a personalised avatar.');
 define('_AVATAR_UPLOADFILE',         'Upload file');
 define('_AVATAR_UPLOAD_BUTTON',      'Upload');
-define('_AVATAR_CLEAR_BUTTON',       'Eingabe löschen');
+define('_AVATAR_CLEAR_BUTTON',       'Clear');
 define('_AVATAR_MAXSIZE',            'Avatar max dimensions');
 define('_AVATAR_ALLOWEDEXTENSIONS',  'Possible extensions');
 define('_AVATAR_MAXHEIGHT',          'Maximal height');
 define('_AVATAR_MAXWIDTH',           'Maximal Width');
 define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size');
 define('_AVATAR_PIXEL',              'pixels');
-define('_AVATAR_RESIZE',             'Bigger images will be resized automatically.');
+define('_AVATAR_RESIZE',             'Larger images will be resized automatically.');
 
 // Error Messages
 define('_AVATAR_ERR_FILETYPE',       'Unauthorised file extension.');
