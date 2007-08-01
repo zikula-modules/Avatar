@@ -20,15 +20,6 @@ class Avatar_admin_modifyconfighandler
         $pnRender->caching = false;
         $pnRender->add_core_data();
 
-        // get all groups
-        $orig_groups = pnModAPIFunc('Groups', 'user', 'getall');
-        foreach($orig_groups as $orig_group) {
-            $groups[$orig_group['gid']] = $orig_group['name']; 
-        }
-        $groups[0] = _AVATAR_ADM_GROUPS_ALL;
-        ksort($groups);
-    
-        $pnRender->assign('groups',             $groups);
         $pnRender->assign('warn_avatardir',     !is_writable(pnModGetVar('Avatar', 'avatardir')));
         $pnRender->assign('pnphpbb_installed',   pnModAvailable('pnphpbb'));
         $pnRender->assign('warn_forumdir',      !is_writable(pnModGetVar('Avatar', 'forumdir')));
@@ -78,10 +69,9 @@ class Avatar_admin_modifyconfighandler
             if($ok == false) {
                 return false;
             }
-            
             pnModSetVar('Avatar', 'avatardir',          $data['avatardir']);
             pnModSetVar('Avatar', 'forumdir',           $data['forumdir']);
-            pnModSetVar('Avatar', 'allow_resize',       ($allow_resize == 1));
+            pnModSetVar('Avatar', 'allow_resize',       $data['allow_resize']);
             pnModSetVar('Avatar', 'maxsize',            $data['maxsize']);
             pnModSetVar('Avatar', 'maxheight',          $data['maxheight']);
             pnModSetVar('Avatar', 'maxwidth',           $data['maxwidth']);
