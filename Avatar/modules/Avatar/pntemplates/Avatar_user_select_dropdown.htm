@@ -1,10 +1,14 @@
+<!--[* $Id: formicula_admin_footer.html 83 2007-03-24 22:01:27Z landseer $ *]-->
+
 <!--[ pnpageaddvar name="javascript" value="modules/Avatar/pnjavascript/showavatar.js" ]-->
 
 <form name="Register" action="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar"]-->" method="post">
+<div>
   <select  id="avatarselect" name="user_avatar" onchange="showavatar('<!--[ $pncore.Avatar.avatardir ]-->')">
     <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->
   </select>   
   <img id="avatar" src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]--><!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="avatar" width="32" height="32" alt="" align="top" />
   <br />
   <button type="submit"><!--[pnml name="_SUBMIT"]--></button>
+</div>
 </form>			

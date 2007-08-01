@@ -6,7 +6,7 @@
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
  *
  * @package      Avatar
- * @version      $Id$
+ * @version      $Id: pnuserapi.php 33 2007-08-01 19:01:03Z landseer $
  * @author       Joerg Napp, Frank Schummertz
  * @link         http://lottasophie.sf.net, http://www.pn-cms.de
  * @copyright    Copyright (C) 2004-2007
