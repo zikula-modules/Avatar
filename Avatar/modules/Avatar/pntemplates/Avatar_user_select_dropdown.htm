@@ -7,7 +7,7 @@
   <select id="avatarselect" name="user_avatar" onchange="showavatar('<!--[ $pncore.Avatar.avatardir ]-->')">
     <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->
   </select>   
-  <img id="avatar" src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]--><!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="avatar" width="32" height="32" alt="" align="top" />
+  <img id="avatar" src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="avatar" width="32" height="32" alt="" align="top" />
   <br />
   <button type="submit"><!--[pnml name="_SUBMIT"]--></button>
 </div>

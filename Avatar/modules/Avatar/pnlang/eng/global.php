@@ -17,13 +17,13 @@ define('_AVATAR_LISTUSERS',                   'list the users that use this avat
 define('_AVATAR_DELETEAVATAR',                'delete avatar');
 define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
 define('_AVATAR_CONFIRMDELETE',               'Confirm deletion');
-define('_AVATAR_ERRORDELETINGAVATAR',         'Error: Unable to delete avatar %s');
-define('_AVATAR_DELETED',                     'Avatar %s has been deleted');
+define('_AVATAR_ERRORDELETINGAVATAR',         'Error: Unable to delete avatar %avatar%');
+define('_AVATAR_DELETED',                     'Avatar %avatar% has been deleted');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Choose the avatar to update all selected users');
 define('_AVATAR_NOUSERFORTHISAVATAR',         'No user is using this avatar');
 define('_AVATAR_USERLISTPERAVATAR',           'Users who use this avatar');
-define('_AVATAR_CHANGEDTO',                   'The avatar of user %s has been changed to %s');
-define('_AVATAR_ERR_USERNOTAUTHORIZED',       'The user is not authorized to use this avatar. To change this, update the permission for %s.');
+define('_AVATAR_CHANGEDTO',                   'The avatar of user %username% has been changed to %avatar%');
+define('_AVATAR_ERR_USERNOTAUTHORIZED',       'The user is not authorized to use this avatar. To change this, update the permission for %avatar%.');
 define('_AVATAR_DELETECURRENTAVATAR',         'Delete current avatar?');
 define('_AVATAR_SELECTNEWAVATAR',             'Select new avatar');
 define('_AVATAR_CURRENTAVATAR',               'Current avatar');
@@ -36,7 +36,7 @@ define('_AVATAR_ADM_TITLE',                   'Avatar Administration');
 // upload settings form
 define('_AVATAR_ADM_UPLOAD',                  'Upload Settings');
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Directory (PostNuke)');
-define('_AVATAR_ADM_AVATARDIR_HINT',          'Default: images/avatar');
+define('_AVATAR_ADM_AVATARDIR_HINT',          'Default: images/avatar <strong>without trailing /</strong>');
 define('_AVATAR_ADM_FORUMDIR',                'Avatar Directory (PHPBB2');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Resize the avatar automatically');
 define('_AVATAR_ADM_MAXSIZE',                 'Max avatar filesize in bytes');

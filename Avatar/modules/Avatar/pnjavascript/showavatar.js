@@ -15,7 +15,7 @@
 function showavatar(basedir)
 {
     if($('avatar') && $('avatarselect')) {
-        $('avatar').src = basedir + $F('avatarselect');
+        $('avatar').src = basedir + '/' + $F('avatarselect');
     }
     return;
 }

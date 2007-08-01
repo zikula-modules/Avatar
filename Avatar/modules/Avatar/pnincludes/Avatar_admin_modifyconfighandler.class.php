@@ -13,8 +13,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::loadClass('StringUtil');
-
 class Avatar_admin_modifyconfighandler
 {
     function initialize(&$pnRender)
@@ -72,16 +70,6 @@ class Avatar_admin_modifyconfighandler
                 return false;
             }
 
-            // add trailing / if missing
-    //        prayer($data);
-            if(StringUtil::right($data['avatardir'], 1) <> '/') {
-                $data['avatardir'] .= '/';
-            }
-            if(StringUtil::right($data['forumdir'], 1) <> '/') {
-                $data['forumdir'] .= '/';
-            }
-  //          prayer($data);
-//die();
             pnModSetVar('Avatar', 'avatardir',          $data['avatardir']);
             pnModSetVar('Avatar', 'forumdir',           $data['forumdir']);
             pnModSetVar('Avatar', 'allow_resize',       $data['allow_resize']);

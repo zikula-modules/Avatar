@@ -80,15 +80,15 @@ function Avatar_userapi_setAvatar($args)
         $allowedhtml = pnConfigGetVar('AllowableHTML');
         $uname = pnUserGetVar('uname', $args['uid']);
         if($allowedhtml['img'] == 2) {
-            $status = sprintf(_AVATAR_CHANGEDTO, $uname, '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar"/>');
+            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar"/>', true));
         } else {
-            $status = sprintf(_AVATAR_CHANGEDTO, $uname, $args['avatar']);
+            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => $args['avatar']));
         }
         LogUtil::registerStatus($status); 
         return true;
     }
     
-    return LogUtil::registerError(sprintf(_AVATAR_ERR_USERNOTAUTHORIZED, DataUtil::formatForDisplay($args['avatar'])));
+    return LogUtil::registerError(pnML('_AVATAR_ERR_USERNOTAUTHORIZED', array('avatar' => $args['avatar'])));
 }
 
 /**

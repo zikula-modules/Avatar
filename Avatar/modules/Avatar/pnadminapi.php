@@ -69,11 +69,11 @@ function Avatar_adminapi_deleteavatar($args)
 {
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         $osdir = DataUtil::formatForOS(pnModGetVar('Avatar', 'avatardir')); 
-        $avatarfile = $osdir . DataUtil::formatForOS($args['avatar']);
+        $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
-            return LogUtil::registerError(sprintf(_AVATAR_ERRORDELETINGAVATAR, $avatar), null, pnModURL('Avatar', 'admin', 'main'));
+            return LogUtil::registerError(pnML('_AVATAR_ERRORDELETINGAVATAR', array('avatar' => $avatarfile)), null, pnModURL('Avatar', 'admin', 'main'));
         }
-        LogUtil::registerStatus(sprintf(_AVATAR_DELETED, $avatar));
+        LogUtil::registerStatus(pnML('_AVATAR_DELETED', array('avatar' => $avatarfile)));
         return true;
     }
     return LogUtil::registerPermissionError();
