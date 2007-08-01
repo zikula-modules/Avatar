@@ -6,7 +6,7 @@
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
  *
  * @package      Avatar
- * @version      $Id: admin.php 13 2006-03-10 12:42:04Z jna $
+ * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz
  * @link         http://lottasophie.sf.net, http://www.pn-cms.de
  * @copyright    Copyright (C) 2004-2007
