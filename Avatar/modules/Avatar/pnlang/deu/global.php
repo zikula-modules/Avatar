@@ -13,6 +13,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Allow multiple avatars');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'This allows the user to store one avatar per extension that are allowed.');
 define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar benutzen');
 define('_AVATAR_DELETEAVATAR',                'Avatar löschen');
 define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
@@ -43,7 +45,7 @@ define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
 define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
 define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'Die Freigabe einiger Dateiendungen kann den unberechtigten Zugriff von außen auf das System ermöglichen!');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'Eine durch Semikolons getrennte Liste erlaubter Dateiendungen');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',             'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');

@@ -31,6 +31,7 @@ function Avatar_init()
     pnModSetVar('Avatar', 'maxheight',          '80');
     pnModSetVar('Avatar', 'maxwidth',           '80');
     pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;png');
+    pnModSetVar('Avatar', 'allow_multiple',     true);
     return true;
 } 
 
@@ -54,18 +55,10 @@ function Avatar_upgrade($oldversion)
             pnModDelVar('Avatar', 'prefix_prefix_2');
             pnModDelVar('Avatar', 'prefix_prefix_3');
 
-            $avatardir = pnModGetVar('Avatar', 'avatardir');
-            if(StringUtil::right($avatardir, 1) <> '/') {
-                pnModSetVar('Avatar', 'avatardir', $avatardir .'/');
-            }
-
-            $forumdir = pnModGetVar('Avatar', 'forumdir');
-            if(StringUtil::right($forumdir, 1) <> '/') {
-                pnModSetVar('Avatar', 'forumdir', $forumdir .'/');
-            }
-            
-
+            pnModSetVar('Avatar', 'allow_multiple',   true);
     }
+    // clear all compiled templates
+    pnModAPIFunc('pnRender', 'user', 'clear_compiled');
     return true;
 } 
 

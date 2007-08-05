@@ -77,6 +77,7 @@ class Avatar_admin_modifyconfighandler
             pnModSetVar('Avatar', 'maxheight',          $data['maxheight']);
             pnModSetVar('Avatar', 'maxwidth',           $data['maxwidth']);
             pnModSetVar('Avatar', 'allowed_extensions', $data['allowed_extensions']);
+            pnModSetVar('Avatar', 'allow_multiple',     $data['allow_multiple']);
         }
         return true;
     }

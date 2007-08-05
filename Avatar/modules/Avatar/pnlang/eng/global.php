@@ -13,6 +13,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Allow multiple avatars');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'This allows the user to store one avatar per extension');
 define('_AVATAR_LISTUSERS',                   'list the users that use this avatar');
 define('_AVATAR_DELETEAVATAR',                'delete avatar');
 define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
@@ -42,8 +44,8 @@ define('_AVATAR_ADM_ALLOWRESIZE',             'Resize the avatar automatically')
 define('_AVATAR_ADM_MAXSIZE',                 'Max avatar filesize in bytes');
 define('_AVATAR_ADM_MAXHEIGHT',               'Max height in pixels');
 define('_AVATAR_ADM_MAXWIDTH',                'Max width in pixels');
-define('_AVATAR_ADM_EXTENSIONS',              'Authorized extensions');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'The user can upload a file for each one');
+define('_AVATAR_ADM_EXTENSIONS',              'Allowed extensions');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'A semicolon separated list of allowed file extensions');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');

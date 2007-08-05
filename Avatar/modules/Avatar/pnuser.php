@@ -78,10 +78,10 @@ function Avatar_user_upload ($args)
     $tmp_file = tempnam(pnConfigGetVar('temp'), 'Avatar');
     move_uploaded_file($_FILES['filelocale']['tmp_name'], $tmp_file);
     
-    $allow_resize = pnModGetVar('Avatar', 'allow_resize');
+    $modvars = pnModGetVar('Avatar');
     
     // check for file size limit
-    if (!$allow_resize && filesize($tmp_file) > pnModGetVar('Avatar', 'maxsize')) {
+    if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
         unlink($tmp_file);
         return LogUtil::registerError(_AVATAR_ERR_FILESIZE, null, pnModURL('Avatar'));
     } 
@@ -97,18 +97,15 @@ function Avatar_user_upload ($args)
 
     $extension = image_type_to_extension($imageinfo[2], false); 
     // check for image type
-    $allowed_extensions = explode (';', pnModGetVar('Avatar', 'allowed_extensions'));
-    if (!in_array($extension, $allowed_extensions)) {
+    if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
         unlink($tmp_file);
         return LogUtil::registerError(_AVATAR_ERR_FILETYPE, null, pnModURL('Avatar'));
     } 
     
     
     // check for image dimensions limit
-    $maxwidth = pnModGetVar('Avatar', 'maxwidth');
-    $maxheight = pnModGetVar('Avatar', 'maxheight');
-    if ($imageinfo[0] > $maxwidth || $imageinfo[1] > $maxheight) {
-        if (!$allow_resize) {
+    if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
+        if (!$modvars['allow_resize']) {
             unlink($tmp_file);
             return LogUtil::registerError(_AVATAR_ERR_FILEDIMENSIONS, null, pnModURL('Avatar'));
         } else {
@@ -118,14 +115,14 @@ function Avatar_user_upload ($args)
             $width = $imageinfo[0];
             $height = $imageinfo[1];
             
-            if ($width > $maxwidth) {
-                $height = ($maxwidth / $width) * $height;
-                $width = $maxwidth;
+            if ($width > $modvars['maxwidth']) {
+                $height = ($modvars['maxwidth'] / $width) * $height;
+                $width = $modvars['maxwidth'];
             }
 
-            if ($height > $maxheight) {
-                $width = ($maxheight / $height) * $width;
-                $height = $maxheight;
+            if ($height > $modvars['maxheight']) {
+                $width = ($modvars['maxheight'] / $height) * $width;
+                $height = $modvars['maxheight'];
             }
 
             // get the correct functions based on the image type
@@ -160,38 +157,45 @@ function Avatar_user_upload ($args)
         }
     } 
     
-    // everything's OK, so upload
-    $pathavatar = pnModGetVar('Avatar', 'avatardir');
-    $pathphpbb = pnModGetVar('Avatar', 'forumdir');
+    // everything's OK, so move'em
 
     $uid = pnUserGetVar('uid');
-    $user_avatar = "pers_$uid.$extension";
+    $avatarfilenamewithoutextension = 'pers_' . $uid;
+    $avatarfilename = $avatarfilenamewithoutextension . '.' . $extension;
+    $user_avatar = DataUtil::formatForStore($modvars['avatardir'] . '/' . $avatarfilename);
+    $pnphpbb_avatar = DataUtil::formatForStore($modvars['forumdir'] . '/' .$avatarfilename);
 
-    // delete old user avatars
-    foreach (glob("$pathavatar/pers_$uid.*") as $file) {
-        unlink($file);
+    // delete old user avatar with this extension
+    // this allows the users to have a avatar available for each extension that is allowed 
+    if($modvars['allow_multiple'] == false) {
+        // users are not allowed to store more than one avatar
+        foreach(explode (';', $modvars['allowed_extensions']) as $ext) {
+            unlink($file = DataUtil::formatForStore($modvars['avatardir'] . '/' . $avatarfilenamewithoutextension . '.' . $ext));
+        }
+    } else if(file_exists($user_avatar) && is_writable($user_avatar)) {
+        unlink($user_avatar);
     }
 
-    if (!@copy($tmp_file, "$pathavatar/$user_avatar")) {
+    if (!@copy($tmp_file, $user_avatar)) {
         unlink($tmp_file);
         return LogUtil::registerError(_AVATAR_ERR_COPYAVATAR, null, pnModURL('Avatar'));
     } else {
-        chmod ("$pathavatar/$user_avatar", 0644);
+        chmod ($user_avatar, 0644);
     }
-    if (pnModAvailable('pnPHPbb') && $pathphpbb != '') {
-        unlink("$pathphpbb/$user_avatar");
-        if (!@copy($tmp_file, "$pathphpbb/$user_avatar")) {
+    if (pnModAvailable('pnPHPbb') && $modvars['forumdir'] != '') {
+        unlink($pnphpbb_avatar);
+        if (!@copy($tmp_file, $pnphpbb_avatar)) {
             unlink($tmp_file);
             return LogUtil::registerError(_AVATAR_ERR_COPYFORUM, null, pnModURL('Avatar'));
         } else {
-            chmod ("$pathavatar/$user_avatar", 0644);
+            chmod ($pnphpbb_avatar, 0644);
         }
     } 
     unlink($tmp_file);
 
     if (!pnModAPIFunc('Avatar', 'user', 'SetAvatar',
                       array('uid'    => $uid,
-                            'avatar' => $user_avatar))) {
+                            'avatar' => $avatarfilename))) {
         return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
     } 
     return pnRedirect(pnModURL('Avatar', 'user', 'main'));
