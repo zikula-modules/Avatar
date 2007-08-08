@@ -13,75 +13,116 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+//
+// A
+//
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Allow multiple avatars');
-define('_AVATAR_ADM_MULTIPLE_HINT',           'This allows the user to store one avatar per extension that are allowed.');
-define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar benutzen');
-define('_AVATAR_DELETEAVATAR',                'Avatar löschen');
-define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
-define('_AVATAR_CONFIRMDELETE',               'Löschung bestätigen');
-define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnte nicht gelöscht werden');
-define('_AVATAR_DELETED',                     'Der Avatar %avatar% wurde gelöscht');
-define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgenden Avatar versehen');
-define('_AVATAR_NOUSERFORTHISAVATAR',         'Kein Benutzer verwendet diesen Avatar');
-define('_AVATAR_USERLISTPERAVATAR',           'Benutzer die diesen Avatar verwenden');
-define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username% wurde geändert auf %avatar%');
-define('_AVATAR_ERR_USERNOTAUTHORIZED',       'Der User darf diesen Avatar nicht sehen. Zum Ändern bitte die Zugriffsrechte für %s anpassen');
-define('_AVATAR_DELETECURRENTAVATAR',         'Aktuellen Avatar löschen?');
-define('_AVATAR_SELECTNEWAVATAR',             'Neuen Avatar auswählen');
-define('_AVATAR_CURRENTAVATAR',               'Aktueller Avatar');
-define('_AVATAR_ENTERUSERNAME',               'Benutzername');
-define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
-define('_AVATAR_MAINTAINAVATARS',             'Avatars verwalten');
-define('_AVATAR_VISITHOMEPAGE',               'Avatar-Modul im NOC besuchen');
-define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
-
-// upload settings form
-define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
+define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische verkleinerung des Avatarbildes');
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Verzeichnis (PostNuke)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Standard: images/avatar <strong>ohne / am Ende des Pfades!</strong>');
-define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)');
-define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische verkleinerung des Avatarbildes');
-define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
-define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
-define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
 define('_AVATAR_ADM_EXTENSIONS_HINT',         'Eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstützt werden: gif, jpg, png, wbm');
+define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)');
+define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
+define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
+define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'This allows the user to store one avatar per extension that are allowed.');
+define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
+define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
+define('_AVATAR_ALLOWEDEXTENSIONS',  'Erlaubte Dateiendungen');
+define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
 
-// warnings
-define('_AVATAR_WARN_AVARTARDIR',             'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');
-define('_AVATAR_WARN_FORUMDIR',               'Achtung: das Forum-Verzeichnis ist nicht beschreibbar (Das ist OK, wenn kein PNphpBB2 installiert ist)');
-
-// title
-define('_AVATAR_TITLE',              'Avatar-Bild Einstellungen');
-
-// defines for the avatar select form
-define('_AVATAR_SELECTYOURAVATAR',   'Bitte wähle durch Anklicken ein Avatar-Bild aus den folgenden aus');
-define('_AVATAR_SELECTAVATAR',       'Avatar auswählen');
+//
+// C
+//
+define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username% wurde geändert auf %avatar%');
+define('_AVATAR_CLEAR_BUTTON',       'Eingabe löschen');
+define('_AVATAR_CONFIRMDELETE',               'Löschung bestätigen');
+define('_AVATAR_CURRENTAVATAR',               'Aktueller Avatar');
 define('_AVATAR_CURRENTAVATAR',      'Der aktuelle Avatar ist ');
 
-// defines for the upload form
-define('_AVATAR_USER_CHOOSE',        'Wenn ein eigenes Avatar bereits vorhanden ist, muss kein weiteres hochgeladen werden.');
-define('_AVATAR_UPLOADFILE',         'Datei hochladen');
-define('_AVATAR_UPLOAD_BUTTON',      'Hochladen');
-define('_AVATAR_CLEAR_BUTTON',       'Eingabe löschen');
-define('_AVATAR_MAXSIZE',            'Maximal Dateigröße des Avatars');
-define('_AVATAR_ALLOWEDEXTENSIONS',  'Erlaubte Dateiendungen');
-define('_AVATAR_MAXHEIGHT',          'Maximale Höhe in Pixel');
-define('_AVATAR_MAXWIDTH',           'Maximale Breite in Pixel');
-define('_AVATAR_MAXDIMENSIONS',      'Maximale Avatargröße');
-define('_AVATAR_PIXEL',              'Pixel');
-define('_AVATAR_RESIZE',             'Größere Bilder werden automatisch verkleinert.');
+//
+// D
+//
+define('_AVATAR_DELETEAVATAR',                'Avatar löschen');
+define('_AVATAR_DELETECURRENTAVATAR',         'Aktuellen Avatar löschen?');
+define('_AVATAR_DELETED',                     'Der Avatar %avatar% wurde gelöscht');
 
-// Error Messages
-define('_AVATAR_ERR_FILETYPE',       'Dieser Dateityp ist nicht gestattet.');
-define('_AVATAR_ERR_FILESIZE',       'Die Dateigröße ist nicht gestattet.');
-define('_AVATAR_ERR_FILEDIMENSIONS', 'Die Abmessungen des Bildes sind zu groß.');
-define('_AVATAR_ERR_FILEUPLOAD',     'Keine Datei ausgewählt.');
+//
+// E
+//
+define('_AVATAR_ENTERUSERNAME',               'Benutzername');
+define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnte nicht gelöscht werden');
 define('_AVATAR_ERR_AUTHORIZED',     'Keine Berechtigung, einen Avatar auszuwählen.');
 define('_AVATAR_ERR_COPYAVATAR',     'Das Hochladen der Datei ist fehlgeschlagen.');
 define('_AVATAR_ERR_COPYFORUM',      'Das Hochladen der Datei ist fehlgeschlagen.');
-define('_AVATAR_ERR_SELECT',         'Die Auswahl des Avatars schlug fehl.');
+define('_AVATAR_ERR_FILEDIMENSIONS', 'Die Abmessungen des Bildes sind zu groß.');
+define('_AVATAR_ERR_FILESIZE',       'Die Dateigröße ist nicht gestattet.');
+define('_AVATAR_ERR_FILETYPE',       'Dieser Dateityp ist nicht gestattet.');
+define('_AVATAR_ERR_FILEUPLOAD',     'Keine Datei ausgewählt.');
 define('_AVATAR_ERR_NOTLOGGEDIN',    'Nicht registrierter User !');
+define('_AVATAR_ERR_SELECT',         'Die Auswahl des Avatars schlug fehl.');
+define('_AVATAR_ERR_USERNOTAUTHORIZED',       'Der User darf diesen Avatar nicht sehen. Zum Ändern bitte die Zugriffsrechte für %s anpassen');
 
-// defines for the user page plugin
+//
+// L
+//
+define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar benutzen');
+
+//
+// M
+//
+define('_AVATAR_MAINTAINAVATARS',             'Avatars verwalten');
+define('_AVATAR_MAXDIMENSIONS',      'Maximale Avatargröße');
+define('_AVATAR_MAXHEIGHT',          'Maximale Höhe in Pixel');
+define('_AVATAR_MAXSIZE',            'Maximal Dateigröße des Avatars');
+define('_AVATAR_MAXWIDTH',           'Maximale Breite in Pixel');
+define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
+
+//
+// N
+//
+define('_AVATAR_NOUSERFORTHISAVATAR',         'Kein Benutzer verwendet diesen Avatar');
+
+//
+// P
+//
+define('_AVATAR_PIXEL',              'Pixel');
+
+//
+// R
+//
+define('_AVATAR_RESIZE',             'Größere Bilder werden automatisch verkleinert.');
+
+//
+// S
+//
+define('_AVATAR_SELECTAVATAR',       'Avatar auswählen');
+define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgenden Avatar versehen');
 define('_AVATAR_SELECTAVATAR_LINK',  'Individuellen Avatar auswählen');
+define('_AVATAR_SELECTNEWAVATAR',             'Neuen Avatar auswählen');
+define('_AVATAR_SELECTYOURAVATAR',   'Bitte einen Avatar durch Anklicken auswählen');
+
+//
+// T
+//
+define('_AVATAR_TITLE',              'Avatar-Bild Einstellungen');
+
+//
+// U
+//
+define('_AVATAR_UPLOADFILE',         'Datei hochladen');
+define('_AVATAR_UPLOAD_BUTTON',      'Hochladen');
+define('_AVATAR_USERLISTPERAVATAR',           'Benutzer die diesen Avatar verwenden');
+define('_AVATAR_USER_CHOOSE',        'Wenn ein eigenes Avatar bereits vorhanden ist, muss kein weiteres hochgeladen werden.');
+
+//
+// V
+//
+define('_AVATAR_VISITHOMEPAGE',               'Avatar-Modul im NOC besuchen');
+
+//
+// W
+//
+define('_AVATAR_WARN_AVARTARDIR',             'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');
+define('_AVATAR_WARN_FORUMDIR',               'Achtung: das Forum-Verzeichnis ist nicht beschreibbar (Das ist OK, wenn kein PNphpBB2 installiert ist)');
