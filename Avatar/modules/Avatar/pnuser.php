@@ -148,7 +148,6 @@ function Avatar_user_upload ($args)
             $srcImage = $createfunc($tmp_file);
             $destImage = imagecreatetruecolor($width, $height);
             imagecopyresampled($destImage, $srcImage, 0, 0, 0, 0, $width, $height, $imageinfo[0], $imageinfo[1]);
-            $savefunc($destImage, '/foo.jpg');
             $savefunc($destImage, $tmp_file);
 
             // free the memory

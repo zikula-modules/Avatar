@@ -45,7 +45,7 @@ define('_AVATAR_ADM_MAXSIZE',                 'Max avatar filesize in bytes');
 define('_AVATAR_ADM_MAXHEIGHT',               'Max height in pixels');
 define('_AVATAR_ADM_MAXWIDTH',                'Max width in pixels');
 define('_AVATAR_ADM_EXTENSIONS',              'Allowed extensions');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'A semicolon separated list of allowed file extensions');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'A semicolon separated list of allowed file extensions, supported filetypes: gif, jpg, png, wbm');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');

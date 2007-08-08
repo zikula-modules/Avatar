@@ -45,7 +45,7 @@ define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
 define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
 define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'Eine durch Semikolons getrennte Liste erlaubter Dateiendungen');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         'Eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstützt werden: gif, jpg, png, wbm');
 
 // warnings
 define('_AVATAR_WARN_AVARTARDIR',             'Achtung: das Avatar-Verzeichnis ist nicht beschreibbar');
