@@ -22,6 +22,7 @@ Carsten Volmer [herr.vorragend], http://www.carsten-volmer.de
 
 2.0: 
 * .8-only version
+* added avatar maintenance and delete option
 
 1.1:
 * last .764 version, does not work with .8
