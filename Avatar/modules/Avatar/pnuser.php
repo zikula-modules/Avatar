@@ -24,7 +24,7 @@ function Avatar_user_main()
 { 
     // only logged-ins might see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, 'index.php');
     } 
     
     // plus, the user should have overview right to see the avatars.
