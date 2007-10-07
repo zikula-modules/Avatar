@@ -38,7 +38,6 @@ define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use an
 define('_AVATAR_CHANGEDTO',                   'The avatar of user %username% has been changed to %avatar%');
 define('_AVATAR_CLEAR_BUTTON',       'Clear');
 define('_AVATAR_CONFIRMDELETE',               'Confirm deletion');
-define('_AVATAR_CURRENTAVATAR',               'Current avatar');
 define('_AVATAR_CURRENTAVATAR',      'Your current avatar is ');
 
 //
@@ -83,6 +82,7 @@ define('_AVATAR_MODIFYCONFIG',                'Modify configuration');
 // N
 //
 define('_AVATAR_NOUSERFORTHISAVATAR',         'No user is using this avatar');
+define('_AVATAR_NOAVATARSELECTED',            'no avatar selected');
 
 //
 // P
