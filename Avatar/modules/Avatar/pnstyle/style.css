@@ -13,7 +13,7 @@
  */
 
 #avatar-admin {
-    padding-top: 2em;
+
 }
 
 #avatar-admin .footer {
@@ -84,4 +84,29 @@
 /* Overflow-Methode zum Clearen der Float-Umgebungen */
 .avatarfloatbox { 
     overflow:hidden; 
+}
+
+div.autocomplete_user {
+    position:absolute;
+    width: 25em;
+    background-color: white;
+    border: 1px solid #888;
+    margin: 0;
+    padding: 0;
+}
+div.autocomplete_user ul {
+    list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
+    margin: 0;
+    padding: 0;
+}
+div.autocomplete_user ul li.selected { background-color: #ffb;}
+div.autocomplete_user ul li {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0;
+    line-height: 1.4em;
+    cursor:pointer;
+}
+
+#liveusersearch {
+    margin: 1em 0 1em 0;
 }

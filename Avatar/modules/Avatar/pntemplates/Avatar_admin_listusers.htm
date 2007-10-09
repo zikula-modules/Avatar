@@ -1,13 +1,16 @@
-<!--[* $Id$ *]-->
+<!--[include file="Avatar_admin_menu.htm"]-->
 
-<!--[ include file="Avatar_admin_header.htm" ]-->
+<div class="pn-admincontainer">
+<div id="avatar-admin">
 
+<h2><!--[ pnml name="_AVATAR_CURRENTAVATAR" ]--></h2>
 <h1><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></h1>
-<h2><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]-->:</h2>
+<h2><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]--></h2>
+
 
 <form action="<!--[ pnmodurl modname="Avatar" type="admin" func="updateusers" ]-->" method="post">
 <div>
-<ul style="list-style-type:none;">
+<ul style="list-style-type:none; ">
 <!--[ foreach item=user from=$users key=uid ]-->
     <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="maintain" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
 <!--[ foreachelse ]-->

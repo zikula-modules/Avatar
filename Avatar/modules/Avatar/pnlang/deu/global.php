@@ -16,7 +16,7 @@
 //
 // A
 //
-define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Allow multiple avatars');
+define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Erlaube mehrere Avatare');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische verkleinerung des Avatarbildes');
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Verzeichnis (PostNuke)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Standard: images/avatar <strong>ohne / am Ende des Pfades!</strong>');
@@ -26,7 +26,7 @@ define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)
 define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
 define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
 define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
-define('_AVATAR_ADM_MULTIPLE_HINT',           'This allows the user to store one avatar per extension that are allowed.');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'dem Benutzer erlauben jeweils ein Avatar pro Dateitendung abzuspeichern.');
 define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
 define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
 define('_AVATAR_ALLOWEDEXTENSIONS',  'Erlaubte Dateiendungen');
@@ -39,7 +39,6 @@ define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username
 define('_AVATAR_CLEAR_BUTTON',       'Eingabe löschen');
 define('_AVATAR_CONFIRMDELETE',               'Löschung bestätigen');
 define('_AVATAR_CURRENTAVATAR',               'Aktueller Avatar');
-define('_AVATAR_CURRENTAVATAR',      'Der aktuelle Avatar ist ');
 
 //
 // D
@@ -51,7 +50,7 @@ define('_AVATAR_DELETED',                     'Der Avatar %avatar% wurde gelösch
 //
 // E
 //
-define('_AVATAR_ENTERUSERNAME',               'Benutzername');
+define('_AVATAR_ENTERUSERNAME',               'Benutzernamen suchen:');
 define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnte nicht gelöscht werden');
 define('_AVATAR_ERR_AUTHORIZED',     'Keine Berechtigung, einen Avatar auszuwählen.');
 define('_AVATAR_ERR_COPYAVATAR',     'Das Hochladen der Datei ist fehlgeschlagen.');
@@ -83,6 +82,7 @@ define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
 // N
 //
 define('_AVATAR_NOUSERFORTHISAVATAR',         'Kein Benutzer verwendet diesen Avatar');
+define('_AVATAR_NOAVATARSELECTED',            'kein Avatar ausgewählt');
 
 //
 // P

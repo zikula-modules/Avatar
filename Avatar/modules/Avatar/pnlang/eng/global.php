@@ -33,7 +33,7 @@ define('_AVATAR_ALLOWEDEXTENSIONS',  'Possible extensions');
 define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
 
 //
-// A
+// C
 //
 define('_AVATAR_CHANGEDTO',                   'The avatar of user %username% has been changed to %avatar%');
 define('_AVATAR_CLEAR_BUTTON',       'Clear');
@@ -60,7 +60,7 @@ define('_AVATAR_ERR_FILESIZE',       'Filesize error.');
 define('_AVATAR_ERR_FILETYPE',       'Unauthorised file extension.');
 define('_AVATAR_ERR_FILEUPLOAD',     'No file selected.');
 define('_AVATAR_ERR_NOTLOGGEDIN',    'You aren\'t a registered user.');
-define('_AVATAR_ERR_SELECT',         'Die Auswahl des Avatars schlug fehl.');
+define('_AVATAR_ERR_SELECT',         'Error while selecting the avatar.');
 define('_AVATAR_ERR_USERNOTAUTHORIZED',       'The user is not authorized to use this avatar. To change this, update the permission for %avatar%.');
 
 //
