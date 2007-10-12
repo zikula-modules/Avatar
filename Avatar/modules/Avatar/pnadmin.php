@@ -158,10 +158,12 @@ function Avatar_admin_updateusers($args)
     $newavatar   = FormUtil::getPassedValue('avatar', '', 'POST');
     $updateusers = FormUtil::getPassedValue('updateusers', '', 'POST');
     
-    foreach($updateusers as $userid) {
-        pnModAPIFunc('Avatar', 'user', 'SetAvatar',
-                           array('uid'    => $userid,
-                                 'avatar' => $newavatar));
+    if(is_array($updateusers) & count($updateusers) > 0) {
+        foreach($updateusers as $userid) {
+            pnModAPIFunc('Avatar', 'user', 'SetAvatar',
+                               array('uid'    => $userid,
+                                     'avatar' => $newavatar));
+        }
     }
     return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
 }
