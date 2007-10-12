@@ -71,7 +71,11 @@ class Avatar_admin_modifyconfighandler
             }
 
             pnModSetVar('Avatar', 'avatardir',          $data['avatardir']);
-            pnModSetVar('Avatar', 'forumdir',           $data['forumdir']);
+/*
+            if(array_key_exist('forumdir', $data)) {
+                pnModSetVar('Avatar', 'forumdir',           $data['forumdir']);
+            }
+*/
             pnModSetVar('Avatar', 'allow_resize',       $data['allow_resize']);
             pnModSetVar('Avatar', 'maxsize',            $data['maxsize']);
             pnModSetVar('Avatar', 'maxheight',          $data['maxheight']);
