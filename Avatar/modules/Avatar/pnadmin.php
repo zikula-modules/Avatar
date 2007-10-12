@@ -83,7 +83,7 @@ function Avatar_admin_setAvatar($args)
     }
     
     $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST'); 
-    $uid     = FormUtil::getPassedValue('uid', -1, 'POST'); 
+    $uid     = FormUtil::getPassedValue('uid', -1, 'GETPOST'); 
 
     pnModAPIFunc('Avatar', 'user', 'setAvatar',
                        array('uid'    => $uid,
