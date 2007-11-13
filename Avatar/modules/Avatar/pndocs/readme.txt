@@ -25,7 +25,7 @@ height you defined.
 ---------------
 Install it like any other module. Now you see an option "Avatar" in your 
 personal account panel.
-Make sure that the folders you choese for storing the images is writable 
+Make sure that the folder you choose for storing the images is writable 
 for the webserver (chmod 777) and protect it with an htaccess file like in 
 the pnTemp folder.
 

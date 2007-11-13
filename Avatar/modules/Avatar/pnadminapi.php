@@ -13,8 +13,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::loadClass('FileUtil');
-
 /**
  * get available admin panel links
  *

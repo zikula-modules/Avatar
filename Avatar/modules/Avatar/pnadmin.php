@@ -59,8 +59,7 @@ function Avatar_admin_maintain()
     }
     $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
-    $pnRender = pnRender::getInstance('Avatar', false);
-    $pnRender->add_core_data();
+    $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
     $pnRender->assign('avatar', $avatar);
@@ -135,8 +134,7 @@ function Avatar_admin_listusers($args)
     
     $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
-    $pnRender = pnRender::getInstance('Avatar', false);
-    $pnRender->add_core_data();
+    $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('users', $users);
     $pnRender->assign('uavatar', $uavatar);
     $pnRender->assign('avatars', $allavatars);
@@ -199,9 +197,7 @@ function Avatar_admin_delete()
                      array('avatar' => $avatar));
         return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     } else {
-        $pnRender = pnRender::getInstance('Avatar', false);
-        $pnRender->add_core_data();
-        
+        $pnRender = pnRender::getInstance('Avatar', false, null, true);
         $pnRender->assign('avatar', $avatar);
         return $pnRender->fetch('Avatar_admin_delete.htm');
     }
