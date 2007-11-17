@@ -17,7 +17,7 @@
 // A
 //
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Erlaube mehrere Avatare');
-define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische verkleinerung des Avatarbildes');
+define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische Verkleinerung des Avatarbildes');
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Verzeichnis (PostNuke)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Standard: images/avatar <strong>ohne / am Ende des Pfades!</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
