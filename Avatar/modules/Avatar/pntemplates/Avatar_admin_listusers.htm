@@ -12,7 +12,7 @@
 <div>
 <ul style="list-style-type:none; ">
 <!--[ foreach item=user from=$users key=uid ]-->
-    <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="maintain" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
+    <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
 <!--[ foreachelse ]-->
     <li><!--[ pnml name="_AVATAR_NOUSERFORTHISAVATAR" ]--></li>
 <!--[ /foreach ]-->
