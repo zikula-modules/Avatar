@@ -4,7 +4,7 @@
 <div id="avatar-admin">
 
 <h2><!--[ pnml name="_AVATAR_CURRENTAVATAR" ]--></h2>
-<h1><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></h1>
+<h1><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></h1>
 <h2><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]--></h2>
 
 
@@ -21,9 +21,11 @@
 <!--[ if $users ]-->
   <h2><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h2>
   <!--[foreach from=$avatars item="avatar"]-->
-  <div style="float: left; margin:10pt;">
-      <button style="cursor: pointer;" type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->"><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="Avatar" />
-      <br /><!--[$avatar|pnvarprepfordisplay]--></button>
+  <div class="avatarbox">
+      <button style="cursor: pointer;" type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->">
+      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:#eee url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+      <!--[$avatar|pnvarprepfordisplay]-->
+      </button>
   </div>
   <!--[/foreach]-->
 <!--[ /if ]-->

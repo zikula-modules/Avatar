@@ -28,7 +28,7 @@
 <h2><!--[$username]--></h2>
 <p>
 <!--[ if $avatar ne "" ]-->  
-<!--[ pnml name="_AVATAR_CURRENTAVATAR" ]-->: <img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
+<!--[ pnml name="_AVATAR_CURRENTAVATAR" ]-->: <br /><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
 <!--[ else ]-->
 <!--[ pnml name="_AVATAR_NOAVATARSELECTED" ]-->
 <!--[ /if ]-->
@@ -37,10 +37,11 @@
 <h2><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h2>
 
 <!--[foreach from=$avatars item="avatar"]-->
-<div style="float: left; margin:10pt;">
-    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" /></a>
-    <br />
-    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><!--[$avatar|pnvarprepfordisplay]--></a>
+<div class="avatarbox">
+    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->">
+    <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:#eee url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+    </a>
+    <!--[$avatar|pnvarprepfordisplay]-->
     <br />
 </div>
 <!--[/foreach]-->

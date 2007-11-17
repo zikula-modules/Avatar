@@ -6,9 +6,8 @@
 <div id="avatar-admin">
 
 <!--[foreach from=$avatars item="avatar"]-->
-<div style="float: left; margin:10pt;">
-    <img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" />
-    <br />
+<div class="avatarbox">
+<strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:#eee url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
     <!--[$avatar|pnvarprepfordisplay]-->
     <br />
     <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"  title="<!--[ pnml name="_AVATAR_LISTUSERS" ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a>
@@ -18,4 +17,3 @@
 <br style="clear: both;" />
 
 <!--[ include file="Avatar_admin_footer.htm" ]-->
-

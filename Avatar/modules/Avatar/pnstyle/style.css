@@ -110,3 +110,20 @@ div.autocomplete_user ul li {
 #liveusersearch {
     margin: 1em 0 1em 0;
 }
+
+.avatarbox {
+  float: left; 
+  margin: 5px; 
+  text-align: center;
+}
+.avatarpic {
+  display: block; 
+  border: 1px solid #ccc; 
+  background: #eee;
+}
+.avatarchoosen {
+  display: block; 
+  border: 1px solid #ccc; 
+  background: #eee;
+  padding: 5px; 
+}
