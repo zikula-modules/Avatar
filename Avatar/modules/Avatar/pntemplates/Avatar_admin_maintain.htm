@@ -5,42 +5,11 @@
 <h2><!--[ pnml name="_AVATAR_MAINTAINAVATARS" ]--></h2>
 <div id="avatar-admin">
 
-<div id="liveusersearch" class="pn-hide">
-    <!--[ pnml name="_AVATAR_ENTERUSERNAME" ]-->&nbsp;<input size="25" maxlength="40" type="text" name="username" id="username" value="" />
-    <a id="listuser" href="javascript:void(0);"><!--[pnimg modname=core set=icons/extrasmall src="search.gif" alt="_EDIT" altml=true]--></a>
-    <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
-
-    <div id="username_choices" class="autocomplete_user"></div>
-    <script type="text/javascript">
-        Element.removeClassName('liveusersearch', 'pn-hide');
-        new Ajax.Autocompleter("username", "username_choices", "ajax.php?module=Users&func=getusers",
-                               {paramName: 'fragment',
-                                minChars: 3,
-                                afterUpdateElement: function(data){
-                                    Event.observe('listuser', 'click', function() { window.location.href="index.php?module=Avatar&type=admin&func=maintain&username=" + $($(data).id).value;}, false);
-                                    }
-                                }
-                                );
-    </script>
-</div>
-
-<!--[ if $username ne "" ]-->
-<h2><!--[$username]--></h2>
-<p>
-<!--[ if $avatar ne "" ]-->  
-<!--[ pnml name="_AVATAR_CURRENTAVATAR" ]-->: <img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
-<!--[ else ]-->
-<!--[ pnml name="_AVATAR_NOAVATARSELECTED" ]-->
-<!--[ /if ]-->
-</p>
-
-<h2><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h2>
-<!--[ /if ]-->
 <!--[foreach from=$avatars item="avatar"]-->
 <div style="float: left; margin:10pt;">
-    <!--[ if $username ne "" ]--><a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><!--[ /if ]--><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" /><!--[ if $username ne "" ]--></a><!--[ /if ]-->
+    <img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->" width="32" height="32" alt="avatar" align="top" />
     <br />
-    <!--[ if $username ne "" ]--><a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->"><!--[ /if ]--><!--[$avatar|pnvarprepfordisplay]--><!--[ if $username ne "" ]--></a><!--[ /if ]-->
+    <!--[$avatar|pnvarprepfordisplay]-->
     <br />
     <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"  title="<!--[ pnml name="_AVATAR_LISTUSERS" ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a>
     <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" avatar=$avatar|pnvarprepfordisplay ]-->" title="<!--[ pnml name="_AVATAR_DELETEAVATAR" ]-->"><!--[pnicon type="delete" size="extrasmall" altml="_DELETE"]--></a>

@@ -24,6 +24,7 @@ function Avatar_adminapi_getlinks()
     $links = array();
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         $links[] = array('url' => pnModURL('Avatar', 'admin', 'maintain'), 'text' => _AVATAR_MAINTAINAVATARS);
+        $links[] = array('url' => pnModURL('Avatar', 'admin', 'searchusers'), 'text' => _AVATAR_SEARCHUSERS);        
         $links[] = array('url' => pnModURL('Avatar', 'admin', 'modifyconfig'), 'text' => _AVATAR_MODIFYCONFIG);
     }
     return $links;

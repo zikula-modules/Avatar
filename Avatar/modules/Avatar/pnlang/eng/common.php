@@ -97,6 +97,7 @@ define('_AVATAR_RESIZE',             'Larger images will be resized automaticall
 //
 // S
 //
+define('_AVATAR_SEARCHUSERS',         'Search user');
 define('_AVATAR_SELECTAVATAR',       'Select avatar');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Choose the avatar to update all selected users');
 define('_AVATAR_SELECTAVATAR_LINK',  'Change Avatar');

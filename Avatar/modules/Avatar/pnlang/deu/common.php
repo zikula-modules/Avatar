@@ -97,6 +97,7 @@ define('_AVATAR_RESIZE',                      'Größere Bilder werden automatisch
 //
 // S
 //
+define('_AVATAR_SEARCHUSERS',                 'Benutzer suchen');
 define('_AVATAR_SELECTAVATAR',                'Avatar auswählen');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgenden Avatar versehen');
 define('_AVATAR_SELECTAVATAR_LINK',           'Individuellen Avatar auswählen');

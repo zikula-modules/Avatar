@@ -68,6 +68,38 @@ function Avatar_admin_maintain()
 } 
 
 /**
+ * avatar search-user
+ *
+ *
+ * @author       Frank Schummertz, Carsten Volmer
+ * @return       output       The search-user admin page.
+ */
+function Avatar_admin_searchusers()
+{
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError('index.php');
+    }
+    
+    $username = FormUtil::getPassedValue('username', '', 'GETPOST');
+    $userid = pnUserGetIDFromName($username);
+    if($userid == false) {
+        $username = '';
+        $avatar = '';
+    } else {
+        $avatar = pnUserGetVar('_YOURAVATAR', $userid);
+    }
+    $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+
+    $pnRender = pnRender::getInstance('Avatar', false, null, true);
+    $pnRender->assign('username', $username);
+    $pnRender->assign('userid', $userid);
+    $pnRender->assign('avatar', $avatar);
+    $pnRender->assign('avatars', $allavatars);
+    return $pnRender->fetch('Avatar_admin_searchusers.htm');
+} 
+
+
+/**
  * Avatar_admin_setAvatar()
  * 
  * This is the admin function to set a new avatar
