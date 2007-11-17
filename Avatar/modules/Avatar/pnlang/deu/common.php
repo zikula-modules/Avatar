@@ -26,7 +26,7 @@ define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)
 define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
 define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
 define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
-define('_AVATAR_ADM_MULTIPLE_HINT',           'dem Benutzer erlauben jeweils ein Avatar pro Dateitendung abzuspeichern.');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'dem Benutzer erlauben jeweils ein Avatar pro Dateiendung abzuspeichern.');
 define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
 define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
 define('_AVATAR_ALLOWEDEXTENSIONS',           'Erlaubte Dateiendungen');
