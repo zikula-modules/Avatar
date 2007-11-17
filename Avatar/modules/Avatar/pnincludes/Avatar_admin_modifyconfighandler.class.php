@@ -31,7 +31,7 @@ class Avatar_admin_modifyconfighandler
     function handleCommand(&$pnRender, &$args)
     {
         // Security check
-        if (!SecurityUtil::checkPermission('formicula::', '::', ACCESS_ADMIN)) {
+        if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
             return LogUtil::registerPermissionError('index.php');
         }  
         if ($args['commandName'] == 'submit') {
