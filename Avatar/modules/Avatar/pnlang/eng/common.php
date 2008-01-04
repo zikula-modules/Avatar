@@ -55,10 +55,11 @@ define('_AVATAR_ERRORDELETINGAVATAR',         'Error: Unable to delete avatar %a
 define('_AVATAR_ERR_AUTHORIZED',     'Not authorised to upload your avatar.');
 define('_AVATAR_ERR_COPYAVATAR',     'Fail to copy the file in avatars\' directory.');
 define('_AVATAR_ERR_COPYFORUM',      'Fail to copy the file in phpbb\'s directory.');
-define('_AVATAR_ERR_FILEDIMENSIONS', 'Image Height or Width error.');
-define('_AVATAR_ERR_FILESIZE',       'Filesize error.');
-define('_AVATAR_ERR_FILETYPE',       'Unauthorised file extension.');
+define('_AVATAR_ERR_FILEDIMENSIONS', 'Image height (max. %h%px) or width (max. %w%px) error.');
+define('_AVATAR_ERR_FILESIZE',       'Filesize error, max %max% bytes are allowed.');
+define('_AVATAR_ERR_FILETYPE',       'Unauthorised file extension. Allowed extensions: %ft%.');
 define('_AVATAR_ERR_FILEUPLOAD',     'No file selected.');
+define('_AVATAR_ERR_NOIMAGE',        'File is not an image');
 define('_AVATAR_ERR_NOTLOGGEDIN',    'You aren\'t a registered user.');
 define('_AVATAR_ERR_SELECT',         'Error while selecting the avatar.');
 define('_AVATAR_ERR_USERNOTAUTHORIZED',       'The user is not authorized to use this avatar. To change this, update the permission for %avatar%.');

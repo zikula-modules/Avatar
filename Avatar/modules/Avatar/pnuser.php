@@ -81,7 +81,7 @@ function Avatar_user_upload ($args)
     // check for file size limit
     if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
         unlink($tmp_file);
-        return LogUtil::registerError(_AVATAR_ERR_FILESIZE, null, pnModURL('Avatar'));
+        return LogUtil::registerError(pnML('_AVATAR_ERR_FILESIZE', array('max' => $modvars['maxsize'])), null, pnModURL('Avatar'));
     } 
     
     // Get image information
@@ -90,14 +90,14 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        return LogUtil::registerError(_AVATAR_ERR_FILETYPE, null, pnModURL('Avatar'));
+        return LogUtil::registerError(_AVATAR_ERR_NOIMAGE, null, pnModURL('Avatar'));
     } 
 
     $extension = image_type_to_extension($imageinfo[2], false); 
     // check for image type
     if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
         unlink($tmp_file);
-        return LogUtil::registerError(_AVATAR_ERR_FILETYPE, null, pnModURL('Avatar'));
+        return LogUtil::registerError(pnML('_AVATAR_ERR_FILETYPE', array('ft' => $modvars['allowed_extensions'])), null, pnModURL('Avatar'));
     } 
     
     
@@ -105,7 +105,7 @@ function Avatar_user_upload ($args)
     if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
         if (!$modvars['allow_resize']) {
             unlink($tmp_file);
-            return LogUtil::registerError(_AVATAR_ERR_FILEDIMENSIONS, null, pnModURL('Avatar'));
+            return LogUtil::registerError(pnML('_AVATAR_ERR_FILEDIMENSIONS', array('h' => $modvars['maxheight'], 'w' => $modvars['maxwidth'])), null, pnModURL('Avatar'));
         } else {
             // resize the image
             

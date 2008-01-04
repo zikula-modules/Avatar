@@ -55,10 +55,11 @@ define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnt
 define('_AVATAR_ERR_AUTHORIZED',              'Keine Berechtigung, einen Avatar auszuwählen.');
 define('_AVATAR_ERR_COPYAVATAR',              'Das Hochladen der Datei ist fehlgeschlagen.');
 define('_AVATAR_ERR_COPYFORUM',               'Das Hochladen der Datei ist fehlgeschlagen.');
-define('_AVATAR_ERR_FILEDIMENSIONS',          'Die Abmessungen des Bildes sind zu groß.');
-define('_AVATAR_ERR_FILESIZE',                'Die Dateigröße ist nicht gestattet.');
-define('_AVATAR_ERR_FILETYPE',                'Dieser Dateityp ist nicht gestattet.');
+define('_AVATAR_ERR_FILEDIMENSIONS',          'Die Abmessungen des Bildes sind zu groß. Höhe max. %h%px, Breite max. %w%px');
+define('_AVATAR_ERR_FILESIZE',                'Falsche Dateigröße, max. %max% Byte sind erlaubt.');
+define('_AVATAR_ERR_FILETYPE',                'Dieser Dateityp ist nicht gestattet. Erlaubt sind %ft%');
 define('_AVATAR_ERR_FILEUPLOAD',              'Keine Datei ausgewählt.');
+define('_AVATAR_ERR_NOIMAGE',                 'Datei ist kein Bild');
 define('_AVATAR_ERR_NOTLOGGEDIN',             'Nicht registrierter User !');
 define('_AVATAR_ERR_SELECT',                  'Die Auswahl des Avatars schlug fehl.');
 define('_AVATAR_ERR_USERNOTAUTHORIZED',       'Der User darf diesen Avatar nicht sehen. Zum Ändern bitte die Zugriffsrechte für %s anpassen');
