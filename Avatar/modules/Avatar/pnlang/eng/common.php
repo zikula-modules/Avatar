@@ -126,5 +126,5 @@ define('_AVATAR_VISITHOMEPAGE',               'Visit Avatar project on NOC');
 //
 // w
 //
-define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the Avatar direcory isn\'t writable');
-define('_AVATAR_WARN_FORUMDIR',                      'Warning: the Forum direcory isn\'t writable (This is fine when PNphpBB2 isn\'t installed)');
+define('_AVATAR_WARN_AVARTARDIR',                    'Warning: the webserver cannot write to the avatar direcory');
+define('_AVATAR_WARN_FORUMDIR',                      'Warning: the webserver cannot write to the forums avatar direcory (this is fine when PNphpBB2 isn\'t installed)');

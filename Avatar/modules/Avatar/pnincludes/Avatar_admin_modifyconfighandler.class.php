@@ -20,9 +20,9 @@ class Avatar_admin_modifyconfighandler
         $pnRender->caching = false;
         $pnRender->add_core_data();
 
-        $pnRender->assign('warn_avatardir',     !is_writable(pnModGetVar('Avatar', 'avatardir')));
-        $pnRender->assign('pnphpbb_installed',   pnModAvailable('pnphpbb'));
-        $pnRender->assign('warn_forumdir',      !is_writable(pnModGetVar('Avatar', 'forumdir')));
+        $pnRender->assign('avatardir_writable', is_writable(pnModGetVar('Avatar', 'avatardir')));
+        $pnRender->assign('pnphpbb_installed',  pnModAvailable('pnphpbb'));
+        $pnRender->assign('forumdir_writable',  is_writable(pnModGetVar('Avatar', 'forumdir')));
 
         return true;
     }
@@ -71,11 +71,9 @@ class Avatar_admin_modifyconfighandler
             }
 
             pnModSetVar('Avatar', 'avatardir',          $data['avatardir']);
-/*
-            if(array_key_exist('forumdir', $data)) {
-                pnModSetVar('Avatar', 'forumdir',           $data['forumdir']);
+            if(array_key_exists('forumdir', $data)) {
+                pnModSetVar('Avatar', 'forumdir',       $data['forumdir']);
             }
-*/
             pnModSetVar('Avatar', 'allow_resize',       $data['allow_resize']);
             pnModSetVar('Avatar', 'maxsize',            $data['maxsize']);
             pnModSetVar('Avatar', 'maxheight',          $data['maxheight']);
