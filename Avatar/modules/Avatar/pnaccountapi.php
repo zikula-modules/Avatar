@@ -20,14 +20,16 @@
  */
 function Avatar_accountapi_getall($args)
 {
-    pnModLangLoad('Avatar', 'user');
-    // Create an array of links to return
-    $items = array(array('url'     => pnModURL('Avatar', 'user', 'main'),
+    $items = array();
+    if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
+        pnModLangLoad('Avatar', 'user');
+        // Create an array of links to return
+        $items[] = array('url'     => pnModURL('Avatar', 'user', 'main'),
                          'module'  => 'Avatar',
                          'set'     => '',
                          'title'   => _AVATAR_TITLE,
-                         'icon'    => 'admin.gif'));
-
+                         'icon'    => 'admin.gif');
+    }
     // Return the items
     return $items;
 }
