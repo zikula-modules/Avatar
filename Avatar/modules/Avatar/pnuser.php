@@ -24,12 +24,12 @@ function Avatar_user_main()
 { 
     // only logged-ins might see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, 'index.php');
+        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnConfigGetVar('entrypoint', 'index.php'));
     } 
     
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     // is the user allowed to upload an Avatar?
@@ -59,11 +59,11 @@ function Avatar_user_upload ($args)
 
     // permission check
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     if (!SecurityUtil::confirmAuthKey()) {
-        return LogUtil::registerAuthidError('index.php');
+        return LogUtil::registerAuthidError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     // get the file
@@ -217,7 +217,7 @@ function Avatar_user_SetAvatar($args)
     
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST'); 

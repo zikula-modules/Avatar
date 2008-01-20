@@ -32,7 +32,7 @@ class Avatar_admin_modifyconfighandler
     {
         // Security check
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError('index.php');
+            return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
         }  
         if ($args['commandName'] == 'submit') {
             if (!$pnRender->pnFormIsValid()) {

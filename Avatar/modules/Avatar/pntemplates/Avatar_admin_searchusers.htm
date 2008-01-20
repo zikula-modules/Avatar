@@ -17,7 +17,7 @@
                                {paramName: 'fragment',
                                 minChars: 3,
                                 afterUpdateElement: function(data){
-                                    Event.observe('listuser', 'click', function() { window.location.href="index.php?module=Avatar"+"&"+"type=admin"+"&"+"func=searchusers"+"&"+"username=" + $($(data).id).value;}, false);
+                                    Event.observe('listuser', 'click', function() { window.location.href= document.location.entrypoint + "?module=Avatar"+"&"+"type=admin"+"&"+"func=searchusers"+"&"+"username=" + $($(data).id).value;}, false);
                                     }
                                 }
                                 );

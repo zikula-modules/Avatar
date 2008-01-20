@@ -29,7 +29,7 @@
 function Avatar_admin_main()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     $pnRender = pnRender::getInstance('Avatar');
@@ -46,7 +46,7 @@ function Avatar_admin_main()
 function Avatar_admin_maintain()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     $username = FormUtil::getPassedValue('username', '', 'GETPOST');
@@ -77,7 +77,7 @@ function Avatar_admin_maintain()
 function Avatar_admin_searchusers()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     $username = FormUtil::getPassedValue('username', '', 'GETPOST');
@@ -107,10 +107,10 @@ function Avatar_admin_searchusers()
  * @param $args
  * @return 
  **/
-function Avatar_admin_setAvatar($args)
+function Avatar_admin_setAvatar()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
     
     $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST'); 
@@ -132,7 +132,7 @@ function Avatar_admin_setAvatar($args)
 function Avatar_admin_modifyconfig()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     Loader::requireOnce('modules/Avatar/pnincludes/Avatar_admin_modifyconfighandler.class.php');
@@ -152,7 +152,7 @@ function Avatar_admin_modifyconfig()
 function Avatar_admin_listusers($args)
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     $uavatar = FormUtil::getPassedValue('avatar', '', 'GET');
@@ -182,7 +182,7 @@ function Avatar_admin_listusers($args)
 function Avatar_admin_updateusers($args)
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     $newavatar   = FormUtil::getPassedValue('avatar', '', 'POST');
@@ -205,7 +205,7 @@ function Avatar_admin_updateusers($args)
 function Avatar_admin_delete()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError('index.php');
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     $avatar   = FormUtil::getPassedValue('avatar', '', 'GETPOST');
@@ -234,6 +234,6 @@ function Avatar_admin_delete()
         return $pnRender->fetch('Avatar_admin_delete.htm');
     }
     // we should never get here
-    return pnRedirect('index.php');
+    return pnRedirect(pnConfigGetVar('entrypoint', 'index.php'));
     
 }
