@@ -21,7 +21,7 @@ define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische Verkleinerung des Av
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Verzeichnis (PostNuke)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Standard: images/avatar <strong>ohne / am Ende des Pfades!</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         'Eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstützt werden: gif, jpg, png, wbm');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         '(eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstützt werden: gif, jpg, png, wbm. Bei Verwendung von mind. PHP 5 muss \'jpeg\' anstelle von \'jpg\' verwendet werden.)');
 define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)');
 define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
 define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
