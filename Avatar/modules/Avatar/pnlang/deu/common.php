@@ -72,10 +72,10 @@ define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar
 //
 // M
 //
-define('_AVATAR_MAINTAINAVATARS',             'Avatars verwalten');
+define('_AVATAR_MAINTAINAVATARS',             'Avatare verwalten');
 define('_AVATAR_MAXDIMENSIONS',               'Maximale Avatargröße');
 define('_AVATAR_MAXHEIGHT',                   'Maximale Höhe in Pixel');
-define('_AVATAR_MAXSIZE',                     'Maximal Dateigröße des Avatars');
+define('_AVATAR_MAXSIZE',                     'Maximal Dateigröße des Avatare');
 define('_AVATAR_MAXWIDTH',                    'Maximale Breite in Pixel');
 define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
 
@@ -108,7 +108,7 @@ define('_AVATAR_SELECTYOURAVATAR',            'Bitte einen Avatar durch Anklicke
 //
 // T
 //
-define('_AVATAR_TITLE',                       'Avatar-Bild Einstellungen');
+define('_AVATAR_TITLE',                       'Avatar-Bild');
 
 //
 // U
@@ -116,7 +116,7 @@ define('_AVATAR_TITLE',                       'Avatar-Bild Einstellungen');
 define('_AVATAR_UPLOADFILE',                  'Datei hochladen');
 define('_AVATAR_UPLOAD_BUTTON',               'Hochladen');
 define('_AVATAR_USERLISTPERAVATAR',           'Benutzer die diesen Avatar verwenden');
-define('_AVATAR_USER_CHOOSE',                 'Wenn ein eigenes Avatar bereits vorhanden ist, muss kein weiteres hochgeladen werden.');
+define('_AVATAR_USER_CHOOSE',                 'Es ist nicht notwendig ein neues Bild hochzuladen, wenn bereits ein eigenes Avatar vorhanden ist.');
 
 //
 // V

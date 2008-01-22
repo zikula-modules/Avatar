@@ -12,43 +12,39 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-#avatar-admin {
-
-}
-
-#avatar-admin .footer {
+#avatar .footer {
     font-size: 0.8em;
     text-align: center;
     margin-top: 1em;
 }
 
-#avatar-admin .headerlink {
+#avatar .headerlink {
     width: 33%;
     float: left;
     text-align: center;
 }
 
-#avatar-admin .error {
+#avatar .error {
     color: red;
 }
 
-#avatar-admin .delete {
+#avatar .delete {
     text-align: center;
 }
 
-#avatar-admin fieldset {
+#avatar fieldset {
     margin: 1em 0;
 }
 
-#avatar-admin fieldset legend {
+#avatar fieldset legend {
     font-weight: bold;
 }
 
-#avatar-admin dl {
+#avatar dl {
     float: left;
 }
     
-#avatar-admin dl dt {
+#avatar dl dt {
     clear: both;
     margin: 3px;
     float: left; 
@@ -56,10 +52,36 @@
     width: 300px;
 }
 
-#avatar-admin dl dd {
+#avatar dl dd {
     margin: 3px 0;
     float: left;
 }
+
+#avatar .avatarbox {
+  float: left; 
+  margin: 5px; 
+  text-align: center;
+  background:#FFFEFA;  
+}
+#avatar .avatarpic {
+  display: block; 
+  border: 1px solid #ccc; 
+  background: #eee;
+}
+#avatar .avatarchoosen {
+  display: block; 
+  border: 1px solid #ccc; 
+  background:#FFFEFA;
+  padding: 5px; 
+}
+
+#avatar .avatarupload {
+  background:#FFFEFA;
+  border:1px solid #DBD5C5;
+  margin:5px;
+  padding:5px;
+}
+
 
 /*
  * clearfix solution
@@ -111,19 +133,3 @@ div.autocomplete_user ul li {
     margin: 1em 0 1em 0;
 }
 
-.avatarbox {
-  float: left; 
-  margin: 5px; 
-  text-align: center;
-}
-.avatarpic {
-  display: block; 
-  border: 1px solid #ccc; 
-  background: #eee;
-}
-.avatarchoosen {
-  display: block; 
-  border: 1px solid #ccc; 
-  background: #eee;
-  padding: 5px; 
-}

@@ -3,11 +3,11 @@
 
 <div class="pn-admincontainer">
 <h2><!--[ pnml name="_AVATAR_MAINTAINAVATARS" ]--></h2>
-<div id="avatar-admin">
+<div id="avatar">
 
 <!--[foreach from=$avatars item="avatar"]-->
 <div class="avatarbox">
-<strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:#eee url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+<strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
     <!--[$avatar|pnvarprepfordisplay]-->
     <br />
     <a href="<!--[ pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|pnvarprepfordisplay ]-->"  title="<!--[ pnml name="_AVATAR_LISTUSERS" ]-->"><!--[pnicon type="view" size="extrasmall" altml="_VIEW"]--></a>

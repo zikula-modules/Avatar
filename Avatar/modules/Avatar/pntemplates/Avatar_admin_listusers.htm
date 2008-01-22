@@ -1,7 +1,7 @@
 <!--[include file="Avatar_admin_menu.htm"]-->
 
 <div class="pn-admincontainer">
-<div id="avatar-admin">
+<div id="avatar">
 
 <h2><!--[ pnml name="_AVATAR_CURRENTAVATAR" ]--></h2>
 <h1><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></h1>
@@ -23,7 +23,7 @@
   <!--[foreach from=$avatars item="avatar"]-->
   <div class="avatarbox">
       <button style="cursor: pointer;" type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->">
-      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:#eee url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
       <!--[$avatar|pnvarprepfordisplay]-->
       </button>
   </div>
