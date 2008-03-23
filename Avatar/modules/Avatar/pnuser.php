@@ -22,7 +22,7 @@
  */
 function Avatar_user_main()
 { 
-    // only logged-ins might see the overview.
+    // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
         return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnConfigGetVar('entrypoint', 'index.php'));
     } 
@@ -190,7 +190,7 @@ function Avatar_user_upload ($args)
     } 
     unlink($tmp_file);
 
-    if (!pnModAPIFunc('Avatar', 'user', 'SetAvatar',
+    if (!pnModAPIFunc('Avatar', 'user', 'setavatar',
                       array('uid'    => $uid,
                             'avatar' => $avatarfilename))) {
         return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
@@ -208,9 +208,9 @@ function Avatar_user_upload ($args)
  * @param $args
  * @return 
  **/
-function Avatar_user_SetAvatar($args)
+function Avatar_user_setavatar($args)
 {
-    // only logged-ins might see the overview.
+    // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
         return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnModURL('Avatar'));
     } 

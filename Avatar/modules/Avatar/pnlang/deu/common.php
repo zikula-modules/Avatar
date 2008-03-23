@@ -102,6 +102,7 @@ define('_AVATAR_SEARCHUSERS',                 'Benutzer suchen');
 define('_AVATAR_SELECTAVATAR',                'Avatar auswählen');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgendem Avatar versehen');
 define('_AVATAR_SELECTAVATAR_LINK',           'Individuellen Avatar auswählen');
+define('_AVATAR_SELECTEDAVATAR',              'Ausgewählter Avatar');
 define('_AVATAR_SELECTNEWAVATAR',             'Neuen Avatar auswählen');
 define('_AVATAR_SELECTYOURAVATAR',            'Bitte einen Avatar durch Anklicken auswählen');
 

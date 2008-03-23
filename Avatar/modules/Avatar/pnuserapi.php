@@ -23,27 +23,25 @@
  **/
 function Avatar_userapi_getAvatars($args)
 {
-    if (isset($args['uid'])) {
-        $uid = $args['uid'];
-    } else {
-        // no user ID is passed, so assume the current user
-        $uid = pnUserGetVar('uid');
-    }
- 
+    $uid = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
     $avatardir = pnModGetVar('Avatar', 'avatardir');
    
     Loader::loadClass('FileUtil');
     $allavatars = FileUtil::getFiles($avatardir, true, true, null, false);
     $avatars = array();
     foreach ($allavatars as $avatar) {
-        $parts = explode($avatar, '_');
+        // imagename is like pers_XXXX.gif (with XXXX = user id) 
+        $parts = explode('_', $avatar);
         if(is_array($parts)) {
+            // with pers_XXX.gif, [0] is now pers, [1] is now XXXX.gif
             if(!isset($parts[1])) {
-                // normal aatar, so it's OK
+                // normal avatar, so it's OK
                 $avatars[] = $avatar;
             } else {
+                $userparts = explode('.', $parts[1]);
+                // [0] is now the user id, [1] is the file extension
                 // check for permission
-                if(SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $parts[1] . ':', ACCESS_READ) || $parts[1] == $uid) {
+                if(SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $userparts[0] . ':', ACCESS_READ) || $userparts[0] == $uid) {
                     $avatars[] = $avatar;
                 }
             }

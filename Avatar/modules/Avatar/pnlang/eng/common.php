@@ -102,6 +102,7 @@ define('_AVATAR_SEARCHUSERS',         'Search user');
 define('_AVATAR_SELECTAVATAR',       'Select avatar');
 define('_AVATAR_SELECTAVATARFORUSERS',        'Choose the avatar to update all selected users');
 define('_AVATAR_SELECTAVATAR_LINK',  'Change Avatar');
+define('_AVATAR_SELECTEDAVATAR',       'Selected avatar');
 define('_AVATAR_SELECTNEWAVATAR',             'Select new avatar');
 define('_AVATAR_SELECTYOURAVATAR',   'Choose your prefered avatar');
 

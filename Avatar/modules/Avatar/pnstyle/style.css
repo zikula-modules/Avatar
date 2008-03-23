@@ -12,6 +12,15 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+.avataricon {
+    display: block;
+    float: right;
+}
+
+#avatar {
+    padding: 1.5em
+}
+
 #avatar .footer {
     font-size: 0.8em;
     text-align: center;
@@ -40,6 +49,12 @@
     font-weight: bold;
 }
 
+#avatar ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
 #avatar dl {
     float: left;
 }
@@ -63,11 +78,17 @@
   text-align: center;
   background:#FFFEFA;  
 }
+
+#avatar .avatarbox button {
+    cursor: pointer;
+}
+
 #avatar .avatarpic {
   display: block; 
   border: 1px solid #ccc; 
   background: #eee;
 }
+
 #avatar .avatarchoosen {
   display: block; 
   border: 1px solid #ccc; 

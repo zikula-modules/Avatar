@@ -30,7 +30,7 @@ function Avatar_init()
     pnModSetVar('Avatar', 'maxsize',            '12000');
     pnModSetVar('Avatar', 'maxheight',          '80');
     pnModSetVar('Avatar', 'maxwidth',           '80');
-    pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;png');
+    pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;jpeg;png');
     pnModSetVar('Avatar', 'allow_multiple',     true);
     return true;
 } 
@@ -56,6 +56,15 @@ function Avatar_upgrade($oldversion)
             pnModDelVar('Avatar', 'prefix_prefix_3');
 
             pnModSetVar('Avatar', 'allow_multiple',   true);
+            
+            // for PHP5: if jpg is allowed, also allow jpeg if needed
+            // this is needed because image_type_to_extension() always returns 'jpeg' in case
+            // of jpg images in PHP5
+            $exts = explode(';', pnModGetVar('Avatar', 'allowed_extensions'));
+            if (is_array($exts) && in_array('jpg', $exts) && !in_array('jpeg', $exts)) {
+                $exts[] = 'jpeg';
+                pnModSetVar('Avatar', 'allowed_extensions', implode(';', $exts));
+            }
     }
     // clear all compiled templates
     pnModAPIFunc('pnRender', 'user', 'clear_compiled');
