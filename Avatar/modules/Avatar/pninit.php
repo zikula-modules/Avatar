@@ -13,8 +13,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Loader::loadClass('StringUtil');
- 
 /**
  * Avatar_init()
  * 
@@ -66,8 +64,10 @@ function Avatar_upgrade($oldversion)
                 pnModSetVar('Avatar', 'allowed_extensions', implode(';', $exts));
             }
     }
-    // clear all compiled templates
-    pnModAPIFunc('pnRender', 'user', 'clear_compiled');
+    if (!defined('_PNINSTALLVER')) {
+        // clear all compiled templates
+        pnModAPIFunc('pnRender', 'user', 'clear_compiled');
+    }
     return true;
 } 
 

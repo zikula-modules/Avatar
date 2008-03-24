@@ -38,37 +38,8 @@ class Avatar_admin_modifyconfighandler
             if (!$pnRender->pnFormIsValid()) {
                 return false;
             }
-            $ok = true;
+
             $data = $pnRender->pnFormGetValues();
-            if(empty($data['avatardir']) || !is_writable($data['avatardir'])) {
-                $ifield = & $pnRender->pnFormGetPluginById('avatardir');
-                $ifield->setError(DataUtil::formatForDisplay(_AVATAR_WARN_AVARTARDIR));
-                $ok = false;
-            }
-            if(pnModAvailable('pnphpbb') && (empty($data['forumdir']) || !is_writable($data['forumdir']))) {
-                $ifield = & $pnRender->pnFormGetPluginById('forumdir');
-                $ifield->setError(DataUtil::formatForDisplay(_AVATAR_WARN_FORUMDIR));
-                $ok  = false;
-            }
-            
-            $data['maxsize']   = (int)$data['maxsize'];
-            if(empty($data['maxsize']) || $data['maxsize'] < 0) {
-                $data['maxsize'] = 12000;
-            }
-            
-            $data['maxheight'] = (int)$data['maxheight']; 
-            if(empty($data['maxheight']) || $data['maxsize'] < 0) {
-                $data['maxheight'] = 80;
-            }
-            
-            $data['maxwidth']  = (int)$data['maxwidth'];  
-            if(empty($data['maxwidth']) || $data['maxwidth'] < 0) {
-                $data['maxwidth'] = 80;
-            }
-             
-            if($ok == false) {
-                return false;
-            }
 
             pnModSetVar('Avatar', 'avatardir',          $data['avatardir']);
             if(array_key_exists('forumdir', $data)) {

@@ -77,6 +77,7 @@ define('_AVATAR_MAXDIMENSIONS',               'Maximale Avatargröße');
 define('_AVATAR_MAXHEIGHT',                   'Maximale Höhe in Pixel');
 define('_AVATAR_MAXSIZE',                     'Maximal Dateigröße des Avatare');
 define('_AVATAR_MAXWIDTH',                    'Maximale Breite in Pixel');
+define('_AVATAR_MISSINGPATH',                 'Verzeichnisangabe fehlt');
 define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
 
 //
@@ -88,6 +89,8 @@ define('_AVATAR_NOAVATARSELECTED',            'kein Avatar ausgewählt');
 //
 // P
 //
+define('_AVATAR_PATHDOESNOTEXIST',            'Das Verzeichnis %path% existiert nicht oder ist nicht lesbar.');
+define('_AVATAR_PATHISNOTWRITABLE',           'Der Webserver kann nicht in das Verzeichnis %path% schreiben.');
 define('_AVATAR_PIXEL',                       'Pixel');
 
 //

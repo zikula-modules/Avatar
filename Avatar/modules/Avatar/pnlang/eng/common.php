@@ -77,6 +77,7 @@ define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size');
 define('_AVATAR_MAXHEIGHT',          'Maximal height');
 define('_AVATAR_MAXSIZE',            'Avatar max dimensions');
 define('_AVATAR_MAXWIDTH',           'Maximal Width');
+define('_AVATAR_MISSINGPATH',                 'missing path');
 define('_AVATAR_MODIFYCONFIG',                'Modify configuration');
 
 //
@@ -88,6 +89,8 @@ define('_AVATAR_NOAVATARSELECTED',            'no avatar selected');
 //
 // P
 //
+define('_AVATAR_PATHDOESNOTEXIST',   'The path %path% does not exist or is not readable by the webserver.');
+define('_AVATAR_PATHISNOTWRITABLE',  'The webserver cannot write to %path%.');
 define('_AVATAR_PIXEL',              'pixels');
 
 //
