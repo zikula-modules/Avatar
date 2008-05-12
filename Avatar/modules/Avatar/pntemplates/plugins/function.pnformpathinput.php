@@ -48,14 +48,13 @@ class pnFormPathInput extends pnFormTextInput
         $this->removeSlash = array_key_exists('removeSlash', $params) ? true : false;
         $params['width'] = '6em';
         parent::create($render, $params);
-
-        if (!is_dir($this->text) || !is_readable($this->text)) {
-            $this->setError(pnML('_AVATAR_PATHDOESNOTEXIST', array('path' => $this->text)));
-        } elseif ($this->writable == true && !is_writable($this->text)) {
-            $this->setError(pnML('_AVATAR_PATHISNOTWRITABLE', array('path' => $this->text)));
-        }
     }
 
+    function load(&$render, &$params)
+    {
+        parent::load($render, $params);
+        $this->validate();
+    }
 
     function validate(&$render)
     {
