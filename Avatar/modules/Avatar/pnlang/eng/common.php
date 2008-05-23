@@ -73,10 +73,10 @@ define('_AVATAR_LISTUSERS',                   'list the users that use this avat
 // M
 //
 define('_AVATAR_MAINTAINAVATARS',             'Maintain Avatars');
-define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar size');
+define('_AVATAR_MAXDIMENSIONS',      'Maximal avatar dimensions');
 define('_AVATAR_MAXHEIGHT',          'Maximal height');
-define('_AVATAR_MAXSIZE',            'Avatar max dimensions');
-define('_AVATAR_MAXWIDTH',           'Maximal Width');
+define('_AVATAR_MAXSIZE',            'Avatar max. file size');
+define('_AVATAR_MAXWIDTH',           'Maximal width');
 define('_AVATAR_MISSINGPATH',                 'missing path');
 define('_AVATAR_MODIFYCONFIG',                'Modify configuration');
 
