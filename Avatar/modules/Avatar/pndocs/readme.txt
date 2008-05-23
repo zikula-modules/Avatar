@@ -55,6 +55,13 @@ All flavours of permissions apply, eg.
 
 ForumMods | Avatar:: | pers:(123,234,345): | ACCESS_COMMENT
 
+Depending on your permission rules it is possible that all users already have
+the generic permission to use all avatars. You can turn this off with
+
+Users | Avatar:: | pers:.*: | ACCESS_NONE
+
+at the correct place in your permission list. This ensaures that the user
+can use his avatar image only.
 
 5. Plans for the future
 -----------------------
