@@ -31,24 +31,13 @@ function Avatar_userapi_getAvatars($args)
     $avatars = array();
     foreach ($allavatars as $avatar) {
         // imagename is like pers_XXXX.gif (with XXXX = user id) 
-        $parts = explode('_', $avatar);
-        if(is_array($parts)) {
-            // with pers_XXX.gif, [0] is now pers, [1] is now XXXX.gif
-            if(!isset($parts[1])) {
-                // normal avatar, so it's OK
-                $avatars[] = $avatar;
-            } else {
-                $userparts = explode('.', $parts[1]);
-                // [0] is now the user id, [1] is the file extension
-                // check for permission
-                if(SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $userparts[0] . ':', ACCESS_READ) || $userparts[0] == $uid) {
-                    $avatars[] = $avatar;
-                }
-            }
+        if (pnModAPIFunc('Avatar', 'user', 'checkAvatar',
+                         array('avatar' => $avatar,
+                               'uid'    => $uid)) == true) {
+            $avatars[] = $avatar;
         }
     }
     asort($avatars);
-    
     return $avatars;
 }
 
@@ -91,21 +80,25 @@ function Avatar_userapi_setAvatar($args)
 /**
  * check if a user is allowed to use a avatar
  *
+ *@params string   $args['avatar'] the avatar filename
+ *@params int      $args['uid']    the userid of the current user
+ *
  */
 function Avatar_userapi_checkAvatar($args)
 {
     // check if the avatar is allowed for the user
     $avatar_ok = false;
-    $parts = explode($args['avatar'], '_');
+    $parts = explode('_', $args['avatar']);
     if(is_array($parts)) {
+        // with pers_XXX.gif, [0] is now pers, [1] is now XXXX.gif
         if(!isset($parts[1])) {
             // normal avatar, so it's OK
             $avatar_ok = true;
         } else {
+            $userparts = explode('.', $parts[1]);
+            // [0] is now the user id, [1] is the file extension
             // check for permission
-            if(SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $parts[1] . ':', ACCESS_READ, $args['uid']) || $parts[1] == $args['uid']) {
-                $avatar_ok = true;
-            }
+            $avatar_ok = (SecurityUtil::checkPermission('Avatar::', $parts[0] . ':' . $userparts[0] . ':', ACCESS_READ) || $userparts[0] == $args['uid']);
         }
     }
     return $avatar_ok;
