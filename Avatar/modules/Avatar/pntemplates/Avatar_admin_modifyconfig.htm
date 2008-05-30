@@ -9,11 +9,13 @@
         <legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
         <dl class="avatarclearfix">
             <dt><!--[ pnformlabel for="avatardir" text='_AVATAR_ADM_AVATARDIR' html=1 ]--></dt>
-            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]--> <!--[if $avatardir_writable eq false]--><span class="error"><!--[ pnml name="_AVATAR_WARN_AVARTARDIR"]--></span><!--[/if]--></dd>
+            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]-->
+            <!--[if $avatardir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_AVARTARDIR"]--></span><!--[/if]--></dd>
             
             <!--[ if $pnphpbb_installed eq true ]-->
             <dt><!--[ pnformlabel for="forumdir" text='_AVATAR_ADM_FORUMDIR' html=1 ]--></dt>
-            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]-->  <!--[if $avatardir_writable eq false]--><span class="error"><!--[ pnml name="_AVATAR_WARN_FORUMDIR"]--></span><!--[/if]--></dd>
+            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]-->  
+            <!--[if $forumdir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_FORUMDIR"]--></span><!--[/if]--></dd>
             <!--[ /if ]-->
             
             <dt><!--[ pnformlabel for="allow_resize" text='_AVATAR_ADM_ALLOWRESIZE' ]--></dt>
