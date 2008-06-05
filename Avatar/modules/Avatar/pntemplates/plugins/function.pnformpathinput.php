@@ -2,12 +2,12 @@
 /**
  * Path input plugin
  *
- * @copyright (c) 2006, PostNuke Development Team
- * @link http://www.postnuke.com
+ * @copyright (c) 2006, Zikula Development Team
+ * @link http://www.zikula.org
  * @version $Id: function.pnformintinput.php 22138 2007-06-01 10:19:14Z markwest $
  * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
  * @author Frank Schummertz, Jorn Wildt
- * @package PostNuke_Template_Plugins
+ * @package Zikula_Template_Plugins
  * @subpackage Functions
  */
 

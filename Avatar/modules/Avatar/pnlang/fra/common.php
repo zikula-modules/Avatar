@@ -16,7 +16,7 @@
 //
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Permettre plusieurs avatars');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Auto-redimensionner l\'avatar');
-define('_AVATAR_ADM_AVATARDIR',               'Répertoire des avatars (PostNuke)');
+define('_AVATAR_ADM_AVATARDIR',               'Répertoire des avatars (Zikula)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Par défaut: images/avatar <strong>sans le dernier /</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Extensions acceptées :');
 define('_AVATAR_ADM_EXTENSIONS_HINT',         'Un point virgule sépare les extensions acceptées, les formats supportés sont gif, jpg, png, wbm');

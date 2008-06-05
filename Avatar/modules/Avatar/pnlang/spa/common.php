@@ -23,7 +23,7 @@
 //
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Permitir multiples avatars');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Redimensionar el avatar automáticamente');
-define('_AVATAR_ADM_AVATARDIR',               'Carpeta de Avatar (PostNuke)');
+define('_AVATAR_ADM_AVATARDIR',               'Carpeta de Avatar (Zikula)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Por defecto: images/avatar <strong>sin barra final</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Extensiones permitidas');
 define('_AVATAR_ADM_EXTENSIONS_HINT',         '(una lista separada por punto y coma de las extensiones permitidas. Tipos soportados: gif, jpg, jpeg, png, wbm. Al usar PHP 5 o mayor tienes que permitir \'jpeg\' en vez de \'jpg\')');

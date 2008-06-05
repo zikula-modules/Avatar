@@ -23,7 +23,7 @@ $modversion['changelog']      = 'pndocs/changelog.txt';
 $modversion['license']        = 'pndocs/license.txt';
 $modversion['official']       = 0;
 $modversion['author']         = 'Joerg Napp, Frank Schummertz, Carsten Volmer';
-$modversion['contact']        = 'http://trac.postnuke.com/projects/avatar/';
+$modversion['contact']        = 'http://trac.zikula.org/projects/avatar/';
 $modversion['admin']          = 1;
 $modversion['user']           = 1;
 $modversion['securityschema'] = array('Avatar::' => '::',

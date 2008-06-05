@@ -16,7 +16,7 @@
 
 0. What is this?
 ----------------
-Avatar 2.0 is a PostNuke .8 module that allows users to define and upload 
+Avatar 2.0 is a Zikula 1.0 module that allows users to define and upload 
 their avatar. The images can be limited to a certain filesize and/or 
 dimension. As an option it resizes uploaded images to the maximum width and
 height you defined.

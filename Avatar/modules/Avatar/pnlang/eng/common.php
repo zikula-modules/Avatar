@@ -18,7 +18,7 @@
 //
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Allow multiple avatars');
 define('_AVATAR_ADM_ALLOWRESIZE',             'Resize the avatar automatically');
-define('_AVATAR_ADM_AVATARDIR',               'Avatar Directory (PostNuke)');
+define('_AVATAR_ADM_AVATARDIR',               'Avatar Directory (Zikula)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Default: images/avatar <strong>without trailing /</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Allowed extensions');
 define('_AVATAR_ADM_EXTENSIONS_HINT',         '(a semicolon separated list of allowed file extensions, supported filetypes: gif, jpg, jpeg, png, wbm. When using PHP 5 or later you have to allow \'jpeg\' instead of \'jpg\')');
