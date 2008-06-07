@@ -12,4 +12,4 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-define('_AVATAR_DESCRIPTION', 'Chargement d\'avatars personnalisés);
+define('_AVATAR_DESCRIPTION', 'Chargement d\'avatars personnalisés'); 
