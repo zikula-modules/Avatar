@@ -11,7 +11,7 @@
     <div id="username_choices" class="autocomplete_user"></div>
     <script type="text/javascript">
         Element.removeClassName('liveusersearch', 'pn-hide');
-        new Ajax.Autocompleter("username", "username_choices", "ajax.php?module=Users"+"&"+"func=getusers",
+        new Ajax.Autocompleter("username", "username_choices", document.location.pnbaseURL + "ajax.php?module=Users"+"&"+"func=getusers",
                                {paramName: 'fragment',
                                 minChars: 3,
                                 afterUpdateElement: function(data){
