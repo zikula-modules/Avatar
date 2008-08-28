@@ -4,43 +4,43 @@
 
 <!--[ pnform ]-->
 <div class="avatarfloatbox">
-    <!--[ pnformvalidationsummary ]-->
-    <fieldset>
-        <legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
-        <dl class="avatarclearfix">
-            <dt><!--[ pnformlabel for="avatardir" text='_AVATAR_ADM_AVATARDIR' html=1 ]--></dt>
-            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]-->
-            <!--[if $avatardir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_AVARTARDIR"]--></span><!--[/if]--></dd>
-            
-            <!--[ if $pnphpbb_installed eq true ]-->
-            <dt><!--[ pnformlabel for="forumdir" text='_AVATAR_ADM_FORUMDIR' html=1 ]--></dt>
-            <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]-->  
-            <!--[if $forumdir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_FORUMDIR"]--></span><!--[/if]--></dd>
-            <!--[ /if ]-->
-            
-            <dt><!--[ pnformlabel for="allow_resize" text='_AVATAR_ADM_ALLOWRESIZE' ]--></dt>
-            <dd><!--[ pnformcheckbox id="allow_resize" checked=$pncore.Avatar.allow_resize ]--></dd>
-            
-            <dt><!--[ pnformlabel for="maxsize" text='_AVATAR_ADM_MAXSIZE' html=1 ]--></dt>
-            <dd><!--[ pnformintinput minValue="0" maxValue="100000" size="10" maxLength="10" id="maxsize" text=$pncore.Avatar.maxsize ]--></dd>
-            
-            <dt><!--[ pnformlabel for="maxheight" text='_AVATAR_ADM_MAXHEIGHT' html=1 ]--></dt>
-            <dd><!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxheight" text=$pncore.Avatar.maxheight ]--></dd>
-            
-            <dt><!--[ pnformlabel for="maxwidth" text='_AVATAR_ADM_MAXWIDTH' html=1 ]--></dt>
-            <dd><!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxwidth" text=$pncore.Avatar.maxwidth ]--></dd>
-            
-            <dt><!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]--> <!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></dt>
-            <dd><!--[ pnformtextinput size="25" maxLength="40" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]--></dd>
-            
-            <dt><!--[ pnformlabel for="allow_multiple" text='_AVATAR_ADM_ALLOWMULTIPLEAVATARS' ]--></dt>
-            <dd><!--[ pnformcheckbox id="allow_multiple" checked=$pncore.Avatar.allow_multiple ]--> <!--[ pnml name="_AVATAR_ADM_MULTIPLE_HINT" ]--></dd>
-        </dl>
-    </fieldset>
-    <p>
-      <!--[pnformbutton id="submit" commandName="submit" text="_SUBMIT"]-->
-    </p>
-</div>
-<!--[ /pnform ]-->
+  <!--[ pnformvalidationsummary ]-->
+  <fieldset>
+    <legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
+    <dl class="pn-clearfix">
+      <dt><!--[ pnformlabel for="avatardir" text='_AVATAR_ADM_AVATARDIR' html=1 ]--></dt>
+      <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]-->
+      <!--[if $avatardir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_AVARTARDIR"]--></span><!--[/if]--></dd>
 
-<!--[ include file="Avatar_admin_footer.htm" ]-->
+        <!--[ if $pnphpbb_installed eq true ]-->
+        <dt><!--[ pnformlabel for="forumdir" text='_AVATAR_ADM_FORUMDIR' html=1 ]--></dt>
+        <dd><!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]-->
+        <!--[if $forumdir_writable eq false]--><br /><span class="error"><!--[ pnml name="_AVATAR_WARN_FORUMDIR"]--></span><!--[/if]--></dd>
+          <!--[ /if ]-->
+
+          <dt><!--[ pnformlabel for="allow_resize" text='_AVATAR_ADM_ALLOWRESIZE' ]--></dt>
+          <dd><!--[ pnformcheckbox id="allow_resize" checked=$pncore.Avatar.allow_resize ]--></dd>
+
+          <dt><!--[ pnformlabel for="maxsize" text='_AVATAR_ADM_MAXSIZE' html=1 ]--></dt>
+          <dd><!--[ pnformintinput minValue="0" maxValue="100000" size="10" maxLength="10" id="maxsize" text=$pncore.Avatar.maxsize ]--></dd>
+
+          <dt><!--[ pnformlabel for="maxheight" text='_AVATAR_ADM_MAXHEIGHT' html=1 ]--></dt>
+          <dd><!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxheight" text=$pncore.Avatar.maxheight ]--></dd>
+
+          <dt><!--[ pnformlabel for="maxwidth" text='_AVATAR_ADM_MAXWIDTH' html=1 ]--></dt>
+          <dd><!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxwidth" text=$pncore.Avatar.maxwidth ]--></dd>
+
+          <dt><!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]--> <!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></dt>
+          <dd><!--[ pnformtextinput size="25" maxLength="40" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]--></dd>
+
+          <dt><!--[ pnformlabel for="allow_multiple" text='_AVATAR_ADM_ALLOWMULTIPLEAVATARS' ]--></dt>
+          <dd><!--[ pnformcheckbox id="allow_multiple" checked=$pncore.Avatar.allow_multiple ]--> <!--[ pnml name="_AVATAR_ADM_MULTIPLE_HINT" ]--></dd>
+        </dl>
+      </fieldset>
+      <p>
+        <!--[pnformbutton id="submit" commandName="submit" text="_SUBMIT"]-->
+      </p>
+    </div>
+    <!--[ /pnform ]-->
+
+    <!--[ include file="Avatar_admin_footer.htm" ]-->

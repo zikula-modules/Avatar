@@ -4,30 +4,28 @@
 <p><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></p>
 <h3><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]--></h3>
 
-
 <form action="<!--[ pnmodurl modname="Avatar" type="admin" func="updateusers" ]-->" method="post">
-<div>
-<ul>
-<!--[ foreach item=user from=$users key=uid ]-->
-    <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
-<!--[ foreachelse ]-->
-    <li><!--[ pnml name="_AVATAR_NOUSERFORTHISAVATAR" ]--></li>
-<!--[ /foreach ]-->
-</ul>
+  <div class="pn-clearfix">
+    <ul>
+      <!--[ foreach item=user from=$users key=uid ]-->
+      <li><input type="checkbox" name="updateusers[]" value="<!--[ $uid ]-->" />&nbsp;<a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$user|pnvarprepfordisplay ]-->"><!--[ $user|pnvarprepfordisplay ]--></a>&nbsp;<a href="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$user|pnvarprepfordisplay ]-->"><!--[ pnicon type="edit" size="extrasmall" altml="_AVATAR_SELECTNEWAVATAR" ]--></a></li>
+      <!--[ foreachelse ]-->
+      <li><!--[ pnml name="_AVATAR_NOUSERFORTHISAVATAR" ]--></li>
+      <!--[ /foreach ]-->
+    </ul>
 
-<!--[ if $users ]-->
-  <h2><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h2>
-  <!--[foreach from=$avatars item="avatar"]-->
-  <div class="avatarbox">
+    <!--[ if $users ]-->
+    <h2><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h2>
+    <!--[foreach from=$avatars item="avatar"]-->
+    <div class="avatarbox">
       <button type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->">
-      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
-      <!--[$avatar|pnvarprepfordisplay]-->
+        <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+        <!--[$avatar|pnvarprepfordisplay]-->
       </button>
+    </div>
+    <!--[/foreach]-->
+    <!--[ /if ]-->
   </div>
-  <!--[/foreach]-->
-<!--[ /if ]-->
-<br style="clear: both;" />
-</div>
 </form>
 
 <!--[ include file="Avatar_admin_footer.htm" ]-->

@@ -33,6 +33,11 @@ define('_AVATAR_ALLOWEDEXTENSIONS',           'Erlaubte Dateiendungen');
 define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
 
 //
+// B
+//
+define('_AVATAR_BYTES',                       'Bytes');
+
+//
 // C
 //
 define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username% wurde auf %avatar% geändert');
@@ -75,7 +80,7 @@ define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar
 define('_AVATAR_MAINTAINAVATARS',             'Avatare verwalten');
 define('_AVATAR_MAXDIMENSIONS',               'Maximale Avatargröße');
 define('_AVATAR_MAXHEIGHT',                   'Maximale Höhe in Pixel');
-define('_AVATAR_MAXSIZE',                     'Maximal Dateigröße des Avatare');
+define('_AVATAR_MAXSIZE',                     'Maximale Dateigröße des Avatars');
 define('_AVATAR_MAXWIDTH',                    'Maximale Breite in Pixel');
 define('_AVATAR_MISSINGPATH',                 'Verzeichnisangabe fehlt');
 define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
@@ -125,7 +130,7 @@ define('_AVATAR_USER_CHOOSE',                 'Es ist nicht notwendig ein neues 
 //
 // V
 //
-define('_AVATAR_VISITHOMEPAGE',               'Avatar-Modul im NOC besuchen');
+define('_AVATAR_VISITHOMEPAGE',               'Avatar-Projektseite besuchen');
 
 //
 // W

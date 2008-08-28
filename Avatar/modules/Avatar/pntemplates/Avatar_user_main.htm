@@ -1,6 +1,6 @@
 <!--[* $Id$ *]-->
 <div id="avatar">
-<img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='_MODIFYCONFIG' />
+  <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='_MODIFYCONFIG' />
   <!--[ pngetstatusmsg ]-->
   <h1><!--[pnml name="_AVATAR_TITLE"]--></h1>
   <h2><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h2>
@@ -10,27 +10,28 @@
   <h2><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h2>
   <!--[ include file="Avatar_user_select_display.htm" ]-->
   <!--[* include file="Avatar_user_select_dropdown.htm" *]-->
-         
+
   <!--[if $allow_uploads]-->
   <div class="avatarupload">
-  <!--[* Display the upload form only if the user has rights to upload.  *]-->
-  <p><!--[pnml name="_AVATAR_USER_CHOOSE"]--></p>
-  <form action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
+    <!--[* Display the upload form only if the user has rights to upload.  *]-->
+    <p><!--[pnml name="_AVATAR_USER_CHOOSE"]--></p>
+    <form action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
       <input type="hidden" name="authid" value="<!--[ pnsecgenauthkey module="Avatar" ]-->" />
-      <input type="hidden" name="MAX_FILE_SIZE" value="" /> 
-      <!--[pnml name="_AVATAR_UPLOADFILE"]-->: 
-      <input type="file" size="40" name="filelocale" /> 
+      <input type="hidden" name="MAX_FILE_SIZE" value="" />
+      <!--[pnml name="_AVATAR_UPLOADFILE"]-->:
+      <input type="file" size="40" name="filelocale" />
       <input type="submit" name="submit" value="<!--[pnml name="_AVATAR_UPLOAD_BUTTON"]-->" />
       <input type="reset" name="reset" value="<!--[pnml name="_AVATAR_CLEAR_BUTTON"]-->" />
-  </form>
-  <br />
-  <p>
-  <strong><!--[pnml name="_AVATAR_ALLOWEDEXTENSIONS"]-->:</strong> <!--[ $pncore.Avatar.allowed_extensions|pnvarprepfordisplay ]-->  <br />
-  <strong><!--[pnml name="_AVATAR_MAXDIMENSIONS"]-->:</strong> 
-  <!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]--> 
-  <!--[pnml name="_AVATAR_PIXEL"]--> <br />
-  <!--[ if $pncore.Avatar.allow_resize ]--><!--[pnml name="_AVATAR_RESIZE"]--><!--[ /if ]-->
-  </p>
+    </form>
+    <br />
+    <p>
+      <strong><!--[pnml name="_AVATAR_ALLOWEDEXTENSIONS"]-->:</strong> <!--[ $pncore.Avatar.allowed_extensions|pnvarprepfordisplay ]-->  <br />
+      <strong><!--[pnml name="_AVATAR_MAXSIZE"]-->:</strong> <!--[$pncore.Avatar.maxsize]--> <!--[pnml name="_AVATAR_BYTES"]--><br />
+      <strong><!--[pnml name="_AVATAR_MAXDIMENSIONS"]-->:</strong>
+      <!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]-->
+      <!--[pnml name="_AVATAR_PIXEL"]--> <br />
+      <!--[ if $pncore.Avatar.allow_resize ]--><!--[pnml name="_AVATAR_RESIZE"]--><!--[ /if ]-->
+    </p>
   </div>
   <!--[/if]-->
 </div>

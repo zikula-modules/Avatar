@@ -40,6 +40,11 @@ define('_AVATAR_CURRENTAVATAR',               'Avatar actuel');
 define('_AVATAR_CURRENTAVATAR',      'Votre avatar actuel est ');
 
 //
+// B
+//
+define('_AVATAR_BYTES',                       'Bytes');
+
+//
 // D
 //
 define('_AVATAR_DELETEAVATAR',                'supprimer l\'avatar');

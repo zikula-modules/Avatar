@@ -1,99 +1,99 @@
 /**
- * Avatar Module
- * 
- * The Avatar module allows uploading of individual Avatars.
- * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
- * 
- * @package      Avatar
- * @version      $Id$
- * @author       Joerg Napp, Frank Schummertz
- * @link         http://lottasophie.sf.net, http://www.pn-cms.de
- * @copyright    Copyright (C) 2004-2007
- * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
- */
+* Avatar Module
+*
+* The Avatar module allows uploading of individual Avatars.
+* It is based on EnvoAvatar from A.T.Web, http://www.atw.it
+*
+* @package      Avatar
+* @version      $Id$
+* @author       Joerg Napp, Frank Schummertz
+* @link         http://lottasophie.sf.net, http://www.pn-cms.de
+* @copyright    Copyright (C) 2004-2007
+* @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+*/
 
 .avataricon {
-    display: block;
-    float: right;
+  display: block;
+  float: right;
 }
 
 #avatar {
-    padding: 1.5em
+  padding: 1.5em
 }
 
 #avatar .footer {
-    font-size: 0.8em;
-    text-align: center;
-    margin-top: 1em;
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 1em;
 }
 
 #avatar .headerlink {
-    width: 33%;
-    float: left;
-    text-align: center;
+  width: 33%;
+  float: left;
+  text-align: center;
 }
 
 #avatar .error {
-    color: red;
+  color: red;
 }
 
 #avatar .delete {
-    text-align: center;
+  text-align: center;
 }
 
 #avatar fieldset {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 #avatar fieldset legend {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #avatar ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 0;
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 #avatar dl {
-    float: left;
+  float: left;
 }
-    
+
 #avatar dl dt {
-    clear: both;
-    margin: 3px;
-    float: left; 
-    font-weight: normal;
-    width: 300px;
+  clear: both;
+  margin: 3px;
+  float: left;
+  font-weight: normal;
+  width: 300px;
 }
 
 #avatar dl dd {
-    margin: 3px 0;
-    float: left;
+  margin: 3px 0;
+  float: left;
 }
 
 #avatar .avatarbox {
-  float: left; 
-  margin: 5px; 
+  float: left;
+  margin: 5px;
   text-align: center;
-  background:#FFFEFA;  
+  background:#FFFEFA;
 }
 
 #avatar .avatarbox button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #avatar .avatarpic {
-  display: block; 
-  border: 1px solid #ccc; 
+  display: block;
+  border: 1px solid #ccc;
   background: #eee;
 }
 
 #avatar .avatarchoosen {
-  display: block; 
-  border: 1px solid #ccc; 
+  display: block;
+  border: 1px solid #ccc;
   background:#FFFEFA;
-  padding: 5px; 
+  padding: 5px;
 }
 
 #avatar .avatarupload {
@@ -103,54 +103,28 @@
   padding:5px;
 }
 
-
-/*
- * clearfix solution
- *
- */
-
-.avatarclearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;
-}
-
-.avatarclearfix {display: inline-table;}
-
-/* Hides from IE-mac \*/
-* html .avatarclearfix {height: 1%;}
-.avatarclearfix {display: block;}
-/* End hide from IE-mac */
-
-/* Overflow-Methode zum Clearen der Float-Umgebungen */
-.avatarfloatbox { 
-    overflow:hidden; 
-}
-
 div.autocomplete_user {
-    position:absolute;
-    width: 25em;
-    background-color: white;
-    border: 1px solid #888;
-    margin: 0;
-    padding: 0;
+  position:absolute;
+  width: 25em;
+  background-color: white;
+  border: 1px solid #888;
+  margin: 0;
+  padding: 0;
 }
 div.autocomplete_user ul {
-    list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
-    margin: 0;
-    padding: 0;
+  list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
+  margin: 0;
+  padding: 0;
 }
 div.autocomplete_user ul li.selected { background-color: #ffb;}
 div.autocomplete_user ul li {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0;
-    line-height: 1.4em;
-    cursor:pointer;
+  margin: 0;
+  padding: 0.1em 0 0.1em 0;
+  line-height: 1.4em;
+  cursor:pointer;
 }
 
 #liveusersearch {
-    margin: 1em 0 1em 0;
+  margin: 1em 0 1em 0;
 }
 

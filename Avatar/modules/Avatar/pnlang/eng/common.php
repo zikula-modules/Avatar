@@ -33,6 +33,11 @@ define('_AVATAR_ALLOWEDEXTENSIONS',  'Possible extensions');
 define('_AVATAR_AVATARINUSE',                 'Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.');
 
 //
+// B
+//
+define('_AVATAR_BYTES',                       'Bytes');
+
+//
 // C
 //
 define('_AVATAR_CHANGEDTO',                   'The avatar of user %username% has been changed to %avatar%');

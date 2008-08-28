@@ -38,6 +38,11 @@ define('_AVATAR_ALLOWEDEXTENSIONS',           'Extensiones permitidas');
 define('_AVATAR_AVATARINUSE',                 'Advertencia: Este avatar está en uso y no puede ser borrado. Si quieres borrarlo, por favor cambia los avatars de los usuarios listados a continuación.');
 
 //
+// B
+//
+define('_AVATAR_BYTES',                       'Bytes');
+
+//
 // C
 //
 define('_AVATAR_CHANGEDTO',                   'El avatar del usuario %username% fue cambiado a %avatar%');
