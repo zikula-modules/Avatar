@@ -4,12 +4,14 @@
   <!--[ pngetstatusmsg ]-->
   <h1><!--[pnml name="_AVATAR_TITLE"]--></h1>
   <h2><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h2>
-  <!--[ if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[ else ]--><!--[ pnml name="_AVATAR_NOAVATARSELECTED" html=1 ]--><!--[ /if ]-->
+  <!--[ if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[ else ]--><!--[ pnml name="_AVATAR_NOAVATARSELECTED" html=1 ]--><!--[ /if ]-->
   <br />
   <!--[* Display the avatars. *]-->
   <h2><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h2>
+  <!--raw-->
   <!--[ include file="Avatar_user_select_display.htm" ]-->
   <!--[* include file="Avatar_user_select_dropdown.htm" *]-->
+  <!--/raw-->
 
   <!--[if $allow_uploads]-->
   <div class="avatarupload">
