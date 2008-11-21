@@ -12,8 +12,10 @@
  * @copyright    Copyright (C) 2004-2007
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
-//Translated by: Alana, Christophe Beaujean aka Yokav
+//Translated by: Alana, Christophe Beaujean aka Yokav, starguezer
 
+// new
+define('_AVATAR_SELECTDISPLAY', 'Sélectionnez le nombre d\'avatars à afficher par page');
 //
 // A
 //
