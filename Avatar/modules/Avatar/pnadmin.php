@@ -26,15 +26,6 @@
  * @author       Jörg Napp, Frank Schummertz
  * @return       output       The main module admin page.
  */
-function Avatar_admin_main()
-{
-    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
-    }
-    
-    $pnRender = pnRender::getInstance('Avatar');
-    return $pnRender->fetch('Avatar_admin_main.htm');
-} 
 
 /**
  * avatar maintenance
@@ -43,7 +34,7 @@ function Avatar_admin_main()
  * @author       Frank Schummertz
  * @return       output       The maintenance admin page.
  */
-function Avatar_admin_maintain()
+function Avatar_admin_main()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
@@ -57,14 +48,26 @@ function Avatar_admin_maintain()
     } else {
         $avatar = pnUserGetVar('_YOURAVATAR', $userid);
     }
-    $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
-
+    
+    $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
+    $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
+                                                         array('page'     => $page,
+                                                               'perpage'  => $perpage)); 
+    // avoid some vars in the url of the pager
+    unset($_GET['submit']);
+    unset($_POST['submit']);
+    unset($_REQUEST['submit']);
+    
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
     $pnRender->assign('avatar', $avatar);
-    $pnRender->assign('avatars', $allavatars);
-    return $pnRender->fetch('Avatar_admin_maintain.htm');
+    $pnRender->assign('avatars', $avatarsarray);
+    $pnRender->assign('allavatarscount', $allavatarscount);
+    $pnRender->assign('page', $page);
+    $pnRender->assign('perpage', $perpage);
+    return $pnRender->fetch('Avatar_admin_main.htm');
 } 
 
 /**
@@ -88,7 +91,7 @@ function Avatar_admin_searchusers()
     } else {
         $avatar = pnUserGetVar('_YOURAVATAR', $userid);
     }
-    $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+    list($allavatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('username', $username);
@@ -164,7 +167,7 @@ function Avatar_admin_listusers($args)
     $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
                           array('avatar' => $uavatar));
     
-    $allavatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+    list($allavatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('users', $users);

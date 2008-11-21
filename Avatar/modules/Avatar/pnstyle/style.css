@@ -18,7 +18,11 @@
 }
 
 #avatar {
-  padding: 1.5em
+  padding: 1.5em;
+}
+
+#avatar .pager {
+  text-align: center;
 }
 
 #avatar .footer {

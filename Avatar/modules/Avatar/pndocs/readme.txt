@@ -12,7 +12,7 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
  
-***** Avatar 2.0 *****
+***** Avatar 2.1 *****
 
 0. What is this?
 ----------------
@@ -60,10 +60,10 @@ the generic permission to use all avatars. You can turn this off with
 
 Users | Avatar:: | pers:.*: | ACCESS_NONE
 
-at the correct place in your permission list. This ensaures that the user
+at the correct place in your permission list. This ensures that the user
 can use his avatar image only.
 
 5. Plans for the future
 -----------------------
 * Let the admin define other prefixes than pers for more powerful permissions
-* Group avatars if possible (not in .8, maybe for .9)
+* Group avatars if possible (not in Zikula 1.0.0, maybe for 2.0.0)

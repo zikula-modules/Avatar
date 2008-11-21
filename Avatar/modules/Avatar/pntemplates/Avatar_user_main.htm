@@ -1,17 +1,34 @@
 <!--[* $Id$ *]-->
 <div id="avatar">
   <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='_MODIFYCONFIG' />
-  <!--[ pngetstatusmsg ]-->
+  <!--[ insert naqme="getstatusmsg" ]-->
   <h1><!--[pnml name="_AVATAR_TITLE"]--></h1>
   <h2><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h2>
   <!--[ if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[ else ]--><!--[ pnml name="_AVATAR_NOAVATARSELECTED" html=1 ]--><!--[ /if ]-->
   <br />
   <!--[* Display the avatars. *]-->
   <h2><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h2>
+  <form id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="user" func="main" ]-->">
+    <div>
+      <input type="hidden" name="page" value="1" />
+      <label for="perpage"><!--[ pnml name="_AVATAR_SELECTDISPLAY" ]-->:</label>&nbsp;
+      <select id="perpage" name="perpage">
+        <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
+        <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
+        <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
+        <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
+        <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[ pnml name="_ALL" ]--></option>
+      </select>
+      &nbsp;<input type="submit" name="submit" value="<!--[ pnml name="_SUBMIT" ]-->" />
+    </div>
+  </form>
   <!--raw-->
   <!--[ include file="Avatar_user_select_display.htm" ]-->
   <!--[* include file="Avatar_user_select_dropdown.htm" *]-->
   <!--/raw-->
+  <div class="pager">
+  <!--[ pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" ]-->
+</div>
 
   <!--[if $allow_uploads]-->
   <div class="avatarupload">

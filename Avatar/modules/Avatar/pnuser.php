@@ -36,13 +36,24 @@ function Avatar_user_main()
     $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT); 
     
     // get all possible avatars
-    $avatars = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+    $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
+    $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
+    list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
+                                                    array('page'     => $page,
+                                                          'perpage'  => $perpage)); 
+    // avoid some vars in the url of the pager
+    unset($_GET['submit']);
+    unset($_POST['submit']);
+    unset($_REQUEST['submit']);
 
     // display
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('avatars', $avatars);
     $pnRender->assign('allow_uploads', $allow_uploads);
     $pnRender->assign('user_avatar', pnUserGetVar('user_avatar'));
+    $pnRender->assign('allavatarscount', $allavatarscount);
+    $pnRender->assign('page', $page);
+    $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_user_main.htm');
 } 
 

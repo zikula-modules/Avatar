@@ -13,6 +13,9 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+// new
+define('_AVATAR_SELECTDISPLAY', 'Select the number of avatars to display per page');
+
 //
 // A
 //

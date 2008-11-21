@@ -63,6 +63,7 @@ function Avatar_upgrade($oldversion)
                 $exts[] = 'jpeg';
                 pnModSetVar('Avatar', 'allowed_extensions', implode(';', $exts));
             }
+        case '2.0': // nothing to do
     }
     if (!defined('_PNINSTALLVER')) {
         // clear all compiled templates

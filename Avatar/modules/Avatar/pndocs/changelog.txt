@@ -20,10 +20,14 @@ Jörg Napp [jn], http://www.lottasophie.de
 Frank Schummertz [landseer], http://www.pn-cms.de
 Carsten Volmer [herr.vorragend], http://www.carsten-volmer.de
 
+2.1:
+* added paging in admin and user view
+* some minor tweaks
+
 2.0: 
-* .8-only version
+* Zikula-only version
 * added avatar maintenance and delete option
 
 1.1:
-* last .764 version, does not work with .8
+* last .764 version, does not work with .8 or later
 

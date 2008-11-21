@@ -19,11 +19,15 @@
  * returns all possible avatars for the current user. 
  * 
  * @param integer $args['uid'] the user ID (if missing, the current user is assumed)
+ * @param integer $args['startnum'] int the number where to start (for paging)
+ * @param integer $args['perpage'] int items per page
  * @return array a list of avatar file names
  **/
 function Avatar_userapi_getAvatars($args)
 {
-    $uid = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
+    $uid      = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
+    $page     = (isset($args['page'])) ? $args['page']: -1;
+    $perpage  = (isset($args['perpage'])) ? $args['perpage'] : -1;
     $avatardir = pnModGetVar('Avatar', 'avatardir');
    
     Loader::loadClass('FileUtil');
@@ -37,8 +41,22 @@ function Avatar_userapi_getAvatars($args)
             $avatars[] = $avatar;
         }
     }
-    asort($avatars);
-    return $avatars;
+    sort($avatars);
+    $allcount = count($avatars);
+    // paging
+    if ($page <> -1 && $perpage <> -1) {
+        $start = ($page-1) * $perpage;
+        $stop = $start + $perpage;
+        if($stop > $allcount) {
+            $stop = $allcount;
+        }
+        for ($idx = $start; $idx < $stop; $idx++) {
+            $pagedavatars[] = $avatars[$idx];
+        }
+        return array($pagedavatars, $allcount);
+    }
+    
+    return array($avatars, $allcount);
 }
 
 
