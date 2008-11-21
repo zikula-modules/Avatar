@@ -20,6 +20,12 @@ Jörg Napp [jn], http://www.lottasophie.de
 Frank Schummertz [landseer], http://www.pn-cms.de
 Carsten Volmer [herr.vorragend], http://www.carsten-volmer.de
 
+French language file by Yokav
+Italian language file by Arthens
+Spanish language file by Mateo Tibaquirá
+--Thanks, folks!
+
+
 2.1:
 * added paging in admin and user view
 * some minor tweaks
