@@ -19,7 +19,7 @@
  */
 
 // new
-define('_AVATAR_SELECTDISPLAY',               'Select the number of avatars to be displayed per page');
+define('_AVATAR_SELECTDISPLAY',               'Selecciona el número de avatars que se han de mostrar por página');
 
 //
 // A
