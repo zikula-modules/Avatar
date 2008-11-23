@@ -18,6 +18,9 @@
  * @author       Mateo Tibaquirá
  */
 
+// new
+define('_AVATAR_SELECTDISPLAY',               'Select the number of avatars to be displayed per page');
+
 //
 // A
 //
