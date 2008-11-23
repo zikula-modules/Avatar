@@ -39,7 +39,7 @@
     <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->">
       <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
     </a>
-    <!--[$avatar|pnvarprepfordisplay]-->
+    <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
     <br />
   </div>
   <!--[/foreach]-->

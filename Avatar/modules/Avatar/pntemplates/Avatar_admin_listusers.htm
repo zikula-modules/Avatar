@@ -20,7 +20,7 @@
     <div class="avatarbox">
       <button type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->">
         <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
-        <!--[$avatar|pnvarprepfordisplay]-->
+        <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
       </button>
     </div>
     <!--[/foreach]-->
