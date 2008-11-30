@@ -21,8 +21,8 @@
   /* padding: 1.5em; */
 }
 
-#avatar .pager {
-  text-align: center;
+#avatar .pn-pager {
+padding:2em 0;
 }
 
 #avatar .footer {

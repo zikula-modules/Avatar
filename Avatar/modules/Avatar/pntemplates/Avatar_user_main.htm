@@ -1,13 +1,12 @@
 <!--[* $Id$ *]-->
 <div id="avatar">
-  <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='_MODIFYCONFIG' />
+  <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='_AVATAR_MODIFYCONFIG' />
   <!--[ insert name="getstatusmsg" ]-->
-  <h1><!--[pnml name="_AVATAR_TITLE"]--></h1>
-  <h2><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h2>
+  <h2><!--[pnml name="_AVATAR_TITLE"]--></h2>
+  <h3><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h3>
   <!--[ if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[ else ]--><!--[ pnml name="_AVATAR_NOAVATARSELECTED" html=1 ]--><!--[ /if ]-->
-  <br />
   <!--[* Display the avatars. *]-->
-  <h2><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h2>
+  <h3><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h3>
   <form id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="user" func="main" ]-->">
     <div>
       <input type="hidden" name="page" value="1" />
@@ -26,30 +25,26 @@
   <!--[ include file="Avatar_user_select_display.htm" ]-->
   <!--[* include file="Avatar_user_select_dropdown.htm" *]-->
   <!--/raw-->
-  <div class="pager">
   <!--[ pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" ]-->
-</div>
 
   <!--[if $allow_uploads]-->
   <div class="avatarupload">
+    <h3><!--[pnml name="_AVATAR_UPLOADFILE"]--></h3>
     <!--[* Display the upload form only if the user has rights to upload.  *]-->
     <p><!--[pnml name="_AVATAR_USER_CHOOSE"]--></p>
     <form action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
       <input type="hidden" name="authid" value="<!--[ pnsecgenauthkey module="Avatar" ]-->" />
       <input type="hidden" name="MAX_FILE_SIZE" value="" />
-      <!--[pnml name="_AVATAR_UPLOADFILE"]-->:
       <input type="file" size="40" name="filelocale" />
       <input type="submit" name="submit" value="<!--[pnml name="_AVATAR_UPLOAD_BUTTON"]-->" />
       <input type="reset" name="reset" value="<!--[pnml name="_AVATAR_CLEAR_BUTTON"]-->" />
     </form>
-    <br />
     <p>
       <strong><!--[pnml name="_AVATAR_ALLOWEDEXTENSIONS"]-->:</strong> <!--[ $pncore.Avatar.allowed_extensions|pnvarprepfordisplay ]-->  <br />
       <strong><!--[pnml name="_AVATAR_MAXSIZE"]-->:</strong> <!--[$pncore.Avatar.maxsize]--> <!--[pnml name="_AVATAR_BYTES"]--><br />
       <strong><!--[pnml name="_AVATAR_MAXDIMENSIONS"]-->:</strong>
       <!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]-->
-      <!--[pnml name="_AVATAR_PIXEL"]--> <br />
-      <!--[ if $pncore.Avatar.allow_resize ]--><!--[pnml name="_AVATAR_RESIZE"]--><!--[ /if ]-->
+      <!--[pnml name="_AVATAR_PIXEL"]--> <!--[ if $pncore.Avatar.allow_resize ]--><em>(<!--[pnml name="_AVATAR_RESIZE"]-->)</em><!--[ /if ]-->
     </p>
   </div>
   <!--[/if]-->

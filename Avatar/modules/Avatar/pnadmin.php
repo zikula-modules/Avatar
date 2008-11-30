@@ -91,13 +91,25 @@ function Avatar_admin_searchusers()
     } else {
         $avatar = pnUserGetVar('_YOURAVATAR', $userid);
     }
-    list($allavatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+
+    $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
+    $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
+                                                         array('page'     => $page,
+                                                               'perpage'  => $perpage)); 
+    // avoid some vars in the url of the pager
+    unset($_GET['submit']);
+    unset($_POST['submit']);
+    unset($_REQUEST['submit']);
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
     $pnRender->assign('avatar', $avatar);
-    $pnRender->assign('avatars', $allavatars);
+    $pnRender->assign('avatars', $avatarsarray);
+    $pnRender->assign('allavatarscount', $allavatarscount);
+    $pnRender->assign('page', $page);
+    $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_admin_searchusers.htm');
 } 
 
@@ -167,13 +179,24 @@ function Avatar_admin_listusers($args)
     $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
                           array('avatar' => $uavatar));
     
-    list($allavatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars'); 
+    $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
+    $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
+                                                         array('page'     => $page,
+                                                               'perpage'  => $perpage)); 
+
+    // avoid some v1ars in the url of the pager
+    unset($_GET['submit']);
+    unset($_POST['submit']);
+    unset($_REQUEST['submit']);
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('users', $users);
     $pnRender->assign('uavatar', $uavatar);
-    $pnRender->assign('avatars', $allavatars);
-    
+    $pnRender->assign('avatars', $avatarsarray);
+    $pnRender->assign('allavatarscount', $allavatarscount);
+    $pnRender->assign('page', $page);
+    $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_admin_listusers.htm');                     
 }
 

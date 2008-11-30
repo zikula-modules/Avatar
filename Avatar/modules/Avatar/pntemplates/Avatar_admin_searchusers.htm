@@ -33,6 +33,21 @@
 </p>
 
 <h2><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h2>
+
+<form id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
+  <div>
+    <input type="hidden" name="page" value="1" />
+    <label for="perpage"><!--[ pnml name="_AVATAR_SELECTDISPLAY" ]-->:</label>&nbsp;
+    <select id="perpage" name="perpage">
+        <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
+        <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
+        <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
+        <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
+        <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[ pnml name="_ALL" ]--></option>
+    </select>
+    &nbsp;<input type="submit" name="submit" value="<!--[ pnml name="_SUBMIT" ]-->" />
+  </div>
+</form>
 <div class="pn-clearfix">
   <!--[foreach from=$avatars item="avatar"]-->
   <div class="avatarbox">
@@ -44,7 +59,8 @@
   </div>
   <!--[/foreach]-->
 </div>
+
+<!--[ pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage]-->
 <!--[ /if ]-->
 
 <!--[ include file="Avatar_admin_footer.htm" ]-->
-
