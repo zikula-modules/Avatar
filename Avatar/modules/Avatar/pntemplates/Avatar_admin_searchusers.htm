@@ -1,7 +1,7 @@
 <!--[include file="Avatar_admin_menu.htm"]-->
 <!--[ pnajaxheader modname="Users" ]-->
 
-<h2><!--[ pnml name="_AVATAR_SEARCHUSERS" ]--></h2>
+<h3><!--[ pnml name="_AVATAR_SEARCHUSERS" ]--></h3>
 
 <div id="liveusersearch" class="pn-hide">
   <!--[ pnml name="_AVATAR_ENTERUSERNAME" ]-->&nbsp;<input size="25" maxlength="40" type="text" name="username" id="username" value="" />
@@ -23,7 +23,7 @@
 </div>
 
 <!--[ if $username ne "" ]-->
-<h2><!--[$username]--></h2>
+<h3><!--[$username]--></h3>
 <p>
   <!--[ if $avatar ne "" ]-->
   <!--[ pnml name="_AVATAR_CURRENTAVATAR" ]-->: <br /><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
@@ -32,7 +32,7 @@
   <!--[ /if ]-->
 </p>
 
-<h2><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h2>
+<h3><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h3>
 
 <form id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
   <div>

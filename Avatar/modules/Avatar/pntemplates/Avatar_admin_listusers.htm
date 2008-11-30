@@ -1,6 +1,6 @@
 <!--[include file="Avatar_admin_menu.htm"]-->
 
-<h2><!--[ pnml name="_AVATAR_SELECTEDAVATAR" ]--></h2>
+<h3><!--[ pnml name="_AVATAR_SELECTEDAVATAR" ]--></h3>
 <p><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $uavatar|pnvarprepfordisplay ]-->" alt="Avatar" /></p>
 <h3><!--[ pnml name="_AVATAR_USERLISTPERAVATAR" ]--></h3>
 
@@ -30,7 +30,7 @@
     </ul>
 
     <!--[ if $users ]-->
-    <h2><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h2>
+    <h3><!--[ pnml name="_AVATAR_SELECTAVATARFORUSERS" ]--></h3>
     <!--[foreach from=$avatars item="avatar"]-->
     <div class="avatarbox">
       <button type="submit" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->">
