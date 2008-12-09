@@ -45,14 +45,6 @@
   text-align: center;
 }
 
-#avatar fieldset {
-  margin: 1em 0;
-}
-
-#avatar fieldset legend {
-  font-weight: bold;
-}
-
 #avatar ul {
   list-style-type: none;
   padding-left: 0;
@@ -67,17 +59,17 @@
   margin:0.5em;
   padding:0;
   text-align:right;
-  width:35%;
+  width:40%;
 }
 
 #avatar dl dd {
-  display: block;
-  float: left;
-  text-align: left;
-  width: 55%;
-  margin: 0.5em;
-  padding: 0;
-  line-height: 2em;
+  display:block;
+  float:left;
+  line-height:2em;
+  margin:0.5em;
+  padding:0;
+  text-align:left;
+  width:50%;
 }
 
 #avatar .avatarbox {
