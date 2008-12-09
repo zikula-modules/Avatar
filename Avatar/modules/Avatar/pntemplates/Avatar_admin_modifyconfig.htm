@@ -30,16 +30,18 @@
           <dt><!--[ pnformlabel for="maxwidth" text='_AVATAR_ADM_MAXWIDTH' html=1 ]--></dt>
           <dd><!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxwidth" text=$pncore.Avatar.maxwidth ]--></dd>
 
-          <dt><!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]--> <!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></dt>
-          <dd><!--[ pnformtextinput size="25" maxLength="40" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]--></dd>
+          <dt><!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]--></dt>
+          <dd><!--[ pnformtextinput size="25" maxLength="40" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]-->
+            <div class="pn-informationmsg"><!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></div>
+          </dd>
 
           <dt><!--[ pnformlabel for="allow_multiple" text='_AVATAR_ADM_ALLOWMULTIPLEAVATARS' ]--></dt>
           <dd><!--[ pnformcheckbox id="allow_multiple" checked=$pncore.Avatar.allow_multiple ]--> <!--[ pnml name="_AVATAR_ADM_MULTIPLE_HINT" ]--></dd>
         </dl>
       </fieldset>
-      <p>
+      <div class="pn-formrow pn-formbuttons">
         <!--[pnformbutton id="submit" commandName="submit" text="_SUBMIT"]-->
-      </p>
+      </div>
     </div>
     <!--[ /pnform ]-->
 

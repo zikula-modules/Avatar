@@ -22,7 +22,7 @@
 }
 
 #avatar .pn-pager {
-padding:2em 0;
+  padding:2em 0;
 }
 
 #avatar .footer {
@@ -59,21 +59,25 @@ padding:2em 0;
   margin-left: 0;
 }
 
-#avatar dl {
-  float: left;
-}
-
 #avatar dl dt {
-  clear: both;
-  margin: 3px;
-  float: left;
-  font-weight: normal;
-  width: 300px;
+  clear:both;
+  display:block;
+  float:left;
+  line-height:2em;
+  margin:0.5em;
+  padding:0;
+  text-align:right;
+  width:35%;
 }
 
 #avatar dl dd {
-  margin: 3px 0;
+  display: block;
   float: left;
+  text-align: left;
+  width: 55%;
+  margin: 0.5em;
+  padding: 0;
+  line-height: 2em;
 }
 
 #avatar .avatarbox {
