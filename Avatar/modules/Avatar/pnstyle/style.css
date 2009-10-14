@@ -7,7 +7,7 @@
 * @package      Avatar
 * @version      $Id$
 * @author       Joerg Napp, Frank Schummertz
-* @link         http://lottasophie.sf.net, http://www.pn-cms.de
+* @link         http://lottasophie.sf.net, http://www.zikula.de
 * @copyright    Copyright (C) 2004-2007
 * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
 */
@@ -18,10 +18,9 @@
 }
 
 #avatar {
-  /* padding: 1.5em; */
 }
 
-#avatar .pn-pager {
+#avatar .z-pager {
   padding:2em 0;
 }
 
@@ -107,62 +106,3 @@ div.autocomplete_user ul li {
   margin: 1em 0 1em 0;
 }
 
-
-
-/*******************************************************************************/
-/* Administration / Preferences
-/*******************************************************************************/
-
-#avatar dl.configrow {
-  margin:0.5em;
-  min-height:0;
-}
-#avatar dl.configrow dt {
-  clear:left;
-  float:left;
-  margin:0;
-  padding:0.5em 0;
-  text-align:right;
-  width:30%;
-}
-#avatar dl.configrow dd {
-  margin:0 0 0 33%;
-  padding:0.5em 0;
-  text-align:left;
-}
-#avatar dl.configrow dd:after {
-  content: ".";
-  display:block;
-  clear:left;
-  height:0;
-  visibility:hidden;
-}
-#avatar dl.configrow dd div.pn-informationmsg {
-  margin-left:0;
-  margin-right:0;
-}
-
-/*******************************************************************************/
-/* Better Clearfix-Solution
-/*******************************************************************************/
-
-/* the main clearfix */
-#avatar .pn-clearfix:after {
-  content: ".";
-  display: block;
-  clear: both;
-  height: 0;
-  visibility: hidden;
-}
-/* IE-Patches for Clearfix */
-#avatar .pn-clearfix { 
-  display: inline-block; 
-}
-/* Hide for IE5/Mac with commented backslash hack \*/
-* html #avatar .pn-clearfix {
-  height: 1px; 
-}
-#avatar .pn-clearfix { 
-  display: block; 
-}
-/* Ende of Hiding for IE5/Mac */

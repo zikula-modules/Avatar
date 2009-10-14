@@ -24,16 +24,16 @@ define('_AVATAR_ADM_ALLOWRESIZE',             'Automatische Verkleinerung des Av
 define('_AVATAR_ADM_AVATARDIR',               'Avatar Verzeichnis (Zikula)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Standard: images/avatar <strong>ohne / am Ende des Pfades!</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Erlaubte Dateiendungen');
-define('_AVATAR_ADM_EXTENSIONS_HINT',         '(eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstützt werden: gif, jpg, png, wbm. Bei Verwendung von mind. PHP 5 muss \'jpeg\' anstelle von \'jpg\' verwendet werden.)');
+define('_AVATAR_ADM_EXTENSIONS_HINT',         '(eine durch Semikolons getrennte Liste erlaubter Dateiendungen, unterstÃ¼tzt werden: gif, jpg, png, wbm. Bei Verwendung von mind. PHP 5 muss \'jpeg\' anstelle von \'jpg\' verwendet werden.)');
 define('_AVATAR_ADM_FORUMDIR',                'Avatar Verzeichnis (PHPBB2-Forum)');
-define('_AVATAR_ADM_MAXHEIGHT',               'Maximal Höhe in Pixel');
-define('_AVATAR_ADM_MAXSIZE',                 'Dateigröße in Bytes');
+define('_AVATAR_ADM_MAXHEIGHT',               'Maximal HÃ¶he in Pixel');
+define('_AVATAR_ADM_MAXSIZE',                 'DateigrÃ¶ÃŸe in Bytes');
 define('_AVATAR_ADM_MAXWIDTH',                'Maximale Breite in Pixel');
 define('_AVATAR_ADM_MULTIPLE_HINT',           'dem Benutzer erlauben jeweils ein Avatar pro Dateiendung abzuspeichern.');
 define('_AVATAR_ADM_TITLE',                   'Avatarverwaltung');
 define('_AVATAR_ADM_UPLOAD',                  'Einstellungen zum Upload');
 define('_AVATAR_ALLOWEDEXTENSIONS',           'Erlaubte Dateiendungen');
-define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelöscht werden. Vor der Löschung müssen den unten aufgeführten Benutzern neue Avatare zugeteilt werden.');
+define('_AVATAR_AVATARINUSE',                 'Achtung: Dieser Avatar ist in Benutzung und kann nicht gelÃ¶scht werden. Vor der LÃ¶schung mÃ¼ssen den unten aufgefÃ¼hrten Benutzern neue Avatare zugeteilt werden.');
 
 //
 // B
@@ -43,34 +43,34 @@ define('_AVATAR_BYTES',                       'Bytes');
 //
 // C
 //
-define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username% wurde auf %avatar% geändert');
-define('_AVATAR_CLEAR_BUTTON',                'Eingabe löschen');
-define('_AVATAR_CONFIRMDELETE',               'Löschung bestätigen');
+define('_AVATAR_CHANGEDTO',                   'Der Avatar des Benutzer %username% wurde auf %avatar% geÃ¤ndert');
+define('_AVATAR_CLEAR_BUTTON',                'Eingabe lÃ¶schen');
+define('_AVATAR_CONFIRMDELETE',               'LÃ¶schung bestÃ¤tigen');
 define('_AVATAR_CURRENTAVATAR',               'Aktueller Avatar');
 
 //
 // D
 //
-define('_AVATAR_DELETEAVATAR',                'Avatar löschen');
-define('_AVATAR_DELETECURRENTAVATAR',         'Aktuellen Avatar löschen?');
-define('_AVATAR_DELETED',                     'Der Avatar %avatar% wurde gelöscht');
+define('_AVATAR_DELETEAVATAR',                'Avatar lÃ¶schen');
+define('_AVATAR_DELETECURRENTAVATAR',         'Aktuellen Avatar lÃ¶schen?');
+define('_AVATAR_DELETED',                     'Der Avatar %avatar% wurde gelÃ¶scht');
 
 //
 // E
 //
 define('_AVATAR_ENTERUSERNAME',               'Benutzernamen suchen:');
-define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnte nicht gelöscht werden');
-define('_AVATAR_ERR_AUTHORIZED',              'Keine Berechtigung, einen Avatar auszuwählen.');
+define('_AVATAR_ERRORDELETINGAVATAR',         'Fehler: Der Avatar %avatar% konnte nicht gelÃ¶scht werden');
+define('_AVATAR_ERR_AUTHORIZED',              'Keine Berechtigung, einen Avatar auszuwÃ¤hlen.');
 define('_AVATAR_ERR_COPYAVATAR',              'Das Hochladen der Datei ist fehlgeschlagen.');
 define('_AVATAR_ERR_COPYFORUM',               'Das Hochladen der Datei ist fehlgeschlagen.');
-define('_AVATAR_ERR_FILEDIMENSIONS',          'Die Abmessungen des Bildes sind zu groß. Höhe max. %h%px, Breite max. %w%px');
-define('_AVATAR_ERR_FILESIZE',                'Falsche Dateigröße, max. %max% Byte sind erlaubt.');
+define('_AVATAR_ERR_FILEDIMENSIONS',          'Die Abmessungen des Bildes sind zu groÃŸ. HÃ¶he max. %h%px, Breite max. %w%px');
+define('_AVATAR_ERR_FILESIZE',                'Falsche DateigrÃ¶ÃŸe, max. %max% Byte sind erlaubt.');
 define('_AVATAR_ERR_FILETYPE',                'Dieser Dateityp ist nicht gestattet. Erlaubt sind %ft%');
-define('_AVATAR_ERR_FILEUPLOAD',              'Keine Datei ausgewählt.');
+define('_AVATAR_ERR_FILEUPLOAD',              'Keine Datei ausgewÃ¤hlt.');
 define('_AVATAR_ERR_NOIMAGE',                 'Datei ist kein Bild');
 define('_AVATAR_ERR_NOTLOGGEDIN',             'Nicht registrierter User !');
 define('_AVATAR_ERR_SELECT',                  'Die Auswahl des Avatars schlug fehl.');
-define('_AVATAR_ERR_USERNOTAUTHORIZED',       'Der User darf diesen Avatar nicht sehen. Zum Ändern bitte die Zugriffsrechte für %s anpassen');
+define('_AVATAR_ERR_USERNOTAUTHORIZED',       'Der User darf diesen Avatar nicht sehen. Zum Ã„ndern bitte die Zugriffsrechte fÃ¼r %s anpassen');
 
 //
 // L
@@ -81,18 +81,18 @@ define('_AVATAR_LISTUSERS',                   'User auflisten, die diesen Avatar
 // M
 //
 define('_AVATAR_MAINTAINAVATARS',             'Avatare verwalten');
-define('_AVATAR_MAXDIMENSIONS',               'Maximale Avatargröße');
-define('_AVATAR_MAXHEIGHT',                   'Maximale Höhe in Pixel');
-define('_AVATAR_MAXSIZE',                     'Maximale Dateigröße des Avatars');
+define('_AVATAR_MAXDIMENSIONS',               'Maximale AvatargrÃ¶ÃŸe');
+define('_AVATAR_MAXHEIGHT',                   'Maximale HÃ¶he in Pixel');
+define('_AVATAR_MAXSIZE',                     'Maximale DateigrÃ¶ÃŸe des Avatars');
 define('_AVATAR_MAXWIDTH',                    'Maximale Breite in Pixel');
 define('_AVATAR_MISSINGPATH',                 'Verzeichnisangabe fehlt');
-define('_AVATAR_MODIFYCONFIG',                'Konfiguration ändern');
+define('_AVATAR_MODIFYCONFIG',                'Konfiguration Ã¤ndern');
 
 //
 // N
 //
 define('_AVATAR_NOUSERFORTHISAVATAR',         'Kein Benutzer verwendet diesen Avatar');
-define('_AVATAR_NOAVATARSELECTED',            'kein Avatar ausgewählt');
+define('_AVATAR_NOAVATARSELECTED',            'kein Avatar ausgewÃ¤hlt');
 
 //
 // P
@@ -104,18 +104,18 @@ define('_AVATAR_PIXEL',                       'Pixel');
 //
 // R
 //
-define('_AVATAR_RESIZE',                      'Größere Bilder werden automatisch verkleinert.');
+define('_AVATAR_RESIZE',                      'GrÃ¶ÃŸere Bilder werden automatisch verkleinert.');
 
 //
 // S
 //
 define('_AVATAR_SEARCHUSERS',                 'Benutzer suchen');
-define('_AVATAR_SELECTAVATAR',                'Avatar auswählen');
-define('_AVATAR_SELECTAVATARFORUSERS',        'Gewählte User mit folgendem Avatar versehen');
-define('_AVATAR_SELECTAVATAR_LINK',           'Individuellen Avatar auswählen');
-define('_AVATAR_SELECTEDAVATAR',              'Ausgewählter Avatar');
-define('_AVATAR_SELECTNEWAVATAR',             'Neuen Avatar auswählen');
-define('_AVATAR_SELECTYOURAVATAR',            'Bitte einen Avatar durch Anklicken auswählen');
+define('_AVATAR_SELECTAVATAR',                'Avatar auswÃ¤hlen');
+define('_AVATAR_SELECTAVATARFORUSERS',        'GewÃ¤hlte User mit folgendem Avatar versehen');
+define('_AVATAR_SELECTAVATAR_LINK',           'Individuellen Avatar auswÃ¤hlen');
+define('_AVATAR_SELECTEDAVATAR',              'AusgewÃ¤hlter Avatar');
+define('_AVATAR_SELECTNEWAVATAR',             'Neuen Avatar auswÃ¤hlen');
+define('_AVATAR_SELECTYOURAVATAR',            'Bitte einen Avatar durch Anklicken auswÃ¤hlen');
 
 //
 // T

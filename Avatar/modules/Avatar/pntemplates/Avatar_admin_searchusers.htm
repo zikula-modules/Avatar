@@ -1,17 +1,16 @@
 <!--[* $Id *]-->
 <!--[ include file="Avatar_admin_menu.htm" ]-->
 <!--[ pnajaxheader modname="Users" ]-->
-<h3><!--[ pnml name="_AVATAR_SEARCHUSERS" ]--></h3>
-<br class="pn-clearer" />
+<h2><!--[ pnml name="_AVATAR_SEARCHUSERS" ]--></h2>
 
-<div id="liveusersearch" class="pn-hide">
+<div id="liveusersearch" class="z-hide">
   <!--[ pnml name="_AVATAR_ENTERUSERNAME" ]-->&nbsp;<input size="25" maxlength="40" type="text" name="username" id="username" value="" />
   <a id="listuser" href="javascript:void(0);"><!--[pnimg modname=core set=icons/extrasmall src="search.gif" alt="_EDIT" altml=true]--></a>
   <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
 
   <div id="username_choices" class="autocomplete_user"></div>
   <script type="text/javascript">
-    Element.removeClassName('liveusersearch', 'pn-hide');
+    Element.removeClassName('liveusersearch', 'z-hide');
     new Ajax.Autocompleter("username", "username_choices", document.location.pnbaseURL + "ajax.php?module=Users"+"&"+"func=getusers",
     {paramName: 'fragment',
       minChars: 3,
@@ -49,7 +48,7 @@
     &nbsp;<input type="submit" name="submit" value="<!--[ pnml name="_SUBMIT" ]-->" />
   </div>
 </form>
-<div class="pn-clearfix">
+<div class="z-clearfix">
   <!--[foreach from=$avatars item="avatar"]-->
   <div class="avatarbox">
     <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->">

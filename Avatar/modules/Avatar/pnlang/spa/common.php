@@ -15,30 +15,30 @@
 
 /**
  * Translated by
- * @author       Mateo Tibaquir·
+ * @author       Mateo Tibaquir√°
  */
 
 // new
-define('_AVATAR_SELECTDISPLAY',               'Selecciona el n˙mero de avatars que se han de mostrar por p·gina');
+define('_AVATAR_SELECTDISPLAY',               'Selecciona el n√∫mero de avatars que se han de mostrar por p√°gina');
 
 //
 // A
 //
 define('_AVATAR_ADM_ALLOWMULTIPLEAVATARS',    'Permitir multiples avatars');
-define('_AVATAR_ADM_ALLOWRESIZE',             'Redimensionar el avatar autom·ticamente');
+define('_AVATAR_ADM_ALLOWRESIZE',             'Redimensionar el avatar autom√°ticamente');
 define('_AVATAR_ADM_AVATARDIR',               'Carpeta de Avatar (Zikula)');
 define('_AVATAR_ADM_AVATARDIR_HINT',          'Por defecto: images/avatar <strong>sin barra final</strong>');
 define('_AVATAR_ADM_EXTENSIONS',              'Extensiones permitidas');
 define('_AVATAR_ADM_EXTENSIONS_HINT',         '(una lista separada por punto y coma de las extensiones permitidas. Tipos soportados: gif, jpg, jpeg, png, wbm. Al usar PHP 5 o mayor tienes que permitir \'jpeg\' en vez de \'jpg\')');
 define('_AVATAR_ADM_FORUMDIR',                'Carpeta de Avatars (phpBB');
 define('_AVATAR_ADM_MAXHEIGHT',               'Alto max. en pixeles');
-define('_AVATAR_ADM_MAXSIZE',                 'TamaÒo max. del archivo en bytes');
+define('_AVATAR_ADM_MAXSIZE',                 'Tama√±o max. del archivo en bytes');
 define('_AVATAR_ADM_MAXWIDTH',                'Ancho max. en pixeles');
-define('_AVATAR_ADM_MULTIPLE_HINT',           'Esto le permite al usuario almacenar un avatar por extensiÛn');
-define('_AVATAR_ADM_TITLE',                   'AdministraciÛn de Avatar');
-define('_AVATAR_ADM_UPLOAD',                  'ConfiguraciÛn de archivos');
+define('_AVATAR_ADM_MULTIPLE_HINT',           'Esto le permite al usuario almacenar un avatar por extensi√≥n');
+define('_AVATAR_ADM_TITLE',                   'Administraci√≥n de Avatar');
+define('_AVATAR_ADM_UPLOAD',                  'Configuraci√≥n de archivos');
 define('_AVATAR_ALLOWEDEXTENSIONS',           'Extensiones permitidas');
-define('_AVATAR_AVATARINUSE',                 'Advertencia: Este avatar est· en uso y no puede ser borrado. Si quieres borrarlo, por favor cambia los avatars de los usuarios listados a continuaciÛn.');
+define('_AVATAR_AVATARINUSE',                 'Advertencia: Este avatar est√° en uso y no puede ser borrado. Si quieres borrarlo, por favor cambia los avatars de los usuarios listados a continuaci√≥n.');
 
 //
 // B
@@ -50,7 +50,7 @@ define('_AVATAR_BYTES',                       'Bytes');
 //
 define('_AVATAR_CHANGEDTO',                   'El avatar del usuario %username% fue cambiado a %avatar%');
 define('_AVATAR_CLEAR_BUTTON',                'Limpiar');
-define('_AVATAR_CONFIRMDELETE',               'Confirmar eliminaciÛn');
+define('_AVATAR_CONFIRMDELETE',               'Confirmar eliminaci√≥n');
 define('_AVATAR_CURRENTAVATAR',               'Tu avatar actual es ');
 
 //
@@ -68,14 +68,14 @@ define('_AVATAR_ERRORDELETINGAVATAR',         'Error: No se pudo borrar el avata
 define('_AVATAR_ERR_AUTHORIZED',              'No estas autorizado para subir tu avatar.');
 define('_AVATAR_ERR_COPYAVATAR',              'Falla al copiar el archivo a la carpeta de avatars.');
 define('_AVATAR_ERR_COPYFORUM',               'Falla al copiar el archivo a la carpeta de phpbb.');
-define('_AVATAR_ERR_FILEDIMENSIONS',          'Error en el alto (max. %h%px) o ancho (max. %w%px) de la im·gen.');
-define('_AVATAR_ERR_FILESIZE',                'Error en tamaÒo de archivo, sÛlo se permite un m·ximo de %max% bytes.');
-define('_AVATAR_ERR_FILETYPE',                'ExtensiÛn de archivo no est· dentro de las permitidas: %ft%.');
-define('_AVATAR_ERR_FILEUPLOAD',              'No se seleccionÛ ning˙n archivo.');
-define('_AVATAR_ERR_NOIMAGE',                 'El archivo subido no es una im·gen');
+define('_AVATAR_ERR_FILEDIMENSIONS',          'Error en el alto (max. %h%px) o ancho (max. %w%px) de la im√°gen.');
+define('_AVATAR_ERR_FILESIZE',                'Error en tama√±o de archivo, s√≥lo se permite un m√°ximo de %max% bytes.');
+define('_AVATAR_ERR_FILETYPE',                'Extensi√≥n de archivo no est√° dentro de las permitidas: %ft%.');
+define('_AVATAR_ERR_FILEUPLOAD',              'No se seleccion√≥ ning√∫n archivo.');
+define('_AVATAR_ERR_NOIMAGE',                 'El archivo subido no es una im√°gen');
 define('_AVATAR_ERR_NOTLOGGEDIN',             'No eres un usuario registrado.');
 define('_AVATAR_ERR_SELECT',                  'Error mientras se seleccionaba el avatar.');
-define('_AVATAR_ERR_USERNOTAUTHORIZED',       'No est·s autorizado para usar este avatar. Para cambiar esto, actualiza el permiso para %avatar%.');
+define('_AVATAR_ERR_USERNOTAUTHORIZED',       'No est√°s autorizado para usar este avatar. Para cambiar esto, actualiza el permiso para %avatar%.');
 
 //
 // L
@@ -86,18 +86,18 @@ define('_AVATAR_LISTUSERS',                   'lista de usuarios que usan este a
 // M
 //
 define('_AVATAR_MAINTAINAVATARS',             'Mantenimiento de Avatars');
-define('_AVATAR_MAXDIMENSIONS',               'Dimensiones m·ximas');
-define('_AVATAR_MAXHEIGHT',                   'Alto m·ximo');
-define('_AVATAR_MAXSIZE',                     'TamaÒo max. del Avatar');
-define('_AVATAR_MAXWIDTH',                    'Ancho m·ximo');
+define('_AVATAR_MAXDIMENSIONS',               'Dimensiones m√°ximas');
+define('_AVATAR_MAXHEIGHT',                   'Alto m√°ximo');
+define('_AVATAR_MAXSIZE',                     'Tama√±o max. del Avatar');
+define('_AVATAR_MAXWIDTH',                    'Ancho m√°ximo');
 define('_AVATAR_MISSINGPATH',                 'ruta no encontrada');
-define('_AVATAR_MODIFYCONFIG',                'Modificar configuraciÛn');
+define('_AVATAR_MODIFYCONFIG',                'Modificar configuraci√≥n');
 
 //
 // N
 //
-define('_AVATAR_NOUSERFORTHISAVATAR',         'Ning˙n usuario est· usando este avatar');
-define('_AVATAR_NOAVATARSELECTED',            'ning˙n avatar seleccionado');
+define('_AVATAR_NOUSERFORTHISAVATAR',         'Ning√∫n usuario est√° usando este avatar');
+define('_AVATAR_NOAVATARSELECTED',            'ning√∫n avatar seleccionado');
 
 //
 // P
@@ -109,7 +109,7 @@ define('_AVATAR_PIXEL',                       'pixeles');
 //
 // R
 //
-define('_AVATAR_RESIZE',                      'Im·genes grandes ser·n redimensionadas autom·ticamente.');
+define('_AVATAR_RESIZE',                      'Im√°genes grandes ser√°n redimensionadas autom√°ticamente.');
 
 //
 // S
@@ -144,4 +144,4 @@ define('_AVATAR_VISITHOMEPAGE',               'Visita el proyecto Avatar en el N
 // w
 //
 define('_AVATAR_WARN_AVARTARDIR',             'Advertencia: el servidor no puede escribir en la carpeta de avatars');
-define('_AVATAR_WARN_FORUMDIR',               'Advertencia: el servidor no puede escribir en la carpeta de avatars de los foros (no es problema cuando PNphpBB2 no est· instalado)');
+define('_AVATAR_WARN_FORUMDIR',               'Advertencia: el servidor no puede escribir en la carpeta de avatars de los foros (no es problema cuando PNphpBB2 no est√° instalado)');

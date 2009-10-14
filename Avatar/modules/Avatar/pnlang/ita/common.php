@@ -32,22 +32,22 @@ define('_AVATAR_ADM_MULTIPLE_HINT',           'Questo permette all\'utente di ca
 define('_AVATAR_ADM_TITLE',                   'Amministrazione Avatar');
 define('_AVATAR_ADM_UPLOAD',                  'Impostazioni Upload');
 define('_AVATAR_ALLOWEDEXTENSIONS',  		  'Estensioni permesse');
-define('_AVATAR_AVATARINUSE',                 'Attenzione: questo avatar è in uso e non può essere eliminato. Se vuoi cancellarlo cambia l\'avatar degli utenti elencati qui sotto.');
+define('_AVATAR_AVATARINUSE',                 'Attenzione: questo avatar Ã¨ in uso e non puÃ² essere eliminato. Se vuoi cancellarlo cambia l\'avatar degli utenti elencati qui sotto.');
 
 //
 // C
 //
-define('_AVATAR_CHANGEDTO',                   'L\'avatar dell\'utente %username% ora è %avatar%');
+define('_AVATAR_CHANGEDTO',                   'L\'avatar dell\'utente %username% ora Ã¨ %avatar%');
 define('_AVATAR_CLEAR_BUTTON',                'Pulisci');
 define('_AVATAR_CONFIRMDELETE',               'Conferma eliminazione');
-define('_AVATAR_CURRENTAVATAR',               'Il tuo avatar attuale è');
+define('_AVATAR_CURRENTAVATAR',               'Il tuo avatar attuale Ã¨');
 
 //
 // D
 //
 define('_AVATAR_DELETEAVATAR',                'elimina avatar');
 define('_AVATAR_DELETECURRENTAVATAR',         'Elimina l\'avatar attuale?');
-define('_AVATAR_DELETED',                     'L\'avatar %avatar% è stato eliminato');
+define('_AVATAR_DELETED',                     'L\'avatar %avatar% Ã¨ stato eliminato');
 
 //
 // E
@@ -61,10 +61,10 @@ define('_AVATAR_ERR_FILEDIMENSIONS',          'Altezza (max. %h%px) o larghezza 
 define('_AVATAR_ERR_FILESIZE',                'Dimensione del file eccessiva, massimo permesso %max% bytes.');
 define('_AVATAR_ERR_FILETYPE',                'Estensione non permessa. Estensioni accettate: %ft%.');
 define('_AVATAR_ERR_FILEUPLOAD',              'Nessun file selezionato.');
-define('_AVATAR_ERR_NOIMAGE',                 'Questo file non è un\'immagine');
+define('_AVATAR_ERR_NOIMAGE',                 'Questo file non Ã¨ un\'immagine');
 define('_AVATAR_ERR_NOTLOGGEDIN',             'Non sei un utente registrato.');
 define('_AVATAR_ERR_SELECT',                  'Errore durante la selezione dell\'avatar.');
-define('_AVATAR_ERR_USERNOTAUTHORIZED',       'L\'utente non è autorizzato ad utilizzare questo avatar. Per cambiare questa opzione modifica i permessi di %avatar%.');
+define('_AVATAR_ERR_USERNOTAUTHORIZED',       'L\'utente non Ã¨ autorizzato ad utilizzare questo avatar. Per cambiare questa opzione modifica i permessi di %avatar%.');
 
 //
 // L
@@ -91,8 +91,8 @@ define('_AVATAR_NOAVATARSELECTED',            'nessun avatar selezionato');
 //
 // P
 //
-define('_AVATAR_PATHDOESNOTEXIST',            'Il path %path% non esiste o non è leggibile dal webserver.');
-define('_AVATAR_PATHISNOTWRITABLE',           'Il webserver non può scrivere in %path%.');
+define('_AVATAR_PATHDOESNOTEXIST',            'Il path %path% non esiste o non Ã¨ leggibile dal webserver.');
+define('_AVATAR_PATHISNOTWRITABLE',           'Il webserver non puÃ² scrivere in %path%.');
 define('_AVATAR_PIXEL',                       'pixel');
 
 //
@@ -132,5 +132,5 @@ define('_AVATAR_VISITHOMEPAGE',               'Visita il progetto Avatar su Trac
 //
 // w
 //
-define('_AVATAR_WARN_AVARTARDIR',             'Attenzione: il webserver non può scrivere nella cartella degli avatar');
-define('_AVATAR_WARN_FORUMDIR',               'Attenzione: il webserver non può scrivere nella cartella del forum (è normale se PNphpBB2 non è installato)');
+define('_AVATAR_WARN_AVARTARDIR',             'Attenzione: il webserver non puÃ² scrivere nella cartella degli avatar');
+define('_AVATAR_WARN_FORUMDIR',               'Attenzione: il webserver non puÃ² scrivere nella cartella del forum (Ã¨ normale se PNphpBB2 non Ã¨ installato)');

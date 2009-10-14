@@ -1,15 +1,21 @@
 <!--[* $Id$ *]-->
 <!--[ include file="Avatar_admin_menu.htm" ]-->
-<h3><!--[ pnml name="_AVATAR_CONFIRMDELETE" ]--></h3>
-<br class="pn-clearer" />
+<h2><!--[ pnml name="_AVATAR_CONFIRMDELETE" ]--></h2>
 
-<p><img src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" /></p>
-
-<form action="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" ]-->" method="post">
-  <div>
-    <input type="hidden" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->" />
-    <input type="submit" name="submit" value="<!--[ pnml name="_DELETE" ]-->" />
-  </div>
+<form class="z-form" action="<!--[ pnmodurl modname="Avatar" type="admin" func="delete" ]-->" method="post">
+    <fieldset>
+        <legend><!--[ pnml name="_AVATAR_CONFIRMDELETE" ]--></legend>
+        <div class="z-formrow">
+            <label><!--[ pnml name="_AVATAR_SELECTEDAVATAR" ]--></label>
+            <span>
+                <img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
+            </span>
+        </div>
+    </fieldset>
+    <div class="z-formbuttons">
+        <input type="hidden" name="avatar" value="<!--[ $avatar|pnvarprepfordisplay ]-->" />
+        <input type="submit" name="submit" value="<!--[ pnml name="_DELETE" ]-->" />
+    </div>
 </form>
 
 <!--[ include file="Avatar_admin_footer.htm" ]-->

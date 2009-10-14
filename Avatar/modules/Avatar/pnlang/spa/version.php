@@ -15,7 +15,7 @@
 
 /**
  * Translated by
- * @author       Mateo Tibaquir·
+ * @author       Mateo Tibaquir√°
  */
 
 define('_AVATAR_DESCRIPTION', 'Administrador de Avatars individuales');
