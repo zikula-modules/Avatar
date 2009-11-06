@@ -52,7 +52,6 @@ function Avatar_adminapi_getusersbyavatar($args)
         $userdatacolumn = $pntables['user_data_column'];   
         $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
         $avatarusers = DBUtil::selectObjectArray('user_data', $where);
-        $results = DBUtil::selectObjectArray('user_property', $where, $orderBy, $args['startnum'], $args['numitems']);
         foreach($avatarusers as $avataruser) {
             $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
         }
