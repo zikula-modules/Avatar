@@ -88,6 +88,7 @@ function Avatar_user_upload ($args)
     move_uploaded_file($_FILES['filelocale']['tmp_name'], $tmp_file);
     
     $modvars = pnModGetVar('Avatar');
+    $avatardir = pnModGetVar('Users', 'avatarpath');
     
     // check for file size limit
     if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
@@ -170,7 +171,7 @@ function Avatar_user_upload ($args)
     $uid = pnUserGetVar('uid');
     $avatarfilenamewithoutextension = 'pers_' . $uid;
     $avatarfilename = $avatarfilenamewithoutextension . '.' . $extension;
-    $user_avatar = DataUtil::formatForStore($modvars['avatardir'] . '/' . $avatarfilename);
+    $user_avatar = DataUtil::formatForStore($avatardir . '/' . $avatarfilename);
     $pnphpbb_avatar = DataUtil::formatForStore($modvars['forumdir'] . '/' .$avatarfilename);
 
     // delete old user avatar with this extension
@@ -178,7 +179,7 @@ function Avatar_user_upload ($args)
     if($modvars['allow_multiple'] == false) {
         // users are not allowed to store more than one avatar
         foreach(explode (';', $modvars['allowed_extensions']) as $ext) {
-            unlink($file = DataUtil::formatForStore($modvars['avatardir'] . '/' . $avatarfilenamewithoutextension . '.' . $ext));
+            unlink($file = DataUtil::formatForStore($avatardir . '/' . $avatarfilenamewithoutextension . '.' . $ext));
         }
     } else if(file_exists($user_avatar) && is_writable($user_avatar)) {
         unlink($user_avatar);
@@ -190,7 +191,7 @@ function Avatar_user_upload ($args)
     } else {
         chmod ($user_avatar, 0644);
     }
-    if (pnModAvailable('pnPHPbb') && $modvars['forumdir'] != '') {
+    if (pnModAvailable('pnPHPbb') && avatardir != '') {
         unlink($pnphpbb_avatar);
         if (!@copy($tmp_file, $pnphpbb_avatar)) {
             unlink($tmp_file);

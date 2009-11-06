@@ -197,7 +197,7 @@ function Avatar_admin_listusers($args)
     $pnRender->assign('allavatarscount', $allavatarscount);
     $pnRender->assign('page', $page);
     $pnRender->assign('perpage', $perpage);
-    return $pnRender->fetch('Avatar_admin_listusers.htm');                     
+    return $pnRender->fetch('Avatar_admin_listusers.htm');
 }
 
 /**

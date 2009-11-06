@@ -53,7 +53,7 @@ function Avatar_upgrade($oldversion)
             pnModDelVar('Avatar', 'prefix_prefix_2');
             pnModDelVar('Avatar', 'prefix_prefix_3');
 
-            pnModSetVar('Avatar', 'allow_multiple',   true);
+            pnModSetVar('Avatar', 'allow_multiple', true);
             
             // for PHP5: if jpg is allowed, also allow jpeg if needed
             // this is needed because image_type_to_extension() always returns 'jpeg' in case
@@ -63,7 +63,10 @@ function Avatar_upgrade($oldversion)
                 $exts[] = 'jpeg';
                 pnModSetVar('Avatar', 'allowed_extensions', implode(';', $exts));
             }
-        case '2.0': // nothing to do
+        case '2.0': 
+        case '2.1': 
+            pnModSetVar('Users', 'avatarpath', pnModGetVar('Avatar', 'avatardir'));
+            pnModDelVar('Avatar', 'avatardir');
     }
     if (!defined('_PNINSTALLVER')) {
         // clear all compiled templates

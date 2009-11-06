@@ -15,6 +15,7 @@
 
 $modversion['name']           = 'Avatar';
 $modversion['displayname']    = 'Avatar';
+$modversion['url']            = 'Avatar';
 $modversion['version']        = '2.2';
 $modversion['description']    = _AVATAR_DESCRIPTION;
 $modversion['credits']        = 'pndocs/changelog.txt';

@@ -28,7 +28,7 @@ function Avatar_userapi_getAvatars($args)
     $uid      = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
     $page     = (isset($args['page'])) ? $args['page']: -1;
     $perpage  = (isset($args['perpage'])) ? $args['perpage'] : -1;
-    $avatardir = pnModGetVar('Avatar', 'avatardir');
+    $avatardir = pnModGetVar('Users', 'avatarpath');
    
     Loader::loadClass('FileUtil');
     $allavatars = FileUtil::getFiles($avatardir, true, true, null, false);
@@ -84,7 +84,7 @@ function Avatar_userapi_setAvatar($args)
         $allowedhtml = pnConfigGetVar('AllowableHTML');
         $uname = pnUserGetVar('uname', $args['uid']);
         if($allowedhtml['img'] == 2) {
-            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '')) . '<img src="' . pnModGetVar('Avatar', 'avatardir') .  '/'. $args['avatar'] . '" alt="Avatar" />';
+            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '')) . '<img src="' . pnModGetVar('Users', 'avatarpath') .  '/'. $args['avatar'] . '" alt="Avatar" />';
         } else {
             $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => $args['avatar']));
         }

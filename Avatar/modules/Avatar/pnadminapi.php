@@ -24,7 +24,7 @@ function Avatar_adminapi_getlinks()
     $links = array();
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         $links[] = array('url' => pnModURL('Avatar', 'admin', 'main'), 'text' => _AVATAR_MAINTAINAVATARS);
-        $links[] = array('url' => pnModURL('Avatar', 'admin', 'searchusers'), 'text' => _AVATAR_SEARCHUSERS);        
+        $links[] = array('url' => pnModURL('Avatar', 'admin', 'searchusers'), 'text' => _AVATAR_SEARCHUSERS);
         $links[] = array('url' => pnModURL('Avatar', 'admin', 'modifyconfig'), 'text' => _AVATAR_MODIFYCONFIG);
     }
     return $links;
@@ -46,13 +46,13 @@ function Avatar_adminapi_getusersbyavatar($args)
         
         //First we need to get the property _YOURAVATAR
         $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
-        $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);    
+        $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);
         
         $pntables = pnDBGetTables();
         $userdatacolumn = $pntables['user_data_column'];   
         $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
         $avatarusers = DBUtil::selectObjectArray('user_data', $where);
-        
+        $results = DBUtil::selectObjectArray('user_property', $where, $orderBy, $args['startnum'], $args['numitems']);
         foreach($avatarusers as $avataruser) {
             $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
         }
@@ -67,7 +67,7 @@ function Avatar_adminapi_getusersbyavatar($args)
 function Avatar_adminapi_deleteavatar($args)
 {
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        $osdir = DataUtil::formatForOS(pnModGetVar('Avatar', 'avatardir')); 
+        $osdir = DataUtil::formatForOS(pnModGetVar('Users', 'avatarpath')); 
         $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
             return LogUtil::registerError(pnML('_AVATAR_ERRORDELETINGAVATAR', array('avatar' => $avatarfile)), null, pnModURL('Avatar', 'admin', 'main'));
