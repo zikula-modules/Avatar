@@ -58,6 +58,7 @@ class pnFormPathInput extends pnFormTextInput
 
     function validate(&$render)
     {
+        $dom = ZLanguage::getModuleDomain('Avatar');
         parent::validate($render);
         if (!$this->isValid) {
             return;
@@ -65,9 +66,9 @@ class pnFormPathInput extends pnFormTextInput
 
         if ($this->text != '') {
             if (!is_dir($this->text) || !is_readable($this->text)) {
-                $this->setError(pnML('_AVATAR_PATHDOESNOTEXIST', array('path' => $this->text)));
+                $this->setError(__f('The path %s does not exist or is not readable by the webserver.', $this->text, $dom));
             } elseif ($this->writable == true && !is_writable($this->text)) {
-                $this->setError(pnML('_AVATAR_PATHISNOTWRITABLE', array('path' => $this->text)));
+                $this->setError(__f('The webserver cannot write to %s.',$this->text, $dom));
             } else {
                 if ($this->removeSlash == true) {
                     Loader::loadClass('StringUtil');
@@ -81,7 +82,7 @@ class pnFormPathInput extends pnFormTextInput
                 }
             }
         } else {
-            $this->setError(_AVATAR_MISSINGPATH);
+            $this->setError(__('missing path', $dom));
         }
     }
 

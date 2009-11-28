@@ -1,7 +1,7 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
  *
@@ -15,9 +15,9 @@
 
 /**
  * Avatar_userapi_GetAvatars()
- * 
- * returns all possible avatars for the current user. 
- * 
+ *
+ * returns all possible avatars for the current user.
+ *
  * @param integer $args['uid'] the user ID (if missing, the current user is assumed)
  * @param integer $args['startnum'] int the number where to start (for paging)
  * @param integer $args['perpage'] int items per page
@@ -29,12 +29,12 @@ function Avatar_userapi_getAvatars($args)
     $page     = (isset($args['page'])) ? $args['page']: -1;
     $perpage  = (isset($args['perpage'])) ? $args['perpage'] : -1;
     $avatardir = pnModGetVar('Users', 'avatarpath');
-   
+
     Loader::loadClass('FileUtil');
     $allavatars = FileUtil::getFiles($avatardir, true, true, null, false);
     $avatars = array();
     foreach ($allavatars as $avatar) {
-        // imagename is like pers_XXXX.gif (with XXXX = user id) 
+        // imagename is like pers_XXXX.gif (with XXXX = user id)
         if (pnModAPIFunc('Avatar', 'user', 'checkAvatar',
                          array('avatar' => $avatar,
                                'uid'    => $uid)) == true) {
@@ -55,16 +55,16 @@ function Avatar_userapi_getAvatars($args)
         }
         return array($pagedavatars, $allcount);
     }
-    
+
     return array($avatars, $allcount);
 }
 
 
 /**
  * Avatar_userapi_SetAvatar()
- * 
+ *
  * sets the user avatar.
- * 
+ *
  * @param integer $args['uid'] the user id
  * @param string $args['avatar'] the user avatar
  * @return boolean success
@@ -78,21 +78,21 @@ function Avatar_userapi_setAvatar($args)
     $avatar_ok = pnModAPIFunc('Avatar', 'user', 'checkAvatar', $args);
 
     if($avatar_ok == true) {
-        pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);  
-         
+        pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);
+
         // trick: show new avatar in status message if img-tag is free
         $allowedhtml = pnConfigGetVar('AllowableHTML');
         $uname = pnUserGetVar('uname', $args['uid']);
         if($allowedhtml['img'] == 2) {
-            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => '')) . '<img src="' . pnModGetVar('Users', 'avatarpath') .  '/'. $args['avatar'] . '" alt="Avatar" />';
+            $status = __f('The avatar of user %1$s has been changed to %2$s', array($uname, '<img src="' . pnModGetVar('Users', 'avatarpath') .  '/'. $args['avatar'] . '" alt="Avatar" />'), $dom);
         } else {
-            $status = pnML('_AVATAR_CHANGEDTO', array('username' => $uname, 'avatar' => $args['avatar']));
+            $status = __f('The avatar of user %1$s has been changed to %2$s', array($uname, $args['avatar']), $dom);
         }
-        LogUtil::registerStatus($status); 
+        LogUtil::registerStatus($status);
         return true;
     }
-    
-    return LogUtil::registerError(pnML('_AVATAR_ERR_USERNOTAUTHORIZED', array('avatar' => $args['avatar'])));
+
+    return LogUtil::registerError(__f('The user is not authorized to use this avatar. To change this, update the permission for %s.', $args['avatar'], $dom));
 }
 
 /**

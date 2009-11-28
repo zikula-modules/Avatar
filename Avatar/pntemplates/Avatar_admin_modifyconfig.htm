@@ -1,68 +1,68 @@
 <!--[* $Id *]-->
-<!--[ include file="Avatar_admin_menu.htm" ]-->
-<h2><!--[pnml name="_AVATAR_MODIFYCONFIG"]--></h2>
+<!--[include file="Avatar_admin_menu.htm"]-->
+<h2><!--[gt text="Modify configuration"]--></h2>
 
-<!--[ pnform cssClass="z-form"]-->
-<!--[ pnformvalidationsummary ]-->
+<!--[pnform cssClass="z-form"]-->
+<!--[pnformvalidationsummary]-->
 
 <fieldset>
-    <legend><!--[pnml name="_AVATAR_ADM_UPLOAD"]--></legend>
+    <legend><!--[gt text="Upload Settings"]--></legend>
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="avatardir" text='_AVATAR_ADM_AVATARDIR' html=1 ]-->
-        <!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" text=$pncore.Avatar.avatardir ]-->
+        <!--[pnformlabel for="avatardir" __text='Avatar Directory (Zikula)' html='1']-->
+        <!--[pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="avatardir" __text=$pncore.Avatar.avatardir]-->
     </div>
 
-    <!--[ if $avatardir_writable eq false ]-->
-    <p class="z-errormsg z-formnote"><!--[ pnml name="_AVATAR_WARN_AVARTARDIR"]--></p>
+    <!--[if $avatardir_writable eq false]-->
+    <p class="z-errormsg z-formnote"><!--[gt text="Warning: the webserver cannot write to the avatar direcory"]--></p>
     <!--[/if]-->
 
-    <!--[ if $pnphpbb_installed eq true ]-->
+    <!--[if $pnphpbb_installed eq true]-->
     <div class="z-formrow">
-        <!--[ pnformlabel for="forumdir" text='_AVATAR_ADM_FORUMDIR' html=1 ]-->
-        <!--[ pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir ]-->
-        <!--[ if $forumdir_writable eq false ]-->
-        <p class="z-errormsg z-formnote"><!--[ pnml name="_AVATAR_WARN_FORUMDIR"]--></p>
-        <!--[ /if ]-->
+        <!--[pnformlabel for="forumdir" __text='Avatar Directory (PHPBB2' html='1']-->
+        <!--[pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" __text=$pncore.Avatar.forumdir]-->
+        <!--[if $forumdir_writable eq false]-->
+        <p class="z-errormsg z-formnote"><!--[gt text="Warning: the webserver cannot write to the forums avatar direcory (this is fine when PNphpBB2 isn't installed)"]--></p>
+        <!--[/if]-->
     </div>
-    <!--[ /if ]-->
+    <!--[/if]-->
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="allow_resize" text='_AVATAR_ADM_ALLOWRESIZE' ]-->
-        <!--[ pnformcheckbox id="allow_resize" checked=$pncore.Avatar.allow_resize ]-->
-    </div>
-
-    <div class="z-formrow">
-        <!--[ pnformlabel for="maxsize" text='_AVATAR_ADM_MAXSIZE' html=1 ]-->
-        <!--[ pnformintinput minValue="0" maxValue="100000" size="10" maxLength="10" id="maxsize" text=$pncore.Avatar.maxsize ]-->
+        <!--[pnformlabel for="allow_resize" __text='Resize the avatar automatically']-->
+        <!--[pnformcheckbox id="allow_resize" checked=$pncore.Avatar.allow_resize]-->
     </div>
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="maxheight" text='_AVATAR_ADM_MAXHEIGHT' html=1 ]-->
-        <!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxheight" text=$pncore.Avatar.maxheight ]-->
+        <!--[pnformlabel for="maxsize" __text='Max avatar filesize in bytes' html='1']-->
+        <!--[pnformintinput minValue="0" maxValue="100000" size="10" maxLength="10" id="maxsize" __text=$pncore.Avatar.maxsize]-->
     </div>
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="maxwidth" text='_AVATAR_ADM_MAXWIDTH' html=1 ]-->
-        <!--[ pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxwidth" text=$pncore.Avatar.maxwidth ]-->
+        <!--[pnformlabel for="maxheight" __text='Max height in pixels' html='1']-->
+        <!--[pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxheight" __text=$pncore.Avatar.maxheight]-->
     </div>
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="allowed_extensions" text='_AVATAR_ADM_EXTENSIONS' html=1 ]-->
-        <!--[ pnformtextinput size="25" maxLength="40" id="allowed_extensions" text=$pncore.Avatar.allowed_extensions ]-->
-        <p class="z-formnote z-informationmsg"><!--[pnml name="_AVATAR_ADM_EXTENSIONS_HINT"]--></p>
+        <!--[pnformlabel for="maxwidth" __text='Max width in pixels' html='1']-->
+        <!--[pnformintinput minValue="10" maxValue="400" size="10" maxLength="10" id="maxwidth" __text=$pncore.Avatar.maxwidth]-->
     </div>
 
     <div class="z-formrow">
-        <!--[ pnformlabel for="allow_multiple" text='_AVATAR_ADM_ALLOWMULTIPLEAVATARS' ]-->
-        <!--[ pnformcheckbox id="allow_multiple" checked=$pncore.Avatar.allow_multiple ]-->
-        <em><!--[ pnml name="_AVATAR_ADM_MULTIPLE_HINT" ]--></em>
+        <!--[pnformlabel for="allowed_extensions" __text='Allowed extensions' html='1']-->
+        <!--[pnformtextinput size="25" maxLength="40" id="allowed_extensions" __text=$pncore.Avatar.allowed_extensions]-->
+        <p class="z-formnote z-informationmsg"><!--[gt text="(a semicolon separated list of allowed file extensions, supported filetypes: gif, jpg, jpeg, png, wbm. When using PHP 5 or later you have to allow 'jpeg' instead of 'jpg')"]--></p>
+    </div>
+
+    <div class="z-formrow">
+        <!--[pnformlabel for="allow_multiple" __text='Allow multiple avatars']-->
+        <!--[pnformcheckbox id="allow_multiple" checked=$pncore.Avatar.allow_multiple]-->
+        <em><!--[gt text="This allows the user to store one avatar per extension"]--></em>
     </div>
 </fieldset>
 
 <div class="z-formbuttons">
-    <!--[pnformbutton id="submit" commandName="submit" text="_SUBMIT"]-->
+    <!--[pnformbutton id="submit" commandName="submit" __text="Submit"]-->
 </div>
-<!--[ /pnform ]-->
+<!--[/pnform]-->
 
-<!--[ include file="Avatar_admin_footer.htm" ]-->
+<!--[include file="Avatar_admin_footer.htm"]-->

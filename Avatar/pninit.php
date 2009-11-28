@@ -1,7 +1,7 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
  *
@@ -15,9 +15,9 @@
 
 /**
  * Avatar_init()
- * 
+ *
  * Initialize the Module
- * 
+ *
  * @return boolean success or not
  */
 function Avatar_init()
@@ -31,13 +31,13 @@ function Avatar_init()
     pnModSetVar('Avatar', 'allowed_extensions', 'gif;jpg;jpeg;png');
     pnModSetVar('Avatar', 'allow_multiple',     true);
     return true;
-} 
+}
 
 /**
  * Avatar_upgrade()
- * 
+ *
  * Upgrade the Module
- * 
+ *
  * @param integer $oldversion old version of the module
  * @return boolean success or not
  **/
@@ -45,7 +45,7 @@ function Avatar_upgrade($oldversion)
 {
     // Upgrade dependent on old version number
     switch($oldversion) {
-        case '1.1': 
+        case '1.1':
             pnModDelVar('Avatar', 'prefix_group_1');
             pnModDelVar('Avatar', 'prefix_group_2');
             pnModDelVar('Avatar', 'prefix_group_3');
@@ -54,7 +54,7 @@ function Avatar_upgrade($oldversion)
             pnModDelVar('Avatar', 'prefix_prefix_3');
 
             pnModSetVar('Avatar', 'allow_multiple', true);
-            
+
             // for PHP5: if jpg is allowed, also allow jpeg if needed
             // this is needed because image_type_to_extension() always returns 'jpeg' in case
             // of jpg images in PHP5
@@ -63,27 +63,23 @@ function Avatar_upgrade($oldversion)
                 $exts[] = 'jpeg';
                 pnModSetVar('Avatar', 'allowed_extensions', implode(';', $exts));
             }
-        case '2.0': 
-        case '2.1': 
+        case '2.0':
+        case '2.1':
             pnModSetVar('Users', 'avatarpath', pnModGetVar('Avatar', 'avatardir'));
             pnModDelVar('Avatar', 'avatardir');
     }
-    if (!defined('_PNINSTALLVER')) {
-        // clear all compiled templates
-        pnModAPIFunc('pnRender', 'user', 'clear_compiled');
-    }
     return true;
-} 
+}
 
 /**
  * Avatar_delete()
- * 
+ *
  * Delete the module
- * 
+ *
  * @return boolean success or not
  */
 function Avatar_delete()
 {
     pnModDelVar('Avatar');
     return true;
-} 
+}

@@ -1,12 +1,12 @@
 <!--[* $Id *]-->
-<!--[ include file="Avatar_admin_menu.htm" ]-->
-<!--[ pnajaxheader modname="Users" ]-->
-<h2><!--[ pnml name="_AVATAR_SEARCHUSERS" ]--></h2>
+<!--[include file="Avatar_admin_menu.htm"]-->
+<!--[pnajaxheader modname="Users"]-->
+<h2><!--[gt text="Search user"]--></h2>
 
 <div id="liveusersearch" class="z-hide">
-  <!--[ pnml name="_AVATAR_ENTERUSERNAME" ]-->&nbsp;<input size="25" maxlength="40" type="text" name="username" id="username" value="" />
-  <a id="listuser" href="javascript:void(0);"><!--[pnimg modname=core set=icons/extrasmall src="search.gif" alt="_EDIT" altml=true]--></a>
-  <!--[ pnimg id="ajax_indicator" style="display: none;" modname=core set=icons/extrasmall src="indicator_circle.gif" alt="" ]-->
+  <!--[gt text="Enter users name"]-->&nbsp;<input size="25" maxlength="40" type="text" name="username" id="username" value="" />
+  <a id="listuser" href="javascript:void(0);"><!--[pnimg modname='core' set='icons/extrasmall' src="search.gif" __alt="Edit" ]--></a>
+  <!--[pnimg id="ajax_indicator" style="display: none;" modname='core' set='icons/extrasmall' src="indicator_circle.gif" __alt=""]-->
 
   <div id="username_choices" class="autocomplete_user"></div>
   <script type="text/javascript">
@@ -22,37 +22,37 @@
   </script>
 </div>
 
-<!--[ if $username ne "" ]-->
+<!--[if $username ne ""]-->
 <h3><!--[$username]--></h3>
 <p>
-  <!--[ if $avatar ne "" ]-->
-  <!--[ pnml name="_AVATAR_CURRENTAVATAR" ]-->: <br /><img class="avatarchoosen" src="<!--[ $pncore.Avatar.avatardir ]-->/<!--[ $avatar|pnvarprepfordisplay ]-->" alt="Avatar" />
-  <!--[ else ]-->
-  <!--[ pnml name="_AVATAR_NOAVATARSELECTED" ]-->
-  <!--[ /if ]-->
+  <!--[if $avatar ne ""]-->
+  <!--[gt text="Your current avatar is"]--> : <br /><img class="avatarchoosen" src="<!--[$pncore.Avatar.avatardir]-->/<!--[$avatar|pnvarprepfordisplay]-->" alt="Avatar" />
+  <!--[else]-->
+  <!--[gt text="no avatar selected"]-->
+  <!--[/if]-->
 </p>
 
-<h3><!--[ pnml name="_AVATAR_SELECTNEWAVATAR" ]--></h3>
+<h3><!--[gt text="Select new avatar"]--></h3>
 
-<form id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
+<form id="perpageform" method="post" action="<!--[pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
   <div>
     <input type="hidden" name="page" value="1" />
-    <label for="perpage"><!--[ pnml name="_AVATAR_SELECTDISPLAY" ]-->:</label>&nbsp;
+    <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
     <select id="perpage" name="perpage">
         <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
         <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
         <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
         <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
-        <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[ pnml name="_ALL" ]--></option>
+        <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[gt text="All"]--></option>
     </select>
-    &nbsp;<input type="submit" name="submit" value="<!--[ pnml name="_SUBMIT" ]-->" />
+    &nbsp;<input type="submit" name="submit" value="<!--[gt text="Submit"]-->" />
   </div>
 </form>
 <div class="z-clearfix">
   <!--[foreach from=$avatars item="avatar"]-->
   <div class="avatarbox">
-    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid ]-->">
-      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[ $pncore.Avatar.avatardir ]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid]-->">
+      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[$pncore.Avatar.avatardir]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
     </a>
     <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
     <br />
@@ -60,7 +60,7 @@
   <!--[/foreach]-->
 </div>
 
-<!--[ pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage]-->
-<!--[ /if ]-->
+<!--[pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage]-->
+<!--[/if]-->
 
-<!--[ include file="Avatar_admin_footer.htm" ]-->
+<!--[include file="Avatar_admin_footer.htm"]-->

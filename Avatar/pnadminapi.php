@@ -21,11 +21,12 @@
  */
 function Avatar_adminapi_getlinks()
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
     $links = array();
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        $links[] = array('url' => pnModURL('Avatar', 'admin', 'main'), 'text' => _AVATAR_MAINTAINAVATARS);
-        $links[] = array('url' => pnModURL('Avatar', 'admin', 'searchusers'), 'text' => _AVATAR_SEARCHUSERS);
-        $links[] = array('url' => pnModURL('Avatar', 'admin', 'modifyconfig'), 'text' => _AVATAR_MODIFYCONFIG);
+        $links[] = array('url' => pnModURL('Avatar', 'admin', 'main'), 'text' => __('Maintain Avatars', $dom));
+        $links[] = array('url' => pnModURL('Avatar', 'admin', 'searchusers'), 'text' => __('Search user', $dom));
+        $links[] = array('url' => pnModURL('Avatar', 'admin', 'modifyconfig'), 'text' => __('Modify configuration', $dom));
     }
     return $links;
 }
@@ -33,24 +34,24 @@ function Avatar_adminapi_getlinks()
 /**
  * get all users that use the given avatar
  *
- *@params $args['avatar']    string   the avatar name 
+ *@params $args['avatar']    string   the avatar name
  */
 function Avatar_adminapi_getusersbyavatar($args)
 {
     $users = array();
-    
+
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         if(!isset($args['avatar']) || empty($args['avatar'])) {
             return $users;
         }
-        
+
         //First we need to get the property _YOURAVATAR
-        $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
+        $properties = pnModAPIFunc('Profile', 'user', 'getall');
         $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);
-        
+
         $pntables = pnDBGetTables();
-        $userdatacolumn = $pntables['user_data_column'];   
-        $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"'; 
+        $userdatacolumn = $pntables['user_data_column'];
+        $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"';
         $avatarusers = DBUtil::selectObjectArray('user_data', $where);
         foreach($avatarusers as $avataruser) {
             $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
@@ -65,13 +66,14 @@ function Avatar_adminapi_getusersbyavatar($args)
  */
 function Avatar_adminapi_deleteavatar($args)
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-        $osdir = DataUtil::formatForOS(pnModGetVar('Users', 'avatarpath')); 
+        $osdir = DataUtil::formatForOS(pnModGetVar('Users', 'avatarpath'));
         $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
-            return LogUtil::registerError(pnML('_AVATAR_ERRORDELETINGAVATAR', array('avatar' => $avatarfile)), null, pnModURL('Avatar', 'admin', 'main'));
+            return LogUtil::registerError(__f('Error: Unable to delete avatar %s', $avatarfile, $dom), null, pnModURL('Avatar', 'admin', 'main'));
         }
-        LogUtil::registerStatus(pnML('_AVATAR_DELETED', array('avatar' => $avatarfile)));
+        LogUtil::registerStatus(__f('Avatar %s has been deleted', $avatarfile, $dom));
         return true;
     }
     return LogUtil::registerPermissionError();

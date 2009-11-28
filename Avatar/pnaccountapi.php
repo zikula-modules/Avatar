@@ -1,10 +1,10 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
- * 
+ *
  * @package      Avatar
  * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz
@@ -20,6 +20,7 @@
  */
 function Avatar_accountapi_getall($args)
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
     $items = array();
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
         pnModLangLoad('Avatar', 'user');
@@ -27,7 +28,7 @@ function Avatar_accountapi_getall($args)
         $items[] = array('url'     => pnModURL('Avatar', 'user', 'main'),
                          'module'  => 'Avatar',
                          'set'     => '',
-                         'title'   => _AVATAR_TITLE,
+                         'title'   => __('Avatar Management', $dom),
                          'icon'    => 'admin.gif');
     }
     // Return the items

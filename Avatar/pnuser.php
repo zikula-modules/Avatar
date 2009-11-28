@@ -1,10 +1,10 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
- * 
+ *
  * @package      Avatar
  * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz
@@ -15,32 +15,33 @@
 
 /**
  * Avatar_user_main()
- * 
+ *
  * Main function, shows the avatars to select from and the upload form.
- * 
+ *
  * @return output The main module page
  */
 function Avatar_user_main()
-{ 
+{
+    $dom = ZLanguage::getModuleDomain('Avatar');
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnConfigGetVar('entrypoint', 'index.php'));
-    } 
-    
+        return LogUtil::registerError(__("You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
+
     // is the user allowed to upload an Avatar?
-    $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT); 
-    
+    $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT);
+
     // get all possible avatars
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
     list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
                                                     array('page'     => $page,
-                                                          'perpage'  => $perpage)); 
+                                                          'perpage'  => $perpage));
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
@@ -55,19 +56,19 @@ function Avatar_user_main()
     $pnRender->assign('page', $page);
     $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_user_main.htm');
-} 
+}
 
 /**
  * Avatar_user_upload()
- * 
- * This is the upload function. 
+ *
+ * This is the upload function.
  * It takes the uploaded file, performs the relevant checks to see if
  * the file meets the upload policy, and sets the uploaded file as the
  * new avatar of the user.
  */
 function Avatar_user_upload ($args)
-{ 
-
+{
+    $dom = ZLanguage::getModuleDomain('Avatar');
     // permission check
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
@@ -76,55 +77,55 @@ function Avatar_user_upload ($args)
     if (!SecurityUtil::confirmAuthKey()) {
         return LogUtil::registerAuthidError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
+
     // get the file
     $uploadfile = $_FILES['filelocale'];
-    
+
     if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
-        return LogUtil::registerError(_AVATAR_ERR_FILEUPLOAD, null, pnModURL('Avatar'));
-    } 
+        return LogUtil::registerError(__('No file selected.', $dom), null, pnModURL('Avatar'));
+    }
 
     $tmp_file = tempnam(pnConfigGetVar('temp'), 'Avatar');
     move_uploaded_file($_FILES['filelocale']['tmp_name'], $tmp_file);
-    
+
     $modvars = pnModGetVar('Avatar');
     $avatardir = pnModGetVar('Users', 'avatarpath');
-    
+
     // check for file size limit
     if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
         unlink($tmp_file);
-        return LogUtil::registerError(pnML('_AVATAR_ERR_FILESIZE', array('max' => $modvars['maxsize'])), null, pnModURL('Avatar'));
-    } 
-    
+        return LogUtil::registerError(__f('Filesize error, max %s bytes are allowed.', $modvars['maxsize'], $dom), null, pnModURL('Avatar'));
+    }
+
     // Get image information
-    $imageinfo = getimagesize($tmp_file); 
+    $imageinfo = getimagesize($tmp_file);
 
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        return LogUtil::registerError(_AVATAR_ERR_NOIMAGE, null, pnModURL('Avatar'));
-    } 
+        return LogUtil::registerError(__('File is not an image', $dom), null, pnModURL('Avatar'));
+    }
 
-    $extension = image_type_to_extension($imageinfo[2], false); 
+    $extension = image_type_to_extension($imageinfo[2], false);
     // check for image type
     if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
         unlink($tmp_file);
-        return LogUtil::registerError(pnML('_AVATAR_ERR_FILETYPE', array('ft' => $modvars['allowed_extensions'])), null, pnModURL('Avatar'));
-    } 
-    
-    
+        return LogUtil::registerError(__f('Unauthorised file extension. Allowed extensions: %s.', $modvars['allowed_extensions'], $dom), null, pnModURL('Avatar'));
+    }
+
+
     // check for image dimensions limit
     if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
         if (!$modvars['allow_resize']) {
             unlink($tmp_file);
-            return LogUtil::registerError(pnML('_AVATAR_ERR_FILEDIMENSIONS', array('h' => $modvars['maxheight'], 'w' => $modvars['maxwidth'])), null, pnModURL('Avatar'));
+            return LogUtil::registerError(__f('Image height (max. %s1$spx) or width (max. %2$spx) error.', array($modvars['maxheight'], $modvars['maxwidth']), $dom), null, pnModURL('Avatar'));
         } else {
             // resize the image
-            
+
             // get the new dimensions
             $width = $imageinfo[0];
             $height = $imageinfo[1];
-            
+
             if ($width > $modvars['maxwidth']) {
                 $height = ($modvars['maxwidth'] / $width) * $height;
                 $width = $modvars['maxwidth'];
@@ -153,8 +154,8 @@ function Avatar_user_upload ($args)
                     $createfunc = 'imagecreatefromwbmp';
                     $savefunc = 'imagewbmp';
                     break;
-            } 
-        
+            }
+
             $srcImage = $createfunc($tmp_file);
             $destImage = imagecreatetruecolor($width, $height);
             imagecopyresampled($destImage, $srcImage, 0, 0, 0, 0, $width, $height, $imageinfo[0], $imageinfo[1]);
@@ -164,8 +165,8 @@ function Avatar_user_upload ($args)
             imagedestroy($srcImage);
             imagedestroy($destImage);
         }
-    } 
-    
+    }
+
     // everything's OK, so move'em
 
     $uid = pnUserGetVar('uid');
@@ -175,7 +176,7 @@ function Avatar_user_upload ($args)
     $pnphpbb_avatar = DataUtil::formatForStore($modvars['forumdir'] . '/' .$avatarfilename);
 
     // delete old user avatar with this extension
-    // this allows the users to have a avatar available for each extension that is allowed 
+    // this allows the users to have a avatar available for each extension that is allowed
     if($modvars['allow_multiple'] == false) {
         // users are not allowed to store more than one avatar
         foreach(explode (';', $modvars['allowed_extensions']) as $ext) {
@@ -187,7 +188,7 @@ function Avatar_user_upload ($args)
 
     if (!@copy($tmp_file, $user_avatar)) {
         unlink($tmp_file);
-        return LogUtil::registerError(_AVATAR_ERR_COPYAVATAR, null, pnModURL('Avatar'));
+        return LogUtil::registerError(__("Fail to copy the file in avatars' directory.", $dom), null, pnModURL('Avatar'));
     } else {
         chmod ($user_avatar, 0644);
     }
@@ -195,59 +196,60 @@ function Avatar_user_upload ($args)
         unlink($pnphpbb_avatar);
         if (!@copy($tmp_file, $pnphpbb_avatar)) {
             unlink($tmp_file);
-            return LogUtil::registerError(_AVATAR_ERR_COPYFORUM, null, pnModURL('Avatar'));
+            return LogUtil::registerError(__("Fail to copy the file in phpbb's directory.", $dom), null, pnModURL('Avatar'));
         } else {
             chmod ($pnphpbb_avatar, 0644);
         }
-    } 
+    }
     unlink($tmp_file);
 
     if (!pnModAPIFunc('Avatar', 'user', 'setavatar',
                       array('uid'    => $uid,
                             'avatar' => $avatarfilename))) {
-        return LogUtil::registerError(_AVATAR_ERR_SELECT, null, pnModURL('Avatar'));
-    } 
+        return LogUtil::registerError(__('Error while selecting the avatar.', $dom), null, pnModURL('Avatar'));
+    }
     return pnRedirect(pnModURL('Avatar', 'user', 'main'));
-} 
+}
 
 
 /**
  * Avatar_user_SetAvatar()
- * 
- * Takes the new avatar from the input space and selects it as 
- * the new avatar. 
- * 
+ *
+ * Takes the new avatar from the input space and selects it as
+ * the new avatar.
+ *
  * @param $args
- * @return 
+ * @return
  **/
 function Avatar_user_setavatar($args)
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(_AVATAR_ERR_NOTLOGGEDIN, null, pnModURL('Avatar'));
-    } 
-    
+        return LogUtil::registerError(__("You aren't a registered user.", $dom), null, pnModURL('Avatar'));
+    }
+
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
-    $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST'); 
-    
+
+    $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST');
+
     pnModAPIFunc('Avatar', 'user', 'setAvatar',
                        array('uid'    => pnUserGetVar('uid'),
                              'avatar' => $user_avatar));
 
     return pnRedirect(pnModURL('Avatar'));
-} 
+}
 
 
 if (!function_exists('image_type_to_extension')) {
     /**
      * image_type_to_extension()
-     * 
+     *
      * returns the correct extension for a given image type as returned by getimagesize
-     * 
+     *
      * @param integer $imagetype the image type, returned by getimagesize()
      * @param boolean $include_dot prepend a dot to the extension
      * @return string the file extension
@@ -274,6 +276,6 @@ if (!function_exists('image_type_to_extension')) {
             case IMAGETYPE_WBMP    : return $dot . 'wbmp';
             case IMAGETYPE_XBM     : return $dot . 'xbm';
             default                : return false;
-        } 
-    } 
-} 
+        }
+    }
+}

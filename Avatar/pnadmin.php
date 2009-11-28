@@ -23,7 +23,7 @@
  * the module designer feels should be the default function (often this
  * is the view() function)
  *
- * @author       Jörg Napp, Frank Schummertz
+ * @author       Jï¿½rg Napp, Frank Schummertz
  * @return       output       The main module admin page.
  */
 
@@ -39,7 +39,7 @@ function Avatar_admin_main()
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
+
     $username = FormUtil::getPassedValue('username', '', 'GETPOST');
     $userid = pnUserGetIDFromName($username);
     if($userid == false) {
@@ -48,17 +48,17 @@ function Avatar_admin_main()
     } else {
         $avatar = pnUserGetVar('_YOURAVATAR', $userid);
     }
-    
+
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
     list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
                                                          array('page'     => $page,
-                                                               'perpage'  => $perpage)); 
+                                                               'perpage'  => $perpage));
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
     unset($_REQUEST['submit']);
-    
+
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
@@ -68,7 +68,7 @@ function Avatar_admin_main()
     $pnRender->assign('page', $page);
     $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_admin_main.htm');
-} 
+}
 
 /**
  * avatar search-user
@@ -82,7 +82,7 @@ function Avatar_admin_searchusers()
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
+
     $username = FormUtil::getPassedValue('username', '', 'GETPOST');
     $userid = pnUserGetIDFromName($username);
     if($userid == false) {
@@ -96,7 +96,7 @@ function Avatar_admin_searchusers()
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
     list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
                                                          array('page'     => $page,
-                                                               'perpage'  => $perpage)); 
+                                                               'perpage'  => $perpage));
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
@@ -111,37 +111,37 @@ function Avatar_admin_searchusers()
     $pnRender->assign('page', $page);
     $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_admin_searchusers.htm');
-} 
+}
 
 
 /**
  * Avatar_admin_setAvatar()
- * 
+ *
  * This is the admin function to set a new avatar
- * 
+ *
  * @param $args
- * @return 
+ * @return
  **/
 function Avatar_admin_setAvatar()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
-    
-    $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST'); 
-    $uid     = FormUtil::getPassedValue('uid', -1, 'GETPOST'); 
+
+    $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST');
+    $uid     = FormUtil::getPassedValue('uid', -1, 'GETPOST');
 
     pnModAPIFunc('Avatar', 'user', 'setAvatar',
                        array('uid'    => $uid,
                              'avatar' => $uavatar));
-                             
+
     return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
-} 
- 
+}
+
 /**
  * modify the configuration
  *
- * @author       Jörg Napp, Frank Schummertz
+ * @author       Jï¿½rg Napp, Frank Schummertz
  * @return       output       The modify config page.
  */
 function Avatar_admin_modifyconfig()
@@ -174,16 +174,16 @@ function Avatar_admin_listusers($args)
     if(empty($uavatar)) {
         return pnRedirect(pnModURL('Avatar', 'Admin', 'main'));
     }
-    
+
     // get all users that use this avatar
     $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
                           array('avatar' => $uavatar));
-    
+
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
     list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
                                                          array('page'     => $page,
-                                                               'perpage'  => $perpage)); 
+                                                               'perpage'  => $perpage));
 
     // avoid some v1ars in the url of the pager
     unset($_GET['submit']);
@@ -213,7 +213,7 @@ function Avatar_admin_updateusers($args)
 
     $newavatar   = FormUtil::getPassedValue('avatar', '', 'POST');
     $updateusers = FormUtil::getPassedValue('updateusers', '', 'POST');
-    
+
     if(is_array($updateusers) & count($updateusers) > 0) {
         foreach($updateusers as $userid) {
             pnModAPIFunc('Avatar', 'user', 'SetAvatar',
@@ -230,6 +230,7 @@ function Avatar_admin_updateusers($args)
  */
 function Avatar_admin_delete()
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
     }
@@ -238,20 +239,20 @@ function Avatar_admin_delete()
     if(empty($avatar)) {
         return pnRedirect(pnModURL('Avatar', 'Admin', 'main'));
     }
-    
+
     // get all users that use this avatar
     $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
                           array('avatar' => $avatar));
     if(count($users) <> 0) {
         // there are users, at least one, using this avatar, redirect to listusers
-        return LogUtil::registerError(_AVATAR_AVATARINUSE, null, pnModURL('Avatar', 'admin', 'listusers', array('avatar' => $avatar)));
+        return LogUtil::registerError(__('Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.', $dom), null, pnModURL('Avatar', 'admin', 'listusers', array('avatar' => $avatar)));
     }
-    
+
     // ok to delete
     $submit = FormUtil::getPassedValue('submit', null, 'POST');
     if($submit) {
         // delete avatar
-        pnModAPIFunc('Avatar', 'admin', 'deleteavatar', 
+        pnModAPIFunc('Avatar', 'admin', 'deleteavatar',
                      array('avatar' => $avatar));
         return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     } else {
@@ -261,5 +262,5 @@ function Avatar_admin_delete()
     }
     // we should never get here
     return pnRedirect(pnConfigGetVar('entrypoint', 'index.php'));
-    
+
 }

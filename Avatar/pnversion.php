@@ -13,11 +13,13 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
+$dom = ZLanguage::getModuleDomain('Avatar');
 $modversion['name']           = 'Avatar';
-$modversion['displayname']    = 'Avatar';
-$modversion['url']            = 'Avatar';
-$modversion['version']        = '2.2';
-$modversion['description']    = _AVATAR_DESCRIPTION;
+$modversion['displayname']    = __('Avatar', $dom);
+//! module url shoudl be different to displayname
+$modversion['url']            = __('avatar', $dom);
+$modversion['version']        = '2.3';
+$modversion['description']    = __('Upload of individual Avatars', $dom);
 $modversion['credits']        = 'pndocs/changelog.txt';
 $modversion['help']           = 'pndocs/readme.txt';
 $modversion['changelog']      = 'pndocs/changelog.txt';

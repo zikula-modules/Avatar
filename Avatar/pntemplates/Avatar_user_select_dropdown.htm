@@ -1,14 +1,14 @@
 <!--[* $Id$ *]-->
 
-<!--[ pnpageaddvar name="javascript" value="modules/Avatar/pnjavascript/showavatar.js" ]-->
+<!--[pnpageaddvar name="javascript" value="modules/Avatar/pnjavascript/showavatar.js"]-->
 
 <form action="<!--[pnmodurl modname="Avatar" type="user" func="SetAvatar"]-->" method="post">
     <div>
-        <select id="avatarselect" name="user_avatar" onchange="showavatar('<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir ]-->')">
+        <select id="avatarselect" name="user_avatar" onchange="showavatar('<!--[pngetbaseurl]--><!--[$pncore.Avatar.avatardir]-->')">
             <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->
         </select>   
-        <img id="selectedavatar" src="<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="selectedavatar" width="32" height="32" alt="" align="top" />
+        <img id="selectedavatar" src="<!--[pngetbaseurl]--><!--[$pncore.Avatar.avatardir|pnvarprepfordisplay]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" name="selectedavatar" width="32" height="32" alt="" align="top" />
         &nbsp;
-        <button type="submit"><!--[pnml name="_SUBMIT"]--></button>
+        <button type="submit"><!--[gt text="Submit"]--></button>
     </div>
 </form>

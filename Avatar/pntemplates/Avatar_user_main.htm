@@ -1,59 +1,59 @@
 <!--[* $Id$ *]-->
 <div id="avatar">
-    <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='<!--[ pnml name="_AVATAR_MODIFYCONFIG"]-->' />
-    <!--[ insert name="getstatusmsg" ]-->
-    <h2><!--[pnml name="_AVATAR_TITLE"]--></h2>
-    <h3><!--[pnml name="_AVATAR_CURRENTAVATAR"]-->:</h3>
-    <!--[ if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[ pngetbaseurl ]--><!--[ $pncore.Avatar.avatardir|pnvarprepfordisplay ]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[ else ]--><!--[ pnml name="_AVATAR_NOAVATARSELECTED" html=1 ]--><!--[ /if ]-->
+    <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='<!--[gt text="Modify configuration"]-->' />
+    <!--[insert name="getstatusmsg"]-->
+    <h2><!--[gt text="Avatar Management"]--></h2>
+    <h3><!--[gt text="Your current avatar is "]-->:</h3>
+    <!--[if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$pncore.Avatar.avatardir|pnvarprepfordisplay]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
 
-    <h3><!--[pnml name="_AVATAR_SELECTYOURAVATAR"]-->:</h3>
-    <form class="z-form" id="perpageform" method="post" action="<!--[ pnmodurl modname="Avatar" type="user" func="main" ]-->">
+    <h3><!--[gt text="Choose your prefered avatar"]-->:</h3>
+    <form class="z-form" id="perpageform" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
         <fieldset>
             <input type="hidden" name="page" value="1" />
-            <label for="perpage"><!--[ pnml name="_AVATAR_SELECTDISPLAY" ]-->:</label>&nbsp;
+            <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
             <select id="perpage" name="perpage">
                 <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
                 <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
                 <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
                 <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
-                <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[ pnml name="_ALL" ]--></option>
+                <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[gt text="All"]--></option>
             </select>
-            &nbsp;<input type="submit" name="submit" value="<!--[ pnml name="_SUBMIT" ]-->" />
+            &nbsp;<input type="submit" name="submit" value="<!--[gt text="Submit"]-->" />
         </fieldset>
     </form>
 
     <!--raw-->
-    <!--[ include file="Avatar_user_select_display.htm" ]-->
+    <!--[include file="Avatar_user_select_display.htm"]-->
     <!--[* include file="Avatar_user_select_dropdown.htm" *]-->
     <!--/raw-->
-    <!--[ pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" ]-->
+    <!--[pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page"]-->
 
     <!--[if $allow_uploads]-->
     <form class="z-form" action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
         <fieldset>
-            <legend><!--[pnml name="_AVATAR_UPLOADFILE"]--></legend>
-            <p class="z-informationmsg"><!--[pnml name="_AVATAR_USER_CHOOSE"]--></p>
-            <input type="hidden" name="authid" value="<!--[ pnsecgenauthkey module="Avatar" ]-->" />
+            <legend><!--[gt text="Upload file"]--></legend>
+            <p class="z-informationmsg"><!--[gt text="If no available avatar represents you, you can upload a personalised avatar."]--></p>
+            <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Avatar"]-->" />
             <input type="hidden" name="MAX_FILE_SIZE" value="" />
             <div class="z-formbuttons">
                 <input type="file" size="40" name="filelocale" />
             </div>
             <div class="z-formbuttons">
-                <input type="submit" name="submit" value="<!--[pnml name="_AVATAR_UPLOAD_BUTTON"]-->" />
-                <input type="reset" name="reset" value="<!--[pnml name="_AVATAR_CLEAR_BUTTON"]-->" />
+                <input type="submit" name="submit" value="<!--[gt text="Upload"]-->" />
+                <input type="reset" name="reset" value="<!--[gt text="Clear"]-->" />
             </div>
             <div class="z-formrow">
-                <label><!--[pnml name="_AVATAR_ALLOWEDEXTENSIONS"]--></label>
-                <span><!--[ $pncore.Avatar.allowed_extensions|pnvarprepfordisplay ]--></span>
+                <label><!--[gt text="Possible extensions"]--></label>
+                <span><!--[$pncore.avatar.allowed_extensions|pnvarprepfordisplay]--></span>
             </div>
             <div class="z-formrow">
-                <label><!--[pnml name="_AVATAR_MAXSIZE"]--></label>
-                <span><!--[$pncore.Avatar.maxsize]--> <!--[pnml name="_AVATAR_BYTES"]--></span>
+                <label><!--[gt text="Avatar max. file size"]--></label>
+                <span><!--[$pncore.Avatar.maxsize]--> <!--[gt text="Bytes"]--></span>
             </div>
             <div class="z-formrow">
-                <label><!--[pnml name="_AVATAR_MAXDIMENSIONS"]--></label>
-                <span><!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]--> <!--[pnml name="_AVATAR_PIXEL"]--></span>
-                <!--[ if $pncore.Avatar.allow_resize ]--><em class="z-formnote">(<!--[pnml name="_AVATAR_RESIZE"]-->)</em><!--[ /if ]-->
+                <label><!--[gt text="Maximal avatar dimensions"]--></label>
+                <span><!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]--> <!--[gt text="pixels"]--></span>
+                <!--[if $pncore.Avatar.allow_resize]--><em class="z-formnote">(<!--[gt text="Larger images will be resized automatically."]-->)</em><!--[/if]-->
             </div>
         </fieldset>
     </form>
