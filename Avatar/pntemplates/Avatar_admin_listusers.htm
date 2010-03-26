@@ -2,22 +2,22 @@
 <!--[include file="Avatar_admin_menu.htm"]-->
 <h2><!--[gt text="Selected avatar"]--></h2>
 
-<p><img class="avatarchoosen" src="<!--[$pncore.Avatar.avatardir]-->/<!--[$uavatar|pnvarprepfordisplay]-->" alt="Avatar" /></p>
+<p><img class="avatarchoosen" src="<!--[$avatarpath]-->/<!--[$uavatar|pnvarprepfordisplay]-->" alt="Avatar" /></p>
 <h3><!--[gt text="Users who use this avatar"]--></h3>
 
-<form id="perpageform" class="z-form" method="post" action="<!--[pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$uavatar]-->">
-    <fieldset>
-        <input type="hidden" name="page" value="1" />
-        <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
-        <select id="perpage" name="perpage">
-            <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
-            <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
-            <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
-            <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
-            <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[gt text="All"]--></option>
-        </select>
-        &nbsp;<input type="submit" name="submit" value="<!--[gt text="Submit"]-->" />
-    </fieldset>
+<form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="admin" func="listusers" avatar=$uavatar]-->">
+  <fieldset>
+    <input type="hidden" name="page" value="1" />
+    <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
+    <select id="perpage" name="perpage">
+        <option value="10"  <!--[if $perpage eq 10]-->selected="selected"<!--[/if]-->>10</option>
+        <option value="20"  <!--[if $perpage eq 20]-->selected="selected"<!--[/if]-->>20</option>
+        <option value="50"  <!--[if $perpage eq 50]-->selected="selected"<!--[/if]-->>50</option>
+        <option value="100" <!--[if $perpage eq 100]-->selected="selected"<!--[/if]-->>100</option>
+        <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[gt text="All"]--></option>
+    </select>
+    &nbsp;<input type="submit" name="submit" value="<!--[gt text="Submit"]-->" />
+  </fieldset>
 </form>
 
 <form class="z-form" action="<!--[pnmodurl modname="Avatar" type="admin" func="updateusers"]-->" method="post">
@@ -35,7 +35,7 @@
         <!--[foreach from=$avatars item="avatar"]-->
         <div class="avatarbox">
             <button type="submit" name="avatar" value="<!--[$avatar|pnvarprepfordisplay]-->">
-                <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[$pncore.Avatar.avatardir]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+                <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[$avatarpath]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
                 <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
             </button>
         </div>

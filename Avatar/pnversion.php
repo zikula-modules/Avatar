@@ -18,7 +18,7 @@ $modversion['name']           = 'Avatar';
 $modversion['displayname']    = __('Avatar', $dom);
 //! module url shoudl be different to displayname
 $modversion['url']            = __('avatar', $dom);
-$modversion['version']        = '2.3';
+$modversion['version']        = '2.2';
 $modversion['description']    = __('Upload of individual Avatars', $dom);
 $modversion['credits']        = 'pndocs/changelog.txt';
 $modversion['help']           = 'pndocs/readme.txt';

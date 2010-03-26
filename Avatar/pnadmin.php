@@ -60,6 +60,7 @@ function Avatar_admin_main()
     unset($_REQUEST['submit']);
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
+    $pnRender->assign('avatarpath', pnModGetVar('Users', 'avatarpath'));
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
     $pnRender->assign('avatar', $avatar);
@@ -103,6 +104,7 @@ function Avatar_admin_searchusers()
     unset($_REQUEST['submit']);
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
+    $pnRender->assign('avatarpath', pnModGetVar('Users', 'avatarpath'));
     $pnRender->assign('username', $username);
     $pnRender->assign('userid', $userid);
     $pnRender->assign('avatar', $avatar);
@@ -115,14 +117,14 @@ function Avatar_admin_searchusers()
 
 
 /**
- * Avatar_admin_setAvatar()
+ * Avatar_admin_setavatar()
  *
  * This is the admin function to set a new avatar
  *
  * @param $args
  * @return
  **/
-function Avatar_admin_setAvatar()
+function Avatar_admin_setavatar()
 {
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
@@ -131,7 +133,7 @@ function Avatar_admin_setAvatar()
     $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST');
     $uid     = FormUtil::getPassedValue('uid', -1, 'GETPOST');
 
-    pnModAPIFunc('Avatar', 'user', 'setAvatar',
+    pnModAPIFunc('Avatar', 'user', 'setavatar',
                        array('uid'    => $uid,
                              'avatar' => $uavatar));
 
@@ -191,6 +193,7 @@ function Avatar_admin_listusers($args)
     unset($_REQUEST['submit']);
 
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
+    $pnRender->assign('avatarpath', pnModGetVar('Users', 'avatarpath'));
     $pnRender->assign('users', $users);
     $pnRender->assign('uavatar', $uavatar);
     $pnRender->assign('avatars', $avatarsarray);
@@ -216,7 +219,7 @@ function Avatar_admin_updateusers($args)
 
     if(is_array($updateusers) & count($updateusers) > 0) {
         foreach($updateusers as $userid) {
-            pnModAPIFunc('Avatar', 'user', 'SetAvatar',
+            pnModAPIFunc('Avatar', 'user', 'setavatar',
                                array('uid'    => $userid,
                                      'avatar' => $newavatar));
         }
@@ -257,6 +260,7 @@ function Avatar_admin_delete()
         return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     } else {
         $pnRender = pnRender::getInstance('Avatar', false, null, true);
+        $pnRender->assign('avatarpath', pnModGetVar('Users', 'avatarpath'));
         $pnRender->assign('avatar', $avatar);
         return $pnRender->fetch('Avatar_admin_delete.htm');
     }

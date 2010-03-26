@@ -22,7 +22,6 @@
  */
 function Avatar_init()
 {
-    pnModSetVar('Avatar', 'avatardir',          'images/avatar');
     pnModSetVar('Avatar', 'forumdir',           '');
     pnModSetVar('Avatar', 'allow_resize',       false);
     pnModSetVar('Avatar', 'maxsize',            '12000');

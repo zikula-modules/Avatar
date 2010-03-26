@@ -28,10 +28,10 @@ function Avatar_userapi_getAvatars($args)
     $uid      = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
     $page     = (isset($args['page'])) ? $args['page']: -1;
     $perpage  = (isset($args['perpage'])) ? $args['perpage'] : -1;
-    $avatardir = pnModGetVar('Users', 'avatarpath');
+    $avatarpath = pnModGetVar('Users', 'avatarpath');
 
     Loader::loadClass('FileUtil');
-    $allavatars = FileUtil::getFiles($avatardir, true, true, null, false);
+    $allavatars = FileUtil::getFiles($avatarpath, true, true, null, false);
     $avatars = array();
     foreach ($allavatars as $avatar) {
         // imagename is like pers_XXXX.gif (with XXXX = user id)
@@ -61,7 +61,7 @@ function Avatar_userapi_getAvatars($args)
 
 
 /**
- * Avatar_userapi_SetAvatar()
+ * Avatar_userapi_setavatar()
  *
  * sets the user avatar.
  *
@@ -69,7 +69,7 @@ function Avatar_userapi_getAvatars($args)
  * @param string $args['avatar'] the user avatar
  * @return boolean success
  **/
-function Avatar_userapi_setAvatar($args)
+function Avatar_userapi_setavatar($args)
 {
     if (!isset($args['uid']) || !isset($args['avatar'])) {
         return LogUtil::registerError(_MODSARGSERR . 'in Avatar_user_setavatar');

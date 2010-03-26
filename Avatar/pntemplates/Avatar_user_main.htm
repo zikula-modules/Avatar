@@ -3,11 +3,11 @@
     <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='<!--[gt text="Modify configuration"]-->' />
     <!--[insert name="getstatusmsg"]-->
     <h2><!--[gt text="Avatar Management"]--></h2>
-    <h3><!--[gt text="Your current avatar is "]-->:</h3>
-    <!--[if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$pncore.Avatar.avatardir|pnvarprepfordisplay]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
+    <h3><!--[gt text="Your current avatar is:"]--></h3>
+    <!--[if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
 
-    <h3><!--[gt text="Choose your prefered avatar"]-->:</h3>
-    <form class="z-form" id="perpageform" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
+    <h3><!--[gt text="Choose your prefered avatar:"]--></h3>
+    <form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
         <fieldset>
             <input type="hidden" name="page" value="1" />
             <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
@@ -44,7 +44,7 @@
             </div>
             <div class="z-formrow">
                 <label><!--[gt text="Possible extensions"]--></label>
-                <span><!--[$pncore.avatar.allowed_extensions|pnvarprepfordisplay]--></span>
+                <span><!--[$pncore.Avatar.allowed_extensions|pnvarprepfordisplay]--></span>
             </div>
             <div class="z-formrow">
                 <label><!--[gt text="Avatar max. file size"]--></label>
@@ -53,7 +53,7 @@
             <div class="z-formrow">
                 <label><!--[gt text="Maximal avatar dimensions"]--></label>
                 <span><!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]--> <!--[gt text="pixels"]--></span>
-                <!--[if $pncore.Avatar.allow_resize]--><em class="z-formnote">(<!--[gt text="Larger images will be resized automatically."]-->)</em><!--[/if]-->
+                <!--[if $pncore.Avatar.allow_resize]--><em class="z-sub z-formnote">(<!--[gt text="Larger images will be resized automatically."]-->)</em><!--[/if]-->
             </div>
         </fieldset>
     </form>

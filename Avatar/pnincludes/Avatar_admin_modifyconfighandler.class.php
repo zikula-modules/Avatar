@@ -20,9 +20,10 @@ class Avatar_admin_modifyconfighandler
         $pnRender->caching = false;
         $pnRender->add_core_data();
 
-        $pnRender->assign('avatardir_writable', is_writable(pnModGetVar('Users', 'avatarpath')));
-        $pnRender->assign('pnphpbb_installed',  pnModAvailable('pnphpbb'));
-        $pnRender->assign('forumdir_writable',  is_writable(pnModGetVar('Avatar', 'forumdir')));
+        $pnRender->assign('avatarpath',          pnModGetVar('Users', 'avatarpath'));
+        $pnRender->assign('avatarpath_writable', is_writable(pnModGetVar('Users', 'avatarpath')));
+        $pnRender->assign('pnphpbb_installed',   pnModAvailable('pnphpbb'));
+        $pnRender->assign('forumdir_writable',   is_writable(pnModGetVar('Avatar', 'forumdir')));
 
         return true;
     }
@@ -41,7 +42,6 @@ class Avatar_admin_modifyconfighandler
 
             $data = $pnRender->pnFormGetValues();
 
-            pnModSetVar('Users', 'avatarpath',          $data['avatardir']);
             if(array_key_exists('forumdir', $data)) {
                 pnModSetVar('Avatar', 'forumdir',       $data['forumdir']);
             }

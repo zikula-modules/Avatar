@@ -26,7 +26,7 @@
 <h3><!--[$username]--></h3>
 <p>
   <!--[if $avatar ne ""]-->
-  <!--[gt text="Your current avatar is"]--> : <br /><img class="avatarchoosen" src="<!--[$pncore.Avatar.avatardir]-->/<!--[$avatar|pnvarprepfordisplay]-->" alt="Avatar" />
+  <!--[gt text="Your current avatar is:"]--><br /><img class="avatarchoosen" src="<!--[$avatarpath]-->/<!--[$avatar|pnvarprepfordisplay]-->" alt="Avatar" />
   <!--[else]-->
   <!--[gt text="no avatar selected"]-->
   <!--[/if]-->
@@ -34,8 +34,8 @@
 
 <h3><!--[gt text="Select new avatar"]--></h3>
 
-<form id="perpageform" method="post" action="<!--[pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
-  <div>
+<form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="admin" func="searchusers" username=$username]-->">
+  <fieldset>
     <input type="hidden" name="page" value="1" />
     <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
     <select id="perpage" name="perpage">
@@ -46,13 +46,14 @@
         <option value="-1"  <!--[if $perpage eq -1]-->selected="selected"<!--[/if]-->><!--[gt text="All"]--></option>
     </select>
     &nbsp;<input type="submit" name="submit" value="<!--[gt text="Submit"]-->" />
-  </div>
+  </fieldset>
 </form>
+
 <div class="z-clearfix">
   <!--[foreach from=$avatars item="avatar"]-->
   <div class="avatarbox">
-    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setAvatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid]-->">
-      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[$pncore.Avatar.avatardir]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+    <a href="<!--[pnmodurl modname="Avatar" type="admin" func="setavatar" uavatar=$avatar|pnvarprepfordisplay uid=$userid]-->">
+      <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[$avatarpath]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
     </a>
     <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
     <br />
