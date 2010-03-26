@@ -54,7 +54,7 @@
   float: left;
   margin: 5px;
   text-align: center;
-  background:#FFFEFA;
+  background: #FFFEFA;
 }
 
 #avatar .avatarbox button {
@@ -68,17 +68,16 @@
 }
 
 #avatar .avatarchoosen {
-  display: block;
   border: 1px solid #ccc;
-  background:#FFFEFA;
+  background: #FFFEFA;
   padding: 5px;
 }
 
 #avatar .avatarupload {
-  background:#FFFEFA;
-  border:1px solid #DBD5C5;
-  margin:5px;
-  padding:5px;
+  background: #FFFEFA;
+  border: 1px solid #DBD5C5;
+  margin: 5px;
+  padding: 5px;
 }
 
 div.autocomplete_user {

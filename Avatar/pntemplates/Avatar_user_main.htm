@@ -3,10 +3,23 @@
     <img class="avataricon" src="modules/Avatar/pnimages/admin.gif" alt='<!--[gt text="Modify configuration"]-->' />
     <!--[insert name="getstatusmsg"]-->
     <h2><!--[gt text="Avatar Management"]--></h2>
-    <h3><!--[gt text="Your current avatar is:"]--></h3>
-    <!--[if $pncore.user.avatar neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$pncore.user.avatar|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
+    <!--[if $user_avatar neq '']-->
+    <div class="z-center">
+        <h3><!--[gt text="Your current avatar is"]--></h3>
+        <img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$user_avatar|pnvarprepfordisplay]-->" alt="Avatar" />
+    </div>
+    <!--[else]-->
+    <p><!--[gt text="Currently no avatar selected"]--></p>
+    <!--[/if]-->
 
-    <h3><!--[gt text="Choose your prefered avatar:"]--></h3>
+    <p class="z-center">
+        <strong>
+            <!--[gt text="Choose your prefered avatar,"]--><br />
+            <a href="#selectgravatar" title="User gravatar"><!--[gt text="use your gravatar"]--></a><br />
+            <a href="#uploadform" title="Upload your own"><!--[gt text="or upload your own"]--></a><br />
+        </strong>
+    </p>
+
     <form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
         <fieldset>
             <input type="hidden" name="page" value="1" />
@@ -28,8 +41,17 @@
     <!--/raw-->
     <!--[pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page"]-->
 
+    <div id="selectgravatar" class="z-form z-center">
+        <div class="z-fieldset">
+            <p><!--[gt text='This site also supports <a href="http://www.gravatar.com">gravatars</a>. If you have a gravatar then select the gravatar logo as your avatar.']--></p>
+            <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=gravatar.gif]-->"><img src="<!--[$avatarpath|pnvarprepfordisplay]-->/gravatar.gif" alt="<!--[gt text="Use your gravatar"]-->" /></a>
+            <br />
+            <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=gravatar.gif]-->"><!--[gt text="Use your gravatar"]--></a>
+        </div>
+    </div>
+
     <!--[if $allow_uploads]-->
-    <form class="z-form" action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
+    <form id="uploadform" class="z-form" action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend><!--[gt text="Upload file"]--></legend>
             <p class="z-informationmsg"><!--[gt text="If no available avatar represents you, you can upload a personalised avatar."]--></p>
@@ -58,4 +80,5 @@
         </fieldset>
     </form>
     <!--[/if]-->
+
 </div>
