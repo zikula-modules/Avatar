@@ -6,7 +6,7 @@
     <div>
         <select id="avatarselect" name="user_avatar" onchange="showavatar('<!--[pngetbaseurl]--><!--[$avatarpath]-->')">
             <!--[html_options output=$avatars|pnvarprepfordisplay values=$avatars|pnvarprepfordisplay selected=$pncore.user.avatar|pnvarprepfordisplay]-->
-        </select>   
+        </select>
         <img id="selectedavatar" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$pncore.user.avatar|pnvarprepfordisplay]-->" name="selectedavatar" width="32" height="32" alt="" align="top" />
         &nbsp;
         <button type="submit"><!--[gt text="Submit"]--></button>
