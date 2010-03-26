@@ -4,7 +4,7 @@
     <!--[insert name="getstatusmsg"]-->
     <h2><!--[gt text="Avatar Management"]--></h2>
     <h3><!--[gt text="Your current avatar is:"]--></h3>
-    <!--[if $pncore.user._YOURAVATAR neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$pncore.user._YOURAVATAR|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
+    <!--[if $pncore.user.avatar neq '']--><img class="avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$pncore.user.avatar|pnvarprepfordisplay]-->" alt="Avatar" /><!--[else]--><!--[gt text="no avatar selected"]--><!--[/if]-->
 
     <h3><!--[gt text="Choose your prefered avatar:"]--></h3>
     <form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">

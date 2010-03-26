@@ -46,7 +46,7 @@ function Avatar_admin_main()
         $username = '';
         $avatar = '';
     } else {
-        $avatar = pnUserGetVar('_YOURAVATAR', $userid);
+        $avatar = pnUserGetVar('avatar', $userid);
     }
 
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
@@ -90,7 +90,7 @@ function Avatar_admin_searchusers()
         $username = '';
         $avatar = '';
     } else {
-        $avatar = pnUserGetVar('_YOURAVATAR', $userid);
+        $avatar = pnUserGetVar('avatar', $userid);
     }
 
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');

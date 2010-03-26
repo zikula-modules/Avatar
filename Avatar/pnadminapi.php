@@ -45,16 +45,17 @@ function Avatar_adminapi_getusersbyavatar($args)
             return $users;
         }
 
-        //First we need to get the property _YOURAVATAR
+        //First we need to get the property avatar
         $properties = pnModAPIFunc('Profile', 'user', 'getall');
-        $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_id']);
+        $youravatar = DataUtil::formatForStore($properties['_YOURAVATAR']['prop_attribute_name']);
 
         $pntables = pnDBGetTables();
-        $userdatacolumn = $pntables['user_data_column'];
-        $where = $userdatacolumn['uda_propid'] . '=' . $youravatar . ' AND ' . $userdatacolumn['uda_value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"';
-        $avatarusers = DBUtil::selectObjectArray('user_data', $where);
+        $userdatacolumn = $pntables['objectdata_attributes_column'];
+        $where = $userdatacolumn['attribute_name'] . '="' . $youravatar . '" AND ' . $userdatacolumn['value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"';
+        $avatarusers = DBUtil::selectObjectArray('objectdata_attributes', $where);
+ 
         foreach($avatarusers as $avataruser) {
-            $users[$avataruser['uda_uid']] = pnUserGetVar('uname', $avataruser['uda_uid']);
+            $users[$avataruser['id']] = pnUserGetVar('uname', $avataruser['object_id']);
         }
     }
     return $users;
