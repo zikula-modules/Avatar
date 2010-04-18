@@ -1,10 +1,10 @@
 <?php
 /**
  * Avatar Module
- * 
+ *
  * The Avatar module allows uploading of individual Avatars.
  * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
- * 
+ *
  * @package      Avatar
  * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz
@@ -19,7 +19,6 @@ class Avatar_admin_modifyconfighandler
     {
         $pnRender->caching = false;
         $pnRender->add_core_data();
-
         $pnRender->assign('avatarpath',          pnModGetVar('Users', 'avatarpath'));
         $pnRender->assign('avatarpath_writable', is_writable(pnModGetVar('Users', 'avatarpath')));
         $pnRender->assign('pnphpbb_installed',   pnModAvailable('pnphpbb'));
@@ -33,8 +32,8 @@ class Avatar_admin_modifyconfighandler
     {
         // Security check
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
-        }  
+            return LogUtil::registerPermissionError();
+        }
         if ($args['commandName'] == 'submit') {
             if (!$pnRender->pnFormIsValid()) {
                 return false;

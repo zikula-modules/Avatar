@@ -32,12 +32,11 @@ function Avatar_userapi_getAvatars($args)
 
     Loader::loadClass('FileUtil');
     $allavatars = FileUtil::getFiles($avatarpath, true, true, null, false);
+    $allavatars = array_diff($allavatars, array('blank.gif', 'gravatar.gif'));
     $avatars = array();
     foreach ($allavatars as $avatar) {
         // imagename is like pers_XXXX.gif (with XXXX = user id)
-        if (pnModAPIFunc('Avatar', 'user', 'checkAvatar',
-                         array('avatar' => $avatar,
-                               'uid'    => $uid)) == true) {
+        if (pnModAPIFunc('Avatar', 'user', 'checkAvatar', array('avatar' => $avatar, 'uid' => $uid)) == true) {
             $avatars[] = $avatar;
         }
     }
@@ -71,28 +70,30 @@ function Avatar_userapi_getAvatars($args)
  **/
 function Avatar_userapi_setavatar($args)
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
+
     if (!isset($args['uid']) || !isset($args['avatar'])) {
-        return LogUtil::registerError(_MODSARGSERR . 'in Avatar_user_setavatar');
+        return LogUtil::registerArgsError();
     }
 
     $avatar_ok = pnModAPIFunc('Avatar', 'user', 'checkAvatar', $args);
 
     if($avatar_ok == true) {
-        pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);
-
-        // trick: show new avatar in status message if img-tag is free
-        $allowedhtml = pnConfigGetVar('AllowableHTML');
         $uname = pnUserGetVar('uname', $args['uid']);
-        if($allowedhtml['img'] == 2) {
-            $status = __f('The avatar of user %1$s has been changed to %2$s', array($uname, '<img src="' . pnModGetVar('Users', 'avatarpath') .  '/'. $args['avatar'] . '" alt="Avatar" />'), $dom);
+        if ($args['avatar'] == 'blank.gif') {
+            $args['avatar'] = '';
+            $status = __f('Done! The avatar of user \'%s\' has been disabled.', $uname, $dom);
+        } else if ($args['avatar'] == 'gravatar.gif') {
+            $status = __f('Done! The avatar of user \'%s\' has been set to his global recognized avatar.', $uname, $dom);
         } else {
-            $status = __f('The avatar of user %1$s has been changed to %2$s', array($uname, $args['avatar']), $dom);
+            $status = __f('Done! The avatar of user \'%1$s\' has been changed to \'%2$s\'', array($uname, $args['avatar']), $dom);
         }
+        pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);
         LogUtil::registerStatus($status);
         return true;
     }
 
-    return LogUtil::registerError(__f('The user is not authorized to use this avatar. To change this, update the permission for %s.', $args['avatar'], $dom));
+    return LogUtil::registerError(__f('Error! The user is not authorized to use this avatar. To change this, update the permission for %s.', $args['avatar'], $dom));
 }
 
 /**

@@ -16,32 +16,29 @@
 /**
  * Avatar_user_main()
  *
- * Main function, shows the avatars to select from and the upload form.
+ * Main function, shows the avatars to select from.
  *
  * @return output The main module page
  */
 function Avatar_user_main()
 {
     $dom = ZLanguage::getModuleDomain('Avatar');
+
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(__("You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
-        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerPermissionError();
     }
-
-    // is the user allowed to upload an Avatar?
-    $allow_uploads = SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT);
 
     // get all possible avatars
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
-    list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
-                                                    array('page'     => $page,
-                                                          'perpage'  => $perpage));
+    list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage' => $perpage));
+
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
@@ -51,12 +48,36 @@ function Avatar_user_main()
     $pnRender = pnRender::getInstance('Avatar', false, null, true);
     $pnRender->assign('avatarpath', pnModGetVar('Users', 'avatarpath'));
     $pnRender->assign('avatars', $avatars);
-    $pnRender->assign('allow_uploads', $allow_uploads);
-    $pnRender->assign('user_avatar', pnUserGetVar('user_avatar'));
     $pnRender->assign('allavatarscount', $allavatarscount);
     $pnRender->assign('page', $page);
     $pnRender->assign('perpage', $perpage);
     return $pnRender->fetch('Avatar_user_main.htm');
+}
+
+/**
+ * Avatar_user_uploadform()
+ *
+ * Avatar upload form.
+ *
+ * @return output The main module page
+ */
+function Avatar_user_uploadform()
+{
+    $dom = ZLanguage::getModuleDomain('Avatar');
+
+    // only logged-ins are allowed to see the overview.
+    if (!pnUserLoggedIn()) {
+        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
+    // plus, the user should have overview right to see the avatars.
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
+        return LogUtil::registerPermissionError();
+    }
+
+    // display
+    $pnRender = pnRender::getInstance('Avatar', false, null, true);
+    return $pnRender->fetch('Avatar_user_uploadform.htm');
 }
 
 /**
@@ -70,20 +91,21 @@ function Avatar_user_main()
 function Avatar_user_upload ($args)
 {
     $dom = ZLanguage::getModuleDomain('Avatar');
+
     // permission check
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
-        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerPermissionError();
     }
 
     if (!SecurityUtil::confirmAuthKey()) {
-        return LogUtil::registerAuthidError(pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerAuthidError();
     }
 
     // get the file
     $uploadfile = $_FILES['filelocale'];
 
     if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
-        return LogUtil::registerError(__('No file selected.', $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__('Error! No file selected.', $dom));
     }
 
     $tmp_file = tempnam(pnConfigGetVar('temp'), 'Avatar');
@@ -95,7 +117,7 @@ function Avatar_user_upload ($args)
     // check for file size limit
     if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
         unlink($tmp_file);
-        return LogUtil::registerError(__f('Filesize error, max %s bytes are allowed.', $modvars['maxsize'], $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__f('Error! Filesize error, max %s bytes are allowed.', $modvars['maxsize'], $dom));
     }
 
     // Get image information
@@ -104,14 +126,14 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        return LogUtil::registerError(__('File is not an image', $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__('File is not an image', $dom));
     }
 
     $extension = image_type_to_extension($imageinfo[2], false);
     // check for image type
     if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
         unlink($tmp_file);
-        return LogUtil::registerError(__f('Unauthorised file extension. Allowed extensions: %s.', $modvars['allowed_extensions'], $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__f('Error! Unauthorised file extension. Allowed extensions: %s.', $modvars['allowed_extensions'], $dom));
     }
 
 
@@ -119,7 +141,7 @@ function Avatar_user_upload ($args)
     if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
         if (!$modvars['allow_resize']) {
             unlink($tmp_file);
-            return LogUtil::registerError(__f('Image height (max. %s1$spx) or width (max. %2$spx) error.', array($modvars['maxheight'], $modvars['maxwidth']), $dom), null, pnModURL('Avatar'));
+            return LogUtil::registerError(__f('Error! Image height (max. %1$s px) or width (max. %2$s px) error.', array($modvars['maxheight'], $modvars['maxwidth']), $dom));
         } else {
             // resize the image
 
@@ -189,7 +211,7 @@ function Avatar_user_upload ($args)
 
     if (!@copy($tmp_file, $user_avatar)) {
         unlink($tmp_file);
-        return LogUtil::registerError(__("Fail to copy the file in avatars' directory.", $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__("Error! Fail to copy the file in avatars' directory.", $dom));
     } else {
         chmod ($user_avatar, 0644);
     }
@@ -197,17 +219,15 @@ function Avatar_user_upload ($args)
         unlink($pnphpbb_avatar);
         if (!@copy($tmp_file, $pnphpbb_avatar)) {
             unlink($tmp_file);
-            return LogUtil::registerError(__("Fail to copy the file in phpbb's directory.", $dom), null, pnModURL('Avatar'));
+            return LogUtil::registerError(__("Error! Fail to copy the file in phpbb's directory.", $dom));
         } else {
             chmod ($pnphpbb_avatar, 0644);
         }
     }
     unlink($tmp_file);
 
-    if (!pnModAPIFunc('Avatar', 'user', 'setavatar',
-                      array('uid'    => $uid,
-                            'avatar' => $avatarfilename))) {
-        return LogUtil::registerError(__('Error while selecting the avatar.', $dom), null, pnModURL('Avatar'));
+    if (!pnModAPIFunc('Avatar', 'user', 'setavatar', array('uid' => $uid, 'avatar' => $avatarfilename))) {
+        return LogUtil::registerError(__('Error while selecting the avatar.', $dom));
     }
     return pnRedirect(pnModURL('Avatar', 'user', 'main'));
 }
@@ -225,21 +245,20 @@ function Avatar_user_upload ($args)
 function Avatar_user_setavatar($args)
 {
     $dom = ZLanguage::getModuleDomain('Avatar');
+
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(__("You aren't a registered user.", $dom), null, pnModURL('Avatar'));
+        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom));
     }
 
     // plus, the user should have overview right to see the avatars.
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
-        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerPermissionError();
     }
 
     $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST');
 
-    pnModAPIFunc('Avatar', 'user', 'setavatar',
-                       array('uid'    => pnUserGetVar('uid'),
-                             'avatar' => $user_avatar));
+    pnModAPIFunc('Avatar', 'user', 'setavatar', array('uid' => pnUserGetVar('uid'), 'avatar' => $user_avatar));
 
     return pnRedirect(pnModURL('Avatar'));
 }

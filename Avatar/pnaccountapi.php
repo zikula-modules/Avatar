@@ -21,6 +21,7 @@
 function Avatar_accountapi_getall($args)
 {
     $dom = ZLanguage::getModuleDomain('Avatar');
+
     $items = array();
     if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
         pnModLangLoad('Avatar', 'user');

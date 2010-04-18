@@ -1,0 +1,37 @@
+<!--[* $Id$ *]-->
+<!--[gt text="Upload avatar" assign=templatetitle]-->
+<!--[include file="Avatar_user_header.htm"]-->
+
+<div class="av_upload av_separator">
+    <h3><!--[$templatetitle]--></h3>
+    <p><!--[gt text="If no available avatar represents you, you can upload a personalised avatar."]--></p>
+    <form id="uploadform" class="z-form" action="<!--[pnmodurl modname="Avatar" type="user" func="upload"]-->" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend><!--[gt text="Upload file"]--></legend>
+            <input type="hidden" name="authid" value="<!--[insert name="generateauthkey" module="Avatar"]-->" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="" />
+            <div class="z-formbuttons">
+                <input type="file" size="40" name="filelocale" />
+            </div>
+            <div class="z-formbuttons">
+                <input type="submit" name="submit" value="<!--[gt text="Upload"]-->" />
+                <input type="reset" name="reset" value="<!--[gt text="Clear"]-->" />
+            </div>
+            <div class="z-formrow">
+                <label><!--[gt text="Possible extensions"]--></label>
+                <span><!--[$pncore.Avatar.allowed_extensions|pnvarprepfordisplay]--></span>
+            </div>
+            <div class="z-formrow">
+                <label><!--[gt text="Avatar max. file size"]--></label>
+                <span><!--[$pncore.Avatar.maxsize]--> <!--[gt text="Bytes"]--></span>
+            </div>
+            <div class="z-formrow">
+                <label><!--[gt text="Maximal avatar dimensions"]--></label>
+                <span><!--[$pncore.Avatar.maxheight]-->x<!--[$pncore.Avatar.maxwidth]--> <!--[gt text="pixels"]--></span>
+                <!--[if $pncore.Avatar.allow_resize]--><em class="z-sub z-formnote">(<!--[gt text="Larger images will be resized automatically."]-->)</em><!--[/if]-->
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!--[include file="Avatar_user_footer.htm"]-->

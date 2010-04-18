@@ -53,7 +53,7 @@ function Avatar_adminapi_getusersbyavatar($args)
         $userdatacolumn = $pntables['objectdata_attributes_column'];
         $where = $userdatacolumn['attribute_name'] . '="' . $youravatar . '" AND ' . $userdatacolumn['value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"';
         $avatarusers = DBUtil::selectObjectArray('objectdata_attributes', $where);
- 
+
         foreach($avatarusers as $avataruser) {
             $users[$avataruser['id']] = pnUserGetVar('uname', $avataruser['object_id']);
         }
@@ -72,9 +72,9 @@ function Avatar_adminapi_deleteavatar($args)
         $osdir = DataUtil::formatForOS(pnModGetVar('Users', 'avatarpath'));
         $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
-            return LogUtil::registerError(__f('Error: Unable to delete avatar %s', $avatarfile, $dom), null, pnModURL('Avatar', 'admin', 'main'));
+            return LogUtil::registerError(__f('Error! Unable to delete avatar %s', $avatarfile, $dom));
         }
-        LogUtil::registerStatus(__f('Avatar %s has been deleted', $avatarfile, $dom));
+        LogUtil::registerStatus(__f('Done! Avatar %s has been deleted', $avatarfile, $dom));
         return true;
     }
     return LogUtil::registerPermissionError();

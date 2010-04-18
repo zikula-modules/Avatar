@@ -29,6 +29,9 @@ Make sure that the folder you choose for storing the images is writable
 for the webserver (chmod 777) and protect it with an htaccess file like in 
 the pnTemp folder.
 
+Copy /modules/Dizkus/pnimages/gravatar.gif to /images/avatar/ if the file
+doesn't exist in this directory.
+
 2. Configuration
 ----------------
 The configuration of the module should be quite self explanatory, there are
