@@ -4,7 +4,7 @@
     <!--[foreach from=$avatars item="avatar"]-->
     <div class="avatarbox">
         <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=$avatar|pnvarprepfordisplay]-->">
-            <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background: url(<!--[pngetbaseurl]--><!--[$avatarpath]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+            <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background: url(<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
         </a>
         <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=$avatar|pnvarprepfordisplay]-->"><!--[$avatar|pnvarprepfordisplay|truncate:15]--></a>
     </div>

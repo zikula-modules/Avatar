@@ -40,6 +40,21 @@ function Avatar_admin_main()
         return LogUtil::registerPermissionError();
     }
 
+    $dom = ZLanguage::getModuleDomain('Avatar');
+
+    pnModDBInfoLoad('Profile', 'Profile');
+    $dudfields = DBUtil::selectObjectArray('user_property');
+    $propcheck = false;
+    foreach($dudfields as $dudfield) {
+        if ($dudfield['prop_attribute_name'] == 'avatar') {
+         $propcheck = true;
+        }
+    }
+
+    if ($propcheck == false || empty($dudfields))  {
+        return LogUtil::registerError(__('Error! The user attribute called \'avatar\' doesn\'t exist. Please install a Profile module if you want to use this module.', $dom));
+    }
+
     $username = FormUtil::getPassedValue('username', '', 'GETPOST');
     $userid = pnUserGetIDFromName($username);
     if($userid == false) {
@@ -51,9 +66,7 @@ function Avatar_admin_main()
 
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
-    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
-    array('page'     => $page,
-                                                               'perpage'  => $perpage));
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage'  => $perpage));
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
@@ -95,9 +108,8 @@ function Avatar_admin_searchusers()
 
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
-    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
-    array('page'     => $page,
-                                                               'perpage'  => $perpage));
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage' => $perpage));
+
     // avoid some vars in the url of the pager
     unset($_GET['submit']);
     unset($_POST['submit']);
@@ -133,9 +145,7 @@ function Avatar_admin_setavatar()
     $uavatar = FormUtil::getPassedValue('uavatar', '', 'GETPOST');
     $uid     = FormUtil::getPassedValue('uid', -1, 'GETPOST');
 
-    pnModAPIFunc('Avatar', 'user', 'setavatar',
-    array('uid'    => $uid,
-                             'avatar' => $uavatar));
+    pnModAPIFunc('Avatar', 'user', 'setavatar', array('uid' => $uid, 'avatar' => $uavatar));
 
     return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
 }
@@ -168,24 +178,29 @@ function Avatar_admin_modifyconfig()
  */
 function Avatar_admin_listusers($args)
 {
+    $dom = ZLanguage::getModuleDomain('Avatar');
+
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError();
     }
 
     $uavatar = FormUtil::getPassedValue('avatar', '', 'GET');
     if(empty($uavatar)) {
-        return pnRedirect(pnModURL('Avatar', 'Admin', 'main'));
+        LogUtil::registerError(__('Error! No avatar choosen.', $dom));
+        return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
+    }
+
+    if (!pnModAvailable('Profile')) {
+        LogUtil::registerError(__('Error! The Profile module must be installed for this function.', $dom));
+        return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     }
 
     // get all users that use this avatar
-    $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar',
-    array('avatar' => $uavatar));
+    $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar', array('avatar' => $uavatar));
 
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
-    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars',
-    array('page'     => $page,
-                                                               'perpage'  => $perpage));
+    list($avatarsarray, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage'  => $perpage));
 
     // avoid some v1ars in the url of the pager
     unset($_GET['submit']);
@@ -219,9 +234,7 @@ function Avatar_admin_updateusers($args)
 
     if(is_array($updateusers) & count($updateusers) > 0) {
         foreach($updateusers as $userid) {
-            pnModAPIFunc('Avatar', 'user', 'setavatar',
-            array('uid'    => $userid,
-                                     'avatar' => $newavatar));
+            pnModAPIFunc('Avatar', 'user', 'setavatar', array('uid' => $userid, 'avatar' => $newavatar));
         }
     }
     return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
@@ -234,6 +247,7 @@ function Avatar_admin_updateusers($args)
 function Avatar_admin_delete()
 {
     $dom = ZLanguage::getModuleDomain('Avatar');
+
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError();
     }

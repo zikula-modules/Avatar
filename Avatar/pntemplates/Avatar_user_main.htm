@@ -5,7 +5,7 @@
 
 <div class="av_list av_separator">
     <h3><!--[gt text="Please choose your prefered avatar"]--></h3>
-    <form id="perpageform" class="z-form z-linear" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
+    <form id="perpageform" class="z-form z-linear av_box" method="post" action="<!--[pnmodurl modname="Avatar" type="user" func="main"]-->">
         <fieldset>
             <input type="hidden" name="page" value="1" />
             <label for="perpage"><!--[gt text="Select the number of avatars to be displayed per page"]-->:</label>&nbsp;
@@ -29,7 +29,7 @@
 <div class="av_gravatar av_separator">
     <h3><!--[gt text="Gravatar"]--></h3>
     <p><!--[gt text='This site also supports <a href="http://www.gravatar.com">gravatars</a>. If you have a gravatar then select the gravatar logo as your avatar.']--></p>
-    <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=gravatar.gif]-->"><img src="<!--[$avatarpath|pnvarprepfordisplay]-->/gravatar.gif" alt="<!--[gt text="Use your gravatar"]-->" /></a><br />
+    <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=gravatar.gif]-->"><img src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/gravatar.gif" alt="<!--[gt text="Use your gravatar"]-->" /></a><br />
     <a href="<!--[pnmodurl modname="Avatar" type="user" func="setavatar" user_avatar=gravatar.gif]-->"><!--[gt text="Use your gravatar"]--></a>
 </div>
 

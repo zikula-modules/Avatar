@@ -37,7 +37,7 @@ function Avatar_user_main()
     // get all possible avatars
     $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
     $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
-    list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage' => $perpage));
+    list($avatars, $allavatarscount) = pnModAPIFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage' => $perpage, 'realimages' => true));
 
     // avoid some vars in the url of the pager
     unset($_GET['submit']);

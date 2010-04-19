@@ -25,14 +25,17 @@
  **/
 function Avatar_userapi_getAvatars($args)
 {
-    $uid      = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
-    $page     = (isset($args['page'])) ? $args['page']: -1;
-    $perpage  = (isset($args['perpage'])) ? $args['perpage'] : -1;
-    $avatarpath = pnModGetVar('Users', 'avatarpath');
+    $uid         = (isset($args['uid'])) ? $args['uid'] : pnUserGetVar('uid');
+    $page        = (isset($args['page'])) ? $args['page']: -1;
+    $perpage     = (isset($args['perpage'])) ? $args['perpage'] : -1;
+    $realimages  = (isset($args['realimages'])) ? true : false;
+    $avatarpath  = pnModGetVar('Users', 'avatarpath');
 
     Loader::loadClass('FileUtil');
     $allavatars = FileUtil::getFiles($avatarpath, true, true, null, false);
-    $allavatars = array_diff($allavatars, array('blank.gif', 'gravatar.gif'));
+    if ($realimages == true) {
+        $allavatars = array_diff($allavatars, array('blank.gif', 'gravatar.gif'));
+    }
     $avatars = array();
     foreach ($allavatars as $avatar) {
         // imagename is like pers_XXXX.gif (with XXXX = user id)
@@ -82,11 +85,11 @@ function Avatar_userapi_setavatar($args)
         $uname = pnUserGetVar('uname', $args['uid']);
         if ($args['avatar'] == 'blank.gif') {
             $args['avatar'] = '';
-            $status = __f('Done! The avatar of user \'%s\' has been disabled.', $uname, $dom);
+            $status = __f('Done! The avatar of the user \'%s\' has been disabled.', $uname, $dom);
         } else if ($args['avatar'] == 'gravatar.gif') {
-            $status = __f('Done! The avatar of user \'%s\' has been set to his global recognized avatar.', $uname, $dom);
+            $status = __f('Done! The avatar of the user \'%s\' has been set to his global recognized avatar.', $uname, $dom);
         } else {
-            $status = __f('Done! The avatar of user \'%1$s\' has been changed to \'%2$s\'', array($uname, $args['avatar']), $dom);
+            $status = __f('Done! The avatar of the user \'%1$s\' has been changed to \'%2$s\'', array($uname, $args['avatar']), $dom);
         }
         pnUserSetVar('user_avatar', $args['avatar'], $args['uid']);
         LogUtil::registerStatus($status);

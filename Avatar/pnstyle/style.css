@@ -11,41 +11,39 @@
 * @copyright    Copyright (C) 2004-2007
 * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
 */
-.avataricon {
-    display: block;
-    float: right;
-}
 
-#avatar .z-pager {
-    padding: 2em 0;
-}
-
-#avatar .footer {
-    font-size: 0.8em;
-    text-align: center;
+#avatar .av_separator {
+    border-top: 1px solid #AAAAAA;
     margin-top: 1em;
 }
 
-#avatar .headerlink {
-    width: 33%;
-    float: left;
-    text-align: center;
+#avatar .av_footer {
+    font-size: 0.9em;
+    margin-top: 2em;
 }
 
-#avatar .error {
-    color: red;
+#avatar .z-form.av_box {
+    padding:0;
+    margin:0;
 }
 
-#avatar .delete {
-    text-align: center;
+#avatar .av_userlist {
+    background:none repeat scroll 0 0 #FCFCFC;
+    border:1px dashed #DDDDDD;
+    list-style:none outside none;
+    margin:0;
+    padding:0.5em;
 }
 
-#avatar ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 0;
+#avatar .av_userlist li {
+    margin:0.1em 0;
+    padding:0;
 }
-
+#avatar .av_result dt,
+#avatar .av_result dd {
+    margin:0;
+    padding:0;
+}
 #avatar .avatarbox {
     float: left;
     margin: 5px;
@@ -69,26 +67,19 @@
     padding: 5px;
 }
 
-#avatar .avatarupload {
-    background: #FFFEFA;
-    border: 1px solid #DBD5C5;
-    margin: 5px;
-    padding: 5px;
-}
-
 div.autocomplete_user {
-    position: absolute;
-    width: 25em;
-    background-color: white;
-    border: 1px solid #888;
-    margin: 0;
-    padding: 0;
+    background-color:white;
+    border:1px solid #888888;
+    margin:0;
+    padding:0;
+    position:absolute;
+    width:25em;
 }
 
 div.autocomplete_user ul {
-    list-style-image: url("../../../images/icons/extrasmall/edit_user.gif");
-    margin: 0;
-    padding: 0;
+    list-style:none outside none;
+    margin:0;
+    padding:0;
 }
 
 div.autocomplete_user ul li.selected {
@@ -96,17 +87,12 @@ div.autocomplete_user ul li.selected {
 }
 
 div.autocomplete_user ul li {
-    margin: 0;
-    padding: 0.1em 0 0.1em 0;
-    line-height: 1.4em;
-    cursor: pointer;
+    background:url("../../../images/icons/extrasmall/edit_user.gif") no-repeat scroll 0 50% transparent;
+    cursor:pointer;
+    margin:0;
+    padding:3px 0 3px 25px;
 }
 
 #liveusersearch {
     margin: 1em 0 1em 0;
-}
-
-#avatar .av_separator {
-    border-top: 1px solid #AAAAAA;
-    margin-top: 1em;
 }

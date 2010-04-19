@@ -5,12 +5,8 @@
 <form class="z-form" action="<!--[pnmodurl modname="Avatar" type="admin" func="delete"]-->" method="post">
     <fieldset>
         <legend><!--[gt text="Confirm deletion"]--></legend>
-        <div class="z-formrow">
-            <label><!--[gt text="Selected avatar"]--></label>
-            <span>
-                <img class="avatarchoosen" src="<!--[$avatarpath]-->/<!--[$avatar|pnvarprepfordisplay]-->" alt="Avatar" />
-            </span>
-        </div>
+        <p><strong class="z-formnote"><!--[gt text="Selected avatar"]--></strong></p>
+        <p><img class="z-formnote avatarchoosen" src="<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$avatar|pnvarprepfordisplay]-->" alt="Avatar" /></p>
     </fieldset>
     <div class="z-formbuttons">
         <input type="hidden" name="avatar" value="<!--[$avatar|pnvarprepfordisplay]-->" />
