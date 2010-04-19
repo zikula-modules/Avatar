@@ -16,7 +16,6 @@
 $dom = ZLanguage::getModuleDomain('Avatar');
 $modversion['name']           = 'Avatar';
 $modversion['displayname']    = __('Avatar', $dom);
-//! module url shoudl be different to displayname
 $modversion['url']            = __('avatar', $dom);
 $modversion['version']        = '2.2';
 $modversion['description']    = __('Upload of individual Avatars', $dom);
@@ -31,3 +30,11 @@ $modversion['admin']          = 1;
 $modversion['user']           = 1;
 $modversion['securityschema'] = array('Avatar::' => '::',
                                       'Avatar::' => 'prefix:userid:');
+
+// recommended and required modules
+$modversion['dependencies'] = array(array('modname'    => 'Profile',
+                                          'minversion' => '1.5.0',
+                                          'maxversion' => '',
+                                          'status'     => PNMODULE_DEPENDENCY_REQUIRED
+)
+);

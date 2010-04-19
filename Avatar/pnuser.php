@@ -22,16 +22,22 @@
  */
 function Avatar_user_main()
 {
+    // plus, the user should have overview right to see the avatars.
+    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
+        return LogUtil::registerPermissionError();
+    }
+
     $dom = ZLanguage::getModuleDomain('Avatar');
 
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerError(__('Error! You aren\'t a registered user.', $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
     }
 
-    // plus, the user should have overview right to see the avatars.
-    if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
-        return LogUtil::registerPermissionError();
+    $profileModule = pnConfigGetVar('profilemodule', '');
+    if (empty($profileModule) || !pnModAvailable($profileModule)) {
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        return pnRedirect(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     // get all possible avatars
@@ -67,7 +73,7 @@ function Avatar_user_uploadform()
 
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
+        return LogUtil::registerError(__('Error! You aren\'t a registered user.', $dom), null, pnConfigGetVar('entrypoint', 'index.php'));
     }
 
     // plus, the user should have overview right to see the avatars.
@@ -126,7 +132,7 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        return LogUtil::registerError(__('File is not an image', $dom));
+        return LogUtil::registerError(__('Error! The file is not an image', $dom));
     }
 
     $extension = image_type_to_extension($imageinfo[2], false);
@@ -211,7 +217,7 @@ function Avatar_user_upload ($args)
 
     if (!@copy($tmp_file, $user_avatar)) {
         unlink($tmp_file);
-        return LogUtil::registerError(__("Error! Fail to copy the file in avatars' directory.", $dom));
+        return LogUtil::registerError(__('Error! Fail to copy the file in avatar\'s directory.', $dom));
     } else {
         chmod ($user_avatar, 0644);
     }
@@ -219,7 +225,7 @@ function Avatar_user_upload ($args)
         unlink($pnphpbb_avatar);
         if (!@copy($tmp_file, $pnphpbb_avatar)) {
             unlink($tmp_file);
-            return LogUtil::registerError(__("Error! Fail to copy the file in phpbb's directory.", $dom));
+            return LogUtil::registerError(__('Error! Fail to copy the file in phpbb\'s directory.', $dom));
         } else {
             chmod ($pnphpbb_avatar, 0644);
         }
@@ -248,7 +254,7 @@ function Avatar_user_setavatar($args)
 
     // only logged-ins are allowed to see the overview.
     if (!pnUserLoggedIn()) {
-        return LogUtil::registerError(__("Error! You aren't a registered user.", $dom));
+        return LogUtil::registerError(__('Error! You aren\'t a registered user.', $dom));
     }
 
     // plus, the user should have overview right to see the avatars.
@@ -257,9 +263,7 @@ function Avatar_user_setavatar($args)
     }
 
     $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST');
-
     pnModAPIFunc('Avatar', 'user', 'setavatar', array('uid' => pnUserGetVar('uid'), 'avatar' => $user_avatar));
-
     return pnRedirect(pnModURL('Avatar'));
 }
 

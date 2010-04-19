@@ -41,7 +41,7 @@ function Avatar_adminapi_getusersbyavatar($args)
     if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_READ)) {
         return LogUtil::registerPermissionError();
     }
-    
+
     $dom = ZLanguage::getModuleDomain('Avatar');
 
     $users = array();

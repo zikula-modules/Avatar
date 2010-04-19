@@ -42,12 +42,18 @@ function Avatar_admin_main()
 
     $dom = ZLanguage::getModuleDomain('Avatar');
 
+    $profileModule = pnConfigGetVar('profilemodule', '');
+    if (empty($profileModule) || !pnModAvailable($profileModule)) {
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        return pnRedirect(pnModURL('Admin', 'admin', 'adminpanel'));
+    }
+
     pnModDBInfoLoad('Profile', 'Profile');
     $dudfields = DBUtil::selectObjectArray('user_property');
     $propcheck = false;
     foreach($dudfields as $dudfield) {
         if ($dudfield['prop_attribute_name'] == 'avatar') {
-         $propcheck = true;
+            $propcheck = true;
         }
     }
 
@@ -162,6 +168,12 @@ function Avatar_admin_modifyconfig()
         return LogUtil::registerPermissionError();
     }
 
+    $profileModule = pnConfigGetVar('profilemodule', '');
+    if (empty($profileModule) || !pnModAvailable($profileModule)) {
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        return pnRedirect(pnModURL('Admin', 'admin', 'adminpanel'));
+    }
+
     Loader::requireOnce('modules/Avatar/pnincludes/Avatar_admin_modifyconfighandler.class.php');
 
     // Create output object
@@ -261,7 +273,7 @@ function Avatar_admin_delete()
     $users = pnModAPIFunc('Avatar', 'admin', 'getusersbyavatar', array('avatar' => $avatar));
     if(count($users) <> 0) {
         // there are users, at least one, using this avatar, redirect to listusers
-        return LogUtil::registerError(__('Warning: This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.', $dom), null, pnModURL('Avatar', 'admin', 'listusers', array('avatar' => $avatar)));
+        return LogUtil::registerError(__('Warning! This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below.', $dom), null, pnModURL('Avatar', 'admin', 'listusers', array('avatar' => $avatar)));
     }
 
     // ok to delete
@@ -277,7 +289,8 @@ function Avatar_admin_delete()
         $pnRender->assign('avatar', $avatar);
         return $pnRender->fetch('Avatar_admin_delete.htm');
     }
+
     // we should never get here
-    return pnRedirect(pnConfigGetVar('entrypoint', 'index.php'));
+    return pnRedirect(pnModURL('Avatar', 'Admin', 'main'));
 
 }
