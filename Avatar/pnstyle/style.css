@@ -11,10 +11,6 @@
 * @copyright    Copyright (C) 2004-2007
 * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
 */
-#avatar .av_separator {
-    border-top: 1px solid #AAAAAA;
-    margin-top: 1em;
-}
 
 #avatar .av_footer {
     font-size: 0.9em;
