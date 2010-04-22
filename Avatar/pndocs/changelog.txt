@@ -14,6 +14,11 @@ Jörg Napp [jn], http://www.lottasophie.de
 Frank Schummertz [landseer], http://www.tanzblogger.de
 Carsten Volmer [herr.vorragend], http://carsten-volmer.de
 
+2.2:
+* Gettext conversion
+* Templates and CSS updates
+* Short URL fixes
+* Check if Profile module and user attributes exist
 
 2.1:
 * added paging in admin and user view
