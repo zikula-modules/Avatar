@@ -41,7 +41,7 @@ function Avatar_admin_main()
 
     $profileModule = pnConfigGetVar('profilemodule', '');
     if (empty($profileModule) || !pnModAvailable($profileModule)) {
-        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set in the Settings module as the default profile module.', $dom));
         return pnRedirect(pnModURL('Admin', 'admin', 'adminpanel'));
     }
 
@@ -49,9 +49,9 @@ function Avatar_admin_main()
     $dudfields = DBUtil::selectObjectArray('user_property');
     $propcheck = false;
     foreach($dudfields as $dudfield) {
-        if ($dudfield['prop_attribute_name'] == 'avatar') {
-            $propcheck = true;
-        }
+        if ($dudfield['prop_attribute_name'] != 'avatar') continue;
+        $propcheck = true;
+        break;
     }
 
     if ($propcheck == false || empty($dudfields))  {
@@ -167,7 +167,7 @@ function Avatar_admin_modifyconfig()
 
     $profileModule = pnConfigGetVar('profilemodule', '');
     if (empty($profileModule) || !pnModAvailable($profileModule)) {
-        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set in the Settings module as the default profile module.', $dom));
         return pnRedirect(pnModURL('Admin', 'admin', 'adminpanel'));
     }
 
@@ -199,9 +199,10 @@ function Avatar_admin_listusers($args)
         return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
     }
 
-    if (!pnModAvailable('Profile')) {
-        LogUtil::registerError(__('Error! The Profile module must be installed for this function.', $dom));
-        return pnRedirect(pnModURL('Avatar', 'admin', 'main'));
+    $profileModule = pnConfigGetVar('profilemodule', '');
+    if (empty($profileModule) || !pnModAvailable($profileModule)) {
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set in the Settings module as the default profile module.', $dom));
+        return pnRedirect(pnModURL('Admin', 'admin', 'main'));
     }
 
     // get all users that use this avatar

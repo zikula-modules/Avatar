@@ -82,7 +82,7 @@ class pnFormPathInput extends pnFormTextInput
                 }
             }
         } else {
-            $this->setError(__('Error! Missing path', $dom));
+            $this->setError(__('Error! Missing path.', $dom));
         }
     }
 

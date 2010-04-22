@@ -81,9 +81,9 @@ function Avatar_adminapi_deleteavatar($args)
     $osdir = DataUtil::formatForOS(pnModGetVar('Users', 'avatarpath'));
     $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
     if(unlink($avatarfile) == false) {
-        return LogUtil::registerError(__f('Error! Unable to delete avatar \'%s\'', $avatarfile, $dom));
+        return LogUtil::registerError(__f('Error! Unable to delete avatar \'%s\'.', $avatarfile, $dom));
     }
 
-    LogUtil::registerStatus(__f('Done! The Avatar \'%s\' has been deleted', $avatarfile, $dom));
+    LogUtil::registerStatus(__f('Done! The Avatar \'%s\' has been deleted.', $avatarfile, $dom));
     return true;
 }

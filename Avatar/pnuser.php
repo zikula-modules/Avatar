@@ -33,7 +33,7 @@ function Avatar_user_main()
 
     $profileModule = pnConfigGetVar('profilemodule', '');
     if (empty($profileModule) || !pnModAvailable($profileModule)) {
-        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set to the default profile module.', $dom));
+        LogUtil::registerError(__('Error! This module can only be used if the Profile module is installed and if it is set in the Settings module as the default profile module.', $dom));
         return pnRedirect(pnConfigGetVar('entrypoint', 'index.php'));
     }
 
@@ -41,9 +41,9 @@ function Avatar_user_main()
     $dudfields = DBUtil::selectObjectArray('user_property');
     $propcheck = false;
     foreach($dudfields as $dudfield) {
-        if ($dudfield['prop_attribute_name'] == 'avatar') {
-            $propcheck = true;
-        }
+        if ($dudfield['prop_attribute_name'] != 'avatar') continue;
+        $propcheck = true;
+        break;
     }
 
     if ($propcheck == false || empty($dudfields))  {
@@ -142,7 +142,7 @@ function Avatar_user_upload ($args)
     // file is not an image
     if (!$imageinfo) {
         unlink($tmp_file);
-        return LogUtil::registerError(__('Error! The file is not an image', $dom));
+        return LogUtil::registerError(__('Error! The file is not an image.', $dom));
     }
 
     $extension = image_type_to_extension($imageinfo[2], false);

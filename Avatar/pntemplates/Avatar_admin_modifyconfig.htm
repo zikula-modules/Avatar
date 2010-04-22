@@ -17,15 +17,15 @@
     </div>
 
     <!--[if $avatarpath_writable eq false]-->
-    <p class="z-errormsg z-formnote"><!--[gt text="Warning: the webserver cannot write to the avatar direcory"]--></p>
+    <p class="z-errormsg z-formnote"><!--[gt text="Warning! The webserver cannot write to the avatar direcory."]--></p>
     <!--[/if]-->
 
     <!--[if $pnphpbb_installed eq true]-->
     <div class="z-formrow">
-        <!--[pnformlabel for="forumdir" __text='Avatar Directory (PHPBB2' html='1']-->
+        <!--[pnformlabel for="forumdir" __text='Avatar Directory (PNphpBB2)']-->
         <!--[pnformpathinput size="25" removeSlash="1" writable="1" maxLength="50" id="forumdir" text=$pncore.Avatar.forumdir]-->
         <!--[if $forumdir_writable eq false]-->
-        <p class="z-errormsg z-formnote"><!--[gt text="Warning: the webserver cannot write to the forums avatar direcory (this is fine when PNphpBB2 isn't installed)"]--></p>
+        <p class="z-errormsg z-formnote"><!--[gt text="Warning! The webserver cannot write to the forums avatar direcory (this is fine when PNphpBB2 isn't installed)."]--></p>
         <!--[/if]-->
     </div>
     <!--[/if]-->

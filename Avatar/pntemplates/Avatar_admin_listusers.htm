@@ -29,7 +29,10 @@
 <form class="z-form av_box" action="<!--[pnmodurl modname="Avatar" type="admin" func="updateusers"]-->" method="post">
     <ul class="av_userlist">
         <!--[foreach item=user from=$users key=uid]-->
-        <li><input type="checkbox" name="updateusers[]" value="<!--[$uid]-->" />&nbsp;<!--[$user|userprofilelink|pnvarprepfordisplay]-->&nbsp;<a href="<!--[pnmodurl modname="Avatar" type="admin" func="searchusers" username=$user|pnvarprepfordisplay]-->"><!--[pnicon type="edit" size="extrasmall" __alt="Select new avatar"]--></a></li>
+        <li>
+            <input type="checkbox" name="updateusers[]" value="<!--[$uid]-->" /> <!--[$user|userprofilelink]-->
+            <a href="<!--[pnmodurl modname="Avatar" type="admin" func="searchusers" username=$user|pnvarprepfordisplay]-->"><!--[pnimg modname='core' set='icons/extrasmall' src="xedit.gif" __title="Select new avatar" __alt="Select new avatar"]--></a>
+        </li>
         <!--[foreachelse]-->
         <li><strong><!--[gt text="No user is using this avatar."]--></strong></li>
         <!--[/foreach]-->
@@ -41,14 +44,14 @@
         <!--[foreach from=$avatars item="avatar"]-->
         <div class="avatarbox">
             <button type="submit" name="avatar" value="<!--[$avatar|pnvarprepfordisplay]-->">
-                <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+10]-->px; height:<!--[$pncore.Avatar.maxwidth+10]-->px; background:url(<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
-                <!--[$avatar|pnvarprepfordisplay|truncate:15]-->
+                <strong class="avatarpic" style="width:<!--[$pncore.Avatar.maxheight+20]-->px; height:<!--[$pncore.Avatar.maxwidth+20]-->px; background:url(<!--[pngetbaseurl]--><!--[$avatarpath|pnvarprepfordisplay]-->/<!--[$avatar|pnvarprepfordisplay]-->) no-repeat scroll center; ">&nbsp;</strong>
+                <span class="z-sub"><!--[$avatar|pnvarprepfordisplay|truncate:15]--></span>
             </button>
         </div>
         <!--[/foreach]-->
     </div>
+    <!--[pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage]-->
     <!--[/if]-->
 </form>
 
-<!--[pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage]-->
 <!--[include file="Avatar_admin_footer.htm"]-->

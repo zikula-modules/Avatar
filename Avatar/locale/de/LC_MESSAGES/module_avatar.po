@@ -1,0 +1,390 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Avatar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-22 10:53+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Carsten Volmer <carsten@zikula.org>\n"
+"Language-Team: Carsten Volmer <carsten@zikula.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: Germany\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: pnadmin.php:44
+#: pnadmin.php:170
+#: pnadmin.php:204
+#: pnuser.php:36
+msgid "Error! This module can only be used if the Profile module is installed and if it is set in the Settings module as the default profile module."
+msgstr "Fehler! Dieses Modul kann nur genutzt werden, wenn das Modul 'Profile' installiert ist und als Standard Profilmodul im Modul 'Settings' ausgewählt wurde."
+
+#: pnadmin.php:58
+#: pnuser.php:50
+msgid "Error! The user attribute called 'avatar' doesn't exist. Please install a Profile module if you want to use this module."
+msgstr "Fehler! Das Benutzerattribut namens 'avatar' scheint nicht zu existieren. Das Avatar-Modul kann nur eingesetzt werden, wenn ein Profil-Modul installiert ist."
+
+#: pnadmin.php:198
+msgid "Error! No avatar choosen."
+msgstr "Fehler! Es wurde kein Avatar ausgewählt."
+
+#: pnadmin.php:274
+msgid "Warning! This avatar is in use and cannot be deleted. If you want to delete it, please change the avatars of the users listed below."
+msgstr "Warnung! Dieser Avatar ist bereits in Benutzung und kann daher nicht gelöscht werden. Die Löschung ist nur möglich, wenn die Avatarzuordnung der folgenden Benutzer geändert wird."
+
+#: pnversion.php:15
+msgid "Avatar"
+msgstr "Avatar"
+
+#: pnversion.php:16
+msgid "avatar"
+msgstr "avatar"
+
+#: pnversion.php:18
+msgid "Upload of individual Avatars"
+msgstr "Auswahl und Upload individueller Avatare"
+
+#: pntemplates/plugins/function.pnformpathinput.php:69
+#, php-format
+msgid "The path %s does not exist or is not readable by the webserver."
+msgstr "Das Verzeichnis %s existiert nicht oder ist für den Webserver nicht beschreibbar."
+
+#: pntemplates/plugins/function.pnformpathinput.php:71
+#, php-format
+msgid "The webserver cannot write to %s."
+msgstr "Das Verzeichnis %s ist für den Webserver nicht beschreibbar."
+
+#: pntemplates/plugins/function.pnformpathinput.php:85
+msgid "Error! Missing path."
+msgstr "Fehler! Verzeichnisangabe fehlt."
+
+#: pnuserapi.php:88
+#, php-format
+msgid "Done! The avatar of the user '%s' has been disabled."
+msgstr "Erledigt! Die Avataranzeige des Benutzers '%s' wurde deaktiviert."
+
+#: pnuserapi.php:90
+#, php-format
+msgid "Done! The avatar of the user '%s' has been set to his gravatar."
+msgstr "Erledigt! Für den Benutzer '%s' wird jetzt das entsprechende Gravatar-Bild angezeigt."
+
+#: pnuserapi.php:92
+#, php-format
+msgid "Done! The avatar of the user '%1$s' has been changed to '%2$s'"
+msgstr "Erledigt! Der Avatar des Benutzer '%1$s' wurde auf '%2$s' geändert."
+
+#: pnuserapi.php:99
+#, php-format
+msgid "Error! The user is not authorized to use this avatar. To change this, update the permission for %s."
+msgstr "Fehler! Der Benutzer darf diesen Avatar nicht auwählen. Das ist nur möglich, wenn die Zugriffsrechte für %s geändert werden."
+
+#: pnuser.php:31
+#: pnuser.php:86
+#: pnuser.php:267
+msgid "Error! You aren't a registered user."
+msgstr "Fehler! Es liegt keine Anmeldung im System vor."
+
+#: pnuser.php:124
+msgid "Error! No file selected."
+msgstr "Fehler! Keine Datei ausgewählt."
+
+#: pnuser.php:136
+#, php-format
+msgid "Error! Filesize error, max %s bytes are allowed."
+msgstr "Fehler! Dateigröße fehlerhaft. Maximal %s Bytes erlaubt."
+
+#: pnuser.php:145
+msgid "Error! The file is not an image."
+msgstr "Fehler! Bei dieser Datei handelt es sich nicht um ein Bild."
+
+#: pnuser.php:152
+#, php-format
+msgid "Error! Unauthorised file extension. Allowed extensions: %s."
+msgstr "Fehler! Nicht erlaubte Dateiendung. Mögliche Dateierweiteurngen: %s."
+
+#: pnuser.php:160
+#, php-format
+msgid "Error! Image height (max. %1$s px) or width (max. %2$s px) error."
+msgstr "Fehler! Bildhöhe (max. %1$s px) oder Bildbreite (max. %2$s px) fehlerhaft."
+
+#: pnuser.php:230
+msgid "Error! Fail to copy the file in avatar's directory."
+msgstr "Fehler! Der Kopiervorgang in das Avatar-Verzeichnis ist fehlgeschlagen."
+
+#: pnuser.php:238
+msgid "Error! Fail to copy the file in phpbb's directory."
+msgstr "Fehler! Der Kopiervorgang in das phpbbb-Verzeichnis ist fehlgeschlagen."
+
+#: pnuser.php:246
+msgid "Error while selecting the avatar."
+msgstr "Fehler bei der Auswahl des Avatars."
+
+#: pnaccountapi.php:29
+#: pntemplates/Avatar_user_header.htm:4
+msgid "Avatar Management"
+msgstr "Avatar-Verwaltung"
+
+#: pnadminapi.php:24
+#: pntemplates/Avatar_admin_main.htm:3
+msgid "Maintain avatars"
+msgstr "Avatare verwalten"
+
+#: pnadminapi.php:25
+#: pntemplates/Avatar_admin_searchusers.htm:4
+msgid "Search user"
+msgstr "Benutzer suchen"
+
+#: pnadminapi.php:26
+#: pntemplates/Avatar_admin_modifyconfig.htm:5
+#: pntemplates/Avatar_admin_menu.htm:9
+msgid "Modify configuration"
+msgstr "Konfiguration modifizieren"
+
+#: pnadminapi.php:84
+#, php-format
+msgid "Error! Unable to delete avatar '%s'."
+msgstr "Fehler! Avatar '%s' konnte nicht gelöscht werden."
+
+#: pnadminapi.php:87
+#, php-format
+msgid "Done! The Avatar '%s' has been deleted."
+msgstr "Erledigt! Der Avatar '%s' wurde gelöscht."
+
+#: pntemplates/Avatar_user_header.htm:9
+#: pntemplates/Avatar_user_main.htm:2
+msgid "View avatars"
+msgstr "Avatare anzeigen"
+
+#: pntemplates/Avatar_user_header.htm:11
+#: pntemplates/Avatar_user_uploadform.htm:2
+msgid "Upload avatar"
+msgstr "Avatar hochladen"
+
+#: pntemplates/Avatar_user_header.htm:22
+msgid "Your current avatar is:"
+msgstr "Der aktuelle Avatar ist:"
+
+#: pntemplates/Avatar_user_header.htm:25
+msgid "Currently no avatar selected"
+msgstr "Derzeit ist kein Avatar ausgewählt"
+
+#: pntemplates/Avatar_admin_main.htm:9
+#: pntemplates/Avatar_admin_listusers.htm:16
+#: pntemplates/Avatar_admin_searchusers.htm:40
+#: pntemplates/Avatar_user_main.htm:10
+msgid "Select the number of avatars to be displayed per page"
+msgstr "Anzahl der anzuzeigenden Avatare pro Seite"
+
+#: pntemplates/Avatar_admin_main.htm:15
+#: pntemplates/Avatar_admin_listusers.htm:22
+#: pntemplates/Avatar_admin_searchusers.htm:46
+#: pntemplates/Avatar_user_main.htm:16
+msgid "All"
+msgstr "Alle"
+
+#: pntemplates/Avatar_admin_main.htm:17
+#: pntemplates/Avatar_admin_modifyconfig.htm:67
+#: pntemplates/Avatar_admin_listusers.htm:24
+#: pntemplates/Avatar_admin_searchusers.htm:48
+#: pntemplates/Avatar_user_main.htm:18
+msgid "Submit"
+msgstr "Absenden"
+
+#: pntemplates/Avatar_admin_main.htm:28
+msgid "List users that use this avatar"
+msgstr "Benutzer anzeigen, die diesen Avatar ausgewählt haben"
+
+#: pntemplates/Avatar_admin_main.htm:28
+msgid "View"
+msgstr "Anzeigen"
+
+#: pntemplates/Avatar_admin_main.htm:29
+msgid "Delete avatar"
+msgstr "Avatar löschen"
+
+#: pntemplates/Avatar_admin_main.htm:29
+#: pntemplates/Avatar_admin_delete.htm:13
+msgid "Delete"
+msgstr "Löschen"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:11
+msgid "Upload settings"
+msgstr "Upload-Einstellungen"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:14
+msgid "Avatar Directory"
+msgstr "Avatarverzeichnis"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:16
+#, php-format
+msgid "Please configure the avatar path in the <a href=\"%s\">Users administration</a>"
+msgstr "Bitte das Avatarverzeichnis in der <a href=\"%s\">Benutzeraadministration</a> konfigurieren"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:20
+msgid "Warning! The webserver cannot write to the avatar direcory."
+msgstr "Warnung! Das Avatarverzeichnis ist für den Webserver nicht beschreibbar."
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:25
+msgid "Avatar Directory (PNphpBB2)"
+msgstr "Avatarverzeichnis (PNphpBB2)"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:28
+msgid "Warning! The webserver cannot write to the forums avatar direcory (this is fine when PNphpBB2 isn't installed)."
+msgstr "Warnung! Das Forumverzeichnis ist nicht beschreibbar. Das ist in Ordnung falls das Modul PNphpBB2 nicht installiert ist."
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:34
+msgid "Resize the avatar automatically"
+msgstr "Automatische Verkleinerung der Avatarbilder"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:39
+msgid "Max. avatar filesize in bytes"
+msgstr "Maximale Dateigröße eines Avatars in Bytes"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:44
+msgid "Max. height in pixels"
+msgstr "Maximale Höhe in Pixel"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:49
+msgid "Max. width in pixels"
+msgstr "Maximale Breite in Pixel"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:54
+msgid "Allowed extensions"
+msgstr "Erlaubte Dateiendungen"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:56
+msgid "A semicolon separated list of allowed file extensions, supported filetypes: gif, jpg, jpeg, png, wbm. When using PHP 5 or later you have to allow 'jpeg' instead of 'jpg'."
+msgstr "Eine durch Semikolons getrennte Liste erlaubter Dateiendungen. Unterstützt werden: gif, jpg, png, wbm. Bei Verwendung von mind. PHP 5 muss 'jpeg' anstelle von 'jpg' verwendet werden."
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:60
+msgid "Allow multiple avatars"
+msgstr "Mehrere Avatare erlauben"
+
+#: pntemplates/Avatar_admin_modifyconfig.htm:62
+msgid "This allows the user to store one avatar per extension"
+msgstr "Benutzer erlauben jeweils ein Avatar pro Dateiendung abzuspeichern."
+
+#: pntemplates/Avatar_admin_delete.htm:3
+#: pntemplates/Avatar_admin_delete.htm:7
+msgid "Confirm deletion"
+msgstr "Löschen bestätigen"
+
+#: pntemplates/Avatar_admin_delete.htm:8
+#: pntemplates/Avatar_admin_listusers.htm:3
+msgid "Selected avatar"
+msgstr "Ausgewählter Avatar"
+
+#: pntemplates/Avatar_admin_listusers.htm:6
+msgid "Users who don't use a avatar"
+msgstr "Benutzer, die keinen Avatar ausgewählt haben"
+
+#: pntemplates/Avatar_admin_listusers.htm:9
+msgid "Users who use this avatar"
+msgstr "Benutzer, die diesen Avatar ausgewählt haben"
+
+#: pntemplates/Avatar_admin_listusers.htm:34
+#: pntemplates/Avatar_admin_searchusers.htm:35
+msgid "Select new avatar"
+msgstr "Neuen Avatar auswählen"
+
+#: pntemplates/Avatar_admin_listusers.htm:37
+msgid "No user is using this avatar."
+msgstr "Der Avatar ist von keinem Benutzer ausgewählt worden."
+
+#: pntemplates/Avatar_admin_listusers.htm:42
+msgid "Choose the avatar to update all selected users"
+msgstr "Bitte einen Avatar auswählen, der den auswählten Benutzern zugeordnet werden soll"
+
+#: pntemplates/Avatar_user_uploadform.htm:7
+msgid "If no available avatar represents you, you can upload a personalised avatar."
+msgstr "Falls die vorhandenen Avatare nicht gefallen, kann auch ein personalisiertes Avatarbild hochgeladen werden."
+
+#: pntemplates/Avatar_user_uploadform.htm:10
+msgid "Upload file"
+msgstr "Datei hochladen"
+
+#: pntemplates/Avatar_user_uploadform.htm:17
+msgid "Upload"
+msgstr "Hochladen"
+
+#: pntemplates/Avatar_user_uploadform.htm:18
+msgid "Clear"
+msgstr "Eingaben löschen"
+
+#: pntemplates/Avatar_user_uploadform.htm:21
+msgid "Possible extensions"
+msgstr "Erlaubte Dateiendungen"
+
+#: pntemplates/Avatar_user_uploadform.htm:25
+msgid "Avatar max. file size"
+msgstr "Maximale Dateigröße des Avatars"
+
+#: pntemplates/Avatar_user_uploadform.htm:26
+msgid "Bytes"
+msgstr "Bytes"
+
+#: pntemplates/Avatar_user_uploadform.htm:29
+msgid "Maximal avatar dimensions"
+msgstr "Maximale Avatargröße"
+
+#: pntemplates/Avatar_user_uploadform.htm:30
+msgid "pixels"
+msgstr "Pixel"
+
+#: pntemplates/Avatar_user_uploadform.htm:31
+msgid "Larger images will be resized automatically."
+msgstr "Größere Bilder werden automatisch verkleinert."
+
+#: pntemplates/Avatar_admin_menu.htm:4
+msgid "Avatar administration"
+msgstr "Avatar Administration"
+
+#: pntemplates/Avatar_admin_searchusers.htm:7
+msgid "Enter user name"
+msgstr "Benutzernamen eingeben"
+
+#: pntemplates/Avatar_admin_searchusers.htm:8
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: pntemplates/Avatar_admin_searchusers.htm:28
+#, php-format
+msgid "The current avatar of '%s' is:"
+msgstr "Der aktuelle Avatar von '%s' ist:"
+
+#: pntemplates/Avatar_admin_searchusers.htm:31
+msgid "The user has no avatar selected."
+msgstr "Der Benutzer hat kein Avatar gewählt."
+
+#: pntemplates/Avatar_user_main.htm:6
+msgid "Please choose your prefered avatar"
+msgstr "Bitte einen bevorzugten Avatar auswählen"
+
+#: pntemplates/Avatar_user_main.htm:30
+msgid "Gravatar"
+msgstr "Gravatar"
+
+#: pntemplates/Avatar_user_main.htm:31
+msgid "This site also supports <a href=\"http://www.gravatar.com\">gravatars</a>. If you have a gravatar then select the gravatar logo as your avatar."
+msgstr "Diese Website bietet außerdem auch <a href=\"http://www.gravatar.com\">Gravatar</a>-Unterstützung an. Falls ein Gravatar - für die im System hinterlegte E-Mail-Adresse - vorhanden ist, kann dieser über einen Klick auf das Gravatar-Logo aktiviert werden."
+
+#: pntemplates/Avatar_user_main.htm:32
+#: pntemplates/Avatar_user_main.htm:33
+msgid "Use your gravatar"
+msgstr "Gravatar benutzen"
+
+#: pntemplates/Avatar_user_main.htm:37
+msgid "Deactivate your avatar"
+msgstr "Avataranzeige deaktivieren"
+
+#: pntemplates/Avatar_user_main.htm:39
+#, php-format
+msgid "If you don't want that an avatar is displayed for you, then please click <a href=\"%1$s\">here</a> to clear your avatar."
+msgstr "Falls kein Avatar angezeigt werden soll, so kann die Einstellung <a href=\"%1$s\">hier</a> zurückgesetzt werden."
+
+#: pntemplates/Avatar_admin_footer.htm:3
+msgid "Visit Avatar project at http://code.zikula.org/avatar/"
+msgstr "Avatar-Projektseite unter http://code.zikula.org/avatar/ besuchen"
+

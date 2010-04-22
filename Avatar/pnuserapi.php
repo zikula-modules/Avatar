@@ -87,7 +87,7 @@ function Avatar_userapi_setavatar($args)
             $args['avatar'] = '';
             $status = __f('Done! The avatar of the user \'%s\' has been disabled.', $uname, $dom);
         } else if ($args['avatar'] == 'gravatar.gif') {
-            $status = __f('Done! The avatar of the user \'%s\' has been set to his global recognized avatar.', $uname, $dom);
+            $status = __f('Done! The avatar of the user \'%s\' has been set to his gravatar.', $uname, $dom);
         } else {
             $status = __f('Done! The avatar of the user \'%1$s\' has been changed to \'%2$s\'', array($uname, $args['avatar']), $dom);
         }
