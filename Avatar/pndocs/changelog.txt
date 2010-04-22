@@ -1,29 +1,18 @@
 /**
  * Avatar Module
  * 
- * The Avatar module allows uploading of individual Avatars.
- * It is based on EnvoAvatar from A.T.Web, http://www.atw.it
- * 
  * @package      Avatar
  * @version      $Id$
- * @author       Joerg Napp, Frank Schummertz
- * @link         http://lottasophie.sf.net, http://www.pn-cms.de
- * @copyright    Copyright (C) 2004-2007
+ * @author       Joerg Napp, Frank Schummertz, Carsten Volmer
+ * @link         http://code.zikula.org/avatar
+ * @copyright    Copyright (C) 2004-2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-The Avatar module allows uploading of individual Avatars.
-It is based on EnvoAvatar from A.T.Web, http://www.atw.it
-
 Authors:
 Jörg Napp [jn], http://www.lottasophie.de
-Frank Schummertz [landseer], http://www.pn-cms.de
-Carsten Volmer [herr.vorragend], http://www.carsten-volmer.de
-
-French language file by Yokav
-Italian language file by Arthens
-Spanish language file by Mateo Tibaquirá
---Thanks, folks!
+Frank Schummertz [landseer], http://www.tanzblogger.de
+Carsten Volmer [herr.vorragend], http://carsten-volmer.de
 
 
 2.1:
@@ -36,4 +25,3 @@ Spanish language file by Mateo Tibaquirá
 
 1.1:
 * last .764 version, does not work with .8 or later
-
