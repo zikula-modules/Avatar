@@ -1,0 +1,12 @@
+{* $Id$ *}
+
+<div class="z-clearfix">
+    {foreach from=$avatars item="avatar"}
+    <div class="avatarbox">
+        <a href="{modurl modname="Avatar" type="user" func="setavatar" user_avatar=$avatar|varprepfordisplay}">
+            <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background: url({getbaseurl}{$avatarpath|varprepfordisplay}/{$avatar|varprepfordisplay}) no-repeat scroll center; ">&nbsp;</strong>
+        </a>
+        <a class="z-sub" href="{modurl modname="Avatar" type="user" func="setavatar" user_avatar=$avatar|varprepfordisplay}">{$avatar|varprepfordisplay|truncate:15}</a>
+    </div>
+    {/foreach}
+</div>
