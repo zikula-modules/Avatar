@@ -35,6 +35,7 @@
 
 class Avatar_Controller_Admin extends Zikula_Controller
 {
+
     public function main()
     {
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
@@ -58,16 +59,17 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Zikula_View::getInstance('Avatar', false, null, true);
-        $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
-        $render->assign('username', $username);
-        $render->assign('userid', $userid);
-        $render->assign('avatar', $avatar);
-        $render->assign('avatars', $avatarsarray);
-        $render->assign('allavatarscount', $allavatarscount);
-        $render->assign('page', $page);
-        $render->assign('perpage', $perpage);
-        return $render->fetch('Avatar_admin_main.htm');
+        $this->view->add_core_data();
+        $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('username', $username);
+        $this->view->assign('userid', $userid);
+        $this->view->assign('avatar', $avatar);
+        $this->view->assign('avatars', $avatarsarray);
+        $this->view->assign('allavatarscount', $allavatarscount);
+        $this->view->assign('page', $page);
+        $this->view->assign('perpage', $perpage);
+        return $this->view->fetch('Avatar_admin_main.htm');
+
     }
     
     /**
@@ -101,16 +103,18 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Zikula_View::getInstance('Avatar', false, null, true);
-        $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
-        $render->assign('username', $username);
-        $render->assign('userid', $userid);
-        $render->assign('avatar', $avatar);
-        $render->assign('avatars', $avatarsarray);
-        $render->assign('allavatarscount', $allavatarscount);
-        $render->assign('page', $page);
-        $render->assign('perpage', $perpage);
-        return $render->fetch('Avatar_admin_searchusers.htm');
+        $this->view->add_core_data();
+        $this->view->setCaching(false);
+        $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('username', $username);
+        $this->view->assign('userid', $userid);
+        $this->view->assign('avatar', $avatar);
+        $this->view->assign('avatars', $avatarsarray);
+        $this->view->assign('allavatarscount', $allavatarscount);
+        $this->view->assign('page', $page);
+        $this->view->assign('perpage', $perpage);
+        return $this->view->fetch('Avatar_admin_searchusers.htm');
+
     }
     
     
@@ -186,15 +190,17 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Zikula_View::getInstance('Avatar', false, null, true);
-        $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
-        $render->assign('users', $users);
-        $render->assign('uavatar', $uavatar);
-        $render->assign('avatars', $avatarsarray);
-        $render->assign('allavatarscount', $allavatarscount);
-        $render->assign('page', $page);
-        $render->assign('perpage', $perpage);
-        return $render->fetch('Avatar_admin_listusers.htm');
+        $this->view->add_core_data();
+        $this->view->setCaching(false);
+        $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('users', $users);
+        $this->view->assign('uavatar', $uavatar);
+        $this->view->assign('avatars', $avatarsarray);
+        $this->view->assign('allavatarscount', $allavatarscount);
+        $this->view->assign('page', $page);
+        $this->view->assign('perpage', $perpage);
+        return $this->view->fetch('Avatar_admin_listusers.htm');
+
     }
     
     /**
@@ -249,10 +255,12 @@ class Avatar_Controller_Admin extends Zikula_Controller
             array('avatar' => $avatar));
             return System::redirect(ModUtil::url('Avatar', 'admin', 'main'));
         } else {
-            $render = Zikula_View::getInstance('Avatar', false, null, true);
-            $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
-            $render->assign('avatar', $avatar);
-            return $render->fetch('Avatar_admin_delete.htm');
+            $this->view->add_core_data();
+            $this->view->setCaching(false);
+            $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+            $this->view->assign('avatar', $avatar);
+            return $this->view->fetch('Avatar_admin_delete.htm');
+
         }
     
         // we should never get here

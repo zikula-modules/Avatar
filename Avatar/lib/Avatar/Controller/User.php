@@ -20,7 +20,7 @@
  
 class Avatar_Controller_User extends Zikula_Controller
 { 
- 
+
     public function main()
     {
         // plus, the user should have overview right to see the avatars.
@@ -44,13 +44,14 @@ class Avatar_Controller_User extends Zikula_Controller
         unset($_REQUEST['submit']);
     
         // display
-        $render = Zikula_View::getInstance('Avatar', false, null, true);
-        $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
-        $render->assign('avatars', $avatars);
-        $render->assign('allavatarscount', $allavatarscount);
-        $render->assign('page', $page);
-        $render->assign('perpage', $perpage);
-        return $render->fetch('Avatar_user_main.htm');
+        $this->view->add_core_data();
+        $this->view->setCaching(false);
+        $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('avatars', $avatars);
+        $this->view->assign('allavatarscount', $allavatarscount);
+        $this->view->assign('page', $page);
+        $this->view->assign('perpage', $perpage);
+        return $this->view->fetch('Avatar_user_main.htm');
     }
     
     /**
@@ -73,10 +74,12 @@ class Avatar_Controller_User extends Zikula_Controller
         }
     
         // display
-        $render = Zikula_View::getInstance('Avatar', false, null, true);
-        return $render->fetch('Avatar_user_uploadform.htm');
+
+        $this->view->add_core_data();
+        $this->view->setCaching(false);
+        return $this->view->fetch('Avatar_user_uploadform.htm');
     }
-    
+       
     /**
      * Avatar_user_upload()
      *
