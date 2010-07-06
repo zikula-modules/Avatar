@@ -79,7 +79,7 @@ Class Avatar_Installer extends Zikula_Installer
 	 */
 	public function uninstall()
 	{
-	    ModUtil::delVar('Avatar');
+	    ModUtil::delVars('Avatar');
 	    return true;
 	}
 }
