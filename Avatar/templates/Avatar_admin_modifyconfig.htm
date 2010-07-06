@@ -13,7 +13,7 @@
     <div class="z-formrow">
         {formlabel for="avatarpath" __text='Avatar Directory' html='1'}
         {formtextinput size="25" maxLength="50" id="avatarpath" readOnly=true text=$avatarpath}
-        <em class="z-sub z-formnote">{gt text='Please configure the avatar path in the <a href="%s">Users administration</a>' tag1=$usersurl|varprepfordisplay}</em>
+        <em class="z-sub z-formnote">{gt text='Please configure the avatar path in the <a href="%s">Users administration</a>' tag1=$usersurl|safetext}</em>
     </div>
 
     {if $avatarpath_writable eq false}

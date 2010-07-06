@@ -16,8 +16,8 @@
 {if $username ne ""}
 <dl class="av_result">
     {if $avatar ne ""}
-    <dt><strong>{gt text="The current avatar of '%s' is:" tag1=$username|varprepfordisplay}</strong></dt>
-    <dd><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|varprepfordisplay}/{$avatar|varprepfordisplay}" alt="Avatar" /></dd>
+    <dt><strong>{gt text="The current avatar of '%s' is:" tag1=$username|safetext}</strong></dt>
+    <dd><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}" alt="Avatar" /></dd>
     {else}
     <dd>{gt text="The user has no avatar selected."}</dd>
     {/if}
@@ -43,10 +43,10 @@
 <div class="z-clearfix">
     {foreach from=$avatars item="avatar"}
     <div class="avatarbox">
-        <a href="{modurl modname="Avatar" type="admin" func="setavatar" uavatar=$avatar|varprepfordisplay uid=$userid}">
-            <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|varprepfordisplay}/{$avatar|varprepfordisplay}) no-repeat scroll center; ">&nbsp;</strong>
+        <a href="{modurl modname="Avatar" type="admin" func="setavatar" uavatar=$avatar|safetext uid=$userid}">
+            <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
         </a>
-        <span class="z-sub">{$avatar|varprepfordisplay|truncate:15}</span>
+        <span class="z-sub">{$avatar|safetext|truncate:15}</span>
     </div>
     {/foreach}
 </div>

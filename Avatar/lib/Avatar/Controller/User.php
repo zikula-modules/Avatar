@@ -18,7 +18,8 @@
  * @return output The main module page
  */
  
-class Avatar_User extends Zikula_Controller { 
+class Avatar_Controller_User extends Zikula_Controller
+{ 
  
     public function main()
     {
@@ -43,7 +44,7 @@ class Avatar_User extends Zikula_Controller {
         unset($_REQUEST['submit']);
     
         // display
-        $render = Renderer::getInstance('Avatar', false, null, true);
+        $render = Zikula_View::getInstance('Avatar', false, null, true);
         $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $render->assign('avatars', $avatars);
         $render->assign('allavatarscount', $allavatarscount);
@@ -72,7 +73,7 @@ class Avatar_User extends Zikula_Controller {
         }
     
         // display
-        $render = Renderer::getInstance('Avatar', false, null, true);
+        $render = Zikula_View::getInstance('Avatar', false, null, true);
         return $render->fetch('Avatar_user_uploadform.htm');
     }
     
@@ -127,7 +128,7 @@ class Avatar_User extends Zikula_Controller {
         // check for image type
         if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
             unlink($tmp_file);
-            return LogUtil::registerError($this->__f('Error! Unauthorised file extension. Allowed extensions: %s.', $modvars['allowed_extensions']));
+            return LogUtil::registerError($this->__f('Error! UnSecurityUtil::checkPermission* file extension. Allowed extensions: %s.', $modvars['allowed_extensions']));
         }
     
     

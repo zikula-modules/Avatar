@@ -12,26 +12,20 @@
 
 class Avatar_Version extends Zikula_Version
 {
-	public function getMetaData()
-	{
+    public function getMetaData()
+    {
         $meta = array();
-		$meta['name']           = 'Avatar';
-		$meta['displayname']    = $this->__('Avatar');
-		$meta['url']            = $this->__('avatar');
-		$meta['version']        = '3.0';
-		$meta['description']    = $this->__('Upload of individual Avatars');
-		$meta['credits']        = 'docs/changelog.txt';
-		$meta['help']           = 'docs/readme.txt';
-		$meta['changelog']      = 'docs/changelog.txt';
-		$meta['license']        = 'docs/license.txt';
-		$meta['official']       = 0;
-		$meta['author']         = 'Joerg Napp, Frank Schummertz, Carsten Volmer';
-		$meta['contact']        = 'http://code.zikula.org/avatar/';
-		$meta['securityschema'] = array('Avatar::' => '::',
-		                                      'Avatar::' => 'prefix:userid:');
-		// recommended and required modules
-		$meta['dependencies'] = array();
-		return $meta;
-    }
+        $meta['displayname']    = __('Avatar');
+        //!url must be different to displayname
+        $meta['url']            = __('avatar');
+        $meta['version']        = '3.0.1';
+        $meta['description']    = __('Upload of individual Avatars');
+        $meta['contact']        = 'http://code.zikula.org/avatar/';
+        $meta['securityschema'] = array('Avatar::' => '::',
+                'Avatar::' => 'prefix:userid:');
 
+        // recommended and required modules
+        $meta['dependencies'] = array();
+        return $meta;
+    }
 }

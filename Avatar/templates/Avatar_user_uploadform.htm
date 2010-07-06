@@ -19,7 +19,7 @@
             </div>
             <div class="z-formrow">
                 <label>{gt text="Possible extensions"}</label>
-                <span>{$core.Avatar.allowed_extensions|varprepfordisplay}</span>
+                <span>{$core.Avatar.allowed_extensions|safetext}</span>
             </div>
             <div class="z-formrow">
                 <label>{gt text="Avatar max. file size"}</label>

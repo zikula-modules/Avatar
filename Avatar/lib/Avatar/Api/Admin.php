@@ -45,7 +45,7 @@ class Avatar_Api_Admin extends Zikula_Api {
             return $users;
         }
     
-        $ztables = System::dbGetTables();
+        $ztables = DBUtil::getTables();
         $userdatacolumn = $ztables['objectdata_attributes_column'];
         if ($args['avatar'] == 'blank.gif') {
             $where = $userdatacolumn['attribute_name'] . '="avatar" AND (' . $userdatacolumn['value'] . '="' . DataUtil::formatForStore($args['avatar']) . '" OR ' . $userdatacolumn['value'] . '="")';

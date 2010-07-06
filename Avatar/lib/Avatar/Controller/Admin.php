@@ -33,8 +33,8 @@
  */
  
 
-class Avatar_Admin extends Zikula_Controller {
- 
+class Avatar_Controller_Admin extends Zikula_Controller
+{
     public function main()
     {
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
@@ -58,7 +58,7 @@ class Avatar_Admin extends Zikula_Controller {
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Renderer::getInstance('Avatar', false, null, true);
+        $render = Zikula_View::getInstance('Avatar', false, null, true);
         $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $render->assign('username', $username);
         $render->assign('userid', $userid);
@@ -101,7 +101,7 @@ class Avatar_Admin extends Zikula_Controller {
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Renderer::getInstance('Avatar', false, null, true);
+        $render = Zikula_View::getInstance('Avatar', false, null, true);
         $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $render->assign('username', $username);
         $render->assign('userid', $userid);
@@ -186,7 +186,7 @@ class Avatar_Admin extends Zikula_Controller {
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $render = Renderer::getInstance('Avatar', false, null, true);
+        $render = Zikula_View::getInstance('Avatar', false, null, true);
         $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $render->assign('users', $users);
         $render->assign('uavatar', $uavatar);
@@ -249,7 +249,7 @@ class Avatar_Admin extends Zikula_Controller {
             array('avatar' => $avatar));
             return System::redirect(ModUtil::url('Avatar', 'admin', 'main'));
         } else {
-            $render = Renderer::getInstance('Avatar', false, null, true);
+            $render = Zikula_View::getInstance('Avatar', false, null, true);
             $render->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
             $render->assign('avatar', $avatar);
             return $render->fetch('Avatar_admin_delete.htm');

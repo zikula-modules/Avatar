@@ -5,7 +5,7 @@
 {if $uavatar eq '' || $uavatar eq 'blank.gif'}
 <h3>{gt text="Users who don't use a avatar"}</h3>
 {else}
-<p><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|varprepfordisplay}/{$uavatar|varprepfordisplay}" alt="Avatar" /></p>
+<p><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|safetext}/{$uavatar|safetext}" alt="Avatar" /></p>
 <h3>{gt text="Users who use this avatar"}</h3>
 {/if}
 
@@ -31,7 +31,7 @@
         {foreach item=user from=$users key=uid}
         <li>
             <input type="checkbox" name="updateusers[]" value="{$uid}" /> {$user|userprofilelink}
-            <a href="{modurl modname="Avatar" type="admin" func="searchusers" username=$user|varprepfordisplay}">{img modname='core' set='icons/extrasmall' src="xedit.gif" __title="Select new avatar" __alt="Select new avatar"}</a>
+            <a href="{modurl modname="Avatar" type="admin" func="searchusers" username=$user|safetext}">{img modname='core' set='icons/extrasmall' src="xedit.gif" __title="Select new avatar" __alt="Select new avatar"}</a>
         </li>
         {foreachelse}
         <li><strong>{gt text="No user is using this avatar."}</strong></li>
@@ -43,9 +43,9 @@
     <div class="z-clearfix">
         {foreach from=$avatars item="avatar"}
         <div class="avatarbox">
-            <button type="submit" name="avatar" value="{$avatar|varprepfordisplay}">
-                <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|varprepfordisplay}/{$avatar|varprepfordisplay}) no-repeat scroll center; ">&nbsp;</strong>
-                <span class="z-sub">{$avatar|varprepfordisplay|truncate:15}</span>
+            <button type="submit" name="avatar" value="{$avatar|safetext}">
+                <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
+                <span class="z-sub">{$avatar|safetext|truncate:15}</span>
             </button>
         </div>
         {/foreach}

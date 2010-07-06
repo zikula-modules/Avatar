@@ -6,10 +6,10 @@
     <fieldset>
         <legend>{gt text="Confirm deletion"}</legend>
         <p><strong class="z-formnote">{gt text="Selected avatar"}</strong></p>
-        <p><img class="z-formnote avatarchoosen" src="{getbaseurl}{$avatarpath|varprepfordisplay}/{$avatar|varprepfordisplay}" alt="Avatar" /></p>
+        <p><img class="z-formnote avatarchoosen" src="{getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}" alt="Avatar" /></p>
     </fieldset>
     <div class="z-formbuttons">
-        <input type="hidden" name="avatar" value="{$avatar|varprepfordisplay}" />
+        <input type="hidden" name="avatar" value="{$avatar|safetext}" />
         <input type="submit" name="submit" value="{gt text="Delete"}" />
     </div>
 </form>
