@@ -11,18 +11,18 @@
  * @subpackage Functions
  */
 
-require_once('system/pnForm/plugins/function.pnformtextinput.php');
+require_once('lib/Form/Plugin/TextInput.php');
 
 /**
  * Path input
  *
  * Use for text inputs where you only want to accept paths. The value saved by
- * {@link pnForm::pnFormGetValues()} is either null or a valid path.
+ * {@link Form::FormGetValues()} is either null or a valid path.
  *
- * @package pnForm
+ * @package Form
  * @subpackage Plugins
  */
-class pnFormPathInput extends pnFormTextInput
+class PathInput extends Form_Plugin_TextInput
 {
     /**
      * Path needs to be writable by the webserver
@@ -97,7 +97,7 @@ class pnFormPathInput extends pnFormTextInput
 }
 
 
-function smarty_function_pnformpathinput($params, &$render)
+function smarty_function_pathinput($params, &$render)
 {
-    return $render->pnFormRegisterPlugin('pnFormPathInput', $params);
+    return $render->RegisterPlugin('FormPathInput', $params);
 }
