@@ -18,7 +18,7 @@ class Avatar_Version extends Zikula_Version
         $meta['displayname']    = __('Avatar');
         //!url must be different to displayname
         $meta['url']            = __('avatar');
-        $meta['version']        = '3.0.1';
+        $meta['version']        = '2.3.0';
         $meta['description']    = __('Upload of individual Avatars');
         $meta['contact']        = 'http://code.zikula.org/avatar/';
         $meta['securityschema'] = array('Avatar::' => '::',
