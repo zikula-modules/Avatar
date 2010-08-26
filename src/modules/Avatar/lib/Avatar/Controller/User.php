@@ -20,6 +20,10 @@
  
 class Avatar_Controller_User extends Zikula_Controller
 { 
+    public function postInitialize()
+    {
+        $this->view->setCaching(false)->add_core_data();
+    }
 
     public function main()
     {
@@ -44,8 +48,6 @@ class Avatar_Controller_User extends Zikula_Controller
         unset($_REQUEST['submit']);
     
         // display
-        $this->view->add_core_data();
-        $this->view->setCaching(false);
         $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $this->view->assign('avatars', $avatars);
         $this->view->assign('allavatarscount', $allavatarscount);
@@ -74,9 +76,6 @@ class Avatar_Controller_User extends Zikula_Controller
         }
     
         // display
-
-        $this->view->add_core_data();
-        $this->view->setCaching(false);
         return $this->view->fetch('Avatar_user_uploadform.htm');
     }
        

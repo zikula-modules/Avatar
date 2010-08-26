@@ -30,7 +30,6 @@ class Avatar_Api_User extends Zikula_Api {
         $realimages  = (isset($args['realimages'])) ? true : false;
         $avatarpath  = ModUtil::getVar('Users', 'avatarpath');
     
-        Loader::loadClass('FileUtil');
         $allavatars = FileUtil::getFiles($avatarpath, true, true, null, false);
         if ($realimages == true) {
             $allavatars = array_diff($allavatars, array('blank.gif', 'gravatar.gif'));
@@ -51,6 +50,7 @@ class Avatar_Api_User extends Zikula_Api {
             if($stop > $allcount) {
                 $stop = $allcount;
             }
+            $pagedavatars = array();
             for ($idx = $start; $idx < $stop; $idx++) {
                 $pagedavatars[] = $avatars[$idx];
             }
@@ -88,7 +88,7 @@ class Avatar_Api_User extends Zikula_Api {
             } else {
                 $status = $this->__f('Done! The avatar of the user \'%1$s\' has been changed to \'%2$s\'', array($uname, $args['avatar']));
             }
-            UserUtil::setVar('user_avatar', $args['avatar'], $args['uid']);
+            UserUtil::setVar('avatar', $args['avatar'], $args['uid']);
             LogUtil::registerStatus($status);
             return true;
         }

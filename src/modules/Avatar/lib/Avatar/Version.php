@@ -19,10 +19,10 @@ class Avatar_Version extends Zikula_Version
         //!url must be different to displayname
         $meta['url']            = __('avatar');
         $meta['version']        = '2.3.0';
-        $meta['description']    = __('Upload of individual Avatars');
+        $meta['description']    = __('Upload of individual Avatars, supports Gravatars');
         $meta['contact']        = 'http://code.zikula.org/avatar/';
         $meta['securityschema'] = array('Avatar::' => '::',
-                'Avatar::' => 'prefix:userid:');
+                                        'Avatar::' => 'prefix:userid:');
 
         // recommended and required modules
         $meta['dependencies'] = array();

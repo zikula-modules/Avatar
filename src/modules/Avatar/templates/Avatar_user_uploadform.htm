@@ -19,16 +19,16 @@
             </div>
             <div class="z-formrow">
                 <label>{gt text="Possible extensions"}</label>
-                <span>{$core.Avatar.allowed_extensions|safetext}</span>
+                <span>{$zcore.Avatar.allowed_extensions|safetext}</span>
             </div>
             <div class="z-formrow">
                 <label>{gt text="Avatar max. file size"}</label>
-                <span>{$core.Avatar.maxsize} {gt text="Bytes"}</span>
+                <span>{$zcore.Avatar.maxsize} {gt text="Bytes"}</span>
             </div>
             <div class="z-formrow">
                 <label>{gt text="Maximal avatar dimensions"}</label>
-                <span>{$core.Avatar.maxheight}x{$core.Avatar.maxwidth} {gt text="pixels"}</span>
-                {if $core.Avatar.allow_resize}<em class="z-sub z-formnote">({gt text="Larger images will be resized automatically."})</em>{/if}
+                <span>{$zcore.Avatar.maxheight}x{$zcore.Avatar.maxwidth} {gt text="pixels"}</span>
+                {if $zcore.Avatar.allow_resize}<em class="z-sub z-formnote">({gt text="Larger images will be resized automatically."})</em>{/if}
             </div>
         </fieldset>
     </form>

@@ -14,7 +14,7 @@ Jörg Napp [jn], http://www.lottasophie.de
 Frank Schummertz [landseer], http://www.tanzblogger.de
 Carsten Volmer [herr.vorragend], http://carsten-volmer.de
 
-2.3:
+2.3.0:
 * updated for Zikula 1.3.x, won't work now with preious versions
 
 2.2:

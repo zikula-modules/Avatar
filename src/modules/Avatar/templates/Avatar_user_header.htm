@@ -7,9 +7,9 @@
         <span class="z-menuitem-title">
             [
             <a href="{modurl modname="Avatar" type="user" func="main"}" title="{gt text="View avatars"}">{gt text="View avatars"}</a> |
-            {securityutil_checkpermission_block component="Avatar::" instance=".*" level="ACCESS_COMMENT"}
+            {checkpermissionblock component="Avatar::" instance=".*" level="ACCESS_COMMENT"}
             <a href="{modurl modname="Avatar" type="user" func="uploadform"}" title="{gt text="Upload avatar"}">{gt text="Upload avatar"}</a>
-            {/securityutil_checkpermission_block}
+            {/checkpermissionblock}
             ]
         </span>
     </div>
@@ -18,9 +18,9 @@
 
     <div class="z-center">
         <p>
-            {if $core.user.__ATTRIBUTES__.avatar neq ''}
+            {if $zcore.user.__ATTRIBUTES__.avatar neq ''}
             <strong>{gt text="Your current avatar is:"}</strong><br />
-            {useravatar uid=$core.user.uid class="avatarchoosen"}
+            {useravatar uid=$zcore.user.uid class="avatarchoosen"}
             {else}
             <strong>{gt text="Currently no avatar selected"}</strong>
             {/if}

@@ -35,6 +35,10 @@
 
 class Avatar_Controller_Admin extends Zikula_Controller
 {
+    public function postInitialize()
+    {
+        $this->view->setCaching(false)->add_core_data();
+    }
 
     public function main()
     {
@@ -59,7 +63,6 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $this->view->add_core_data();
         $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $this->view->assign('username', $username);
         $this->view->assign('userid', $userid);
@@ -103,8 +106,6 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $this->view->add_core_data();
-        $this->view->setCaching(false);
         $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $this->view->assign('username', $username);
         $this->view->assign('userid', $userid);
@@ -188,8 +189,6 @@ class Avatar_Controller_Admin extends Zikula_Controller
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
     
-        $this->view->add_core_data();
-        $this->view->setCaching(false);
         $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
         $this->view->assign('users', $users);
         $this->view->assign('uavatar', $uavatar);
@@ -253,8 +252,6 @@ class Avatar_Controller_Admin extends Zikula_Controller
             array('avatar' => $avatar));
             return System::redirect(ModUtil::url('Avatar', 'admin', 'main'));
         } else {
-            $this->view->add_core_data();
-            $this->view->setCaching(false);
             $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
             $this->view->assign('avatar', $avatar);
             return $this->view->fetch('Avatar_admin_delete.htm');

@@ -71,7 +71,6 @@ class PathInput extends Form_Plugin_TextInput
                 $this->setError(__f('The webserver cannot write to %s.',$this->text, $dom));
             } else {
                 if ($this->removeSlash == true) {
-                    Loader::loadClass('StringUtil');
                     do {
                         $hasSlash = false;
                         if (StringUtil::right($this->text, 1) == '/') {

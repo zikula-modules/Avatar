@@ -19,13 +19,13 @@ Class Avatar_Installer extends Zikula_Installer {
      * @return boolean success or not
      */
     public function install() {
-        ModUtil::setVar('Avatar', 'forumdir', '');
-        ModUtil::setVar('Avatar', 'allow_resize', false);
-        ModUtil::setVar('Avatar', 'maxsize', '12000');
-        ModUtil::setVar('Avatar', 'maxheight', '80');
-        ModUtil::setVar('Avatar', 'maxwidth', '80');
-        ModUtil::setVar('Avatar', 'allowed_extensions', 'gif;jpg;jpeg;png');
-        ModUtil::setVar('Avatar', 'allow_multiple', true);
+        $this->setVar('forumdir', '');
+        $this->setVar('allow_resize', false);
+        $this->setVar('maxsize', '12000');
+        $this->setVar('maxheight', '80');
+        $this->setVar('maxwidth', '80');
+        $this->setVar('allowed_extensions', 'gif;jpg;jpeg;png');
+        $this->setVar('allow_multiple', true);
         return true;
     }
     
@@ -41,28 +41,29 @@ Class Avatar_Installer extends Zikula_Installer {
         // Upgrade dependent on old version number
         switch ($oldversion) {
             case '1.1':
-                ModUtil::delVar('Avatar', 'prefix_group_1');
-                ModUtil::delVar('Avatar', 'prefix_group_2');
-                ModUtil::delVar('Avatar', 'prefix_group_3');
-                ModUtil::delVar('Avatar', 'prefix_prefix_1');
-                ModUtil::delVar('Avatar', 'prefix_prefix_2');
-                ModUtil::delVar('Avatar', 'prefix_prefix_3');
+                $this->delVar('prefix_group_1');
+                $this->delVar('prefix_group_2');
+                $this->delVar('prefix_group_3');
+                $this->delVar('prefix_prefix_1');
+                $this->delVar('prefix_prefix_2');
+                $this->delVar('prefix_prefix_3');
                 
-                ModUtil::setVar('Avatar', 'allow_multiple', true);
+                $this->setVar('allow_multiple', true);
                 
                 // for PHP5: if jpg is allowed, also allow jpeg if needed
                 // this is needed because image_type_to_extension() always returns 'jpeg' in case
                 // of jpg images in PHP5
-                $exts = explode(';', ModUtil::getVar('Avatar', 'allowed_extensions'));
+                $exts = explode(';', $this->getVar('allowed_extensions'));
                 if (is_array($exts) && in_array('jpg', $exts) && !in_array('jpeg', $exts)) {
                     $exts[] = 'jpeg';
-                    ModUtil::setVar('Avatar', 'allowed_extensions', implode(';', $exts));
+                    $this->setVar('allowed_extensions', implode(';', $exts));
                 }
             case '2.0':
             case '2.1':
                 ModUtil::setVar('Users', 'avatarpath', ModUtil::getVar('Avatar', 'avatardir'));
-                ModUtil::delVar('Avatar', 'avatardir');
+                $this->delVar('avatardir');
             case '2.2':
+                
         }
         return true;
     }
@@ -75,7 +76,7 @@ Class Avatar_Installer extends Zikula_Installer {
      * @return boolean success or not
      */
     public function uninstall() {
-        ModUtil::delVar('Avatar');
+        $this->delVar();
         return true;
     }
 }
