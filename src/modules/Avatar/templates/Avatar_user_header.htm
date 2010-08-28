@@ -1,4 +1,3 @@
-{* $Id$ *}
 {pagesetvar name="title" value=$templatetitle}
 <div id="avatar">
     <h2>{gt text="Avatar Management"}</h2>
@@ -18,7 +17,7 @@
 
     <div class="z-center">
         <p>
-            {if $zcore.user.__ATTRIBUTES__.avatar neq ''}
+            {if $current_avatar neq ''}
             <strong>{gt text="Your current avatar is:"}</strong><br />
             {useravatar uid=$zcore.user.uid class="avatarchoosen"}
             {else}

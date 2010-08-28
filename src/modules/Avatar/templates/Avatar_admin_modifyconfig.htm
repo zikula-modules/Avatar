@@ -1,4 +1,3 @@
-{* $Id$ *}
 {modurl modname='Users' type='admin' func='modifyconfig' assign='usersurl'}
 {include file="Avatar_admin_menu.htm"}
 
@@ -12,12 +11,11 @@
 
     <div class="z-formrow">
         {formlabel for="avatarpath" __text='Avatar Directory' html='1'}
-        {formtextinput size="25" maxLength="50" id="avatarpath" readOnly=true text=$avatarpath}
-        <em class="z-sub z-formnote">{gt text='Please configure the avatar path in the <a href="%s">Users administration</a>' tag1=$usersurl|safetext}</em>
+        {formtextinput size="25" maxLength="50" id="avatarpath" text=$avatarpath}
     </div>
 
     {if $avatarpath_writable eq false}
-    <p class="z-errormsg z-formnote">{gt text="Warning! The webserver cannot write to the avatar direcory."}</p>
+    <p class="z-errormsg z-formnote">{gt text="Warning! The webserver cannot write to the avatar directory."}</p>
     {/if}
 
     {if $pnphpbb_installed eq true}

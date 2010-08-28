@@ -46,9 +46,13 @@ class Avatar_Controller_User extends Zikula_Controller
         unset($_GET['submit']);
         unset($_POST['submit']);
         unset($_REQUEST['submit']);
-    
+
+        $current_avatar = UserUtil::getVar('avatar', UserUtil::getVar('uid'), '');
+
         // display
         $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('current_avatar', $current_avatar);
+        $this->view->assign('gravatar_hash', md5(strtolower(trim(UserUtil::getVar('email')))));
         $this->view->assign('avatars', $avatars);
         $this->view->assign('allavatarscount', $allavatarscount);
         $this->view->assign('page', $page);
@@ -74,7 +78,13 @@ class Avatar_Controller_User extends Zikula_Controller
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
             return LogUtil::registerPermissionError();
         }
-    
+
+        $current_avatar = UserUtil::getVar('avatar', UserUtil::getVar('uid'), '');
+
+        // display
+        $this->view->assign('avatarpath', ModUtil::getVar('Users', 'avatarpath'));
+        $this->view->assign('current_avatar', $current_avatar);
+
         // display
         return $this->view->fetch('Avatar_user_uploadform.htm');
     }

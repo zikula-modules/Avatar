@@ -39,14 +39,15 @@ class Avatar_Form_Handler_Admin_ModifyConfig  extends Form_Handler
             $data = $render->getValues();
 
             if(array_key_exists('forumdir', $data)) {
-                $this->setVar('forumdir',       $data['forumdir']);
+                ModUtil::setVar('Avatar', 'forumdir',       $data['forumdir']);
             }
-            $this->setVar('allow_resize',       $data['allow_resize']);
-            $this->setVar('maxsize',            $data['maxsize']);
-            $this->setVar('maxheight',          $data['maxheight']);
-            $this->setVar('maxwidth',           $data['maxwidth']);
-            $this->setVar('allowed_extensions', $data['allowed_extensions']);
-            $this->setVar('allow_multiple',     $data['allow_multiple']);
+            ModUtil::setVar('Users',  'avatarpath',         $data['avatarpath']);
+            ModUtil::setVar('Avatar', 'allow_resize',       $data['allow_resize']);
+            ModUtil::setVar('Avatar', 'maxsize',            $data['maxsize']);
+            ModUtil::setVar('Avatar', 'maxheight',          $data['maxheight']);
+            ModUtil::setVar('Avatar', 'maxwidth',           $data['maxwidth']);
+            ModUtil::setVar('Avatar', 'allowed_extensions', $data['allowed_extensions']);
+            ModUtil::setVar('Avatar', 'allow_multiple',     $data['allow_multiple']);
         }
         return true;
     }
