@@ -10,9 +10,9 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-class Avatar_Form_Handler_Admin_ModifyConfig  extends Form_Handler
+class Avatar_Form_Handler_Admin_ModifyConfig extends Form_Handler
 {
-    function initialize(&$render)
+    function initialize($render)
     {
         $render->caching = false;
         $render->add_core_data();
@@ -25,7 +25,7 @@ class Avatar_Form_Handler_Admin_ModifyConfig  extends Form_Handler
     }
 
 
-    function handleCommand(&$render, &$args)
+    function handleCommand($render, &$args)
     {
         // Security check
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
