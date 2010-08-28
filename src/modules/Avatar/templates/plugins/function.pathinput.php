@@ -23,5 +23,5 @@
 
 function smarty_function_pathinput($params, &$render)
 {
-    return $render->RegisterPlugin('FormPathInput', $params);
+    return $render->RegisterPlugin('Avatar_Form_Plugin_PathInput', $params);
 }
