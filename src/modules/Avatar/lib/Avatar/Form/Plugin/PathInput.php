@@ -52,7 +52,7 @@ class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
     function load(&$render, &$params)
     {
         parent::load($render, $params);
-        $this->validate();
+        $this->validate($render);
     }
 
     function validate(&$render)
@@ -91,10 +91,3 @@ class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
         return $text;
     }
 }
-
-/*
-function smarty_function_pathinput($params, &$render)
-{
-    return $render->RegisterPlugin('FormPathInput', $params);
-}
- */

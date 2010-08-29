@@ -11,7 +11,7 @@
 
     <div class="z-formrow">
         {formlabel for="avatarpath" __text='Avatar Directory' html='1'}
-        {formtextinput size="25" maxLength="50" id="avatarpath" text=$avatarpath}
+        {pathinput removeSlash="1" writable="1" size="25" maxLength="50" id="avatarpath" text=$avatarpath}
     </div>
 
     {if $avatarpath_writable eq false}
