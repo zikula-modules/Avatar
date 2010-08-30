@@ -41,7 +41,7 @@ class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
     }
 
 
-    function create(&$render, &$params)
+    function create($render, &$params)
     {
         $this->writable = array_key_exists('writable', $params) ? true : false;
         $this->removeSlash = array_key_exists('removeSlash', $params) ? true : false;
@@ -49,13 +49,13 @@ class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
         parent::create($render, $params);
     }
 
-    function load(&$render, &$params)
+    function load($render, &$params)
     {
         parent::load($render, $params);
         $this->validate($render);
     }
 
-    function validate(&$render)
+    function validate($render)
     {
         parent::validate($render);
         if (!$this->isValid) {
@@ -83,7 +83,7 @@ class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
     }
 
 
-    function parseValue(&$render, $text)
+    function parseValue($render, $text)
     {
         if ($text == '') {
             return null;
