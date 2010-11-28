@@ -19,7 +19,7 @@
         <p>
             {if $current_avatar neq ''}
             <strong>{gt text="Your current avatar is:"}</strong><br />
-            {useravatar uid=$zcore.user.uid class="avatarchoosen"}
+            {useravatar uid=$coredata.user.uid class="avatarchoosen"}
             {else}
             <strong>{gt text="Currently no avatar selected"}</strong>
             {/if}
