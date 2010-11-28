@@ -2,18 +2,18 @@
  * Avatar Module
  * 
  * @package      Avatar
- * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz, Carsten Volmer, Carsten Volmer
  * @link         http://code.zikula.org/avatar
  * @copyright    Copyright (C) 2004-2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
  
-***** Avatar 2.1 *****
+***** Avatar 2.3.0 *****
 
 0. What is this?
 ----------------
-Avatar 2.0 is a Zikula 1.0 module that allows users to define and upload 
+Avatar 2.3.0 is a Zikula 1.3.0 (or perhaps 2.0.0, as this is being written, no 
+one knows) module that allows users to define and upload 
 their avatar. The images can be limited to a certain filesize and/or 
 dimension. As an option it resizes uploaded images to the maximum width and
 height you defined.

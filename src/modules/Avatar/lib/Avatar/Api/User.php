@@ -3,7 +3,6 @@
  * Avatar Module
  *
  * @package      Avatar
- * @version      $Id$
  * @author       Joerg Napp, Frank Schummertz, Carsten Volmer
  * @link         http://code.zikula.org/avatar
  * @copyright    Copyright (C) 2004-2010
