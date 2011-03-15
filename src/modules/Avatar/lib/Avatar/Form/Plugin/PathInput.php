@@ -20,7 +20,7 @@
  * @package Form
  * @subpackage Plugins
  */
-class Avatar_Form_Plugin_PathInput extends Form_Plugin_TextInput
+class Avatar_Form_Plugin_PathInput extends Zikula_Form_Plugin_TextInput
 {
     /**
      * Path needs to be writable by the webserver

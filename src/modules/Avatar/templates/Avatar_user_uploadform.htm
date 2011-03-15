@@ -17,15 +17,15 @@
                 <input type="reset" name="reset" value="{gt text="Clear"}" />
             </div>
             <div class="z-formrow">
-                <label>{gt text="Possible extensions"}</label>
+                <label>{gt text="Possible extensions"}:</label>
                 <span>{$coredata.Avatar.allowed_extensions|safetext}</span>
             </div>
             <div class="z-formrow">
-                <label>{gt text="Avatar max. file size"}</label>
+                <label>{gt text="Avatar max. file size"}:</label>
                 <span>{$coredata.Avatar.maxsize} {gt text="Bytes"}</span>
             </div>
             <div class="z-formrow">
-                <label>{gt text="Maximal avatar dimensions"}</label>
+                <label>{gt text="Maximal avatar dimensions"}:</label>
                 <span>{$coredata.Avatar.maxheight}x{$coredata.Avatar.maxwidth} {gt text="pixels"}</span>
                 {if $coredata.Avatar.allow_resize}<em class="z-sub z-formnote">({gt text="Larger images will be resized automatically."})</em>{/if}
             </div>

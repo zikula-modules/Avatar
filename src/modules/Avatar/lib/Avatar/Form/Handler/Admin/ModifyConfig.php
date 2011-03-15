@@ -9,7 +9,7 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-class Avatar_Form_Handler_Admin_ModifyConfig extends Form_Handler
+class Avatar_Form_Handler_Admin_ModifyConfig extends Zikula_Form_Handler
 {
     function initialize($render)
     {

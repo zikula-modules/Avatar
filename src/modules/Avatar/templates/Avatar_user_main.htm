@@ -35,7 +35,7 @@
     <div class="av_deactivate z-fieldset">
         <h3>{gt text="Deactivate your avatar"}</h3>
         {modurl modname="Avatar" type="user" func="setavatar" user_avatar=blank.gif assign=setblankurl}
-        <p>{gt text='If you don\'t want that an avatar is displayed for you, then please click <a href="%1$s">here</a> to clear your avatar.' tag1=$setblankurl}</p>
+        <p>{gt text='If you don\'t want that an avatar is displayed for you, then please click <a href="%1$s">here</a> to clear your avatar.' tag1=$setblankurl|htmlspecialchars}</p>
     </div>
 </div>
 
