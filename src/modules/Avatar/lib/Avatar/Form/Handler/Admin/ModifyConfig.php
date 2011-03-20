@@ -11,31 +11,31 @@
 
 class Avatar_Form_Handler_Admin_ModifyConfig extends Zikula_Form_Handler
 {
-    function initialize($render)
+    function initialize(Zikula_Form_View $view)
     {
-        $render->caching = false;
-        $render->add_core_data();
-        $render->assign('avatarpath',          ModUtil::getVar('Users', 'avatarpath'));
-        $render->assign('avatarpath_writable', is_writable(ModUtil::getVar('Users', 'avatarpath')));
-        $render->assign('pnphpbb_installed',   ModUtil::available('pnphpbb'));
-        $render->assign('forumdir_writable',   is_writable(ModUtil::getVar('Avatar', 'forumdir')));
+        $view->caching = false;
+        $view->add_core_data();
+        $view->assign('avatarpath',          ModUtil::getVar('Users', 'avatarpath'));
+        $view->assign('avatarpath_writable', is_writable(ModUtil::getVar('Users', 'avatarpath')));
+        $view->assign('pnphpbb_installed',   ModUtil::available('pnphpbb'));
+        $view->assign('forumdir_writable',   is_writable(ModUtil::getVar('Avatar', 'forumdir')));
 
         return true;
     }
 
 
-    function handleCommand($render, &$args)
+    function handleCommand(Zikula_Form_View $view, &$args)
     {
         // Security check
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
             return LogUtil::registerPermissionError();
         }
         if ($args['commandName'] == 'submit') {
-            if (!$render->IsValid()) {
+            if (!$view->IsValid()) {
                 return false;
             }
 
-            $data = $render->getValues();
+            $data = $view->getValues();
 
             if(array_key_exists('forumdir', $data)) {
                 ModUtil::setVar('Avatar', 'forumdir',       $data['forumdir']);

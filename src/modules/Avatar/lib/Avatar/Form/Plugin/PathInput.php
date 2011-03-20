@@ -40,23 +40,23 @@ class Avatar_Form_Plugin_PathInput extends Zikula_Form_Plugin_TextInput
     }
 
 
-    function create($render, &$params)
+    function create(Zikula_Form_View $view, &$params)
     {
         $this->writable = array_key_exists('writable', $params) ? true : false;
         $this->removeSlash = array_key_exists('removeSlash', $params) ? true : false;
         $params['width'] = '6em';
-        parent::create($render, $params);
+        parent::create($view, $params);
     }
 
-    function load($render, &$params)
+    function load(Zikula_Form_View $view, &$params)
     {
-        parent::load($render, $params);
-        $this->validate($render);
+        parent::load($view, $params);
+        $this->validate($view);
     }
 
-    function validate($render)
+    function validate(Zikula_Form_View $view)
     {
-        parent::validate($render);
+        parent::validate($view);
         if (!$this->isValid) {
             return;
         }
@@ -82,7 +82,7 @@ class Avatar_Form_Plugin_PathInput extends Zikula_Form_Plugin_TextInput
     }
 
 
-    function parseValue($render, $text)
+    function parseValue(Zikula_Form_View $view, $text)
     {
         if ($text == '') {
             return null;

@@ -7,7 +7,7 @@
     <form id="uploadform" class="z-form" action="{modurl modname="Avatar" type="user" func="upload"}" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>{gt text="Upload file"}</legend>
-            <input type="hidden" name="authid" value="{insert name="generateauthkey" module="Avatar"}" />
+            <input type="hidden" name="authid" value="{insert name="csrftoken" module="Avatar"}" />
             <input type="hidden" name="MAX_FILE_SIZE" value="" />
             <div class="z-formbuttons">
                 <input type="file" size="40" name="filelocale" />
