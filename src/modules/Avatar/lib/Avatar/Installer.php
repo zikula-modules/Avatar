@@ -9,7 +9,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-Class Avatar_Installer extends Zikula_Installer {
+Class Avatar_Installer extends Zikula_AbstractInstaller
+{
     /**
      * install()
      *
@@ -27,7 +28,7 @@ Class Avatar_Installer extends Zikula_Installer {
         $this->setVar('allow_multiple', true);
         return true;
     }
-    
+
     /**
      * Avatar_upgrade()
      *
@@ -46,9 +47,9 @@ Class Avatar_Installer extends Zikula_Installer {
                 $this->delVar('prefix_prefix_1');
                 $this->delVar('prefix_prefix_2');
                 $this->delVar('prefix_prefix_3');
-                
+
                 $this->setVar('allow_multiple', true);
-                
+
                 // for PHP5: if jpg is allowed, also allow jpeg if needed
                 // this is needed because image_type_to_extension() always returns 'jpeg' in case
                 // of jpg images in PHP5
@@ -62,11 +63,11 @@ Class Avatar_Installer extends Zikula_Installer {
                 ModUtil::setVar('Users', 'avatarpath', ModUtil::getVar('Avatar', 'avatardir'));
                 $this->delVar('avatardir');
             case '2.2':
-                
+
         }
         return true;
     }
-    
+
     /**
      * Avatar_delete()
      *

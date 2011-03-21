@@ -9,7 +9,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-class Avatar_Api_Admin extends Zikula_Api {
+class Avatar_Api_Admin extends Zikula_AbstractApi
+{
 
     /**
      * get available admin panel links
@@ -27,7 +28,7 @@ class Avatar_Api_Admin extends Zikula_Api {
         }
         return $links;
     }
-    
+
     /**
      * get all users that use the given avatar
      *
@@ -38,12 +39,12 @@ class Avatar_Api_Admin extends Zikula_Api {
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_READ)) {
             return LogUtil::registerPermissionError();
         }
-    
+
         $users = array();
         if(!isset($args['avatar']) || empty($args['avatar'])) {
             return $users;
         }
-    
+
         $ztables = DBUtil::getTables();
         $userdatacolumn = $ztables['objectdata_attributes_column'];
         if ($args['avatar'] == 'blank.gif') {
@@ -52,14 +53,14 @@ class Avatar_Api_Admin extends Zikula_Api {
             $where = $userdatacolumn['attribute_name'] . '="avatar" AND ' . $userdatacolumn['value'] . '="' . DataUtil::formatForStore($args['avatar']) . '"';
         }
         $avatarusers = DBUtil::selectObjectArray('objectdata_attributes', $where);
-    
+
         foreach($avatarusers as $avataruser) {
             $users[$avataruser['id']] = UserUtil::getVar('uname', $avataruser['object_id']);
         }
-    
+
         return $users;
     }
-    
+
     /**
      * delete an avatar
      *
@@ -69,13 +70,13 @@ class Avatar_Api_Admin extends Zikula_Api {
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_ADMIN)) {
             return LogUtil::registerPermissionError();
         }
-    
+
         $osdir = DataUtil::formatForOS(ModUtil::getVar('Users', 'avatarpath'));
         $avatarfile = $osdir . '/' . DataUtil::formatForOS($args['avatar']);
         if(unlink($avatarfile) == false) {
             return LogUtil::registerError($this->__f('Error! Unable to delete avatar \'%s\'.', $avatarfile));
         }
-    
+
         LogUtil::registerStatus($this->__f('Done! The Avatar \'%s\' has been deleted.', $avatarfile));
         return true;
     }

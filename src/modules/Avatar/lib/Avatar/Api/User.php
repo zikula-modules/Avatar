@@ -9,7 +9,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-class Avatar_Api_User extends Zikula_Api {
+class Avatar_Api_User extends Zikula_AbstractApi
+{
 
     /**
      * Avatar_userapi_GetAvatars()
@@ -28,7 +29,7 @@ class Avatar_Api_User extends Zikula_Api {
         $perpage     = (isset($args['perpage'])) ? $args['perpage'] : -1;
         $realimages  = (isset($args['realimages'])) ? true : false;
         $avatarpath  = ModUtil::getVar('Users', 'avatarpath');
-    
+
         $allavatars = FileUtil::getFiles($avatarpath, true, true, null, false);
         if ($realimages == true) {
             $allavatars = array_diff($allavatars, array('blank.gif', 'gravatar.gif'));
@@ -55,11 +56,11 @@ class Avatar_Api_User extends Zikula_Api {
             }
             return array($pagedavatars, $allcount);
         }
-    
+
         return array($avatars, $allcount);
     }
-    
-    
+
+
     /**
      * Avatar_userapi_setavatar()
      *
@@ -74,9 +75,9 @@ class Avatar_Api_User extends Zikula_Api {
         if (!isset($args['uid']) || !isset($args['avatar'])) {
             return LogUtil::registerArgsError();
         }
-    
+
         $avatar_ok = ModUtil::apiFunc('Avatar', 'user', 'checkAvatar', $args);
-    
+
         if($avatar_ok == true) {
             $uname = UserUtil::getVar('uname', $args['uid']);
             if ($args['avatar'] == 'blank.gif') {
@@ -91,10 +92,10 @@ class Avatar_Api_User extends Zikula_Api {
             LogUtil::registerStatus($status);
             return true;
         }
-    
+
         return LogUtil::registerError($this->__f('Error! The user is not authorized to use this avatar. To change this, update the permission for %s.', $args['avatar']));
     }
-    
+
     /**
      * check if a user is allowed to use a avatar
      *

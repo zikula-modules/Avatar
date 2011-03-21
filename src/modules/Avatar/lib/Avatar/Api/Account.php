@@ -14,9 +14,10 @@
  *
  * @return   array   array of items, or false on failure
  */
- 
-class Avatar_Api_Account extends Zikula_Api { 
- 
+
+class Avatar_Api_Account extends Zikula_AbstractApi
+{
+
     public function getAll($args)
     {
         $items = array();

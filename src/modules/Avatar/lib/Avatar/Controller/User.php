@@ -16,9 +16,9 @@
  *
  * @return output The main module page
  */
- 
-class Avatar_Controller_User extends Zikula_Controller
-{ 
+
+class Avatar_Controller_User extends Zikula_AbstractController
+{
     public function postInitialize()
     {
         $this->view->setCaching(false)->add_core_data();
@@ -30,7 +30,7 @@ class Avatar_Controller_User extends Zikula_Controller
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
             return LogUtil::registerPermissionError();
         }
-    
+
         // only logged-ins are allowed to see the overview.
         if (!UserUtil::isLoggedIn()) {
             return LogUtil::registerError($this->__('Error! You aren\'t a registered user.'), null, System::getVar('entrypoint', 'index.php'));
@@ -40,7 +40,7 @@ class Avatar_Controller_User extends Zikula_Controller
         $page     = (int)FormUtil::getPassedValue('page', 1, 'GETPOST');
         $perpage  = (int)FormUtil::getPassedValue('perpage', 50, 'GETPOST');
         list($avatars, $allavatarscount) = ModUtil::apiFunc('Avatar', 'user', 'getAvatars', array('page' => $page, 'perpage' => $perpage, 'realimages' => true));
-    
+
         // avoid some vars in the url of the pager
         unset($_GET['submit']);
         unset($_POST['submit']);
@@ -58,7 +58,7 @@ class Avatar_Controller_User extends Zikula_Controller
         $this->view->assign('perpage', $perpage);
         return $this->view->fetch('Avatar_user_main.htm');
     }
-    
+
     /**
      * Avatar_user_uploadform()
      *
@@ -72,7 +72,7 @@ class Avatar_Controller_User extends Zikula_Controller
         if (!UserUtil::isLoggedIn()) {
             return LogUtil::registerError($this->__('Error! You aren\'t a registered user.'), null, System::getVar('entrypoint', 'index.php'));
         }
-    
+
         // plus, the user should have overview right to see the avatars.
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
             return LogUtil::registerPermissionError();
@@ -87,7 +87,7 @@ class Avatar_Controller_User extends Zikula_Controller
         // display
         return $this->view->fetch('Avatar_user_uploadform.htm');
     }
-       
+
     /**
      * Avatar_user_upload()
      *
@@ -102,47 +102,47 @@ class Avatar_Controller_User extends Zikula_Controller
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
             return LogUtil::registerPermissionError();
         }
-    
+
         if (!SecurityUtil::confirmAuthKey()) {
             return LogUtil::registerAuthidError();
         }
-    
+
         // get the file
         $uploadfile = $_FILES['filelocale'];
-    
+
         if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
             return LogUtil::registerError($this->__('Error! No file selected.'));
         }
-    
+
         $tmp_file = tempnam(System::getVar('temp'), 'Avatar');
         move_uploaded_file($_FILES['filelocale']['tmp_name'], $tmp_file);
-    
+
         $modvars = ModUtil::getVar('Avatar');
         $avatarpath = ModUtil::getVar('Users', 'avatarpath');
-    
+
         // check for file size limit
         if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
             unlink($tmp_file);
             return LogUtil::registerError($this->__f('Error! Filesize error, max %s bytes are allowed.', $modvars['maxsize']));
         }
-    
+
         // Get image information
         $imageinfo = getimagesize($tmp_file);
-    
+
         // file is not an image
         if (!$imageinfo) {
             unlink($tmp_file);
             return LogUtil::registerError($this->__('Error! The file is not an image.'));
         }
-    
+
         $extension = image_type_to_extension($imageinfo[2], false);
         // check for image type
         if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
             unlink($tmp_file);
             return LogUtil::registerError($this->__f('Error! UnSecurityUtil::checkPermission* file extension. Allowed extensions: %s.', $modvars['allowed_extensions']));
         }
-    
-    
+
+
         // check for image dimensions limit
         if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
             if (!$modvars['allow_resize']) {
@@ -150,21 +150,21 @@ class Avatar_Controller_User extends Zikula_Controller
                 return LogUtil::registerError($this->__f('Error! Image height (max. %1$s px) or width (max. %2$s px) error.', array($modvars['maxheight'], $modvars['maxwidth'])));
             } else {
                 // resize the image
-    
+
                 // get the new dimensions
                 $width = $imageinfo[0];
                 $height = $imageinfo[1];
-    
+
                 if ($width > $modvars['maxwidth']) {
                     $height = ($modvars['maxwidth'] / $width) * $height;
                     $width = $modvars['maxwidth'];
                 }
-    
+
                 if ($height > $modvars['maxheight']) {
                     $width = ($modvars['maxheight'] / $height) * $width;
                     $height = $modvars['maxheight'];
                 }
-    
+
                 // get the correct functions based on the image type
                 switch ($imageinfo[2]) {
                     case 1:
@@ -184,26 +184,26 @@ class Avatar_Controller_User extends Zikula_Controller
                         $savefunc = 'imagewbmp';
                         break;
                 }
-    
+
                 $srcImage = $createfunc($tmp_file);
                 $destImage = imagecreatetruecolor($width, $height);
                 imagecopyresampled($destImage, $srcImage, 0, 0, 0, 0, $width, $height, $imageinfo[0], $imageinfo[1]);
                 $savefunc($destImage, $tmp_file);
-    
+
                 // free the memory
                 imagedestroy($srcImage);
                 imagedestroy($destImage);
             }
         }
-    
+
         // everything's OK, so move'em
-    
+
         $uid = UserUtil::getVar('uid');
         $avatarfilenamewithoutextension = 'pers_' . $uid;
         $avatarfilename = $avatarfilenamewithoutextension . '.' . $extension;
         $user_avatar = DataUtil::formatForOS($avatarpath . '/' . $avatarfilename);
         $pnphpbb_avatar = DataUtil::formatForOS($modvars['forumdir'] . '/' .$avatarfilename);
-    
+
         // delete old user avatar with this extension
         // this allows the users to have a avatar available for each extension that is allowed
         if($modvars['allow_multiple'] == false) {
@@ -214,7 +214,7 @@ class Avatar_Controller_User extends Zikula_Controller
         } else if(file_exists($user_avatar) && is_writable($user_avatar)) {
             unlink($user_avatar);
         }
-    
+
         if (!@copy($tmp_file, $user_avatar)) {
             unlink($tmp_file);
             return LogUtil::registerError($this->__('Error! Fail to copy the file in avatar\'s directory.'));
@@ -231,14 +231,14 @@ class Avatar_Controller_User extends Zikula_Controller
             }
         }
         unlink($tmp_file);
-    
+
         if (!ModUtil::apiFunc('Avatar', 'user', 'setavatar', array('uid' => $uid, 'avatar' => $avatarfilename))) {
             return LogUtil::registerError($this->__('Error while selecting the avatar.'));
         }
         return System::redirect(ModUtil::url('Avatar', 'user', 'main'));
     }
-    
-    
+
+
     /**
      * Avatar_user_setavatar()
      *
@@ -254,18 +254,18 @@ class Avatar_Controller_User extends Zikula_Controller
         if (!UserUtil::isLoggedIn()) {
             return LogUtil::registerError($this->__('Error! You aren\'t a registered user.'));
         }
-    
+
         // plus, the user should have overview right to see the avatars.
         if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
             return LogUtil::registerPermissionError();
         }
-    
+
         $user_avatar = FormUtil::getPassedValue('user_avatar', '', 'GETPOST');
         ModUtil::apiFunc('Avatar', 'user', 'setavatar', array('uid' => UserUtil::getVar('uid'), 'avatar' => $user_avatar));
         return System::redirect(ModUtil::url('Avatar'));
     }
-    
-    
+
+
         /**
          * image_type_to_extension()
          *

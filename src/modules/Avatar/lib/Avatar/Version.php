@@ -9,7 +9,7 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-class Avatar_Version extends Zikula_Version
+class Avatar_Version extends Zikula_AbstractVersion
 {
     public function getMetaData()
     {
