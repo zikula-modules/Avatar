@@ -103,9 +103,7 @@ class Avatar_Controller_User extends Zikula_AbstractController
             return LogUtil::registerPermissionError();
         }
 
-        if (!SecurityUtil::confirmAuthKey()) {
-            return LogUtil::registerAuthidError();
-        }
+        $this->checkCsrfToken();
 
         // get the file
         $uploadfile = $_FILES['filelocale'];
