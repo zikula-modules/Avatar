@@ -109,7 +109,9 @@ class Avatar_Controller_User extends Zikula_AbstractController
         $uploadfile = $_FILES['filelocale'];
 
         if (!is_uploaded_file($_FILES['filelocale']['tmp_name'])) {
-            return LogUtil::registerError($this->__('Error! No file selected.'));
+            LogUtil::registerError($this->__('Error! No file selected.'));
+            $url = ModUtil::url('Avatar', 'user', 'uploadform');
+            return System::redirect($url);
         }
 
         $tmp_file = tempnam(System::getVar('temp'), 'Avatar');
@@ -121,7 +123,9 @@ class Avatar_Controller_User extends Zikula_AbstractController
         // check for file size limit
         if (!$modvars['allow_resize'] && filesize($tmp_file) > $modvars['maxsize']) {
             unlink($tmp_file);
-            return LogUtil::registerError($this->__f('Error! Filesize error, max %s bytes are allowed.', $modvars['maxsize']));
+            LogUtil::registerError($this->__f('Error! Filesize error, max %s bytes are allowed.', $modvars['maxsize']));
+            $url = ModUtil::url('Avatar', 'user', 'uploadform');
+            return System::redirect($url);
         }
 
         // Get image information
@@ -130,14 +134,18 @@ class Avatar_Controller_User extends Zikula_AbstractController
         // file is not an image
         if (!$imageinfo) {
             unlink($tmp_file);
-            return LogUtil::registerError($this->__('Error! The file is not an image.'));
+            LogUtil::registerError($this->__('Error! The file is not an image.'));
+            $url = ModUtil::url('Avatar', 'user', 'uploadform');
+            return System::redirect($url);
         }
 
         $extension = image_type_to_extension($imageinfo[2], false);
         // check for image type
         if (!in_array($extension, explode (';', $modvars['allowed_extensions']))) {
             unlink($tmp_file);
-            return LogUtil::registerError($this->__f('Error! UnSecurityUtil::checkPermission* file extension. Allowed extensions: %s.', $modvars['allowed_extensions']));
+            LogUtil::registerError($this->__f('Error! UnSecurityUtil::checkPermission* file extension. Allowed extensions: %s.', $modvars['allowed_extensions']));
+            $url = ModUtil::url('Avatar', 'user', 'uploadform');
+            return System::redirect($url);
         }
 
 
@@ -145,7 +153,9 @@ class Avatar_Controller_User extends Zikula_AbstractController
         if ($imageinfo[0] > $modvars['maxwidth'] || $imageinfo[1] > $modvars['maxheight']) {
             if (!$modvars['allow_resize']) {
                 unlink($tmp_file);
-                return LogUtil::registerError($this->__f('Error! Image height (max. %1$s px) or width (max. %2$s px) error.', array($modvars['maxheight'], $modvars['maxwidth'])));
+                LogUtil::registerError($this->__f('Error! Image height (max. %1$s px) or width (max. %2$s px) error.', array($modvars['maxheight'], $modvars['maxwidth'])));
+                $url = ModUtil::url('Avatar', 'user', 'uploadform');
+                return System::redirect($url);
             } else {
                 // resize the image
 
