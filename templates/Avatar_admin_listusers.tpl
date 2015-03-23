@@ -1,4 +1,4 @@
-{include file="Avatar_admin_menu.htm"}
+{include file="Avatar_admin_menu.tpl"}
 <h2>{gt text="Selected avatar"}</h2>
 
 {if $uavatar eq '' || $uavatar eq 'blank.gif'}
@@ -53,4 +53,4 @@
     {/if}
 </form>
 
-{include file="Avatar_admin_footer.htm"}
+{include file="Avatar_admin_footer.tpl"}

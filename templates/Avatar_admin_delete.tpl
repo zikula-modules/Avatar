@@ -1,4 +1,4 @@
-{include file="Avatar_admin_menu.htm"}
+{include file="Avatar_admin_menu.tpl"}
 <h2>{gt text="Confirm deletion"}</h2>
 
 <form class="z-form" action="{modurl modname="Avatar" type="admin" func="delete"}" method="post">
@@ -13,5 +13,5 @@
     </div>
 </form>
 
-{include file="Avatar_admin_footer.htm"}
+{include file="Avatar_admin_footer.tpl"}
 

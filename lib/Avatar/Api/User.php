@@ -123,4 +123,36 @@ class Avatar_Api_User extends Zikula_AbstractApi
         return $avatar_ok;
     }
 
+    /**
+     * Get module links
+     *
+     * @return array array of links
+     */
+    public function getLinks()
+    {
+        if (!SecurityUtil::checkPermission('Avatar::', '::', ACCESS_OVERVIEW)) {
+            return;
+        }
+
+        $links = array();
+
+        if (UserUtil::isLoggedIn()) {
+            $links[] = array(
+                'url'   => ModUtil::url('Avatar', 'user', 'main'),
+                'title' => $this->__('View avatars'),
+                'text' => $this->__('View avatars'),
+                'class' => 'z-icon-es-view'
+            );
+            if (SecurityUtil::checkPermission('Avatar::', '::', ACCESS_COMMENT)) {
+                $links[] = array(
+                    'url'   => ModUtil::url('Avatar', 'user', 'uploadform'),
+                    'title' => $this->__('Upload avatar'),
+                    'text' => $this->__('Upload avatar'),
+                    'class' => 'z-icon-es-add'
+                );
+            }
+        }
+
+        return $links;
+    }
 }
