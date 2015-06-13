@@ -1,4 +1,4 @@
-{include file="Avatar_admin_menu.htm"}
+{include file="Avatar_admin_menu.tpl"}
 {pageaddvar name="javascript" value="prototype"}
 {pageaddvar name="javascript" value="modules/Avatar/javascript/Avatar.js"}
 
@@ -52,4 +52,4 @@
 
 {pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage}
 {/if}
-{include file="Avatar_admin_footer.htm"}
+{include file="Avatar_admin_footer.tpl"}

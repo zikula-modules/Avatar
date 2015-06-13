@@ -14,11 +14,11 @@ class Avatar_Version extends Zikula_AbstractVersion
     public function getMetaData()
     {
         $meta = array();
-        $meta['displayname']    = __('Avatar');
+        $meta['displayname']    = $this->__('Avatar');
         //!url must be different to displayname
-        $meta['url']            = __('avatar');
+        $meta['url']            = $this->__('avatar');
         $meta['version']        = '2.3.0';
-        $meta['description']    = __('Upload of individual Avatars, supports Gravatars');
+        $meta['description']    = $this->__('Upload of individual Avatars, supports Gravatars');
         $meta['contact']        = 'https://github.com/zikula-ev/Avatar';
         $meta['securityschema'] = array('Avatar::' => '::',
                                         'Avatar::' => 'prefix:userid:');

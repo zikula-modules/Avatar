@@ -1,5 +1,5 @@
 {gt text="View avatars" assign=templatetitle}
-{include file="Avatar_user_header.htm"}
+{include file="Avatar_user_header.tpl"}
 
 <div class="av_list">
     <h3>{gt text="Please choose your prefered avatar"}</h3>
@@ -19,7 +19,7 @@
     </form>
 
     <!--raw-->
-    {include file="Avatar_user_select_display.htm"}
+    {include file="Avatar_user_select_display.tpl"}
     <!--/raw-->
     {pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page"}
 </div>
@@ -39,4 +39,4 @@
     </div>
 </div>
 
-{include file="Avatar_user_footer.htm"}
+{include file="Avatar_user_footer.tpl"}

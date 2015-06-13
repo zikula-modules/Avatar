@@ -1,4 +1,4 @@
-{include file="Avatar_admin_menu.htm"}
+{include file="Avatar_admin_menu.tpl"}
 <h2>{gt text="Maintain avatars"}</h2>
 
 <form id="perpageform" class="z-form z-linear av_box" method="post" action="{modurl modname="Avatar" type="admin" func="main"}">
@@ -31,4 +31,4 @@
 </div>
 
 {pager rowcount=$allavatarscount limit=$perpage posvar="page" display="page" perpage=$perpage}
-{include file="Avatar_admin_footer.htm"}
+{include file="Avatar_admin_footer.tpl"}

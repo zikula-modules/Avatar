@@ -56,7 +56,7 @@ class Avatar_Controller_User extends Zikula_AbstractController
         $this->view->assign('allavatarscount', $allavatarscount);
         $this->view->assign('page', $page);
         $this->view->assign('perpage', $perpage);
-        return $this->view->fetch('Avatar_user_main.htm');
+        return $this->view->fetch('Avatar_user_main.tpl');
     }
 
     /**
@@ -85,7 +85,7 @@ class Avatar_Controller_User extends Zikula_AbstractController
         $this->view->assign('current_avatar', $current_avatar);
 
         // display
-        return $this->view->fetch('Avatar_user_uploadform.htm');
+        return $this->view->fetch('Avatar_user_uploadform.tpl');
     }
 
     /**

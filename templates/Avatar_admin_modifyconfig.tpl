@@ -1,5 +1,5 @@
 {modurl modname='Users' type='admin' func='modifyconfig' assign='usersurl'}
-{include file="Avatar_admin_menu.htm"}
+{include file="Avatar_admin_menu.tpl"}
 
 <h2>{gt text="Modify configuration"}</h2>
 
@@ -66,4 +66,4 @@
 </div>
 {/form}
 
-{include file="Avatar_admin_footer.htm"}
+{include file="Avatar_admin_footer.tpl"}

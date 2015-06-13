@@ -1,5 +1,5 @@
 {gt text="Upload avatar" assign=templatetitle}
-{include file="Avatar_user_header.htm"}
+{include file="Avatar_user_header.tpl"}
 
 <div class="av_upload">
     <h3>{$templatetitle}</h3>
@@ -33,4 +33,4 @@
     </form>
 </div>
 
-{include file="Avatar_user_footer.htm"}
+{include file="Avatar_user_footer.tpl"}
