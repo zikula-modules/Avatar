@@ -21,7 +21,7 @@
 <div class="z-clearfix">
     {foreach from=$avatars item="avatar"}
     <div class="avatarbox">
-        <strong class="avatarpic" style="width:{$coredata.Avatar.maxheight+20}px; height:{$coredata.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
+        <strong class="avatarpic" style="width:{$coredata.Avatar.maxheight+20}px; height:{$coredata.Avatar.maxwidth+20}px; background:url({$baseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
         <span class="z-sub">{$avatar|safetext|truncate:15}</span>
         <br />
         <a href="{modurl modname="Avatar" type="admin" func="listusers" avatar=$avatar|safetext}"  title="{gt text="List users that use this avatar"}">{img modname='core' set='icons/extrasmall' src="windowlist.png" __title="View" __alt="View"}</a>
