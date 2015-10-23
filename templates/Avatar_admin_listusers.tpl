@@ -4,7 +4,7 @@
 {if $uavatar eq '' || $uavatar eq 'blank.gif'}
 <h3>{gt text="Users who don't use a avatar"}</h3>
 {else}
-<p><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|safetext}/{$uavatar|safetext}" alt="Avatar" /></p>
+<p><img class="avatarchoosen" src="{$baseurl}{$avatarpath|safetext}/{$uavatar|safetext}" alt="Avatar" /></p>
 <h3>{gt text="Users who use this avatar"}</h3>
 {/if}
 
