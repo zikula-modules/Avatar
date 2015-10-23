@@ -16,7 +16,7 @@
 <dl class="av_result">
     {if $avatar ne ""}
     <dt><strong>{gt text="The current avatar of '%s' is:" tag1=$username|safetext}</strong></dt>
-    <dd><img class="avatarchoosen" src="{getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}" alt="Avatar" /></dd>
+    <dd><img class="avatarchoosen" src="{$baseurl}{$avatarpath|safetext}/{$avatar|safetext}" alt="Avatar" /></dd>
     {else}
     <dd>{gt text="The user has no avatar selected."}</dd>
     {/if}
@@ -43,7 +43,7 @@
     {foreach from=$avatars item="avatar"}
     <div class="avatarbox">
         <a href="{modurl modname="Avatar" type="admin" func="setavatar" uavatar=$avatar|safetext uid=$userid}">
-            <strong class="avatarpic" style="width:{$coredata.Avatar.maxheight+20}px; height:{$coredata.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
+            <strong class="avatarpic" style="width:{$coredata.Avatar.maxheight+20}px; height:{$coredata.Avatar.maxwidth+20}px; background:url({$baseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
         </a>
         <span class="z-sub">{$avatar|safetext|truncate:15}</span>
     </div>
