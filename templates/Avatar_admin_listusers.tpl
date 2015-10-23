@@ -43,7 +43,7 @@
         {foreach from=$avatars item="avatar"}
         <div class="avatarbox">
             <button type="submit" name="avatar" value="{$avatar|safetext}">
-                <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({getbaseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
+                <strong class="avatarpic" style="width:{$core.Avatar.maxheight+20}px; height:{$core.Avatar.maxwidth+20}px; background:url({$baseurl}{$avatarpath|safetext}/{$avatar|safetext}) no-repeat scroll center; ">&nbsp;</strong>
                 <span class="z-sub">{$avatar|safetext|truncate:15}</span>
             </button>
         </div>
